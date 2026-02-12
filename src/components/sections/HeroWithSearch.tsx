@@ -127,7 +127,7 @@ export const HeroWithSearch = () => {
               transition={{ delay: 0.2 }}
               className="mb-6"
             >
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.03em] text-white leading-[1.05]">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-medium tracking-[-0.03em] text-white leading-[1.05]">
                 Manage Every
                 <br />
                 <span className="text-secondary">Workspace</span> With AI
