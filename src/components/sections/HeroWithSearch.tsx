@@ -162,31 +162,6 @@ export const HeroWithSearch = () => {
               </Button>
             </motion.div>
 
-            {/* Testimonials */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="mb-10 space-y-3"
-            >
-              {testimonials.map((t, i) => (
-                <div
-                  key={i}
-                  className="inline-flex items-start gap-3 px-4 py-3 rounded-xl bg-white/[0.07] backdrop-blur-sm border border-white/[0.08] mr-3"
-                  style={{ maxWidth: "420px" }}
-                >
-                  <div className="flex gap-0.5 shrink-0 mt-0.5">
-                    {[...Array(5)].map((_, j) => (
-                      <Star key={j} className="w-3 h-3 text-secondary fill-secondary" />
-                    ))}
-                  </div>
-                  <div>
-                    <p className="text-white/70 text-sm leading-snug">"{t.quote}"</p>
-                    <p className="text-white/40 text-xs mt-1">— {t.author}, {t.company}</p>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
 
             {/* Location Selector */}
             <motion.div
