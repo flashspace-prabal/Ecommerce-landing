@@ -70,18 +70,6 @@ export const HeroWithSearch = () => {
         <div className="container mx-auto px-6 lg:px-12 max-w-7xl flex flex-col items-center text-center">
           <div className="max-w-2xl">
 
-            {/* 1. Eyebrow Tag */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="mb-7"
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/[0.06] border border-primary/15">
-                <Sparkles className="w-3.5 h-3.5 text-primary" />
-                <span className="text-xs font-medium tracking-wide text-primary/80 uppercase">AI-Enabled Workspace Platform</span>
-              </div>
-            </motion.div>
 
             {/* 2. Main Heading */}
             <motion.div
