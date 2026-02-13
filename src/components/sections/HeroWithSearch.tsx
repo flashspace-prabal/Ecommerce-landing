@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Send, Mic, Building2, Users, CalendarCheck, Briefcase, BarChart3, Sparkles, MapPin, ChevronDown, Star } from "lucide-react";
+import { ArrowRight, Send, Mic, Sparkles, MapPin, ChevronDown } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,14 +17,7 @@ const rotatingExamples = [
   "Optimize my workspace portfolio",
 ];
 
-const serviceTags = [
-  { label: "Virtual Office", icon: Briefcase },
-  { label: "Coworking", icon: Users },
-  { label: "Meeting Rooms", icon: CalendarCheck },
-  { label: "Event Spaces", icon: Building2 },
-  { label: "Enterprise", icon: Building2 },
-  { label: "Analytics", icon: BarChart3 },
-];
+const filterTags = ["Virtual Office", "Coworking", "On Demand", "Business Setup"];
 
 const locations = [
   "Auto Locate",
@@ -35,24 +28,6 @@ const locations = [
   "Hyderabad",
   "Pune",
   "Kolkata",
-];
-
-const testimonials = [
-  {
-    quote: "FlashSpace transformed how we manage our workspace portfolio.",
-    author: "Head of Operations",
-    company: "FlexCorp",
-  },
-  {
-    quote: "Reduced our workspace costs by 40% in just 3 months.",
-    author: "COO",
-    company: "UrbanDesk",
-  },
-  {
-    quote: "The AI recommendations alone saved us 200+ hours per quarter.",
-    author: "VP of Real Estate",
-    company: "ScaleUp Inc",
-  },
 ];
 
 export const HeroWithSearch = () => {
@@ -69,7 +44,7 @@ export const HeroWithSearch = () => {
 
   return (
     <section className="relative overflow-hidden min-h-[92vh] flex items-center">
-      {/* Directional Gradient Background: top-left primary → fading bottom-right */}
+      {/* Gradient Background */}
       <div
         className="absolute inset-0"
         style={{
@@ -86,17 +61,14 @@ export const HeroWithSearch = () => {
           `,
         }}
       />
-      {/* Soft radial glow top-left for depth */}
       <div
         className="absolute top-0 left-0 w-[800px] h-[700px] rounded-full opacity-30"
         style={{ background: "radial-gradient(ellipse at 20% 20%, hsl(142 25% 18% / 0.8), transparent 70%)" }}
       />
-      {/* Secondary soft glow */}
       <div
         className="absolute top-1/4 left-1/4 w-[600px] h-[500px] rounded-full opacity-15"
         style={{ background: "radial-gradient(ellipse, hsl(54 96% 88% / 0.15), transparent 70%)" }}
       />
-      {/* Subtle bottom-right light diffusion */}
       <div
         className="absolute bottom-0 right-0 w-[500px] h-[400px] rounded-full opacity-10"
         style={{ background: "radial-gradient(ellipse, hsl(0 0% 100% / 0.12), transparent 70%)" }}
@@ -107,25 +79,25 @@ export const HeroWithSearch = () => {
         <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
           <div className="max-w-2xl">
 
-            {/* Badge */}
+            {/* 1. Eyebrow Tag */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="mb-8"
+              className="mb-7"
             >
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 border border-white/20">
                 <Sparkles className="w-3.5 h-3.5 text-secondary" />
-                <span className="text-xs font-medium tracking-wide text-white/90 uppercase">AI-Powered Platform</span>
+                <span className="text-xs font-medium tracking-wide text-white/90 uppercase">AI-Enabled Workspace Platform</span>
               </div>
             </motion.div>
 
-            {/* Headline */}
+            {/* 2. Main Heading */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="mb-6"
+              className="mb-5"
             >
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-medium tracking-[-0.03em] text-white leading-[1.05]">
                 Manage Every
@@ -134,48 +106,31 @@ export const HeroWithSearch = () => {
               </h1>
             </motion.div>
 
-            {/* Subheadline */}
+            {/* 3. Subheading */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mb-10"
+              className="mb-8"
             >
               <p className="text-white/80 text-base sm:text-lg max-w-lg leading-relaxed">
                 The AI-powered platform for virtual offices, coworking spaces, meeting rooms, event venues, and enterprise workspace management.
               </p>
             </motion.div>
 
-            {/* Primary CTAs */}
+            {/* 4. Auto Locate + Filter Tags Row */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="flex flex-wrap items-center gap-3 mb-12"
-            >
-              <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold px-8 h-12 rounded-xl shadow-lg hover:shadow-xl transition-all">
-                Get Started
-                <ArrowRight className="w-4 h-4 ml-1" />
-              </Button>
-              <Button size="lg" variant="whiteOutline" className="font-semibold px-8 h-12 rounded-xl">
-                Explore Platform
-              </Button>
-            </motion.div>
-
-
-            {/* Location Selector */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.55 }}
-              className="mb-3"
+              className="mb-4 flex flex-wrap items-center gap-3"
             >
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button className="inline-flex items-center gap-1.5 text-white/70 hover:text-white/90 transition-colors text-xs tracking-wide">
-                    <MapPin className="w-3 h-3" />
+                  <button className="inline-flex items-center gap-1.5 text-white/80 hover:text-white transition-colors text-sm tracking-wide">
+                    <MapPin className="w-3.5 h-3.5" />
                     <span>{selectedLocation}</span>
-                    <ChevronDown className="w-3 h-3" />
+                    <ChevronDown className="w-3 h-3 opacity-60" />
                   </button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-popover border-border min-w-[140px]">
@@ -191,23 +146,36 @@ export const HeroWithSearch = () => {
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
+
+              <div className="w-px h-4 bg-white/20 hidden sm:block" />
+
+              <div className="flex flex-wrap gap-1.5">
+                {filterTags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 rounded-full text-[11px] font-medium text-white/75 bg-white/[0.07] border border-white/[0.12] select-none"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </motion.div>
 
-            {/* AI Input — Secondary, Slim */}
+            {/* 5. Search Bar */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="max-w-xl mb-4"
+              transition={{ delay: 0.5 }}
+              className="max-w-xl mb-6"
             >
-              <div className="relative bg-white/[0.08] backdrop-blur-lg rounded-full shadow-md border border-white/[0.12] px-5 py-1.5 flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-secondary/60 shrink-0" />
+              <div className="relative bg-white/[0.10] backdrop-blur-xl rounded-2xl shadow-lg border border-white/[0.15] px-5 py-1 flex items-center gap-3">
+                <Sparkles className="w-4.5 h-4.5 text-secondary/70 shrink-0" />
                 <div className="flex-1 relative">
                   <input
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    className="w-full bg-transparent border-none outline-none text-white placeholder:text-transparent py-2.5 text-sm"
+                    className="w-full bg-transparent border-none outline-none text-white placeholder:text-transparent py-3.5 text-sm"
                     placeholder="Ask AI about your workspace needs…"
                   />
                   {!inputValue && (
@@ -219,7 +187,7 @@ export const HeroWithSearch = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -8 }}
                           transition={{ duration: 0.25 }}
-                          className="text-white/55 text-sm"
+                          className="text-white/50 text-sm"
                         >
                           {rotatingExamples[currentExample]}
                         </motion.span>
@@ -230,29 +198,26 @@ export const HeroWithSearch = () => {
                 <button className="p-1.5 rounded-full hover:bg-white/10 transition-colors" aria-label="Voice input">
                   <Mic className="w-4 h-4 text-white/60" />
                 </button>
-                <button className="p-2 rounded-full bg-secondary/20 hover:bg-secondary/30 transition-colors" aria-label="Send message">
-                  <Send className="w-3.5 h-3.5 text-secondary" />
+                <button className="p-2.5 rounded-xl bg-secondary/25 hover:bg-secondary/35 transition-colors" aria-label="Send message">
+                  <Send className="w-4 h-4 text-secondary" />
                 </button>
               </div>
             </motion.div>
 
-            {/* Quick Service Chips */}
+            {/* 6. CTAs */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
-              className="flex flex-wrap gap-2"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-wrap items-center gap-3"
             >
-              {serviceTags.map((tag) => (
-                <button
-                  key={tag.label}
-                  onClick={() => setInputValue(tag.label)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-white/70 hover:text-white/90 bg-white/[0.08] hover:bg-white/[0.14] border border-white/10 hover:border-white/15 transition-all"
-                >
-                  <tag.icon className="w-3 h-3" />
-                  {tag.label}
-                </button>
-              ))}
+              <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold px-8 h-12 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                Get Started
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+              <Button size="lg" variant="whiteOutline" className="font-semibold px-8 h-12 rounded-xl">
+                Explore Platform
+              </Button>
             </motion.div>
 
           </div>
