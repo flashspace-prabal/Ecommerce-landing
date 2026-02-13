@@ -1,16 +1,69 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const features = [
-  { name: "Virtual Offices", active: false },
-  { name: "Meeting Rooms", active: false },
-  { name: "Global Access", active: false },
-  { name: "Coworking", active: true },
-  { name: "Day Passes", active: false },
-  { name: "Business Setup", active: false },
+  "Virtual Offices",
+  "Meeting Rooms",
+  "Global Access",
+  "Coworking",
+  "Day Passes",
+  "Business Setup",
 ];
 
 export const FeatureList = () => {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [centerIndex, setCenterIndex] = useState(0);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    const wrapper = wrapperRef.current;
+    if (!track || !wrapper) return;
+
+    const updateCenter = () => {
+      const wrapperRect = wrapper.getBoundingClientRect();
+      const wrapperCenter = wrapperRect.top + wrapperRect.height / 2;
+      const items = track.querySelectorAll<HTMLElement>("[data-feature-item]");
+      let closestIdx = 0;
+      let closestDist = Infinity;
+
+      items.forEach((item, i) => {
+        const rect = item.getBoundingClientRect();
+        const itemCenter = rect.top + rect.height / 2;
+        const dist = Math.abs(itemCenter - wrapperCenter);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closestIdx = i % features.length;
+        }
+      });
+
+      setCenterIndex(closestIdx);
+    };
+
+    const interval = setInterval(updateCenter, 100);
+    return () => clearInterval(interval);
+  }, []);
+
+  const renderItem = (name: string, index: number) => {
+    const isCenter = index % features.length === centerIndex;
+    return (
+      <div
+        key={`${name}-${index}`}
+        data-feature-item
+        className="py-4 border-b border-border/50 transition-all duration-500 ease-out"
+        style={{
+          opacity: isCenter ? 1 : 0.55,
+          fontWeight: isCenter ? 700 : 500,
+          transform: isCenter ? "scale(1.02)" : "scale(1)",
+        }}
+      >
+        <span className="text-3xl lg:text-4xl xl:text-5xl tracking-tight text-foreground">
+          {name}
+        </span>
+      </div>
+    );
+  };
+
   return (
     <section className="py-24 lg:py-32 bg-card">
       <div className="container mx-auto px-4 lg:px-8">
@@ -80,43 +133,35 @@ export const FeatureList = () => {
             </a>
           </motion.div>
 
-          {/* Right side - Feature list */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-0"
+          {/* Right side - Infinite vertical scrolling list */}
+          <div
+            ref={wrapperRef}
+            className="relative overflow-hidden"
+            style={{ height: "380px" }}
           >
-            {features.map((feature, index) => (
-              <motion.a
-                key={feature.name}
-                href="#"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className={`
-                  flex items-center justify-between py-4 border-b border-border/50 
-                  group cursor-pointer transition-all duration-300
-                  ${feature.active 
-                    ? 'text-foreground' 
-                    : 'text-muted-foreground hover:text-foreground'
-                  }
-                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg
-                `}
-              >
-                <span className={`
-                  text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight transition-all duration-300
-                  ${feature.active ? '' : 'group-hover:translate-x-2'}
-                `}>
-                  {feature.name}
-                </span>
-                {feature.active && (
-                  <ArrowRight className="w-8 h-8 text-foreground" />
-                )}
-              </motion.a>
-            ))}
-          </motion.div>
+            {/* Top fade mask */}
+            <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-card to-transparent z-10 pointer-events-none" />
+            {/* Bottom fade mask */}
+            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-card to-transparent z-10 pointer-events-none" />
+
+            <div
+              ref={trackRef}
+              className="section-13-vertical-track"
+              style={{
+                animation: "section13Scroll 12s linear infinite",
+              }}
+            >
+              {features.map((name, i) => renderItem(name, i))}
+              {features.map((name, i) => renderItem(name, i + features.length))}
+            </div>
+
+            <style>{`
+              @keyframes section13Scroll {
+                0% { transform: translateY(0); }
+                100% { transform: translateY(-50%); }
+              }
+            `}</style>
+          </div>
         </div>
       </div>
     </section>
