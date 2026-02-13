@@ -30,6 +30,8 @@ export const FeatureList = () => {
   const trackRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [centerIndex, setCenterIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -37,6 +39,7 @@ export const FeatureList = () => {
     if (!track || !wrapper) return;
 
     const updateCenter = () => {
+      if (isHovering) return;
       const wrapperRect = wrapper.getBoundingClientRect();
       const wrapperCenter = wrapperRect.top + wrapperRect.height / 2;
       const items = track.querySelectorAll<HTMLElement>("[data-feature-item]");
@@ -58,19 +61,28 @@ export const FeatureList = () => {
 
     const interval = setInterval(updateCenter, 100);
     return () => clearInterval(interval);
-  }, []);
+  }, [isHovering]);
+
+  const activeIndex = hoveredIndex !== null ? hoveredIndex : centerIndex;
 
   const renderItem = (name: string, index: number) => {
-    const isCenter = index % features.length === centerIndex;
+    const normalizedIndex = index % features.length;
+    const isActive = normalizedIndex === activeIndex;
     return (
       <div
         key={`${name}-${index}`}
         data-feature-item
-        className="py-4 border-b border-border/50 transition-all duration-500 ease-out"
+        className="py-4 border-b border-border/50"
         style={{
-          opacity: isCenter ? 1 : 0.55,
-          fontWeight: isCenter ? 700 : 500,
-          transform: isCenter ? "scale(1.02)" : "scale(1)",
+          opacity: isActive ? 1 : isHovering ? 0.45 : 0.55,
+          fontWeight: isActive ? 700 : 500,
+          transform: isActive ? "scale(1.02)" : "scale(1)",
+          transition: "opacity 250ms ease, font-weight 250ms ease, transform 250ms ease",
+          cursor: "pointer",
+        }}
+        onMouseEnter={() => {
+          setHoveredIndex(normalizedIndex);
+          setIsHovering(true);
         }}
       >
         <span className="text-3xl lg:text-4xl xl:text-5xl tracking-tight text-foreground">
@@ -93,9 +105,9 @@ export const FeatureList = () => {
           >
             <AnimatePresence mode="wait">
               <motion.img
-                key={centerIndex}
-                src={featureImages[centerIndex]}
-                alt={features[centerIndex]}
+                key={activeIndex}
+                src={featureImages[activeIndex]}
+                alt={features[activeIndex]}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -110,6 +122,12 @@ export const FeatureList = () => {
             ref={wrapperRef}
             className="relative overflow-hidden"
             style={{ height: "380px" }}
+            onMouseLeave={() => {
+              setHoveredIndex(null);
+              setIsHovering(false);
+              const track = trackRef.current;
+              if (track) track.style.animationPlayState = "running";
+            }}
           >
             {/* Top fade mask */}
             <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-card to-transparent z-10 pointer-events-none" />
@@ -123,7 +141,6 @@ export const FeatureList = () => {
               animation: "section13Scroll 12s linear infinite",
             }}
             onMouseEnter={(e) => (e.currentTarget.style.animationPlayState = "paused")}
-            onMouseLeave={(e) => (e.currentTarget.style.animationPlayState = "running")}
           >
               {features.map((name, i) => renderItem(name, i))}
               {features.map((name, i) => renderItem(name, i + features.length))}
