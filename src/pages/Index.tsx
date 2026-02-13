@@ -5,7 +5,6 @@ import { WorkWhereYouThrive } from "@/components/sections/WorkWhereYouThrive";
 import { PlatformFeatures } from "@/components/sections/PlatformFeatures";
 import { ProductShowcase } from "@/components/sections/ProductShowcase";
 
-import { FeatureList } from "@/components/sections/FeatureList";
 import { FeatureCTA } from "@/components/sections/FeatureCTA";
 import { Stats } from "@/components/sections/Stats";
 
@@ -25,7 +24,6 @@ const Index = () => {
         <PlatformFeatures />
         <ProductShowcase />
         
-        <FeatureList />
         <FeatureCTA />
         <Stats />
         
