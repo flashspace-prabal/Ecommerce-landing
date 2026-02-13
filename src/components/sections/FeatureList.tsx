@@ -144,13 +144,15 @@ export const FeatureList = () => {
             {/* Bottom fade mask */}
             <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-card to-transparent z-10 pointer-events-none" />
 
-            <div
-              ref={trackRef}
-              className="section-13-vertical-track"
-              style={{
-                animation: "section13Scroll 12s linear infinite",
-              }}
-            >
+          <div
+            ref={trackRef}
+            className="section-13-vertical-track"
+            style={{
+              animation: "section13Scroll 12s linear infinite",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.animationPlayState = "paused")}
+            onMouseLeave={(e) => (e.currentTarget.style.animationPlayState = "running")}
+          >
               {features.map((name, i) => renderItem(name, i))}
               {features.map((name, i) => renderItem(name, i + features.length))}
             </div>
