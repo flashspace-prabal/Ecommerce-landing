@@ -68,8 +68,7 @@ export const HeroWithSearch = () => {
       {/* Content */}
       <div className="relative z-10 w-full pt-32 lg:pt-40 pb-20 lg:pb-28">
         <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
-          <div className="flex items-center gap-12 lg:gap-16">
-          <div className="max-w-2xl flex-1">
+          <div className="max-w-2xl">
 
             {/* 1. Eyebrow Tag */}
             <motion.div
@@ -211,55 +210,6 @@ export const HeroWithSearch = () => {
                 Explore Platform
               </Button>
             </motion.div>
-
-          </div>
-
-            {/* Right Side — Rotating Visual Anchor Cards */}
-            <div className="hidden lg:block flex-shrink-0 w-[340px] h-[400px] relative">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentCard}
-                  initial={{ opacity: 0, x: 40, scale: 0.95 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: -30, scale: 0.93 }}
-                  transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-                  className="absolute inset-0"
-                >
-                  <div className="rounded-2xl overflow-hidden bg-background shadow-xl border border-border/60 h-full flex flex-col">
-                    {/* Image Area */}
-                    <div className="relative h-[220px] overflow-hidden flex-shrink-0">
-                      <img
-                        src={workspaceCards[currentCard].image}
-                        alt={workspaceCards[currentCard].name}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background/60 to-transparent" />
-                      <div className="absolute top-3 right-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-background/90 backdrop-blur-sm border border-border/40">
-                        <BadgeCheck className="w-3.5 h-3.5 text-primary" />
-                        <span className="text-[11px] font-medium text-foreground/80">Verified</span>
-                      </div>
-                    </div>
-                    {/* Info Area */}
-                    <div className="p-5 space-y-3 flex-1">
-                      <h3 className="text-base font-semibold text-foreground leading-tight">{workspaceCards[currentCard].name}</h3>
-                      <div className="flex items-center gap-1.5 text-muted-foreground">
-                        <MapPin className="w-3.5 h-3.5" />
-                        <span className="text-xs">{workspaceCards[currentCard].location}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="px-2.5 py-1 rounded-full text-[11px] font-medium bg-muted/70 text-foreground/60 border border-border/50">{workspaceCards[currentCard].type}</span>
-                        <span className="px-2.5 py-1 rounded-full text-[11px] font-medium bg-primary/[0.08] text-primary border border-primary/15">{workspaceCards[currentCard].badge}</span>
-                      </div>
-                      <div className="pt-1">
-                        <span className="text-xs text-muted-foreground">Starting from</span>
-                        <span className="ml-1.5 text-lg font-semibold text-foreground">{workspaceCards[currentCard].price}</span>
-                        <span className="text-xs text-muted-foreground">/mo</span>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
 
           </div>
         </div>
