@@ -1,11 +1,9 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { HeroWithSearch } from "@/components/sections/HeroWithSearch";
 import { WorkspaceCategories } from "@/components/sections/WorkspaceCategories";
-import { EditorialIntro } from "@/components/sections/EditorialIntro";
 import { WorkWhereYouThrive } from "@/components/sections/WorkWhereYouThrive";
 import { PlatformFeatures } from "@/components/sections/PlatformFeatures";
 import { DarkTestimonial } from "@/components/sections/DarkTestimonial";
-import { EditorialTestimonial } from "@/components/sections/EditorialTestimonial";
 import { OneSuite } from "@/components/sections/OneSuite";
 import { ProductShowcase } from "@/components/sections/ProductShowcase";
 import { TestimonialsCarousel } from "@/components/sections/TestimonialsCarousel";
@@ -26,11 +24,9 @@ const Index = () => {
       <main>
         <HeroWithSearch />
         <WorkspaceCategories />
-        <EditorialIntro />
         <WorkWhereYouThrive />
         <PlatformFeatures />
         <DarkTestimonial />
-        <EditorialTestimonial />
         <OneSuite />
         <ProductShowcase />
         <TestimonialsCarousel />
