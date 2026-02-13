@@ -8,7 +8,7 @@ import { ProductShowcase } from "@/components/sections/ProductShowcase";
 import { FeatureList } from "@/components/sections/FeatureList";
 import { FeatureCTA } from "@/components/sections/FeatureCTA";
 import { Stats } from "@/components/sections/Stats";
-import { ClientImpact } from "@/components/sections/ClientImpact";
+
 import { BlogSection } from "@/components/sections/BlogSection";
 import { FounderTestimonial } from "@/components/sections/FounderTestimonial";
 import { CTA } from "@/components/sections/CTA";
@@ -28,7 +28,7 @@ const Index = () => {
         <FeatureList />
         <FeatureCTA />
         <Stats />
-        <ClientImpact />
+        
         <FounderTestimonial />
         <BlogSection />
         <CTA />
