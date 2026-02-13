@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Send, Mic, Sparkles, MapPin, ChevronDown, ChevronsRight } from "lucide-react";
+import { ArrowRight, Send, Mic, Sparkles, MapPin, ChevronDown } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -190,13 +190,10 @@ export const HeroWithSearch = () => {
               transition={{ delay: 0.6 }}
               className="flex flex-wrap items-center gap-3"
             >
-              <button className="group inline-flex items-center bg-primary rounded-2xl overflow-hidden h-14 transition-colors hover:bg-primary/90">
-                <span className="px-8 text-primary-foreground font-semibold text-base">Get Started</span>
-                <span className="w-px h-8 bg-primary-foreground/20" />
-                <span className="px-5 flex items-center justify-center text-primary-foreground/80 group-hover:translate-x-0.5 transition-transform">
-                  <ChevronsRight className="w-5 h-5" />
-                </span>
-              </button>
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 h-12 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                Get Started
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
               <Button size="lg" variant="outline" className="font-semibold px-8 h-12 rounded-xl border-border text-foreground hover:bg-muted">
                 Explore Platform
               </Button>
