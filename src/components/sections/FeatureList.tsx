@@ -99,15 +99,15 @@ export const FeatureList = () => {
                   flex items-center justify-between py-4 border-b border-border/50 
                   group cursor-pointer transition-all duration-300
                   ${feature.active 
-                    ? 'text-foreground' 
-                    : 'text-muted-foreground hover:text-foreground'
+                    ? 'text-foreground opacity-100' 
+                    : 'text-foreground/75 hover:text-foreground hover:opacity-100'
                   }
                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg
                 `}
               >
                 <span className={`
-                  text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight transition-all duration-300
-                  ${feature.active ? '' : 'group-hover:translate-x-2'}
+                  text-3xl lg:text-4xl xl:text-5xl tracking-tight transition-all duration-300
+                  ${feature.active ? 'font-bold' : 'font-medium group-hover:translate-x-2'}
                 `}>
                   {feature.name}
                 </span>
