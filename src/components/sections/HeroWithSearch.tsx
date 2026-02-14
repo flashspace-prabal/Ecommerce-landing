@@ -27,7 +27,7 @@ export const HeroWithSearch = () => {
   const subOpacity = useTransform(scrollY, [0, 120], [1, 0.8]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen w-full flex items-center justify-center pt-0 mt-0">
+    <section ref={sectionRef} className="relative min-h-screen w-full flex items-center justify-center">
       {/* Background Image — scrolls naturally */}
       <div className="absolute inset-0 overflow-hidden">
         <img
