@@ -70,7 +70,7 @@ export const HeroWithSearch = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-                className={`text-muted-foreground mx-auto text-base sm:text-lg leading-relaxed ${collapsed ? 'mt-2 max-w-xl sm:[display:-webkit-box] sm:[-webkit-line-clamp:2] sm:[-webkit-box-orient:vertical] sm:overflow-hidden' : 'mt-6 max-w-xl'}`}
+                className={`text-muted-foreground mx-auto max-w-xl text-base sm:text-lg leading-relaxed ${collapsed ? 'mt-2' : 'mt-6'}`}
               >
                 AI-powered platform to manage virtual offices, coworking spaces, meeting rooms, and enterprise workspace portfolios — all in one place.
               </motion.p>
