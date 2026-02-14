@@ -37,13 +37,13 @@ export const HeroWithSearch = () => {
           >
             <motion.span
               style={{ opacity: line1Opacity, y: line1Y }}
-              className={`block text-5xl sm:text-6xl lg:text-7xl font-medium tracking-[-0.03em] text-foreground leading-[1.08] transition-all duration-[400ms] ease-out ${collapsed ? 'hidden' : ''}`}
+              className={`block text-[34px] sm:text-[52px] lg:text-[68px] font-medium tracking-[-0.03em] text-foreground leading-[1.2] sm:leading-[1.15] lg:leading-[1.12] transition-all duration-[400ms] ease-out ${collapsed ? 'hidden' : ''}`}
             >
               Where Workspaces Become
             </motion.span>
             <motion.span
               style={{ opacity: line2Opacity, y: line2Y }}
-              className={`block text-5xl sm:text-6xl lg:text-7xl font-medium tracking-[-0.03em] text-foreground leading-[1.08] transition-all duration-[400ms] ease-out ${collapsed ? 'hidden' : ''}`}
+              className={`block text-[34px] sm:text-[52px] lg:text-[68px] font-medium tracking-[-0.03em] text-foreground leading-[1.2] sm:leading-[1.15] lg:leading-[1.12] transition-all duration-[400ms] ease-out ${collapsed ? 'hidden' : ''}`}
             >
               Structured Infrastructure
             </motion.span>
@@ -59,7 +59,7 @@ export const HeroWithSearch = () => {
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
                 <span
-                  className="block text-5xl sm:text-6xl lg:text-7xl font-medium tracking-[-0.03em] text-foreground leading-[1.08]"
+                  className="block text-[34px] sm:text-[52px] lg:text-[68px] font-medium tracking-[-0.03em] text-foreground leading-[1.2] sm:leading-[1.15] lg:leading-[1.12]"
                 >
                   Not Just Listings
                 </span>
