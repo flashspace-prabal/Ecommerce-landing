@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-premium-bg.jpg";
@@ -7,12 +7,22 @@ import heroBg from "@/assets/hero-premium-bg.jpg";
 export const HeroWithSearch = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
+  const [collapsed, setCollapsed] = useState(false);
 
-  // Heading: scale down to ~70% over 0-120px scroll
-  const headingScale = useTransform(scrollY, [0, 120], [1, 0.7]);
-  const headingLineHeight = useTransform(scrollY, [0, 120], [1.05, 1.4]);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setCollapsed(latest > 100);
+  });
 
-  // Subheading: reduce size ~85% and opacity to 80%
+  // Line 1 & 2: fade out and translate up
+  const line1Opacity = useTransform(scrollY, [0, 100], [1, 0]);
+  const line1Y = useTransform(scrollY, [0, 100], [0, -20]);
+  const line2Opacity = useTransform(scrollY, [0, 100], [1, 0]);
+  const line2Y = useTransform(scrollY, [0, 100], [0, -20]);
+
+  // Line 3: slight scale reduction
+  const line3Scale = useTransform(scrollY, [0, 120], [1, 0.85]);
+
+  // Subheading
   const subScale = useTransform(scrollY, [0, 120], [1, 0.85]);
   const subOpacity = useTransform(scrollY, [0, 120], [1, 0.8]);
 
@@ -33,25 +43,32 @@ export const HeroWithSearch = () => {
       <div className="relative z-10 w-full flex flex-col items-center text-center px-6">
         <div className="max-w-[1100px] w-full">
 
-          {/* Heading — scroll-compressed */}
-          <motion.h1
+          {/* Heading — 3 independent lines */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            style={{
-              scale: headingScale,
-              lineHeight: headingLineHeight,
-              transformOrigin: "center top",
-              transition: "line-height 0.45s ease-out",
-            }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-medium tracking-[-0.03em] text-white mb-6"
+            className="mb-6"
           >
-            The Operating System
-            <br />
-            for Modern
-            <br />
-            Workspaces
-          </motion.h1>
+            <motion.span
+              style={{ opacity: line1Opacity, y: line1Y }}
+              className={`block text-5xl sm:text-6xl lg:text-7xl font-medium tracking-[-0.03em] text-white leading-[1.08] transition-all duration-[400ms] ease-out ${collapsed ? 'hidden' : ''}`}
+            >
+              Where Workspaces Become
+            </motion.span>
+            <motion.span
+              style={{ opacity: line2Opacity, y: line2Y }}
+              className={`block text-5xl sm:text-6xl lg:text-7xl font-medium tracking-[-0.03em] text-white leading-[1.08] transition-all duration-[400ms] ease-out ${collapsed ? 'hidden' : ''}`}
+            >
+              Structured Infrastructure
+            </motion.span>
+            <motion.span
+              style={{ scale: line3Scale, transformOrigin: "center top" }}
+              className="block text-5xl sm:text-6xl lg:text-7xl font-medium tracking-[-0.03em] text-white leading-[1.08] transition-all duration-[400ms] ease-out"
+            >
+              Not Just Listings
+            </motion.span>
+          </motion.div>
 
           {/* Subheading — scroll-reduced */}
           <motion.p
