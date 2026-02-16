@@ -45,10 +45,17 @@ export const HeroWithSearch = () => {
     }
   });
 
-  const line1Opacity = useTransform(scrollY, [0, 100], [1, 0]);
-  const line1Y = useTransform(scrollY, [0, 100], [0, -20]);
-  const line2Opacity = useTransform(scrollY, [0, 100], [1, 0]);
-  const line2Y = useTransform(scrollY, [0, 100], [0, -20]);
+  // Intercom-style: smooth scale-down + fade + vertical compression
+  const line1Opacity = useTransform(scrollY, [0, 150], [1, 0]);
+  const line1Y = useTransform(scrollY, [0, 150], [0, -30]);
+  const line1Scale = useTransform(scrollY, [0, 150], [1, 0.85]);
+  const line2Opacity = useTransform(scrollY, [0, 150], [1, 0]);
+  const line2Y = useTransform(scrollY, [0, 150], [0, -30]);
+  const line2Scale = useTransform(scrollY, [0, 150], [1, 0.85]);
+  
+  // Sticky section also scales subtly
+  const stickyScale = useTransform(scrollY, [0, 200], [1, 0.97]);
+  const stickyY = useTransform(scrollY, [0, 200], [0, -8]);
 
   const totalWordDelay = allWords.length * 0.08 + 0.3; // when last word finishes
 
@@ -66,7 +73,7 @@ export const HeroWithSearch = () => {
               style={{ willChange: 'auto' }}
             >
               <motion.div
-                style={{ opacity: line1Opacity, y: line1Y, visibility: collapsed ? 'hidden' : 'visible', maxHeight: collapsed ? 0 : 100, overflow: 'hidden', willChange: 'transform, opacity' }}
+                style={{ opacity: line1Opacity, y: line1Y, scale: line1Scale, visibility: collapsed ? 'hidden' : 'visible', maxHeight: collapsed ? 0 : 100, overflow: 'hidden', willChange: 'transform, opacity', transformOrigin: 'center bottom' }}
                 className="block text-[34px] sm:text-[52px] lg:text-[68px] font-medium tracking-[-0.03em] text-foreground leading-[1.2] sm:leading-[1.15] lg:leading-[1.12] transition-[max-height,visibility] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
               >
                 {line1Words.map((word, i) => (
@@ -81,7 +88,7 @@ export const HeroWithSearch = () => {
                 ))}
               </motion.div>
               <motion.div
-                style={{ opacity: line2Opacity, y: line2Y, visibility: collapsed ? 'hidden' : 'visible', maxHeight: collapsed ? 0 : 100, overflow: 'hidden', willChange: 'transform, opacity' }}
+                style={{ opacity: line2Opacity, y: line2Y, scale: line2Scale, visibility: collapsed ? 'hidden' : 'visible', maxHeight: collapsed ? 0 : 100, overflow: 'hidden', willChange: 'transform, opacity', transformOrigin: 'center bottom' }}
                 className="block text-[34px] sm:text-[52px] lg:text-[68px] font-medium tracking-[-0.03em] text-foreground leading-[1.2] sm:leading-[1.15] lg:leading-[1.12] transition-[max-height,visibility] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
               >
                 {line2Words.map((word, i) => (
@@ -104,7 +111,7 @@ export const HeroWithSearch = () => {
       <div className="sticky top-[68px] lg:top-[100px] z-20 bg-[#f5f5f5]">
         <div className="w-full flex flex-col items-center text-center px-6">
           <div className="max-w-[1100px] w-full">
-            <div className="flex flex-col items-center pb-6 sm:pb-8">
+            <motion.div style={{ scale: stickyScale, y: stickyY, transformOrigin: 'center top' }} className="flex flex-col items-center pb-6 sm:pb-8">
               {/* Line 3 — staggered words */}
               <motion.div
                 initial="hidden"
@@ -187,7 +194,7 @@ export const HeroWithSearch = () => {
                   <ArrowRight className="w-4 h-4 ml-1" />
                 </Button>
               </motion.div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
