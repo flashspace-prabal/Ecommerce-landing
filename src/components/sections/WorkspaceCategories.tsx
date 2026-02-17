@@ -120,7 +120,7 @@ const WorkspaceCard = ({ title, subtitle, image, features, index }: WorkspaceCar
 
 export const WorkspaceCategories = () => {
   return (
-    <section className="py-20 lg:py-28 bg-background">
+    <section className="pt-20 lg:pt-28 pb-6 lg:pb-8 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <motion.div
