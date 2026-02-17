@@ -61,8 +61,8 @@ export const ScrollNavLayout = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-[200px_1fr] gap-8 lg:gap-16">
           {/* Sticky left nav */}
-          <div className="hidden lg:block" style={{ backgroundColor: '#F5F7F4', borderRight: '1px solid rgba(0,0,0,0.05)' }}>
-            <nav className="sticky top-[120px] space-y-1 py-8">
+          <div className="hidden lg:block" style={{ backgroundColor: '#F5F7F4' }}>
+            <nav className="sticky top-[120px] py-8 px-6 space-y-2">
               {navItems.map((item) => {
                 const isActive = activeSection === item.id;
                 const showOnDemand = item.id === "on-demand"
@@ -82,25 +82,34 @@ export const ScrollNavLayout = () => {
                   >
                     <button
                       onClick={() => scrollTo(item.id)}
-                      className={`flex items-center gap-3 w-full text-left py-2 group transition-all duration-300 ease-in-out ${
-                        item.indent ? "pl-5" : ""
+                      className={`relative flex items-center w-full text-left rounded-[10px] transition-all duration-200 ease-in-out ${
+                        item.indent ? "ml-4 py-2 px-3" : "py-2 px-3"
+                      } ${
+                        isActive
+                          ? "bg-[rgba(54,80,63,0.08)]"
+                          : "hover:bg-[rgba(0,0,0,0.03)]"
                       }`}
                     >
-                      <div
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          isActive
-                            ? "bg-primary scale-125 opacity-100"
-                            : "opacity-0 scale-[0.6]"
-                        }`}
-                      />
+                      {/* Vertical indicator bar */}
+                      {isActive && (
+                        <motion.div
+                          layoutId="navIndicator"
+                          className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] rounded-sm"
+                          style={{ height: '60%', backgroundColor: '#36503F' }}
+                          transition={{ duration: 0.25, ease: "easeInOut" }}
+                        />
+                      )}
                       <span
-                        className={`uppercase tracking-wider transition-all duration-300 ${
-                          item.indent ? "text-xs" : "text-sm"
+                        className={`transition-colors duration-200 ${
+                          item.indent ? "text-[13px]" : "text-[14px]"
                         } ${
                           isActive
-                            ? "text-primary font-semibold opacity-100"
-                            : "text-muted-foreground font-normal opacity-50 group-hover:opacity-70"
+                            ? "font-semibold"
+                            : "font-medium"
                         }`}
+                        style={{
+                          color: isActive ? '#36503F' : 'rgba(0,0,0,0.55)',
+                        }}
                       >
                         {item.label}
                       </span>
