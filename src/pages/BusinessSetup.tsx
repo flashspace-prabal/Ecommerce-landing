@@ -50,7 +50,7 @@ const BusinessSetup = () => {
       <Navbar />
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden" style={{ background: 'hsla(0, 0%, 97%, 0.9)', paddingTop: '160px', paddingBottom: '160px' }}>
+        <section className="relative overflow-hidden" style={{ background: 'hsla(0, 0%, 97%, 0.9)', paddingTop: '170px', paddingBottom: '160px' }}>
           {/* Subtle gradient blobs */}
           <div className="absolute top-0 right-0 w-[600px] h-[600px] opacity-[0.07] pointer-events-none">
             <div className="absolute inset-0 rounded-full bg-primary blur-[120px] translate-x-1/3 -translate-y-1/4" />
@@ -140,7 +140,7 @@ const BusinessSetup = () => {
           </div>
 
           {/* Companies Marquee */}
-          <div className="mt-24 lg:mt-28">
+          <div className="mt-28 lg:mt-32">
             <motion.p
               className="text-center text-sm font-medium text-muted-foreground/70 mb-8"
               initial={{ opacity: 0 }}
