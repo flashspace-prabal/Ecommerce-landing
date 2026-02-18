@@ -111,6 +111,35 @@ const BusinessSetup = () => {
         {/* Sticky sidebar content sections */}
         <BusinessSetupContent />
 
+        {/* Companies Marquee */}
+        <section className="py-14 lg:py-20 overflow-hidden" style={{ background: 'hsl(0, 0%, 97%)' }}>
+          <div className="relative">
+            {/* Fade edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-24 z-10" style={{ background: 'linear-gradient(to right, hsl(0, 0%, 97%), transparent)' }} />
+            <div className="absolute right-0 top-0 bottom-0 w-24 z-10" style={{ background: 'linear-gradient(to left, hsl(0, 0%, 97%), transparent)' }} />
+            
+            <div className="flex animate-marquee">
+              {[...Array(2)].map((_, setIdx) => (
+                <div key={setIdx} className="flex shrink-0 items-center gap-16 px-8">
+                  {[
+                    "Nietzsche", "GlobalBank", "Spherule", "FeatherDev",
+                    "Lightbox", "Boltshift", "Acme Corp", "Luminous",
+                  ].map((name) => (
+                    <div key={`${setIdx}-${name}`} className="flex items-center gap-2.5 shrink-0">
+                      <div className="w-7 h-7 rounded-md bg-muted-foreground/20 flex items-center justify-center">
+                        <div className="w-3.5 h-3.5 rounded-sm bg-muted-foreground/40" />
+                      </div>
+                      <span className="text-muted-foreground text-base font-semibold tracking-tight whitespace-nowrap">
+                        {name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
         <section className="py-20 lg:py-28" style={{ background: 'hsl(0, 0%, 97%)' }}>
           <div className="container mx-auto px-4 lg:px-8 max-w-[1100px]">
