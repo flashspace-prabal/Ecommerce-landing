@@ -49,7 +49,7 @@ const BusinessSetup = () => {
       <Navbar />
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden pt-36 pb-24 lg:pt-44 lg:pb-32" style={{ background: 'hsla(0, 0%, 97%, 0.9)' }}>
+        <section className="relative overflow-hidden" style={{ background: 'hsla(0, 0%, 97%, 0.9)', paddingTop: '120px', paddingBottom: '100px' }}>
           {/* Subtle gradient blobs */}
           <div className="absolute top-0 right-0 w-[600px] h-[600px] opacity-[0.07] pointer-events-none">
             <div className="absolute inset-0 rounded-full bg-primary blur-[120px] translate-x-1/3 -translate-y-1/4" />
@@ -58,11 +58,12 @@ const BusinessSetup = () => {
             <div className="absolute inset-0 rounded-full bg-secondary blur-[100px] -translate-x-1/4 translate-y-1/4" />
           </div>
 
-          <div className="container mx-auto px-4 lg:px-8 relative z-10">
-            <div className="max-w-3xl mx-auto text-center">
+          <div className="relative z-10" style={{ maxWidth: '1100px', margin: '0 auto', paddingLeft: '24px', paddingRight: '24px', textAlign: 'center' }}>
+            <div>
               {/* Heading */}
-                <motion.h1
-                className="text-4xl sm:text-5xl lg:text-[72px] font-medium text-foreground tracking-tight leading-[1.1] mb-5 whitespace-nowrap"
+              <motion.h1
+                className="text-4xl sm:text-5xl lg:text-[72px] font-medium text-foreground whitespace-nowrap"
+                style={{ lineHeight: '1.08', letterSpacing: '-0.5px', marginBottom: '20px' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -73,13 +74,15 @@ const BusinessSetup = () => {
 
               {/* Subheading */}
               <motion.p
-                className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mb-10"
+                className="text-base sm:text-lg text-muted-foreground mx-auto"
+                style={{ maxWidth: '750px', lineHeight: '1.6', marginBottom: '40px' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                Complete end-to-end support for company registration, GST filing,
-                licenses, and legal compliance — launch your business in 7–10 days.
+                Complete end-to-end support for company registration, GST filing, licenses,
+                <br />
+                and legal compliance — launch your business in 7–10 days.
               </motion.p>
 
               {/* Search + Chat CTA */}
