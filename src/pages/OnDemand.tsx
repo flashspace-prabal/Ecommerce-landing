@@ -36,18 +36,18 @@ const OnDemand = () => {
       <Navbar />
       <main className="flex-1 pt-20">
         {/* Testimonial Section */}
-        <section className="py-[100px]" style={{ background: "#ffffff" }}>
+        <section className="py-12" style={{ background: "#ffffff" }}>
           <div className="mx-auto max-w-[900px] px-6">
             {/* Label */}
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground mb-3">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground mb-2">
               Client Experiences
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-semibold text-foreground tracking-tight leading-[1.1] mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-semibold text-foreground tracking-tight leading-[1.1] mb-8">
               Trusted by Professionals Across India
             </h2>
 
             {/* Quote */}
-            <div className="min-h-[220px]">
+            <div className="min-h-[140px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={index}
@@ -69,7 +69,7 @@ const OnDemand = () => {
             </div>
 
             {/* Controls */}
-            <div className="flex items-center gap-4 mt-10">
+            <div className="flex items-center gap-4 mt-6">
               <button
                 onClick={prev}
                 className="w-10 h-10 rounded-full border border-border flex items-center justify-center transition-colors hover:bg-primary hover:border-primary hover:text-primary-foreground text-muted-foreground"
