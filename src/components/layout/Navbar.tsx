@@ -12,7 +12,7 @@ const navLinks = [
     dropdown: [
       { label: "Virtual Office", href: "#virtual-office" },
       { label: "Coworking Space", href: "#coworking" },
-      { label: "On Demand", href: "#on-demand" },
+      { label: "On Demand", href: "/on-demand" },
       { label: "Business Setup", href: "/business-setup" },
     ],
   },
