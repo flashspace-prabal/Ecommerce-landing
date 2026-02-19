@@ -34,7 +34,7 @@ export const Footer = () => {
   return (
     <footer className="bg-foreground text-background">
       {/* Top CTA Section */}
-      <div className="container mx-auto px-2 lg:px-3 max-w-[1200px] pt-16 lg:pt-24 pb-16 lg:pb-20">
+      <div className="container mx-auto px-4 lg:px-8 max-w-[1200px] pt-16 lg:pt-24 pb-16 lg:pb-20">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium text-background tracking-tight leading-[1.12] max-w-md">
             Bring structure to your
@@ -54,7 +54,7 @@ export const Footer = () => {
 
       {/* Links Section */}
       <div className="border-t border-background/10">
-        <div className="container mx-auto px-2 lg:px-3 max-w-[1200px] py-14 lg:py-16">
+        <div className="container mx-auto px-4 lg:px-8 max-w-[1200px] py-14 lg:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-16">
             {Object.entries(footerLinks).map(([category, links]) => (
               <div key={category}>
@@ -81,7 +81,7 @@ export const Footer = () => {
 
       {/* Bottom Section */}
       <div className="border-t border-background/10">
-        <div className="container mx-auto px-2 lg:px-3 max-w-[1200px] py-8">
+        <div className="container mx-auto px-4 lg:px-8 max-w-[1200px] py-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <img src={flashspaceLogo} alt="FlashSpace" className="h-8 w-auto brightness-0 invert opacity-80" />
             <p className="text-xs text-background/40 tracking-wide">
