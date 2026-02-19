@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import BusinessSetup from "./pages/BusinessSetup";
 import NotFound from "./pages/NotFound";
+import OnDemand from "./pages/OnDemand";
 import CustomerPortal from "./pages/portals/CustomerPortal";
 import SpacePartnerPortal from "./pages/portals/SpacePartnerPortal";
 import AdminPortal from "./pages/portals/AdminPortal";
@@ -68,6 +69,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/business-setup" element={<BusinessSetup />} />
+          <Route path="/on-demand" element={<OnDemand />} />
           
           {/* Customer Portal Routes */}
           <Route path="/customer-portal" element={<CustomerPortal />} />
