@@ -169,30 +169,6 @@ export const Navbar = () => {
             })}
           </nav>
 
-          {/* User Profile Card */}
-          <div className="mx-4 mb-3 p-4 rounded-2xl bg-muted/60 border border-border">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm flex-shrink-0">
-                A
-              </div>
-              <div className="min-w-0">
-                <p className="font-semibold text-sm text-foreground truncate">Abhay U</p>
-                <p className="text-xs text-muted-foreground truncate">uabhay112005@gmail.com</p>
-                <span className="inline-block mt-0.5 px-2 py-0.5 text-[10px] font-semibold bg-secondary text-secondary-foreground rounded-full uppercase tracking-wide">
-                  User
-                </span>
-              </div>
-            </div>
-            <Button className="w-full mb-2 bg-primary hover:bg-primary/90 text-primary-foreground gap-2 rounded-xl">
-              <LayoutDashboard className="w-4 h-4" />
-              Go to Dashboard
-            </Button>
-            <Button variant="outline" className="w-full gap-2 rounded-xl text-destructive border-destructive/30 hover:bg-destructive/5">
-              <LogOut className="w-4 h-4" />
-              Logout
-            </Button>
-          </div>
-
           {/* CTA */}
           <div className="px-4 pb-6">
             <Button className="w-full rounded-xl bg-secondary hover:bg-secondary/90 text-secondary-foreground font-normal text-base py-6">
