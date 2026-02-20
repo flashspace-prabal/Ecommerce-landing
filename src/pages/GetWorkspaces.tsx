@@ -458,7 +458,7 @@ const GetWorkspaces = () => {
                   <div className="flex-1 flex flex-col justify-center px-4 py-3 sm:py-0 min-w-0">
                     <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest mb-0.5">Space Type</span>
                     <Select value={workspaceType} onValueChange={setWorkspaceType}>
-                      <SelectTrigger className="border-0 shadow-none p-0 h-auto text-sm font-medium text-foreground focus:ring-0 focus-visible:ring-0 bg-transparent [&>svg]:ml-auto">
+                      <SelectTrigger className="border border-border/50 shadow-none rounded-[10px] h-7 text-sm font-medium text-foreground focus:ring-1 focus:ring-primary/40 focus-visible:ring-1 focus-visible:ring-primary/40 bg-background pl-3 [&>svg]:ml-auto">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent className="z-50 bg-card">
