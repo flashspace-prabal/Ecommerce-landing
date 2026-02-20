@@ -452,8 +452,8 @@ const GetWorkspaces = () => {
                         className="border-0 shadow-none h-full text-sm font-medium text-foreground focus-visible:ring-0 bg-transparent px-3 placeholder:text-muted-foreground/40 min-w-0 flex-1"
                         placeholder="Enter city..."
                       />
-                      <button className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-[hsl(38,80%,55%)] hover:bg-[hsl(38,80%,50%)] hover:-translate-y-px transition-all duration-150 rounded-[11px] m-0">
-                        <Search className="w-4 h-4 text-white" strokeWidth={2} />
+                      <button className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-primary hover:bg-primary/90 hover:-translate-y-px transition-all duration-150 rounded-[11px] m-0">
+                        <Search className="w-4 h-4 text-primary-foreground" strokeWidth={2} />
                       </button>
                     </div>
                   </div>
