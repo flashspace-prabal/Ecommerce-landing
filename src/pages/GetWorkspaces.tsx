@@ -16,10 +16,10 @@ import {
   List,
   LayoutGrid,
   ChevronRight,
-  Phone,
-  Flame,
   Bookmark,
   ShoppingCart,
+  Phone,
+  Flame,
 } from "lucide-react";
 import spaceDelhi from "@/assets/space-connaught-delhi.jpg";
 import spaceMumbai from "@/assets/space-bkc-mumbai.jpg";
@@ -228,20 +228,10 @@ const WorkspaceCard = ({ ws, view }: { ws: typeof workspaces[0]; view: ViewMode 
           {/* Name + Rating */}
           <div className="flex items-start justify-between gap-2">
             <h3 className="font-semibold text-[15px] text-foreground leading-snug">{ws.name}</h3>
-            <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
-              <div className="flex items-center gap-1 bg-muted/60 rounded-full px-2 py-0.5">
-                <Star className="w-3 h-3 fill-gold text-gold" />
-                <span className="text-xs font-semibold text-foreground">{ws.rating}</span>
-                <span className="text-[11px] text-muted-foreground">({ws.reviews})</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <button onClick={(e) => e.stopPropagation()} className="p-1 rounded-md hover:bg-muted/60 transition-colors text-muted-foreground hover:text-foreground">
-                  <Bookmark className="w-3.5 h-3.5" />
-                </button>
-                <button onClick={(e) => e.stopPropagation()} className="p-1 rounded-md hover:bg-muted/60 transition-colors text-muted-foreground hover:text-foreground">
-                  <ShoppingCart className="w-3.5 h-3.5" />
-                </button>
-              </div>
+            <div className="flex items-center gap-1 flex-shrink-0 bg-muted/60 rounded-full px-2 py-0.5">
+              <Star className="w-3 h-3 fill-gold text-gold" />
+              <span className="text-xs font-semibold text-foreground">{ws.rating}</span>
+              <span className="text-[11px] text-muted-foreground">({ws.reviews})</span>
             </div>
           </div>
 
