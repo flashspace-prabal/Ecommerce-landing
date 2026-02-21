@@ -16,6 +16,10 @@ import {
 } from "lucide-react";
 
 import spaceDelhi from "@/assets/space-connaught-delhi.jpg";
+import turkmanGate1 from "@/assets/turkman-gate-1.png";
+import turkmanGate2 from "@/assets/turkman-gate-2.avif";
+import turkmanGate3 from "@/assets/turkman-gate-3.avif";
+import turkmanGate4 from "@/assets/turkman-gate-4.avif";
 import spaceMumbai from "@/assets/space-bkc-mumbai.jpg";
 import spaceHSR from "@/assets/space-hsr-bangalore.jpg";
 import spaceChennai from "@/assets/space-anna-nagar-chennai.jpg";
@@ -58,7 +62,7 @@ export const workspacesData = [
         features: ["Business Registration", "Lounge Access", "Meeting Rooms"],
       },
     ],
-    images: [spaceDelhi, coworkingAerial, meetingIllustrated, officeIllustrated],
+    images: [turkmanGate1, turkmanGate2, turkmanGate3, turkmanGate4],
     popular: true,
     available: true,
     negotiable: true,
