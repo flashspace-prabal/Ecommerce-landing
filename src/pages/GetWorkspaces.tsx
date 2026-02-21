@@ -367,8 +367,8 @@ const WorkspaceCard = ({ ws, view }: { ws: typeof workspaces[0]; view: ViewMode 
           <span className={`text-[10px] font-normal px-3 py-1 rounded-full backdrop-blur-sm text-white shadow-sm ${ws.available ? "bg-black/50" : "bg-black/60"}`}>
             {ws.available ? "Available Now" : "Fully Booked"}
           </span>
-          {images.length > 1 && (
-            <div className="flex items-center gap-1.5">
+        {images.length > 1 && (
+            <div className="flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
               <button onClick={prevImg} className="w-6 h-6 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-sm hover:bg-white transition-all">
                 <ChevronLeft className="w-3.5 h-3.5 text-foreground/70" />
               </button>
