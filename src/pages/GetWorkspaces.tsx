@@ -448,9 +448,8 @@ const GetWorkspaces = () => {
         <div className="mb-5 sm:mb-6 flex flex-col gap-3 bg-[#F5F6F7] border border-[#E5E7EB] rounded-[20px] p-4 sm:p-5">
 
           {/* Label row */}
-          <div className="flex items-center gap-2 text-[12px] font-medium text-muted-foreground uppercase tracking-[0.12em]">
-            <Search className="w-3.5 h-3.5" />
-            <span>Search City</span>
+          <div className="text-[12px] font-medium text-muted-foreground uppercase tracking-[0.12em]">
+            Search City
           </div>
 
           {/* City input row */}
