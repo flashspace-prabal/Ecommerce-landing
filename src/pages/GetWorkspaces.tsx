@@ -22,6 +22,7 @@ import {
   Flame,
 } from "lucide-react";
 import spaceDelhi from "@/assets/space-connaught-delhi.jpg";
+import turkmanGate1 from "@/assets/turkman-gate-1.png";
 import spaceMumbai from "@/assets/space-bkc-mumbai.jpg";
 import spaceHSR from "@/assets/space-hsr-bangalore.jpg";
 import spaceChennai from "@/assets/space-anna-nagar-chennai.jpg";
@@ -45,7 +46,7 @@ const workspaces = [
       { label: "Mailing Plan", price: "₹650/month" },
       { label: "Business Reg", price: "₹1,200/month" },
     ],
-    image: spaceDelhi,
+    image: turkmanGate1,
     popular: true,
     available: true,
     negotiable: true,
