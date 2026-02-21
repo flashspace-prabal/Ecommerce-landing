@@ -409,6 +409,7 @@ const GetWorkspaces = () => {
   const [workspaceType, setWorkspaceType] = useState("virtual-office");
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [showMap, setShowMap] = useState(false);
+  const [showCitySuggestions, setShowCitySuggestions] = useState(false);
 
   const filteredWorkspaces = workspaces.filter((ws) =>
     ws.address.toLowerCase().includes(activeCity.toLowerCase())
@@ -452,25 +453,51 @@ const GetWorkspaces = () => {
         <div className="mb-5 sm:mb-6 flex flex-col gap-3 bg-[#F5F6F7] border border-[#E5E7EB] rounded-[20px] p-4 sm:p-5">
 
           {/* City search row */}
-          <div className="flex items-center gap-3 flex-1 min-w-0">
-            <span className="text-[12px] font-medium text-muted-foreground uppercase tracking-[0.12em] whitespace-nowrap flex-shrink-0 leading-tight text-center">Search<br />City</span>
-            <div className="flex items-center flex-1 min-w-0 bg-white border border-[#E5E7EB] rounded-[12px] h-10 overflow-hidden">
-              <Input
-                value={searchCity}
-                onChange={(e) => setSearchCity(e.target.value)}
-                className="border-0 shadow-none h-full text-sm font-medium text-foreground focus-visible:ring-0 bg-transparent px-3 placeholder:text-muted-foreground/40 min-w-0 flex-1"
-                placeholder="Enter city..."
-              />
-              <button
-                onClick={() => setActiveCity(searchCity)}
-                className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-primary hover:bg-primary/90 hover:-translate-y-px transition-all duration-150 rounded-[11px] m-0">
-                <Search className="w-4 h-4 text-primary-foreground" strokeWidth={2} />
-              </button>
+          <div className="relative">
+            <div className="flex items-center gap-3">
+              <span className="text-[12px] font-medium text-muted-foreground uppercase tracking-[0.12em] whitespace-nowrap flex-shrink-0">Search City</span>
+              <div className="flex items-center flex-1 min-w-0 bg-white border border-[#E5E7EB] rounded-[12px] h-10 overflow-hidden">
+                <Input
+                  value={searchCity}
+                  onChange={(e) => {
+                    setSearchCity(e.target.value);
+                    setShowCitySuggestions(true);
+                  }}
+                  onFocus={() => setShowCitySuggestions(true)}
+                  className="border-0 shadow-none h-full text-sm font-medium text-foreground focus-visible:ring-0 bg-transparent px-3 placeholder:text-muted-foreground/40 min-w-0 flex-1"
+                  placeholder="Enter city..."
+                />
+                <button
+                  onClick={() => { setActiveCity(searchCity); setShowCitySuggestions(false); }}
+                  className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-primary hover:bg-primary/90 hover:-translate-y-px transition-all duration-150 rounded-[11px] m-0">
+                  <Search className="w-4 h-4 text-primary-foreground" strokeWidth={2} />
+                </button>
+              </div>
             </div>
+
+            {/* City suggestions dropdown */}
+            {showCitySuggestions && searchCity.length > 0 && (() => {
+              const allCities = ["Delhi", "Mumbai", "Bangalore", "Hyderabad", "Chennai", "Pune", "Kolkata", "Ahmedabad", "Noida", "Gurgaon", "Jaipur", "Lucknow", "Chandigarh", "Indore", "Kochi"];
+              const filtered = allCities.filter(c => c.toLowerCase().includes(searchCity.toLowerCase()));
+              if (filtered.length === 0) return null;
+              return (
+                <div className="absolute left-[90px] right-0 top-full mt-1 bg-card border border-border rounded-xl shadow-lg z-50 max-h-48 overflow-y-auto">
+                  {filtered.map(city => (
+                    <button
+                      key={city}
+                      onClick={() => { setSearchCity(city); setActiveCity(city); setShowCitySuggestions(false); }}
+                      className="w-full text-left px-4 py-2.5 text-sm text-foreground hover:bg-muted/60 transition-colors first:rounded-t-xl last:rounded-b-xl"
+                    >
+                      {city}
+                    </button>
+                  ))}
+                </div>
+              );
+            })()}
           </div>
 
           {/* Space Type Dropdown */}
-          <div className="w-full sm:w-auto sm:min-w-[160px]">
+          <div className="w-full">
             <Select value={workspaceType} onValueChange={setWorkspaceType}>
               <SelectTrigger className="border border-[#E5E7EB] shadow-none rounded-[12px] h-10 text-sm font-medium text-foreground focus:ring-1 focus:ring-primary/30 focus-visible:ring-1 focus-visible:ring-primary/30 bg-white px-4 [&>svg]:ml-auto w-full">
                 <SelectValue />
