@@ -45,7 +45,7 @@ const workspaces = [
   {
     id: 1,
     name: "Stirring Minds",
-    location: "Turkman Gate",
+    location: "Near Connaught Place",
     address: "Kundan Mansion, 2-A/3, Asaf Ali Rd, Turkman Gate, Delhi",
     rating: 4.9,
     reviews: 245,
