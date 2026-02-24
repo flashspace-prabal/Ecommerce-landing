@@ -441,6 +441,9 @@ const GetWorkspaces = () => {
   const [searchCity, setSearchCity] = useState("Delhi");
   const [activeCity, setActiveCity] = useState("Delhi");
   const [workspaceType, setWorkspaceType] = useState("virtual-office");
+  const [searchLocation, setSearchLocation] = useState("");
+  const [pricingFilter, setPricingFilter] = useState("all");
+  const [sortBy, setSortBy] = useState("popular");
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [showMap, setShowMap] = useState(false);
   const [showCitySuggestions, setShowCitySuggestions] = useState(false);
@@ -486,8 +489,24 @@ const GetWorkspaces = () => {
             Search City
           </div>
 
-          {/* City input + Space Type in one row */}
+          {/* Row 1: Product + City */}
           <div className="flex flex-col sm:flex-row gap-3">
+            {/* Product / Space Type */}
+            <div className="sm:w-[200px]">
+              <Select value={workspaceType} onValueChange={setWorkspaceType}>
+                <SelectTrigger className="border border-[#E5E7EB] shadow-none rounded-[12px] h-10 text-sm font-medium text-foreground focus:ring-1 focus:ring-primary/30 focus-visible:ring-1 focus-visible:ring-primary/30 bg-white px-4 [&>svg]:ml-auto w-full">
+                  <SelectValue placeholder="Product" />
+                </SelectTrigger>
+                <SelectContent className="z-50 bg-card">
+                  <SelectItem value="virtual-office">Virtual Office</SelectItem>
+                  <SelectItem value="coworking">Coworking Space</SelectItem>
+                  <SelectItem value="private-office">Private Office</SelectItem>
+                  <SelectItem value="meeting-room">Meeting Room</SelectItem>
+                  <SelectItem value="day-pass">Day Pass</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
             {/* City input */}
             <div className="relative flex-1">
               <div className="flex items-center bg-white border border-[#E5E7EB] rounded-[12px] h-10 overflow-hidden">
@@ -528,19 +547,49 @@ const GetWorkspaces = () => {
                 );
               })()}
             </div>
+          </div>
 
-            {/* Space Type Dropdown */}
-            <div className="sm:w-[200px]">
-              <Select value={workspaceType} onValueChange={setWorkspaceType}>
+          {/* Row 2: Search Location + Pricing + Sort by */}
+          <div className="flex flex-col sm:flex-row gap-3">
+            {/* Search Location */}
+            <div className="relative flex-1">
+              <div className="flex items-center bg-white border border-[#E5E7EB] rounded-[12px] h-10 overflow-hidden">
+                <MapPin className="w-4 h-4 text-muted-foreground ml-3 flex-shrink-0" />
+                <Input
+                  value={searchLocation}
+                  onChange={(e) => setSearchLocation(e.target.value)}
+                  className="border-0 shadow-none h-full text-sm font-medium text-foreground focus-visible:ring-0 bg-transparent px-3 placeholder:text-muted-foreground/40 min-w-0 flex-1"
+                  placeholder="Search location..."
+                />
+              </div>
+            </div>
+
+            {/* Pricing */}
+            <div className="sm:w-[180px]">
+              <Select value={pricingFilter} onValueChange={setPricingFilter}>
                 <SelectTrigger className="border border-[#E5E7EB] shadow-none rounded-[12px] h-10 text-sm font-medium text-foreground focus:ring-1 focus:ring-primary/30 focus-visible:ring-1 focus-visible:ring-primary/30 bg-white px-4 [&>svg]:ml-auto w-full">
-                  <SelectValue />
+                  <SelectValue placeholder="Pricing" />
                 </SelectTrigger>
                 <SelectContent className="z-50 bg-card">
-                  <SelectItem value="virtual-office">Virtual Office</SelectItem>
-                  <SelectItem value="coworking">Coworking Space</SelectItem>
-                  <SelectItem value="private-office">Private Office</SelectItem>
-                  <SelectItem value="meeting-room">Meeting Room</SelectItem>
-                  <SelectItem value="day-pass">Day Pass</SelectItem>
+                  <SelectItem value="all">All Pricing</SelectItem>
+                  <SelectItem value="low">Under ₹500/mo</SelectItem>
+                  <SelectItem value="mid">₹500 – ₹1,000/mo</SelectItem>
+                  <SelectItem value="high">Above ₹1,000/mo</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Sort by */}
+            <div className="sm:w-[180px]">
+              <Select value={sortBy} onValueChange={setSortBy}>
+                <SelectTrigger className="border border-[#E5E7EB] shadow-none rounded-[12px] h-10 text-sm font-medium text-foreground focus:ring-1 focus:ring-primary/30 focus-visible:ring-1 focus-visible:ring-primary/30 bg-white px-4 [&>svg]:ml-auto w-full">
+                  <SelectValue placeholder="Sort by" />
+                </SelectTrigger>
+                <SelectContent className="z-50 bg-card">
+                  <SelectItem value="popular">Most Popular</SelectItem>
+                  <SelectItem value="rating">Highest Rated</SelectItem>
+                  <SelectItem value="price-low">Price: Low to High</SelectItem>
+                  <SelectItem value="price-high">Price: High to Low</SelectItem>
                 </SelectContent>
               </Select>
             </div>
