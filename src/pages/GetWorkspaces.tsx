@@ -21,8 +21,9 @@ import {
   ShoppingCart,
   Phone,
   Flame,
-  PanelRightClose,
-  PanelRightOpen } from
+  PanelLeftClose,
+  PanelLeftOpen,
+  Map } from
 "lucide-react";
 import { WorkspaceMap } from "@/components/WorkspaceMap";
 import spaceDelhi from "@/assets/space-connaught-delhi.jpg";
@@ -480,14 +481,18 @@ const GetWorkspaces = () => {
           </nav>
 
           {/* Filter bar */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-muted/40 border border-border/60 rounded-2xl p-3 sm:p-4 relative z-[60]">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 bg-muted/40 border border-border/60 rounded-2xl p-2.5 sm:p-3 relative z-[60]">
             {/* Product */}
             <div className="sm:w-[180px]">
               <Select value={workspaceType} onValueChange={setWorkspaceType}>
-                <SelectTrigger className="border border-border/60 shadow-none rounded-xl h-10 text-sm font-medium text-foreground focus:ring-1 focus:ring-primary/30 hover:border-primary/40 hover:shadow-sm bg-card px-4 [&>svg]:ml-auto w-full transition-all duration-200">
+                <SelectTrigger className={`border shadow-none rounded-xl h-10 text-sm font-medium px-4 [&>svg]:ml-auto w-full transition-all duration-200 ${
+                  workspaceType !== "virtual-office"
+                    ? "bg-primary/10 border-primary/40 text-primary ring-1 ring-primary/20"
+                    : "border-border/60 text-foreground bg-card hover:border-primary/40 hover:shadow-sm focus:ring-1 focus:ring-primary/30"
+                }`}>
                   <SelectValue placeholder="Product" />
                 </SelectTrigger>
-                <SelectContent className="z-[200] bg-card border border-border shadow-lg">
+                <SelectContent>
                   <SelectItem value="virtual-office">Virtual Office</SelectItem>
                   <SelectItem value="coworking">Coworking Space</SelectItem>
                   <SelectItem value="private-office">Private Office</SelectItem>
@@ -498,21 +503,20 @@ const GetWorkspaces = () => {
             </div>
 
             {/* Divider */}
-            <div className="hidden sm:block w-px h-8 bg-border/60" />
+            <div className="hidden sm:block w-px h-8 bg-border/60 flex-shrink-0" />
 
             {/* City */}
             <div className="relative sm:w-[160px]">
-              <div className="flex items-center bg-card border border-border/60 rounded-xl h-10 overflow-hidden hover:border-primary/40 hover:shadow-sm transition-all duration-200">
+              <div className="flex items-center bg-card border border-border/60 rounded-xl h-10 overflow-visible hover:border-primary/40 hover:shadow-sm transition-all duration-200">
                 <Input
                   value={searchCity}
                   onChange={(e) => {setSearchCity(e.target.value);setShowCitySuggestions(true);}}
                   onFocus={() => setShowCitySuggestions(true)}
                   className="border-0 shadow-none h-full text-sm font-medium text-foreground focus-visible:ring-0 bg-transparent px-3 placeholder:text-muted-foreground/40 min-w-0 flex-1"
                   placeholder="City..." />
-
                 <button
                   onClick={() => {setActiveCity(searchCity);setShowCitySuggestions(false);}}
-                  className="flex-shrink-0 w-9 h-9 flex items-center justify-center bg-secondary hover:bg-secondary/80 transition-all rounded-[10px] m-0.5">
+                  className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-secondary hover:bg-secondary/80 active:scale-95 transition-all rounded-[10px] mr-1">
                   <Search className="w-3.5 h-3.5 text-secondary-foreground" strokeWidth={2} />
                 </button>
               </div>
@@ -521,7 +525,7 @@ const GetWorkspaces = () => {
                 const filtered = allCities.filter((c) => c.toLowerCase().includes(searchCity.toLowerCase()));
                 if (filtered.length === 0) return null;
                 return (
-                  <div className="absolute left-0 right-0 top-full mt-1 bg-card border border-border rounded-xl shadow-lg z-[200] max-h-48 overflow-y-auto">
+                  <div className="absolute left-0 right-0 top-full mt-1 bg-card border border-border rounded-xl shadow-lg z-[9999] max-h-48 overflow-y-auto">
                     {filtered.map((city) =>
                     <button key={city} onClick={() => {setSearchCity(city);setActiveCity(city);setShowCitySuggestions(false);}}
                     className="w-full text-left px-4 py-2.5 text-sm text-foreground hover:bg-muted/60 transition-colors first:rounded-t-xl last:rounded-b-xl">
@@ -529,7 +533,6 @@ const GetWorkspaces = () => {
                       </button>
                     )}
                   </div>);
-
               })()}
             </div>
 
@@ -542,17 +545,20 @@ const GetWorkspaces = () => {
                   onChange={(e) => setSearchLocation(e.target.value)}
                   className="border-0 shadow-none h-full text-sm font-medium text-foreground focus-visible:ring-0 bg-transparent px-3 placeholder:text-muted-foreground/40 min-w-0 flex-1"
                   placeholder="Search location..." />
-
               </div>
             </div>
 
             {/* Pricing */}
-            <div className="sm:w-[170px]">
+            <div className="sm:w-[160px]">
               <Select value={pricingFilter} onValueChange={setPricingFilter}>
-                <SelectTrigger className="border border-border/60 shadow-none rounded-xl h-10 text-sm font-medium text-foreground focus:ring-1 focus:ring-primary/30 hover:border-primary/40 hover:shadow-sm bg-card px-4 [&>svg]:ml-auto w-full transition-all duration-200">
+                <SelectTrigger className={`border shadow-none rounded-xl h-10 text-sm font-medium px-4 [&>svg]:ml-auto w-full transition-all duration-200 ${
+                  pricingFilter !== "all"
+                    ? "bg-primary/10 border-primary/40 text-primary ring-1 ring-primary/20"
+                    : "border-border/60 text-foreground bg-card hover:border-primary/40 hover:shadow-sm focus:ring-1 focus:ring-primary/30"
+                }`}>
                   <SelectValue placeholder="Pricing" />
                 </SelectTrigger>
-                <SelectContent className="z-[200] bg-card border border-border shadow-lg">
+                <SelectContent>
                   <SelectItem value="all">All Pricing</SelectItem>
                   <SelectItem value="low">Under ₹500/mo</SelectItem>
                   <SelectItem value="mid">₹500 – ₹1,000/mo</SelectItem>
@@ -562,12 +568,16 @@ const GetWorkspaces = () => {
             </div>
 
             {/* Sort by */}
-            <div className="sm:w-[170px]">
+            <div className="sm:w-[150px]">
               <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="border border-border/60 shadow-none rounded-xl h-10 text-sm font-medium text-foreground focus:ring-1 focus:ring-primary/30 hover:border-primary/40 hover:shadow-sm bg-card px-4 [&>svg]:ml-auto w-full transition-all duration-200">
+                <SelectTrigger className={`border shadow-none rounded-xl h-10 text-sm font-medium px-4 [&>svg]:ml-auto w-full transition-all duration-200 ${
+                  sortBy !== "popular"
+                    ? "bg-primary/10 border-primary/40 text-primary ring-1 ring-primary/20"
+                    : "border-border/60 text-foreground bg-card hover:border-primary/40 hover:shadow-sm focus:ring-1 focus:ring-primary/30"
+                }`}>
                   <SelectValue placeholder="Sort by" />
                 </SelectTrigger>
-                <SelectContent className="z-[200] bg-card border border-border shadow-lg">
+                <SelectContent>
                   <SelectItem value="popular">Sort by</SelectItem>
                   <SelectItem value="rating">Highest Rated</SelectItem>
                   <SelectItem value="price-low">Price: Low to High</SelectItem>
@@ -576,6 +586,20 @@ const GetWorkspaces = () => {
               </Select>
             </div>
 
+            {/* Divider before map toggle */}
+            <div className="hidden sm:block w-px h-8 bg-border/60 flex-shrink-0" />
+
+            {/* Map Toggle Button */}
+            <button
+              onClick={() => setMapCollapsed(!mapCollapsed)}
+              className={`hidden lg:flex items-center gap-1.5 h-10 px-3.5 rounded-xl border text-sm font-medium transition-all duration-200 flex-shrink-0 ${
+                mapCollapsed
+                  ? "bg-card border-border/60 text-muted-foreground hover:border-primary/40 hover:text-foreground hover:shadow-sm"
+                  : "bg-primary/10 border-primary/30 text-primary hover:bg-primary/15"
+              }`}>
+              <Map className="w-4 h-4" />
+              <span className="whitespace-nowrap">{mapCollapsed ? "Show Map" : "Hide Map"}</span>
+            </button>
           </div>
         </div>
       </div>
@@ -583,7 +607,7 @@ const GetWorkspaces = () => {
       {/* Desktop: split view — listings left, map right */}
       <div className="hidden lg:flex flex-1 h-[calc(100vh-13rem)]">
         {/* Left: Listings */}
-        <div className={`overflow-y-auto bg-muted/20 transition-all duration-300 ${mapCollapsed ? 'w-full' : 'w-1/2 border-r border-border/40'}`}>
+        <div className={`overflow-y-auto bg-muted/20 transition-all duration-300 ease-in-out ${mapCollapsed ? 'w-full' : 'w-[55%] border-r border-border/40'}`}>
           <div className="px-6 py-4">
             {/* Results text + view toggle */}
             <div className="flex items-center justify-between mb-4">
@@ -622,23 +646,8 @@ const GetWorkspaces = () => {
           </div>
         </div>
 
-        {/* Map toggle divider */}
-        <div className="relative flex-shrink-0 w-3">
-          <div className="absolute inset-0 bg-border/30" />
-          <button
-            onClick={() => setMapCollapsed(!mapCollapsed)}
-            className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-20 w-7 h-14 rounded-full bg-card border border-border shadow-md flex items-center justify-center hover:bg-accent hover:text-accent-foreground hover:shadow-lg transition-all duration-200 group"
-            title={mapCollapsed ? "Show map" : "Hide map"}>
-            {mapCollapsed ? (
-              <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground rotate-180 transition-colors" />
-            ) : (
-              <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
-            )}
-          </button>
-        </div>
-
         {/* Right: Map */}
-        <div className={`relative transition-all duration-300 ${mapCollapsed ? 'w-0 overflow-hidden' : 'w-1/2'}`}>
+        <div className={`relative transition-all duration-300 ease-in-out ${mapCollapsed ? 'w-0 overflow-hidden opacity-0' : 'w-[45%] opacity-100'}`}>
           <div className="absolute inset-0">
             <WorkspaceMap workspaces={filteredWorkspaces} />
           </div>
