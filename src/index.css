@@ -298,6 +298,12 @@
 }
 
 /* Leaflet popup overrides */
+.leaflet-pane {
+  z-index: auto !important;
+}
+.leaflet-top, .leaflet-bottom {
+  z-index: 40 !important;
+}
 .workspace-popup .leaflet-popup-content-wrapper {
   padding: 0;
   border-radius: 12px;
