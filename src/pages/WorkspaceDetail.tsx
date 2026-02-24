@@ -565,17 +565,11 @@ const WorkspaceDetail = () => {
           <div className="w-[380px] flex-shrink-0">
             <div className="sticky top-28 border border-border rounded-[16px] p-6 bg-card shadow-md">
               {/* Price + Rating */}
-              <div className="flex items-start justify-between mb-5">
-                <div>
-                  <span className="text-2xl font-bold text-foreground">
-                    {ws.plans[selectedPlan].yearPrice}
-                  </span>
-                  <span className="text-sm text-muted-foreground ml-1">/ year</span>
-                </div>
-                <div className="flex items-center gap-1 mt-1">
-                  <Star className="w-4 h-4 fill-gold text-gold" />
-                  <span className="text-sm font-semibold text-foreground">{ws.rating}</span>
-                </div>
+              <div className="mb-5">
+                <span className="text-2xl font-bold text-foreground">
+                  {ws.plans[selectedPlan].yearPrice}
+                </span>
+                <span className="text-sm text-muted-foreground ml-1">/ year</span>
               </div>
 
               {/* Plan selector label */}
