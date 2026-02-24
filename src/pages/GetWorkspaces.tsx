@@ -628,10 +628,10 @@ const GetWorkspaces = () => {
         </div>
 
         {/* Map toggle on the split line */}
-        <div className="relative z-10 flex items-start justify-center" style={{ marginLeft: '-18px', marginRight: '-18px' }}>
+        <div className="relative z-10 flex items-center justify-center" style={{ marginLeft: '-18px', marginRight: '-18px' }}>
           <button
             onClick={() => setMapCollapsed(!mapCollapsed)}
-            className="sticky top-1/2 mt-[40vh] w-9 h-9 rounded-full border border-border bg-card shadow-md flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all duration-200 cursor-pointer z-20"
+            className="sticky top-24 w-9 h-9 rounded-full border border-border bg-card shadow-md flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all duration-200 cursor-pointer z-20"
             aria-label={mapCollapsed ? "Show map" : "Hide map"}
           >
             {mapCollapsed ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
