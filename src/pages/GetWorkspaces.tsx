@@ -644,8 +644,8 @@ const GetWorkspaces = () => {
 
 
         {/* Right: Map */}
-        <div className={`relative transition-all duration-300 ease-in-out ${mapCollapsed ? 'w-0 overflow-hidden opacity-0' : 'w-[45%] opacity-100'}`}>
-          <div className="absolute inset-0">
+        <div className={`transition-all duration-300 ease-in-out ${mapCollapsed ? 'w-0 overflow-hidden opacity-0' : 'w-[45%] opacity-100'}`}>
+          <div className="sticky top-20 h-[calc(100vh-5rem)] rounded-xl overflow-hidden border border-border/30">
             <WorkspaceMap workspaces={filteredWorkspaces} />
           </div>
         </div>
