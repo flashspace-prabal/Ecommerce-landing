@@ -509,8 +509,8 @@ const GetWorkspaces = () => {
 
                 <button
                   onClick={() => {setActiveCity(searchCity);setShowCitySuggestions(false);}}
-                  className="flex-shrink-0 w-9 h-9 flex items-center justify-center bg-primary hover:bg-primary/90 transition-all rounded-[10px] m-0.5">
-                  <Search className="w-3.5 h-3.5 text-primary-foreground" strokeWidth={2} />
+                  className="flex-shrink-0 w-9 h-9 flex items-center justify-center bg-secondary hover:bg-secondary/80 transition-all rounded-[10px] m-0.5">
+                  <Search className="w-3.5 h-3.5 text-secondary-foreground" strokeWidth={2} />
                 </button>
               </div>
               {showCitySuggestions && searchCity.length > 0 && (() => {
@@ -565,7 +565,7 @@ const GetWorkspaces = () => {
                   <SelectValue placeholder="Sort by" />
                 </SelectTrigger>
                 <SelectContent className="z-50 bg-card">
-                  <SelectItem value="popular">Most Popular</SelectItem>
+                  <SelectItem value="popular">Sort by</SelectItem>
                   <SelectItem value="rating">Highest Rated</SelectItem>
                   <SelectItem value="price-low">Price: Low to High</SelectItem>
                   <SelectItem value="price-high">Price: High to Low</SelectItem>
