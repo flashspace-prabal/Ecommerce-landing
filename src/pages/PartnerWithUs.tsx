@@ -214,10 +214,10 @@ const PartnerWithUs = () => {
                 <h2 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-4">
                   List your space today
                 </h2>
-                <p className="text-muted-foreground text-lg mb-8">
+                <p className="text-muted-foreground text-lg mb-6">
                   Fill in your details and our partnership team will get in touch within 24 hours.
                 </p>
-                <div className="space-y-4">
+                <div className="space-y-4 mb-8">
                   {[
                     "Zero listing fees — we only earn when you do",
                     "Full control over pricing and availability",
@@ -229,6 +229,37 @@ const PartnerWithUs = () => {
                       <span className="text-foreground text-sm">{point}</span>
                     </div>
                   ))}
+                </div>
+
+                {/* Partner stats */}
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  {[
+                    { value: "48hrs", label: "Average Onboarding" },
+                    { value: "95%", label: "Partner Retention" },
+                    { value: "3x", label: "Revenue Uplift" },
+                    { value: "24/7", label: "Support Available" },
+                  ].map((s) => (
+                    <div key={s.label} className="bg-secondary/50 rounded-xl p-4 text-center">
+                      <div className="text-xl font-bold text-primary">{s.value}</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Testimonial */}
+                <div className="border border-border rounded-2xl p-5 bg-card">
+                  <p className="text-sm text-muted-foreground italic leading-relaxed mb-3">
+                    "Since partnering with FlashSpace, our occupancy went from 60% to 92%. The AI-driven demand insights helped us price our desks perfectly."
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
+                      RK
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium text-foreground">Rahul Kapoor</div>
+                      <div className="text-xs text-muted-foreground">WorkHub, Delhi</div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
 
