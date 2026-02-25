@@ -246,21 +246,6 @@ const PartnerWithUs = () => {
                   ))}
                 </div>
 
-                {/* Testimonial */}
-                <div className="border border-border rounded-2xl p-5 bg-card">
-                  <p className="text-sm text-muted-foreground italic leading-relaxed mb-3">
-                    "Since partnering with FlashSpace, our occupancy went from 60% to 92%. The AI-driven demand insights helped us price our desks perfectly."
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
-                      RK
-                    </div>
-                    <div>
-                      <div className="text-sm font-medium text-foreground">Rahul Kapoor</div>
-                      <div className="text-xs text-muted-foreground">WorkHub, Delhi</div>
-                    </div>
-                  </div>
-                </div>
               </motion.div>
 
               <motion.form
