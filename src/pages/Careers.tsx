@@ -69,7 +69,7 @@ const Careers = () => {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="pt-28 pb-4 lg:pt-36 lg:pb-6">
+        <section className="pt-28 pb-24 lg:pt-40 lg:pb-32 min-h-[85vh] flex items-center">
           <div className="container mx-auto px-4 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
