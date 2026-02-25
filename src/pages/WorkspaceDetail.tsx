@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { WorkspaceMap } from "@/components/WorkspaceMap";
 import { useParams, useNavigate } from "react-router-dom";
 import { Navbar } from "@/components/layout/Navbar";
@@ -14,6 +14,9 @@ import {
   Car,
   Zap,
   Phone,
+  ChevronLeft,
+  ChevronRight,
+  X,
 } from "lucide-react";
 
 import spaceDelhi from "@/assets/space-connaught-delhi.jpg";
@@ -422,6 +425,7 @@ const WorkspaceDetail = () => {
   const navigate = useNavigate();
   const ws = workspacesData.find((w) => w.id === Number(id));
   const [selectedPlan, setSelectedPlan] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   if (!ws) {
     return (
@@ -478,47 +482,64 @@ const WorkspaceDetail = () => {
         </div>
 
         {/* ── Photo Gallery ── */}
-        <div className="grid grid-cols-3 gap-2 mb-10 rounded-[16px] overflow-hidden h-[420px]">
-          {/* Large left image */}
-          <div className="col-span-1 row-span-2 h-full">
-            <img
-              src={ws.images[0]}
-              alt={ws.name}
-              className="w-full h-full object-cover"
-            />
+        <div className="grid grid-cols-4 grid-rows-2 gap-2 mb-10 rounded-2xl overflow-hidden h-[420px]">
+          {/* Large left image — spans 2 columns and 2 rows */}
+          <div className="col-span-2 row-span-2 cursor-pointer overflow-hidden" onClick={() => setLightboxIndex(0)}>
+            <img src={ws.images[0]} alt={ws.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          {/* Top-middle */}
+          <div className="cursor-pointer overflow-hidden" onClick={() => setLightboxIndex(1)}>
+            <img src={ws.images[1]} alt={ws.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
           {/* Top-right */}
-          <div className="h-full">
-            <img
-              src={ws.images[1]}
-              alt={ws.name}
-              className="w-full h-full object-cover"
-            />
+          <div className="cursor-pointer overflow-hidden" onClick={() => setLightboxIndex(2)}>
+            <img src={ws.images[2]} alt={ws.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
-          {/* Right column top */}
-          <div className="h-full">
-            <img
-              src={ws.images[2]}
-              alt={ws.name}
-              className="w-full h-full object-cover"
-            />
+          {/* Bottom-middle */}
+          <div className="cursor-pointer overflow-hidden" onClick={() => setLightboxIndex(3)}>
+            <img src={ws.images[3] ?? ws.images[0]} alt={ws.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
-          {/* Bottom-right two images */}
-          <div className="h-full">
-            <img
-              src={ws.images[3] ?? ws.images[0]}
-              alt={ws.name}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="h-full">
-            <img
-              src={ws.images[1]}
-              alt={ws.name}
-              className="w-full h-full object-cover"
-            />
+          {/* Bottom-right */}
+          <div className="cursor-pointer overflow-hidden" onClick={() => setLightboxIndex(1)}>
+            <img src={ws.images[1]} alt={ws.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
         </div>
+
+        {/* ── Lightbox Modal ── */}
+        {lightboxIndex !== null && (() => {
+          const allImages = [ws.images[0], ws.images[1], ws.images[2], ws.images[3] ?? ws.images[0], ws.images[1]];
+          return (
+            <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center" onClick={() => setLightboxIndex(null)}>
+              <button
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex(null); }}
+                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              <button
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex((lightboxIndex - 1 + allImages.length) % allImages.length); }}
+                className="absolute left-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <img
+                src={allImages[lightboxIndex]}
+                alt={ws.name}
+                className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg"
+                onClick={(e) => e.stopPropagation()}
+              />
+              <button
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex((lightboxIndex + 1) % allImages.length); }}
+                className="absolute right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+              <div className="absolute bottom-6 text-white/70 text-sm font-medium">
+                {lightboxIndex + 1} / {allImages.length}
+              </div>
+            </div>
+          );
+        })()}
 
         {/* ── Main content + Booking sidebar ── */}
         <div className="flex gap-12">
