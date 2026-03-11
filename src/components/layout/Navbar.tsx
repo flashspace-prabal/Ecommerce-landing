@@ -128,9 +128,16 @@ export const Navbar = () => {
         </div>
       </motion.header>
 
-      {/* Sidebar Sheet */}
-      <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
-        <SheetContent side="left" className="w-[310px] p-0 flex flex-col bg-background border-r border-border [&>button]:hidden">
+      {/* Floating Sidebar */}
+      <AnimatePresence>
+        {sidebarOpen && (
+          <motion.aside
+            initial={{ x: "-100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
+            transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
+            className="fixed top-0 left-0 z-[60] h-full w-[270px] p-0 flex flex-col bg-background border-r border-border shadow-2xl"
+          >
           {/* Top Section — Logo + Close */}
           <div className="flex items-center justify-between px-5 pt-6 pb-5 border-b border-border/50">
             <img src={flashspaceLogo} alt="FlashSpace" className="h-10 w-auto" />
