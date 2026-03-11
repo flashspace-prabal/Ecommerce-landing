@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
-  Menu,
+  PanelLeft,
   ChevronDown,
 } from "lucide-react";
 import { useLocation } from "react-router-dom";
