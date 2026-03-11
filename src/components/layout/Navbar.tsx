@@ -141,11 +141,12 @@ export const Navbar = () => {
           {/* Top Section — Logo + Close */}
           <div className="flex items-center justify-between px-5 pt-6 pb-5 border-b border-border/50">
             <img src={flashspaceLogo} alt="FlashSpace" className="h-10 w-auto" />
-            <SheetClose asChild>
-              <button className="p-2 rounded-lg hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
-                <X className="w-5 h-5" />
-              </button>
-            </SheetClose>
+            <button
+              onClick={() => setSidebarOpen(false)}
+              className="p-2 rounded-lg hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
 
           {/* Scrollable Nav */}
