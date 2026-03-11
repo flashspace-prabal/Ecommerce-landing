@@ -44,13 +44,13 @@ export const Navbar = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={toggleSidebar}
-              className="flex items-center justify-center w-9 h-9 text-foreground/50 rounded-lg hover:bg-primary/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="inline-flex items-center justify-center w-9 h-9 text-foreground/50 rounded-lg hover:bg-primary/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               aria-label="Toggle sidebar"
             >
               <PanelLeft className="w-[22px] h-[22px]" />
             </button>
-            <a href="/" className="flex items-center self-center leading-none">
-              <img src={flashspaceLogo} alt="FlashSpace" className="h-10 lg:h-12 w-auto block align-middle" />
+            <a href="/" className="inline-flex items-center">
+              <img src={flashspaceLogo} alt="FlashSpace" className="h-10 lg:h-12 w-auto" style={{ display: 'block', verticalAlign: 'middle' }} />
             </a>
           </div>
 
