@@ -193,30 +193,66 @@ export const Navbar = () => {
               <div className="my-3 mx-3 border-t border-border/30" />
             </div>
 
-            {/* Flat menu list */}
-            <div className="space-y-0.5">
-              {sidebarMenuItems.map((item) => {
-                const Icon = item.icon;
-                const isExternal = item.href.startsWith("#");
-                const active = !isExternal && location.pathname === item.href;
-                return (
-                  <button
-                    key={item.label}
-                    onClick={() => {
-                      setSidebarOpen(false);
-                      if (!isExternal) navigate(item.href);
-                    }}
-                    className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium transition-all duration-150 text-left relative ${
-                      active
-                        ? "bg-primary/10 text-primary before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-[3px] before:h-5 before:rounded-full before:bg-primary"
-                        : "text-foreground/70 hover:text-foreground hover:bg-muted"
-                    }`}
-                  >
-                    <Icon className={`w-5 h-5 flex-shrink-0 transition-colors ${active ? "text-primary" : "text-muted-foreground"}`} strokeWidth={1.8} />
-                    {item.label}
-                  </button>
-                );
-              })}
+            {/* Main Section */}
+            <div className="mb-6">
+              <span className="px-3 mb-2 block text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">
+                Main
+              </span>
+              <div className="space-y-0.5">
+                {sidebarMenuItems.slice(0, 3).map((item) => {
+                  const Icon = item.icon;
+                  const isExternal = item.href.startsWith("#");
+                  const active = !isExternal && location.pathname === item.href;
+                  return (
+                    <button
+                      key={item.label}
+                      onClick={() => {
+                        setSidebarOpen(false);
+                        if (!isExternal) navigate(item.href);
+                      }}
+                      className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-normal transition-all duration-150 text-left relative ${
+                        active
+                          ? "bg-primary/10 text-primary before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-[3px] before:h-5 before:rounded-full before:bg-primary"
+                          : "text-foreground/60 hover:text-foreground hover:bg-muted"
+                      }`}
+                    >
+                      <Icon className={`w-[18px] h-[18px] flex-shrink-0 transition-colors ${active ? "text-primary" : "text-muted-foreground/60"}`} strokeWidth={1.6} />
+                      {item.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* More Section */}
+            <div>
+              <span className="px-3 mb-2 block text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">
+                More
+              </span>
+              <div className="space-y-0.5">
+                {sidebarMenuItems.slice(3).map((item) => {
+                  const Icon = item.icon;
+                  const isExternal = item.href.startsWith("#");
+                  const active = !isExternal && location.pathname === item.href;
+                  return (
+                    <button
+                      key={item.label}
+                      onClick={() => {
+                        setSidebarOpen(false);
+                        if (!isExternal) navigate(item.href);
+                      }}
+                      className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-normal transition-all duration-150 text-left relative ${
+                        active
+                          ? "bg-primary/10 text-primary before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-[3px] before:h-5 before:rounded-full before:bg-primary"
+                          : "text-foreground/60 hover:text-foreground hover:bg-muted"
+                      }`}
+                    >
+                      <Icon className={`w-[18px] h-[18px] flex-shrink-0 transition-colors ${active ? "text-primary" : "text-muted-foreground/60"}`} strokeWidth={1.6} />
+                      {item.label}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </nav>
 
