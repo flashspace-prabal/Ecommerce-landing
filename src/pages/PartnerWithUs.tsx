@@ -79,7 +79,7 @@ const PartnerWithUs = () => {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="pt-28 pb-8 lg:pt-36 lg:pb-12">
+        <section className="pt-36 pb-8 lg:pt-48 lg:pb-12 min-h-[100svh] flex items-center">
           <div className="container mx-auto px-4 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
