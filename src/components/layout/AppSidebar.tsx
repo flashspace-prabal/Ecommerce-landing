@@ -10,13 +10,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { useSidebar } from "./SidebarContext";
 
-const mainItems = [
+const menuItems = [
   { label: "Start Chatting", href: "#", icon: MessageCircle },
   { label: "Get Workspaces", href: "/get-workspaces", icon: LayoutGrid },
   { label: "Your Bookings", href: "#", icon: CalendarDays },
-];
-
-const moreItems = [
   { label: "Updates", href: "#", icon: Bell },
   { label: "Settings", href: "/settings", icon: Settings },
 ];
@@ -26,7 +23,7 @@ export const AppSidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const renderItem = (item: typeof mainItems[0]) => {
+  const renderItem = (item: typeof menuItems[0]) => {
     const Icon = item.icon;
     const isExternal = item.href.startsWith("#");
     const active = !isExternal && location.pathname === item.href;
@@ -58,35 +55,25 @@ export const AppSidebar = () => {
   };
 
   return (
-    <aside
-      className={`h-full flex-shrink-0 border-r border-border bg-background transition-all duration-250 ease-in-out overflow-hidden ${
-        sidebarOpen ? "w-[240px]" : "w-0 border-r-0"
-      }`}
-    >
-      <div className="w-[240px] h-full flex flex-col">
-        {/* Navigation */}
-        <nav className="flex-1 px-3 pt-5 pb-4 overflow-y-auto">
-          {/* Main Section */}
-          <div className="mb-5">
-            <span className="px-3 mb-1.5 block text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">
-              Main
-            </span>
-            <div className="space-y-0.5">
-              {mainItems.map(renderItem)}
-            </div>
-          </div>
+    <>
+      {/* Backdrop — click to close, no darken */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 z-40 pt-16 lg:pt-20"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
 
-          {/* Divider */}
-          <div className="mx-3 mb-4 border-t border-border/30" />
-
-          {/* More Section */}
-          <div>
-            <span className="px-3 mb-1.5 block text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">
-              More
-            </span>
-            <div className="space-y-0.5">
-              {moreItems.map(renderItem)}
-            </div>
+      {/* Sidebar panel */}
+      <aside
+        className={`fixed top-16 lg:top-20 left-0 bottom-0 z-50 bg-background border-r border-border flex flex-col transition-transform duration-250 ease-in-out w-[240px] ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        {/* Menu items */}
+        <nav className="flex-1 px-3 pt-4 pb-4 overflow-y-auto">
+          <div className="space-y-0.5">
+            {menuItems.map(renderItem)}
           </div>
         </nav>
 
@@ -97,7 +84,7 @@ export const AppSidebar = () => {
             <ArrowRight className="w-4 h-4" />
           </Button>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </>
   );
 };
