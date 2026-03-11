@@ -49,8 +49,8 @@ export const Navbar = () => {
             >
               <PanelLeft className="w-[22px] h-[22px]" />
             </button>
-            <a href="/" className="flex items-center leading-none">
-              <img src={flashspaceLogo} alt="FlashSpace" className="h-10 lg:h-12 w-auto block" />
+            <a href="/" className="flex items-center self-center leading-none">
+              <img src={flashspaceLogo} alt="FlashSpace" className="h-10 lg:h-12 w-auto block align-middle" />
             </a>
           </div>
 
