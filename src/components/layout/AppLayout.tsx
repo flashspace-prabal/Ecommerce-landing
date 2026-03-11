@@ -14,12 +14,12 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
         {/* Fixed Navbar */}
         <Navbar />
 
-        {/* Content area below navbar */}
-        <div className="flex flex-1 pt-16 lg:pt-20">
-          <AppSidebar />
-          <div className="flex-1 min-w-0 transition-all duration-250">
-            {children}
-          </div>
+        {/* Sidebar (overlay, does not affect content flow) */}
+        <AppSidebar />
+
+        {/* Page content — never shifts */}
+        <div className="flex-1 pt-16 lg:pt-20">
+          {children}
         </div>
       </div>
     </SidebarProvider>
