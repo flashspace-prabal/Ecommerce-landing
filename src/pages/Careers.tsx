@@ -210,7 +210,7 @@ const Careers = () => {
         </section>
       </main>
       <Footer />
-    </div>
+    </AppLayout>
   );
 };
 

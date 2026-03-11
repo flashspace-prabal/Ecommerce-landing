@@ -492,7 +492,7 @@ const HelpCenter = () => {
         </section>
       </main>
       <Footer />
-    </div>
+    </AppLayout>
   );
 };
 

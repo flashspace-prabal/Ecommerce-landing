@@ -369,7 +369,7 @@ const PartnerWithUs = () => {
         </section>
       </main>
       <Footer />
-    </div>
+    </AppLayout>
   );
 };
 

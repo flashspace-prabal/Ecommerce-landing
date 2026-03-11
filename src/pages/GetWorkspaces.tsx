@@ -708,7 +708,7 @@ const GetWorkspaces = () => {
           </div>
         }
       </div>
-    </div>);
+    </AppLayout>);
 
 };
 

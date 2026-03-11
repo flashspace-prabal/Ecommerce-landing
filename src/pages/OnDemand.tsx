@@ -233,7 +233,7 @@ const OnDemand = () => {
         </section>
       </main>
       <Footer />
-    </div>
+    </AppLayout>
   );
 };
 

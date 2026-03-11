@@ -641,7 +641,7 @@ const WorkspaceDetail = () => {
           </div>
         </div>
       </div>
-    </div>
+    </AppLayout>
   );
 };
 

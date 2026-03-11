@@ -232,7 +232,7 @@ const BusinessSetup = () => {
         </section>
       </main>
       <Footer />
-    </div>
+    </AppLayout>
   );
 };
 

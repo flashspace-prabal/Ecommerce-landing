@@ -244,7 +244,7 @@ const PrivacyPolicy = () => {
         </div>
       </main>
       <Footer />
-    </div>
+    </AppLayout>
   );
 };
 
