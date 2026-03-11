@@ -45,7 +45,7 @@ export const AppSidebar = () => {
       >
         <Icon
           className={`w-[18px] h-[18px] flex-shrink-0 transition-colors ${
-            active ? "text-primary" : "text-muted-foreground/60"
+            active ? "text-primary" : ""
           }`}
           strokeWidth={1.6}
         />
