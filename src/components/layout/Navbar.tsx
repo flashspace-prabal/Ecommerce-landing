@@ -44,6 +44,7 @@ const sidebarMenuItems = [
 
 export const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [sidebarDropdown, setSidebarDropdown] = useState<string | null>(null);
