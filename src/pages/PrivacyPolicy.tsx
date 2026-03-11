@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/layout/Navbar";
+import { AppLayout } from "@/components/layout/AppLayout";
 import { Footer } from "@/components/layout/Footer";
 
 const PrivacyPolicy = () => {
