@@ -45,7 +45,7 @@ export const AppSidebar = () => {
       >
         <Icon
           className={`w-[18px] h-[18px] flex-shrink-0 transition-colors ${
-            active ? "text-primary" : "text-muted-foreground/60"
+            active ? "text-primary" : ""
           }`}
           strokeWidth={1.6}
         />
@@ -79,8 +79,12 @@ export const AppSidebar = () => {
 
         {/* Bottom CTA */}
         <div className="px-3 pb-4 pt-2 border-t border-border/30">
-          <Button className="w-full rounded-xl bg-secondary hover:bg-secondary/80 text-secondary-foreground font-medium text-[13px] py-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 gap-2">
-            Get Consultation
+          <Button
+            variant="default"
+            className="w-full rounded-xl font-medium text-[13px] py-5 gap-2"
+            onClick={() => { setSidebarOpen(false); navigate('/'); }}
+          >
+            Explore Platform
             <ArrowRight className="w-4 h-4" />
           </Button>
         </div>
