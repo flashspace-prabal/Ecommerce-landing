@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Footer } from "@/components/layout/Footer";
@@ -14,10 +14,13 @@ import {
   Shield,
   CheckCircle2,
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   FileText,
   BadgeCheck,
   Coins,
 } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
 
 const benefits = [
   {
