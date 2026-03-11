@@ -24,6 +24,14 @@ export const AppSidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Auto-close sidebar on scroll
+  useEffect(() => {
+    if (!sidebarOpen) return;
+    const handleScroll = () => setSidebarOpen(false);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [sidebarOpen, setSidebarOpen]);
+
   const renderItem = (item: typeof menuItems[0]) => {
     const Icon = item.icon;
     const isExternal = item.href.startsWith("#");
