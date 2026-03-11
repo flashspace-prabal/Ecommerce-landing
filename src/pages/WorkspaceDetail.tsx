@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { WorkspaceMap } from "@/components/WorkspaceMap";
 import { useParams, useNavigate } from "react-router-dom";
-import { Navbar } from "@/components/layout/Navbar";
+import { AppLayout } from "@/components/layout/AppLayout";
 import {
   Star,
   MapPin,
@@ -452,8 +452,7 @@ const WorkspaceDetail = () => {
   }];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <AppLayout>
 
       <div className="max-w-7xl mx-auto px-5 lg:px-10 pt-28 pb-16">
         {/* ── Header ── */}
@@ -642,7 +641,7 @@ const WorkspaceDetail = () => {
           </div>
         </div>
       </div>
-    </div>
+    </AppLayout>
   );
 };
 

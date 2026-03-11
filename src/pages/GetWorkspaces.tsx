@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
-import { Navbar } from "@/components/layout/Navbar";
+import { AppLayout } from "@/components/layout/AppLayout";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -475,8 +475,7 @@ const GetWorkspaces = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Navbar />
+    <AppLayout>
 
       {/* Full-width top section: Breadcrumb + Filters */}
       <div className="mt-20 bg-background border-b border-border/60">
@@ -709,7 +708,7 @@ const GetWorkspaces = () => {
           </div>
         }
       </div>
-    </div>);
+    </AppLayout>);
 
 };
 

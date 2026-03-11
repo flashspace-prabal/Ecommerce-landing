@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/layout/Navbar";
+import { AppLayout } from "@/components/layout/AppLayout";
 import { HeroWithSearch } from "@/components/sections/HeroWithSearch";
 import { DashboardPreview } from "@/components/sections/DashboardPreview";
 import { ScrollNavLayout } from "@/components/sections/ScrollNavLayout";
@@ -16,8 +16,7 @@ import { Footer } from "@/components/layout/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      <Navbar />
+    <AppLayout>
       <main>
         <HeroWithSearch />
         <DashboardPreview />
@@ -34,7 +33,7 @@ const Index = () => {
         <CTA />
       </main>
       <Footer />
-    </div>
+    </AppLayout>
   );
 };
 

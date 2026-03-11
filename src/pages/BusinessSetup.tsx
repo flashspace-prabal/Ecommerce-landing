@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navbar } from "@/components/layout/Navbar";
+import { AppLayout } from "@/components/layout/AppLayout";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -46,8 +46,7 @@ const BusinessSetup = () => {
   );
 
   return (
-    <div className="min-h-screen">
-      <Navbar />
+    <AppLayout>
       <main>
         {/* Hero Section */}
         <section className="relative overflow-hidden" style={{ background: 'hsla(0, 0%, 97%, 0.9)', paddingTop: '170px', paddingBottom: '60px' }}>
@@ -233,7 +232,7 @@ const BusinessSetup = () => {
         </section>
       </main>
       <Footer />
-    </div>
+    </AppLayout>
   );
 };
 

@@ -1,10 +1,9 @@
-import { Navbar } from "@/components/layout/Navbar";
+import { AppLayout } from "@/components/layout/AppLayout";
 import { Footer } from "@/components/layout/Footer";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <AppLayout>
       <main className="pt-28 pb-16 lg:pt-36 lg:pb-24">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
           <h1 className="text-3xl lg:text-4xl font-medium tracking-tight text-foreground mb-2">Privacy Policy</h1>
@@ -245,7 +244,7 @@ const PrivacyPolicy = () => {
         </div>
       </main>
       <Footer />
-    </div>
+    </AppLayout>
   );
 };
 
