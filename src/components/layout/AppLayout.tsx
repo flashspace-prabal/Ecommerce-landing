@@ -18,8 +18,9 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
         <AppSidebar />
 
         {/* Page content — never shifts */}
-        <div className="flex-1 pt-16 lg:pt-20">
+        <div className="flex-1 pt-16 lg:pt-20 relative">
           {children}
+          <ContentOverlay />
         </div>
       </div>
     </SidebarProvider>
