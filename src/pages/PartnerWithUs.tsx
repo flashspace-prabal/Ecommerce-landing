@@ -179,9 +179,9 @@ const PartnerWithUs = () => {
                   return (
                     <div
                       key={`${b.title}-${i}`}
-                      className="min-w-0 shrink-0 grow-0 basis-full md:basis-1/2 lg:basis-1/3"
+                      className="min-w-0 shrink-0 grow-0 basis-full md:basis-1/2 lg:basis-1/3 pl-4"
                     >
-                      <div className="group border-r border-t border-b border-border first:border-l h-full flex flex-col justify-between p-8 lg:p-10 relative overflow-hidden transition-all duration-300">
+                      <div className="group border border-border rounded-xl h-full flex flex-col justify-between p-8 lg:p-10 relative overflow-hidden transition-all duration-300">
                         {/* Number */}
                         <div>
                           <span className="text-sm text-muted-foreground mb-4 block">{num}</span>
