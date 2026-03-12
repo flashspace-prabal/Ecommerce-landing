@@ -75,7 +75,7 @@ export const AppSidebar = () => {
 
       {/* Sidebar panel */}
       <aside
-        className={`fixed top-16 lg:top-20 left-0 bottom-0 z-50 bg-background border-r border-border flex flex-col transition-transform duration-250 ease-in-out w-[240px] ${
+        className={`fixed top-16 lg:top-20 left-0 bottom-0 z-50 bg-[#F9FAFB] border-r border-[#E5E7EB] flex flex-col transition-transform duration-250 ease-in-out w-[240px] antialiased ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
