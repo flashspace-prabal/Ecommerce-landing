@@ -234,20 +234,20 @@ const PartnerWithUs = () => {
                 viewport={{ once: true }}
               >
                 <h2 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-6 leading-[1.15]">
-                  How does unlimited referrals with uncapped commissions sound?
+                  What could uncapped workspace revenue look like?
                 </h2>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                    <span className="text-foreground">Top-performing partners earn ₹5,00,000+ per month via successful referrals and workspace bookings</span>
+                    <span className="text-foreground">Top-performing partners earn ₹5,00,000+ per month through FlashSpace bookings.</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                    <span className="text-foreground">Earn uncapped commissions on every booking that comes through your space</span>
+                    <span className="text-foreground">Earn commissions on every desk, meeting room, or office booked through your space.</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                    <span className="text-foreground">No hidden fees — transparent revenue sharing with monthly payouts</span>
+                    <span className="text-foreground">No hidden fees. No lock-ins. Just transparent revenue sharing with monthly payouts.</span>
                   </div>
                 </div>
               </motion.div>
