@@ -226,72 +226,90 @@ const PartnerWithUs = () => {
         {/* How it works — Timeline */}
         <section className="py-16 lg:py-24">
           <div className="container mx-auto px-4 lg:px-8">
-            <motion.h2
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-16 text-center"
+              className="text-center mb-16"
             >
-              How it works
-            </motion.h2>
+              <h2 className="text-3xl lg:text-4xl font-medium text-foreground tracking-tight mb-3">
+                How it works
+              </h2>
+              <p className="text-muted-foreground text-lg">
+                We help you on every step of the journey
+              </p>
+            </motion.div>
 
             <div className="relative">
-              {/* Connector lines between steps */}
-              <div className="hidden lg:block absolute top-7 left-[16.67%] right-[50%] z-0">
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: 0.6, duration: 0.5, ease: "easeInOut" }}
-                  className="h-px bg-border origin-left"
-                />
-              </div>
-              <div className="hidden lg:block absolute top-7 left-[50%] right-[16.67%] z-0">
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: 1.5, duration: 0.5, ease: "easeInOut" }}
-                  className="h-px bg-border origin-left"
-                />
-              </div>
-
-              <div className="grid lg:grid-cols-3 gap-8">
+              {/* Large step numbers row */}
+              <div className="grid grid-cols-3 gap-4 mb-0">
                 {[
-                  { step: "01", title: "Apply", desc: "Fill out the form below with your workspace details.", Icon: FileText },
-                  { step: "02", title: "Onboard", desc: "Our team verifies and lists your space within 48 hours.", Icon: BadgeCheck },
-                  { step: "03", title: "Earn", desc: "Start receiving bookings and grow your revenue.", Icon: Coins },
+                  { step: "01", title: "Apply", desc: "Fill out the form below with your workspace details." },
+                  { step: "02", title: "Onboard", desc: "Our team verifies and lists your space within 48 hours." },
+                  { step: "03", title: "Earn", desc: "Start receiving bookings and grow your revenue." },
                 ].map((item, i) => {
-                  // Sequential delays: step1 at 0s, step2 after line1 at ~2.2s, step3 after line2 at ~4s
-                  const stepDelay = i === 0 ? 0 : i === 1 ? 1.1 : 2.0;
+                  const stepDelay = i * 0.2;
                   return (
                     <motion.div
                       key={item.step}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: stepDelay, duration: 0.8, ease: "easeOut" }}
-                      className="flex flex-col items-center text-center relative z-10"
+                      transition={{ delay: stepDelay, duration: 0.6 }}
+                      className="flex flex-col items-center text-center"
                     >
-                      {/* Icon circle */}
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: stepDelay + 0.2, type: "spring", stiffness: 150, damping: 15 }}
-                        className="w-14 h-14 rounded-full bg-muted flex items-center justify-center mx-auto mb-5"
-                      >
-                        <item.Icon className="w-6 h-6 text-primary" />
-                      </motion.div>
-
-                      <span className="text-xs font-semibold text-primary uppercase tracking-widest mb-1 block">
-                        Step {item.step}
+                      {/* Large number */}
+                      <span className="text-7xl lg:text-9xl font-bold text-muted-foreground/20 leading-none mb-4 select-none">
+                        {item.step}
                       </span>
-                      <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">{item.desc}</p>
                     </motion.div>
                   );
                 })}
+              </div>
+
+              {/* Horizontal line with dots */}
+              <div className="relative flex items-center justify-between mx-auto max-w-3xl mb-8">
+                {/* Line */}
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-border origin-left"
+                />
+                {/* Dots */}
+                {[0, 1, 2].map((i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 + i * 0.2, type: "spring", stiffness: 200, damping: 15 }}
+                    className="w-3 h-3 rounded-full bg-primary relative z-10"
+                    style={{ marginLeft: i === 0 ? '0' : 'auto', marginRight: i === 2 ? '0' : undefined }}
+                  />
+                ))}
+              </div>
+
+              {/* Titles and descriptions row */}
+              <div className="grid grid-cols-3 gap-4">
+                {[
+                  { title: "Apply", desc: "Fill out the form below with your workspace details." },
+                  { title: "Onboard", desc: "Our team verifies and lists your space within 48 hours." },
+                  { title: "Earn", desc: "Start receiving bookings and grow your revenue." },
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.6 + i * 0.15, duration: 0.5 }}
+                    className="flex flex-col items-center text-center"
+                  >
+                    <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">{item.desc}</p>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
