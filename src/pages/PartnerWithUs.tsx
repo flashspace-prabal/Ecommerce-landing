@@ -441,7 +441,7 @@ const PartnerWithUs = () => {
         {/* Partner Form */}
         <section className="py-16 lg:py-20" id="partner-form">
           <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               {/* Left Column — Copy & Stats */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
