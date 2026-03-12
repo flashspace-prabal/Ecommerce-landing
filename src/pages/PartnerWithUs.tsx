@@ -111,8 +111,8 @@ const infographicBars = [
 
 const RevenueVisual = () => {
   return (
-    <div className="w-full relative" style={{ height: 520 }}>
-      <div className="absolute inset-0 flex items-end gap-4 lg:gap-5 justify-center">
+    <div className="w-full relative" style={{ height: 480 }}>
+      <div className="absolute inset-0 flex items-end gap-6 lg:gap-8 justify-center px-2">
         {infographicBars.map((bar, i) => {
           const Icon = bar.icon;
 
@@ -122,7 +122,7 @@ const RevenueVisual = () => {
                 initial={{ scaleY: 0, opacity: 0 }}
                 whileInView={{ scaleY: 1, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.7, ease: "easeOut" }}
+                transition={{ delay: 0.2 + i * 0.12, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="flex flex-col items-center w-full origin-bottom"
                 style={{ height: `${bar.pct}%` }}
               >
@@ -133,9 +133,9 @@ const RevenueVisual = () => {
                   <Icon className="w-4 h-4 text-white/90" />
                 </div>
 
-                <div className="relative bg-card border border-border rounded-lg px-3 py-2 shadow-sm text-center mb-2 z-10 shrink-0">
+                <div className="relative bg-card border border-border rounded-lg px-3 py-2.5 shadow-sm text-center mb-2 z-10 shrink-0 min-h-[52px] flex flex-col items-center justify-center">
                   <p className="text-base font-bold text-primary leading-none">{bar.value}</p>
-                  <p className="text-[8px] text-muted-foreground mt-0.5 uppercase tracking-wider leading-tight">{bar.label}</p>
+                  <p className="text-[8px] text-muted-foreground mt-1 uppercase tracking-wider leading-tight">{bar.label}</p>
                   <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-card border-r border-b border-border rotate-45" />
                 </div>
 
