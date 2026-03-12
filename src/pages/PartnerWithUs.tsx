@@ -118,7 +118,6 @@ const RevenueVisual = () => {
 
           return (
             <div key={bar.label} className="flex-1 flex flex-col items-center relative h-full justify-end">
-              {/* Entire column: icon + badge + bar animate together */}
               <motion.div
                 initial={{ scaleY: 0, opacity: 0 }}
                 whileInView={{ scaleY: 1, opacity: 1 }}
@@ -127,7 +126,6 @@ const RevenueVisual = () => {
                 className="flex flex-col items-center w-full origin-bottom"
                 style={{ height: `${bar.pct}%` }}
               >
-                {/* Icon circle - colored to match bar */}
                 <div
                   className="w-9 h-9 rounded-full flex items-center justify-center mb-1.5 z-10 shrink-0"
                   style={{ background: bar.color }}
@@ -135,14 +133,12 @@ const RevenueVisual = () => {
                   <Icon className="w-4 h-4 text-white/90" />
                 </div>
 
-                {/* Value badge */}
                 <div className="relative bg-card border border-border rounded-lg px-3 py-2 shadow-sm text-center mb-2 z-10 shrink-0">
                   <p className="text-base font-bold text-primary leading-none">{bar.value}</p>
                   <p className="text-[8px] text-muted-foreground mt-0.5 uppercase tracking-wider leading-tight">{bar.label}</p>
                   <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-card border-r border-b border-border rotate-45" />
                 </div>
 
-                {/* Vertical bar - fills remaining space */}
                 <div
                   className="relative w-full rounded-t-md flex-1 min-h-0"
                   style={{ background: bar.color }}
@@ -172,7 +168,6 @@ const PartnerWithUs = () => {
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start", slidesToScroll: 1 });
 
-  // Auto-scroll every 5 seconds
   useEffect(() => {
     if (!emblaApi) return;
     const interval = setInterval(() => emblaApi.scrollNext(), 5000);
@@ -181,7 +176,6 @@ const PartnerWithUs = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
   };
 
   return (
@@ -279,7 +273,6 @@ const PartnerWithUs = () => {
                       className="min-w-0 shrink-0 grow-0 basis-full md:basis-1/2 lg:basis-1/3 pl-4"
                     >
                       <div className="group border border-border rounded-xl h-full flex flex-col justify-between p-8 lg:p-10 relative overflow-hidden transition-all duration-300">
-                        {/* Number */}
                         <div>
                           <span className="text-sm text-muted-foreground mb-4 block">{num}</span>
                           <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-4">
@@ -287,13 +280,11 @@ const PartnerWithUs = () => {
                           </h3>
                           <p className="text-sm text-muted-foreground leading-relaxed">{b.description}</p>
                         </div>
-                        {/* Plus button */}
                         <div className="mt-8">
                           <button className="w-12 h-12 rounded-lg border border-border hover:border-foreground/30 flex items-center justify-center transition-colors">
                             <Plus className="w-5 h-5 text-foreground" />
                           </button>
                         </div>
-                        {/* Bottom accent strip */}
                         <div className="absolute bottom-0 left-0 right-0 h-1.5 rounded-full" style={{ backgroundColor: '#fef8c3' }} />
                       </div>
                     </div>
@@ -316,93 +307,6 @@ const PartnerWithUs = () => {
               >
                 <ChevronRight className="w-5 h-5 text-foreground" />
               </button>
-            </div>
-          </div>
-        </section>
-
-
-
-        {/* How it works — Timeline */}
-        <section className="py-16 lg:py-24">
-          <div className="container mx-auto px-4 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-3xl lg:text-4xl font-medium text-foreground tracking-tight mb-3">
-                How it works
-              </h2>
-              <p className="text-muted-foreground text-lg">
-                We help you on every step of the journey
-              </p>
-            </motion.div>
-
-            <div className="relative grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-0">
-              {[
-                { step: "01", title: "Apply", desc: "Share your workspace details through our simple application form. Our team reviews every submission personally to ensure a great fit." },
-                { step: "02", title: "Onboard", desc: "Our dedicated team verifies your space, creates a professional listing with photos & amenities, and gets you live within 48 hours." },
-                { step: "03", title: "Earn", desc: "Start receiving qualified bookings from our network of verified professionals and enterprises. Watch your revenue grow month after month." },
-              ].map((item, i) => {
-                const baseDelay = i * 1.2;
-                const numberDelay = baseDelay;
-                const dotDelay = baseDelay + 0.6;
-                const cardDelay = baseDelay + 0.8;
-
-                return (
-                  <div
-                    key={item.step}
-                    className="flex flex-col items-center px-2 text-center lg:px-4"
-                  >
-                    {/* Large number */}
-                    <motion.span
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: numberDelay, duration: 0.5, ease: "easeOut" }}
-                      className="text-7xl lg:text-9xl font-bold text-muted-foreground/20 leading-none mb-4 select-none block"
-                    >
-                      {item.step}
-                    </motion.span>
-
-                    {/* Dot with single continuous line */}
-                    <div className="relative w-full flex items-center justify-center mb-8">
-                      {/* Continuous line segment — spans full width of each column */}
-                      {/* First column: right half only */}
-                      {i === 0 && (
-                        <div className="hidden md:block absolute left-1/2 right-0 top-1/2 -translate-y-1/2 h-px bg-border" />
-                      )}
-                      {/* Middle column: full width */}
-                      {i === 1 && (
-                        <div className="hidden md:block absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-border" />
-                      )}
-                      {/* Last column: left half only */}
-                      {i === 2 && (
-                        <div className="hidden md:block absolute left-0 right-1/2 top-1/2 -translate-y-1/2 h-px bg-border" />
-                      )}
-                      {/* Dot */}
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: dotDelay, type: "spring", stiffness: 200, damping: 15 }}
-                        className="w-3 h-3 rounded-full bg-primary relative z-10"
-                      />
-                    </div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 15 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: cardDelay, duration: 0.5 }}
-                    >
-                      <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">{item.desc}</p>
-                    </motion.div>
-                  </div>
-                );
-              })}
             </div>
           </div>
         </section>
@@ -443,6 +347,84 @@ const PartnerWithUs = () => {
               >
                 <RevenueVisual />
               </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* How it works — Timeline */}
+        <section className="py-16 lg:py-24">
+          <div className="container mx-auto px-4 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-3xl lg:text-4xl font-medium text-foreground tracking-tight mb-3">
+                How it works
+              </h2>
+              <p className="text-muted-foreground text-lg">
+                We help you on every step of the journey
+              </p>
+            </motion.div>
+
+            <div className="relative grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-0">
+              {[
+                { step: "01", title: "Apply", desc: "Share your workspace details through our simple application form. Our team reviews every submission personally to ensure a great fit." },
+                { step: "02", title: "Onboard", desc: "Our dedicated team verifies your space, creates a professional listing with photos & amenities, and gets you live within 48 hours." },
+                { step: "03", title: "Earn", desc: "Start receiving qualified bookings from our network of verified professionals and enterprises. Watch your revenue grow month after month." },
+              ].map((item, i) => {
+                const baseDelay = i * 1.2;
+                const numberDelay = baseDelay;
+                const dotDelay = baseDelay + 0.6;
+                const cardDelay = baseDelay + 0.8;
+
+                return (
+                  <div
+                    key={item.step}
+                    className="flex flex-col items-center px-2 text-center lg:px-4"
+                  >
+                    <motion.span
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: numberDelay, duration: 0.5, ease: "easeOut" }}
+                      className="text-7xl lg:text-9xl font-bold text-muted-foreground/20 leading-none mb-4 select-none block"
+                    >
+                      {item.step}
+                    </motion.span>
+
+                    <div className="relative w-full flex items-center justify-center mb-8">
+                      {i === 0 && (
+                        <div className="hidden md:block absolute left-1/2 right-0 top-1/2 -translate-y-1/2 h-px bg-border" />
+                      )}
+                      {i === 1 && (
+                        <div className="hidden md:block absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-border" />
+                      )}
+                      {i === 2 && (
+                        <div className="hidden md:block absolute left-0 right-1/2 top-1/2 -translate-y-1/2 h-px bg-border" />
+                      )}
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: dotDelay, type: "spring", stiffness: 200, damping: 15 }}
+                        className="w-3 h-3 rounded-full bg-primary relative z-10"
+                      />
+                    </div>
+
+                    <motion.div
+                      initial={{ opacity: 0, y: 15 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: cardDelay, duration: 0.5 }}
+                    >
+                      <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">{item.desc}</p>
+                    </motion.div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
