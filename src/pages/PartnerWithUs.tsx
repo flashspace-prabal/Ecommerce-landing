@@ -63,6 +63,99 @@ const stats = [
   { value: "3x", label: "Average Revenue Lift" },
 ];
 
+const revenueData = [
+  { month: "Jan", value: 45 },
+  { month: "Feb", value: 52 },
+  { month: "Mar", value: 61 },
+  { month: "Apr", value: 58 },
+  { month: "May", value: 72 },
+  { month: "Jun", value: 85 },
+  { month: "Jul", value: 78 },
+  { month: "Aug", value: 92 },
+  { month: "Sep", value: 88 },
+  { month: "Oct", value: 95 },
+  { month: "Nov", value: 100 },
+  { month: "Dec", value: 110 },
+];
+
+const AnimatedCounter = ({ target, prefix = "", suffix = "" }: { target: number; prefix?: string; suffix?: string }) => {
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (v) => `${prefix}${Math.round(v).toLocaleString("en-IN")}${suffix}`);
+  const [display, setDisplay] = useState(`${prefix}0${suffix}`);
+
+  useEffect(() => {
+    const unsubscribe = rounded.on("change", setDisplay);
+    return unsubscribe;
+  }, [rounded]);
+
+  return (
+    <motion.span
+      onViewportEnter={() => {
+        animate(count, target, { duration: 2, ease: "easeOut" });
+      }}
+      viewport={{ once: true }}
+    >
+      {display}
+    </motion.span>
+  );
+};
+
+const RevenueVisual = () => {
+  const maxVal = Math.max(...revenueData.map((d) => d.value));
+
+  return (
+    <div className="w-full bg-card rounded-2xl border border-border p-6 lg:p-8 space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm text-muted-foreground mb-1">Monthly Revenue</p>
+          <p className="text-3xl lg:text-4xl font-bold text-foreground">
+            <AnimatedCounter target={500000} prefix="₹" />
+          </p>
+        </div>
+        <div className="flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-sm font-medium">
+          <TrendingUp className="w-4 h-4" />
+          +34%
+        </div>
+      </div>
+
+      <div className="flex items-end gap-1.5 h-32">
+        {revenueData.map((d, i) => (
+          <motion.div
+            key={d.month}
+            className="flex-1 flex flex-col items-center gap-1"
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.05, duration: 0.4, ease: "easeOut" }}
+            style={{ originY: 1 }}
+          >
+            <div
+              className="w-full rounded-t-sm bg-primary/80 hover:bg-primary transition-colors cursor-default"
+              style={{ height: `${(d.value / maxVal) * 100}%` }}
+            />
+            <span className="text-[9px] text-muted-foreground">{d.month}</span>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-3 gap-3 pt-2 border-t border-border">
+        <div className="text-center">
+          <p className="text-lg font-bold text-foreground"><AnimatedCounter target={142} /></p>
+          <p className="text-xs text-muted-foreground">Bookings</p>
+        </div>
+        <div className="text-center">
+          <p className="text-lg font-bold text-foreground"><AnimatedCounter target={96} suffix="%" /></p>
+          <p className="text-xs text-muted-foreground">Occupancy</p>
+        </div>
+        <div className="text-center">
+          <p className="text-lg font-bold text-foreground"><AnimatedCounter target={48} suffix="hrs" /></p>
+          <p className="text-xs text-muted-foreground">Avg. Onboard</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const PartnerWithUs = () => {
   const [formData, setFormData] = useState({
     name: "",
