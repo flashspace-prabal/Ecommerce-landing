@@ -8,8 +8,15 @@ interface AppLayoutProps {
 }
 
 const LayoutContent = ({ children }: { children: ReactNode }) => {
-  const { sidebarOpen } = useSidebar();
+  const { sidebarOpen, setSidebarOpen } = useSidebar();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sidebarOpen) setSidebarOpen(false);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [sidebarOpen, setSidebarOpen]);
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
