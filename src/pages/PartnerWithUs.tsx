@@ -101,88 +101,84 @@ const AnimatedCounter = ({ target, prefix = "", suffix = "" }: { target: number;
 };
 
 const infographicBars = [
-  { icon: BarChart3, value: "142", label: "Bookings", sublabel: "Monthly average across partners", height: "55%" },
-  { icon: Building2, value: "12%", label: "Listing Growth", sublabel: "Month-over-month increase", height: "40%" },
-  { icon: TrendingUp, value: "32%", label: "Revenue Uplift", sublabel: "Average partner growth rate", height: "65%" },
-  { icon: CheckCircle2, value: "19%", label: "Conversion", sublabel: "Enquiry to booking rate", height: "50%" },
-  { icon: Globe, value: "96%", label: "Occupancy", sublabel: "Peak hour utilization", height: "80%" },
-  { icon: Headphones, value: "48hrs", label: "Avg. Onboard", sublabel: "From signup to live listing", height: "90%" },
+  { icon: BarChart3, value: "142", label: "Bookings", sublabel: "Monthly average across partners", pct: 45 },
+  { icon: Building2, value: "12%", label: "Listing Growth", sublabel: "Month-over-month increase", pct: 35 },
+  { icon: TrendingUp, value: "32%", label: "Revenue Uplift", sublabel: "Average partner growth rate", pct: 60 },
+  { icon: CheckCircle2, value: "19%", label: "Conversion", sublabel: "Enquiry to booking rate", pct: 50 },
+  { icon: Globe, value: "96%", label: "Occupancy", sublabel: "Peak hour utilization", pct: 80 },
+  { icon: Headphones, value: "48hrs", label: "Avg. Onboard", sublabel: "From signup to live listing", pct: 90 },
 ];
 
 const RevenueVisual = () => {
   return (
-    <div className="w-full">
-      <div className="flex items-end gap-3 lg:gap-4 justify-center" style={{ height: 340 }}>
+    <div className="w-full relative" style={{ height: 380 }}>
+      {/* Perspective container */}
+      <div className="absolute inset-0 flex items-end gap-5 lg:gap-6 justify-center" style={{ perspective: "600px" }}>
         {infographicBars.map((bar, i) => {
           const Icon = bar.icon;
+          const barHeight = `${bar.pct}%`;
+          const shade = 26 + i * 5;
+
           return (
-            <motion.div
-              key={bar.label}
-              className="flex flex-col items-center gap-3 flex-1"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5, ease: "easeOut" }}
-            >
-              {/* Floating badge */}
+            <div key={bar.label} className="flex-1 flex flex-col items-center relative h-full justify-end">
+              {/* Icon circle floating above */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 + i * 0.08, duration: 0.4 }}
+                className="w-8 h-8 rounded-full bg-card border border-border shadow-sm flex items-center justify-center mb-1.5 z-10"
+              >
+                <Icon className="w-4 h-4 text-primary" />
+              </motion.div>
+
+              {/* Value badge - speech bubble style */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.3 + i * 0.1, duration: 0.4 }}
-                className="bg-card border border-border rounded-lg px-2.5 py-1.5 shadow-sm text-center min-w-[60px]"
+                transition={{ delay: 0.6 + i * 0.08, duration: 0.35 }}
+                className="relative bg-card border border-border rounded-lg px-3 py-2 shadow-sm text-center mb-2 z-10"
               >
-                <div className="flex items-center justify-center mb-0.5">
-                  <Icon className="w-3.5 h-3.5 text-primary" />
-                </div>
-                <p className="text-sm font-bold text-primary leading-none">{bar.value}</p>
-                <p className="text-[8px] text-muted-foreground mt-0.5 leading-tight">{bar.label}</p>
+                <p className="text-base font-bold text-primary leading-none">{bar.value}</p>
+                <p className="text-[8px] text-muted-foreground mt-0.5 uppercase tracking-wider leading-tight">{bar.label}</p>
+                {/* Triangle pointer */}
+                <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-card border-r border-b border-border rotate-45" />
               </motion.div>
 
-              {/* 3D Bar */}
-              <div className="relative w-full" style={{ height: bar.height }}>
-                {/* Front face */}
-                <motion.div
-                  initial={{ scaleY: 0 }}
-                  whileInView={{ scaleY: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.15 + i * 0.1, duration: 0.6, ease: "easeOut" }}
-                  className="absolute inset-0 rounded-t-md"
-                  style={{
-                    originY: 1,
-                    background: `hsl(142 20% ${26 + i * 6}%)`,
-                  }}
+              {/* The vertical stripe/line - flat 3D style like reference */}
+              <motion.div
+                initial={{ scaleY: 0 }}
+                whileInView={{ scaleY: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.7, ease: "easeOut" }}
+                className="relative w-full rounded-t-sm overflow-visible"
+                style={{ height: barHeight, originY: 1 }}
+              >
+                {/* Main bar face */}
+                <div
+                  className="absolute inset-0 rounded-t-sm"
+                  style={{ background: `hsl(142 20% ${shade}%)` }}
                 />
-                {/* Right 3D edge */}
-                <motion.div
-                  initial={{ scaleY: 0 }}
-                  whileInView={{ scaleY: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.15 + i * 0.1, duration: 0.6, ease: "easeOut" }}
-                  className="absolute top-0 bottom-0 -right-1.5 w-1.5 rounded-tr-sm"
-                  style={{
-                    originY: 1,
-                    background: `hsl(142 20% ${20 + i * 6}%)`,
-                  }}
+                {/* Lighter left highlight strip */}
+                <div
+                  className="absolute top-0 bottom-0 left-0 w-[30%] rounded-tl-sm"
+                  style={{ background: `hsl(142 20% ${shade + 8}% / 0.4)` }}
                 />
-                {/* Top 3D face */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 + i * 0.1, duration: 0.3 }}
-                  className="absolute -top-1.5 left-0 right-0 h-1.5 rounded-t-sm"
-                  style={{
-                    background: `hsl(142 20% ${32 + i * 6}%)`,
-                    transform: "skewX(-20deg) translateX(3px)",
-                  }}
-                />
-                {/* Sublabel on bar */}
-                <div className="absolute bottom-2 left-0 right-0 px-1">
-                  <p className="text-[7px] text-white/70 text-center leading-tight hidden lg:block">{bar.sublabel}</p>
+                {/* Sublabel text on bar */}
+                <div className="absolute bottom-3 left-0 right-0 px-1.5 z-10">
+                  <p className="text-[7px] text-white/80 text-center leading-tight hidden lg:block">{bar.sublabel}</p>
                 </div>
-              </div>
-            </motion.div>
+
+                {/* Bottom trail/shadow extending down (like the reference extending lines at bottom) */}
+                <div
+                  className="absolute -bottom-6 left-[15%] right-[15%] h-6"
+                  style={{
+                    background: `linear-gradient(to bottom, hsl(142 20% ${shade}% / 0.3), transparent)`,
+                  }}
+                />
+              </motion.div>
+            </div>
           );
         })}
       </div>
