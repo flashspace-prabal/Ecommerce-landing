@@ -63,19 +63,6 @@ const stats = [
   { value: "3x", label: "Average Revenue Lift" },
 ];
 
-const revenueData = [
-  { month: "Jan", value: 45 },
-  { month: "Feb", value: 52 },
-  { month: "Mar", value: 61 },
-  { month: "Apr", value: 58 },
-  { month: "May", value: 72 },
-  { month: "Jun", value: 85 },
-  { month: "Jul", value: 78 },
-  { month: "Aug", value: 92 },
-  { month: "Sep", value: 88 },
-  { month: "Oct", value: 95 },
-  { month: "Nov", value: 100 },
-  { month: "Dec", value: 110 },
 ];
 
 const AnimatedCounter = ({ target, prefix = "", suffix = "" }: { target: number; prefix?: string; suffix?: string }) => {
