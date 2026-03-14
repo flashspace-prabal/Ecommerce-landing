@@ -168,6 +168,14 @@ const PartnerWithUs = () => {
 
   const [activeBenefit, setActiveBenefit] = useState(0);
 
+  // Auto-cycle through benefits every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveBenefit((prev) => (prev + 1) % benefits.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
