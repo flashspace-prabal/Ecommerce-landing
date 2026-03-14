@@ -281,8 +281,8 @@ const PartnerWithUs = () => {
                     key={b.title}
                     onClick={() => setActiveBenefit(i)}
                     layout
-                    className={`relative border border-border rounded-xl overflow-hidden cursor-pointer transition-colors duration-300 flex flex-col justify-between ${
-                      isActive ? "bg-primary/5 border-primary/30" : "hover:bg-accent/50"
+                    className={`relative border rounded-xl overflow-hidden cursor-pointer transition-all duration-300 flex flex-col justify-between ${
+                      isActive ? "bg-secondary/20 border-secondary" : "border-border hover:bg-accent/50"
                     }`}
                     style={{ flex: isActive ? "0 0 40%" : "1 1 0%" }}
                     transition={{ layout: { duration: 0.4, ease: "easeInOut" } }}
