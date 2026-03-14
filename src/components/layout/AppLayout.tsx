@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 import { Navbar } from "./Navbar";
 import { AppSidebar } from "./AppSidebar";
 import { SidebarProvider, useSidebar } from "./SidebarContext";
