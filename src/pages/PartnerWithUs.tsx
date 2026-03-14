@@ -395,7 +395,7 @@ const PartnerWithUs = () => {
         </section>
 
         {/* Referral Earnings Section */}
-        <section className="bg-secondary">
+        <section className="bg-secondary py-16 lg:py-24">
           <div className="container mx-auto px-8 lg:px-16">
             <div className="flex flex-col lg:flex-row items-end gap-8 lg:gap-12">
               <motion.div
