@@ -117,7 +117,7 @@ const StepsCarousel = () => {
                 }}
                 transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
                 onClick={() => setCurrent(index)}
-                className="absolute inset-0 rounded-2xl border border-white/15 backdrop-blur-md text-center cursor-pointer bg-white/5 p-8"
+                className="absolute inset-0 rounded-2xl border border-white/15 text-center cursor-pointer bg-white p-8"
                 style={{ zIndex: style.zIndex }}
               >
                 <div className={`rounded-xl bg-secondary/20 flex items-center justify-center mx-auto mb-4 ${
