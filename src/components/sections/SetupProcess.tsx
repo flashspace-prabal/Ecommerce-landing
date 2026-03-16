@@ -17,9 +17,6 @@ export const SetupProcess = () => {
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto mb-14"
         >
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">
-            How It Works
-          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-foreground mb-5 tracking-tight">
             Your path to a UAE business
           </h2>
