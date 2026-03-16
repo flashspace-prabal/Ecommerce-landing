@@ -125,11 +125,11 @@ const StepsCarousel = () => {
                 }`}>
                   <Icon className={isCenter ? "w-7 h-7 text-secondary" : "w-5 h-5 text-secondary"} />
                 </div>
-                <h3 className={`text-white font-medium mb-3 ${isCenter ? "text-xl" : "text-base"}`}>
+                <h3 className={`text-foreground font-medium mb-3 ${isCenter ? "text-xl" : "text-base"}`}>
                   {step.title}
                 </h3>
                 {isCenter && (
-                  <p className="text-white/60 text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {step.description}
                   </p>
                 )}
