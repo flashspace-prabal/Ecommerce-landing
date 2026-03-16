@@ -117,7 +117,7 @@ const StepsCarousel = () => {
                 }}
                 transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
                 onClick={() => setCurrent(index)}
-                className="absolute inset-0 rounded-2xl border border-white/15 backdrop-blur-md text-center cursor-pointer bg-white/5 p-8"
+                className="absolute inset-0 rounded-2xl border border-white/15 text-center cursor-pointer bg-white p-8"
                 style={{ zIndex: style.zIndex }}
               >
                 <div className={`rounded-xl bg-secondary/20 flex items-center justify-center mx-auto mb-4 ${
@@ -125,11 +125,11 @@ const StepsCarousel = () => {
                 }`}>
                   <Icon className={isCenter ? "w-7 h-7 text-secondary" : "w-5 h-5 text-secondary"} />
                 </div>
-                <h3 className={`text-white font-medium mb-3 ${isCenter ? "text-xl" : "text-base"}`}>
+                <h3 className={`text-foreground font-medium mb-3 ${isCenter ? "text-xl" : "text-base"}`}>
                   {step.title}
                 </h3>
                 {isCenter && (
-                  <p className="text-white/60 text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {step.description}
                   </p>
                 )}
