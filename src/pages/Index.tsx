@@ -14,9 +14,9 @@ const Index = () => {
         <HeroWithSearch />
         <BusinessSetupOverview />
         <SetupProcess />
-        <StatsByNumbers />
         <WhyChooseUs />
         <CostCalculator />
+        <StatsByNumbers />
       </main>
       <Footer />
     </AppLayout>
