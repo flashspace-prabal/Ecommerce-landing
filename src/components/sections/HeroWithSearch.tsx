@@ -100,40 +100,8 @@ export const HeroWithSearch = () => {
         </div>
       </div>
 
-      {/* Steps section - still inside hero bg */}
-      <div className="relative z-10 w-full px-6 lg:px-12 pb-20 lg:pb-28">
-        <div className="container mx-auto">
-          <motion.h2
-            custom={0.5}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-medium text-white mb-10 tracking-[-0.02em] text-center"
-          >
-            Your Roadmap to Business<br className="hidden sm:block" /> in the UAE
-          </motion.h2>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.title}
-                custom={0.55 + i * 0.08}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="group rounded-xl border border-white/15 bg-white/5 backdrop-blur-sm p-6 hover:bg-white/10 transition-all duration-300"
-              >
-                <div className="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center mb-4">
-                  <step.icon className="w-5 h-5 text-secondary" />
-                </div>
-                <h3 className="text-white font-medium text-base mb-1.5">{step.title}</h3>
-                <p className="text-white/60 text-sm leading-relaxed">{step.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+      {/* Steps carousel */}
+      <StepsCarousel />
       </div>
     </section>
   );
