@@ -15,7 +15,7 @@ const jurisdictions = ["Mainland", "Free Zone", "Offshore", "KSA", "Qatar"];
 
 export const HeroWithSearch = () => {
   return (
-    <section className="relative w-full overflow-hidden min-h-[calc(100svh-5rem)]">
+    <section className="relative w-full overflow-hidden min-h-[140svh]">
       {/* Background image */}
       <div className="absolute inset-0">
         <img
