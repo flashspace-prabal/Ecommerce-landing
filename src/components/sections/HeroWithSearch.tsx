@@ -120,10 +120,10 @@ const StepsCarousel = () => {
                 className="absolute inset-0 rounded-2xl border border-white/15 text-center cursor-pointer bg-white p-8"
                 style={{ zIndex: style.zIndex }}
               >
-                <div className={`rounded-xl bg-secondary/20 flex items-center justify-center mx-auto mb-4 ${
+                <div className={`rounded-xl bg-primary flex items-center justify-center mx-auto mb-4 ${
                   isCenter ? "w-14 h-14" : "w-10 h-10"
                 }`}>
-                  <Icon className={isCenter ? "w-7 h-7 text-secondary" : "w-5 h-5 text-secondary"} />
+                  <Icon className={`text-secondary ${isCenter ? "w-7 h-7" : "w-5 h-5"}`} />
                 </div>
                 <h3 className={`text-foreground font-medium mb-3 ${isCenter ? "text-xl" : "text-base"}`}>
                   {step.title}
