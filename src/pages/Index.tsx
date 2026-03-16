@@ -17,7 +17,6 @@ const Index = () => {
         <StatsByNumbers />
         <WhyChooseUs />
         <CostCalculator />
-        <CTA />
       </main>
       <Footer />
     </AppLayout>
