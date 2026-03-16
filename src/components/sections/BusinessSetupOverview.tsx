@@ -50,10 +50,8 @@ export const BusinessSetupOverview = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
               className={`relative flex flex-col justify-between p-8 lg:p-10 min-h-[320px] group hover:bg-muted/30 transition-colors duration-300 ${
-                index < setupTypes.length - 1 ? "border-r border-dashed border-border/70 sm:border-r lg:border-r" : ""
-              } ${index < 2 ? "sm:border-b sm:border-dashed sm:border-border/70 lg:border-b-0" : ""} ${
-                index === 1 ? "sm:border-r-0 lg:border-r lg:border-dashed lg:border-border/70" : ""
-              }`}
+                index < setupTypes.length - 1 ? "border-r border-dashed border-border/70" : ""
+              } ${index < 2 ? "sm:border-b sm:border-dashed sm:border-border/70 lg:border-b-0" : ""}`}
             >
               <div>
                 <h3 className="text-xl font-semibold text-foreground mb-4">{item.title}</h3>
