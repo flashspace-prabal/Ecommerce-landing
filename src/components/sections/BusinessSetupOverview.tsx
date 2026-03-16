@@ -40,7 +40,7 @@ export const BusinessSetupOverview = () => {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 border border-dashed border-border/70 rounded-none">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 border border-dashed border-border/70 rounded-none">
           {setupTypes.map((item, index) => (
             <motion.a
               key={item.title}
