@@ -93,7 +93,7 @@ const StepsCarousel = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="text-2xl sm:text-3xl lg:text-4xl font-medium text-white mb-10 tracking-[-0.02em] text-center"
+          className="text-xl sm:text-2xl lg:text-3xl font-medium text-white mb-10 tracking-[-0.02em] text-center"
         >
           From Vision to Reality — Here's How We Make It Happen
         </motion.h2>
