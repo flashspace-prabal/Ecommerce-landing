@@ -106,7 +106,7 @@ export const HeroWithSearch = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-medium text-white mb-10 tracking-[-0.02em]"
+            className="text-2xl sm:text-3xl lg:text-4xl font-medium text-white mb-10 tracking-[-0.02em] text-center"
           >
             Your Roadmap to Business<br className="hidden sm:block" /> in the UAE
           </motion.h2>
