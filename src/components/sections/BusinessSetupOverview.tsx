@@ -46,19 +46,19 @@ export const BusinessSetupOverview = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
-              className={`relative flex flex-col justify-between p-8 lg:p-10 min-h-[320px] group hover:bg-muted/30 transition-colors duration-300 border-t border-border/40 ${
+              className={`relative flex flex-col justify-between p-8 lg:p-10 min-h-[360px] group hover:bg-muted/30 transition-colors duration-300 border-t border-border/40 border-b-4 border-b-secondary ${
                 index < setupTypes.length - 1 ? "lg:border-r border-border/40" : ""
               } ${index === 0 ? "sm:border-r border-border/40" : ""}`}
             >
               <div>
-                <span className="text-muted-foreground text-sm mb-4 block">
+                <span className="text-muted-foreground text-sm mb-5 block">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="text-xl font-semibold text-foreground mb-4">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-5">{item.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{item.description}</p>
               </div>
               <div className="mt-8">
-                <div className="w-12 h-12 border border-border/40 flex items-center justify-center group-hover:border-primary group-hover:text-primary transition-colors">
+                <div className="w-12 h-12 rounded-md border border-border/40 flex items-center justify-center group-hover:border-primary group-hover:text-primary transition-colors">
                   <Plus className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                 </div>
               </div>
