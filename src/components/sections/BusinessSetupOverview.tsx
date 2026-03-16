@@ -17,11 +17,6 @@ const setupTypes = [
     description: "Register an offshore company for asset protection, international trading, and holding structures.",
     href: "#",
   },
-  {
-    title: "Visa Services",
-    description: "Residence visas, investor visas, golden visas, and family sponsorship — handled end-to-end.",
-    href: "#",
-  },
 ];
 
 export const BusinessSetupOverview = () => {
