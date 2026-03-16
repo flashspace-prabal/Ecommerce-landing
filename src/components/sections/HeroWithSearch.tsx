@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Building2 } from "lucide-react";
+import { ArrowRight, Globe } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -16,7 +16,6 @@ export const HeroWithSearch = () => {
     <section className="relative w-full overflow-hidden" style={{ backgroundColor: '#f8f7f4' }}>
       <div className="relative z-10 w-full flex flex-col items-center text-center px-6 py-24 sm:py-32 lg:py-40">
         <div className="max-w-[900px] w-full">
-          {/* Badge */}
           <motion.div
             custom={0}
             variants={fadeUp}
@@ -24,13 +23,12 @@ export const HeroWithSearch = () => {
             animate="visible"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 border border-border/30 mb-8"
           >
-            <Building2 className="w-4 h-4 text-primary" />
+            <Globe className="w-4 h-4 text-primary" />
             <span className="text-foreground/80 text-sm font-medium">
-              India & Global Workspace Solutions
+              UAE Business Setup & Corporate Services
             </span>
           </motion.div>
 
-          {/* Headline */}
           <motion.h1
             custom={0.1}
             variants={fadeUp}
@@ -38,11 +36,10 @@ export const HeroWithSearch = () => {
             animate="visible"
             className="text-[34px] sm:text-[48px] lg:text-[62px] font-medium tracking-[-0.03em] text-foreground leading-[1.12] mb-6"
           >
-            Find Workspaces and Business Solutions{" "}
-            <span className="text-primary italic">Anywhere</span>
+            Start and Grow Your Business{" "}
+            <span className="text-primary italic">in the UAE</span>
           </motion.h1>
 
-          {/* Subheadline */}
           <motion.p
             custom={0.25}
             variants={fadeUp}
@@ -50,10 +47,9 @@ export const HeroWithSearch = () => {
             animate="visible"
             className="text-muted-foreground mx-auto max-w-2xl text-base sm:text-lg leading-relaxed mb-10"
           >
-            Discover coworking spaces, virtual offices, and business setup services globally.
+            End-to-end company formation, visas, compliance, and business support services.
           </motion.p>
 
-          {/* CTAs */}
           <motion.div
             custom={0.4}
             variants={fadeUp}
@@ -65,7 +61,7 @@ export const HeroWithSearch = () => {
               size="lg"
               className="bg-primary text-primary-foreground hover:bg-primary/90 font-normal px-8 h-12 rounded-xl shadow-lg hover:shadow-xl transition-all"
             >
-              Explore Workspaces
+              Start Your Business
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
             <Button
@@ -73,7 +69,7 @@ export const HeroWithSearch = () => {
               variant="outline"
               className="font-medium px-8 h-12 rounded-xl border-foreground/20 text-foreground hover:bg-foreground/5 hover:border-foreground/30 bg-transparent"
             >
-              Start Your Business
+              Talk to an Expert
             </Button>
           </motion.div>
         </div>
