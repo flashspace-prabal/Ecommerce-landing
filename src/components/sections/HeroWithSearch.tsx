@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   MessageSquare,
@@ -8,6 +9,8 @@ import {
   CreditCard,
   Landmark,
   PhoneCall,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import heroBg from "@/assets/hero-dubai-skyline.jpg";
 
