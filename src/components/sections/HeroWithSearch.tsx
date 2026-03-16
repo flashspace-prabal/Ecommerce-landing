@@ -132,72 +132,74 @@ const StepsCarousel = () => {
 
 export const HeroWithSearch = () => {
   return (
-    <section className="relative w-full overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <img
-          src={heroBg}
-          alt="Dubai skyline"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(142,20%,15%)]/70 via-[hsl(142,20%,15%)]/40 to-[hsl(142,20%,15%)]/80" />
-      </div>
+    <>
+      <section className="relative w-full overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img
+            src={heroBg}
+            alt="Dubai skyline"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[hsl(142,20%,15%)]/70 via-[hsl(142,20%,15%)]/40 to-[hsl(142,20%,15%)]/80" />
+        </div>
 
-      {/* Hero content - left aligned */}
-      <div className="relative z-10 w-full px-6 lg:px-12 pt-32 lg:pt-40 pb-16">
-        <div className="container mx-auto">
-          <div className="max-w-[650px]">
-            <motion.h1
-              custom={0.1}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="text-[28px] sm:text-[38px] lg:text-[48px] font-medium tracking-[-0.03em] text-white leading-[1.15] mb-6"
-            >
-              Launch & Scale Your<br />
-              <span className="italic">Business in the UAE</span>
-            </motion.h1>
-
-            <motion.div
-              custom={0.25}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="flex items-center gap-2 sm:gap-3 mb-10 flex-wrap"
-            >
-              {jurisdictions.map((item, i) => (
-                <span key={item} className="flex items-center gap-2 sm:gap-3">
-                  <span className="text-white/90 text-sm sm:text-base font-medium hover:text-white cursor-pointer transition-colors">
-                    {item}
-                  </span>
-                  {i < jurisdictions.length - 1 && (
-                    <span className="text-white/40">|</span>
-                  )}
-                </span>
-              ))}
-            </motion.div>
-
-            <motion.div
-              custom={0.4}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-            >
-              <Button
-                size="lg"
-                variant="white"
-                className="font-semibold px-10 h-12 rounded-lg uppercase tracking-wider text-sm"
+        {/* Hero content - left aligned */}
+        <div className="relative z-10 w-full px-6 lg:px-12 pt-32 lg:pt-40 pb-20 lg:pb-28">
+          <div className="container mx-auto">
+            <div className="max-w-[650px]">
+              <motion.h1
+                custom={0.1}
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                className="text-[28px] sm:text-[38px] lg:text-[48px] font-medium tracking-[-0.03em] text-white leading-[1.15] mb-6"
               >
-                <MessageSquare className="w-4 h-4 mr-2" />
-                Book a Call
-              </Button>
-            </motion.div>
+                Launch & Scale Your<br />
+                <span className="italic">Business in the UAE</span>
+              </motion.h1>
+
+              <motion.div
+                custom={0.25}
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                className="flex items-center gap-2 sm:gap-3 mb-10 flex-wrap"
+              >
+                {jurisdictions.map((item, i) => (
+                  <span key={item} className="flex items-center gap-2 sm:gap-3">
+                    <span className="text-white/90 text-sm sm:text-base font-medium hover:text-white cursor-pointer transition-colors">
+                      {item}
+                    </span>
+                    {i < jurisdictions.length - 1 && (
+                      <span className="text-white/40">|</span>
+                    )}
+                  </span>
+                ))}
+              </motion.div>
+
+              <motion.div
+                custom={0.4}
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+              >
+                <Button
+                  size="lg"
+                  variant="white"
+                  className="font-semibold px-10 h-12 rounded-lg uppercase tracking-wider text-sm"
+                >
+                  <MessageSquare className="w-4 h-4 mr-2" />
+                  Book a Call
+                </Button>
+              </motion.div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Steps carousel */}
+      {/* Steps carousel — separate section with white bg */}
       <StepsCarousel />
-    </section>
+    </>
   );
 };
