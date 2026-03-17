@@ -80,7 +80,7 @@ export const BusinessSetupOverview = () => {
                   <span className={`text-sm mb-5 block transition-colors duration-300 ${isHovered ? "text-white/70" : "text-muted-foreground"}`}>
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <h3 className={`text-2xl lg:text-3xl font-bold mb-5 transition-colors duration-300 ${isHovered ? "text-white" : "text-foreground"}`}>
+                  <h3 className={`text-2xl lg:text-3xl font-medium mb-5 transition-colors duration-300 ${isHovered ? "text-white" : "text-foreground"}`}>
                     {item.title}
                   </h3>
                   <p className={`leading-relaxed transition-colors duration-300 ${isHovered ? "text-white/80" : "text-muted-foreground"}`}>
