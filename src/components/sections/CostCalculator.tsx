@@ -678,56 +678,40 @@ export const CostCalculator = () => {
           {/* LEFT PANEL — Steps + Content */}
           <div className="flex-1 min-w-0">
             {/* Progress Steps — Horizontal */}
-            <div className="flex items-center gap-1 mb-6 overflow-x-auto pb-1">
-              {progressSteps.map((s, i) => {
-                const isActive = i === step;
-                const isDone = i < step;
-                const isLast = i === progressSteps.length - 1;
-                return (
-                  <div key={s.label} className="flex items-center">
+            {/* Progress Bar */}
+            <div className="mb-8">
+              <div className="flex items-center justify-between mb-3">
+                {progressSteps.map((s, i) => {
+                  const isActive = i === step;
+                  const isDone = i < step;
+                  return (
                     <button
+                      key={s.label}
                       onClick={() => {
                         if (i < step) { setDirection(-1); setStep(i); }
                       }}
-                      className={`flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all duration-300 whitespace-nowrap ${
-                        isActive
-                          ? "bg-primary/10 text-primary"
-                          : isDone
-                          ? "text-foreground/70 hover:bg-muted/50"
-                          : "text-muted-foreground"
-                      } ${i <= step ? "cursor-pointer" : "cursor-default"}`}
+                      className={`flex flex-col items-center gap-1.5 transition-all duration-300 ${
+                        i <= step ? "cursor-pointer" : "cursor-default"
+                      }`}
                     >
-                      <div
-                        className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-bold transition-all duration-300 ${
-                          isActive
-                            ? "bg-primary text-primary-foreground"
-                            : isDone
-                            ? "bg-foreground text-background"
-                            : "bg-border text-muted-foreground"
-                        }`}
-                      >
-                        {isDone ? (
-                          <Check className="w-3.5 h-3.5" />
-                        ) : (
-                          <span>{i + 1}</span>
-                        )}
-                      </div>
-                      <span
-                        className={`text-xs font-semibold tracking-wide hidden sm:inline ${
-                          isActive ? "text-primary" : ""
-                        }`}
-                      >
+                      <span className={`text-[11px] font-semibold tracking-wide transition-colors duration-300 ${
+                        isActive ? "text-primary" : isDone ? "text-foreground/70" : "text-muted-foreground/60"
+                      }`}>
                         {s.label}
                       </span>
                     </button>
-                    {!isLast && (
-                      <div className={`w-4 sm:w-6 h-[2px] rounded-full mx-0.5 transition-colors duration-300 ${
-                        isDone ? "bg-foreground/30" : "bg-border"
-                      }`} />
-                    )}
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
+              {/* Continuous progress track */}
+              <div className="relative h-1.5 rounded-full bg-foreground/10 overflow-hidden">
+                <motion.div
+                  className="absolute inset-y-0 left-0 rounded-full bg-primary"
+                  initial={false}
+                  animate={{ width: `${((step) / (progressSteps.length - 1)) * 100}%` }}
+                  transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                />
+              </div>
             </div>
 
             {/* Step Content Card */}
