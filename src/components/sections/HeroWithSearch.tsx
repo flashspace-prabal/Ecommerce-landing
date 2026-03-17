@@ -161,11 +161,16 @@ export const HeroWithSearch = () => {
     <section className="relative w-full overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
-        <img
-          src={heroBg}
-          alt="Dubai skyline"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={heroFallback}
           className="w-full h-full object-cover"
-        />
+        >
+          <source src={heroVideo.url} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-[hsl(142,20%,15%)]/70 via-[hsl(142,20%,15%)]/40 to-[hsl(142,20%,15%)]/80" />
       </div>
 
