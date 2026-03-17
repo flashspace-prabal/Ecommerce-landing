@@ -647,7 +647,7 @@ export const CostCalculator = () => {
           className="flex flex-col lg:flex-row gap-8 lg:gap-10"
         >
           {/* LEFT PANEL — Steps + Content */}
-          <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0 lg:basis-1/2">
             {/* Progress Steps — Horizontal */}
             {/* Progress Bar */}
             <div className="mb-8">
