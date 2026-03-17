@@ -185,16 +185,16 @@ export const CostCalculator = () => {
                     whileHover={{ y: -3 }}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => setSelectedActivity(i)}
-                    className={`${cardBase} p-5 sm:p-7 text-center ${selected ? cardSelected : cardDefault}`}
+                    className={`${cardBase} p-6 sm:p-8 text-center ${selected ? cardSelected : cardDefault}`}
                   >
                     <div
-                      className={`w-12 h-12 rounded-xl mx-auto mb-3 flex items-center justify-center transition-colors duration-300 ${
+                      className={`w-14 h-14 rounded-xl mx-auto mb-4 flex items-center justify-center transition-colors duration-300 ${
                         selected
                           ? "bg-primary/15 text-primary"
-                          : "bg-foreground/[0.05] text-foreground"
+                          : "bg-foreground/[0.06] text-foreground"
                       }`}
                     >
-                      <Icon className="w-6 h-6" strokeWidth={1.6} />
+                      <Icon className="w-7 h-7" strokeWidth={1.5} />
                     </div>
                     <p className="font-semibold text-sm text-foreground">{a.label}</p>
                     <p className="text-xs mt-0.5 text-muted-foreground">{a.desc}</p>
