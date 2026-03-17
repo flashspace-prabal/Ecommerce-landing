@@ -15,7 +15,7 @@ const Index = () => {
         <HeroWithSearch />
         <BusinessSetupOverview />
         <SetupProcess />
-        <CostCalculator />
+        
         <ClientVoices />
         <FAQSection />
         <StatsByNumbers />
