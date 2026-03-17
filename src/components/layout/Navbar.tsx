@@ -183,14 +183,15 @@ export const Navbar = () => {
                       className="absolute top-full left-0 mt-1 w-56 py-2 bg-card rounded-xl shadow-lg border border-border max-h-[70vh] overflow-y-auto"
                     >
                       {link.dropdown.map((item) => (
-                        <a
+                        <Link
                           key={item.label}
-                          href={item.href}
+                          to={item.href}
                           className="flex items-center gap-3 px-4 py-2.5 text-sm font-normal text-foreground/80 hover:text-foreground hover:bg-primary/5 transition-colors"
+                          onClick={() => setActiveDropdown(null)}
                         >
                           <item.icon className="w-4 h-4 text-primary/70 shrink-0" />
                           {item.label}
-                        </a>
+                        </Link>
                       ))}
                     </motion.div>
                   )}
