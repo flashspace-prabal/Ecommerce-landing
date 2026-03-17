@@ -48,7 +48,7 @@ interface ServicePageTemplateProps {
 }
 
 export const ServicePageTemplate = ({ page }: ServicePageTemplateProps) => {
-  useEffect(() => {
+  const bgImage = page.heroImage || heroImages[page.slug] || heroDubai;
     window.scrollTo(0, 0);
     document.title = page.metaTitle;
     const desc = document.querySelector('meta[name="description"]');
