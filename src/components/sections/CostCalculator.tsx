@@ -735,7 +735,7 @@ export const CostCalculator = () => {
           </div>
 
           {/* RIGHT PANEL — Sticky Cost Summary (desktop only) */}
-          <div className="hidden lg:block w-[320px] shrink-0">
+          <div className="hidden lg:block flex-1 lg:basis-1/2">
             <div className="sticky top-28">
               <CostSummary
                 step={step}
