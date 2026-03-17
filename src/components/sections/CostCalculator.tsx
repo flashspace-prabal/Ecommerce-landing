@@ -474,10 +474,10 @@ export const CostCalculator = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="flex gap-14 lg:gap-20"
+          className="flex gap-10 lg:gap-16"
         >
           {/* LEFT — Vertical Progress Sidebar (desktop) */}
-          <div className="hidden lg:flex flex-col items-center shrink-0 w-[90px] pt-1">
+          <div className="hidden lg:flex flex-col items-center shrink-0 w-[100px] pt-1">
             {progressSteps.map((s, i) => {
               const isActive = i === step;
               const isDone = i < step;
