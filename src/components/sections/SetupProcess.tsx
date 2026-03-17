@@ -99,7 +99,7 @@ export const SetupProcess = () => {
                     </p>
                     <ul className="space-y-1.5">
                       {item.details.map((d) => (
-                        <li key={d} className="flex items-center gap-2 text-secondary/40 text-sm">
+                        <li key={d} className="flex items-center gap-2 text-secondary/70 text-sm">
                           <span className="w-1 h-1 rounded-full bg-secondary/30 shrink-0" />
                           {d}
                         </li>
