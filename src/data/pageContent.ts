@@ -19,7 +19,9 @@ export interface Testimonial {
 export interface PageContent {
   slug: string;
   heroTitle: string;
+  heroHighlight?: string;
   heroSubtitle: string;
+  heroImage?: string;
   inquiryType: string;
   trustLogos: string[];
   features: Feature[];
