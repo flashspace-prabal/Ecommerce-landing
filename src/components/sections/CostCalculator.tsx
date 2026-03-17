@@ -105,11 +105,11 @@ const AnimatedTotal = ({ value }: { value: number }) => {
 
 /* ── Shared card styles ── */
 const cardBase =
-  "relative rounded-2xl border-2 transition-all duration-300 cursor-pointer";
+  "relative rounded-2xl transition-all duration-300 cursor-pointer";
 const cardDefault =
-  "border-transparent bg-muted/50 hover:shadow-md hover:bg-muted/70";
+  "bg-transparent hover:bg-primary/[0.04]";
 const cardSelected =
-  "border-primary bg-secondary/30 shadow-[0_4px_24px_-4px_hsl(var(--primary)/0.18)]";
+  "bg-primary/10 shadow-[0_4px_24px_-4px_hsl(var(--primary)/0.18)]";
 
 /* ── Prices ── */
 const basePrices = [8500, 12000, 9500, 15000, 7500, 18000];
