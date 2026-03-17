@@ -331,12 +331,9 @@ export const CostCalculator = () => {
       case 0:
         return (
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1">
+            <h3 className="text-lg sm:text-xl font-bold text-foreground mb-5">
               What's your business activity?
             </h3>
-            <p className="text-muted-foreground text-sm mb-5">
-              Select the category that best describes your business.
-            </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {activities.map((a, i) => {
                 const Icon = a.icon;
@@ -357,22 +354,14 @@ export const CostCalculator = () => {
                     <div
                       className={`w-10 h-10 rounded-xl mx-auto mb-2 flex items-center justify-center transition-colors duration-300 ${
                         selected
-                          ? "bg-primary/15 text-primary"
+                          ? "bg-primary-foreground/20 text-primary-foreground"
                           : "bg-foreground/[0.06] text-foreground"
                       }`}
                     >
                       <Icon className="w-5 h-5" strokeWidth={1.5} />
                     </div>
-                    <p className="font-semibold text-sm text-foreground">{a.label}</p>
-                    <p className="text-[11px] mt-0.5 text-muted-foreground">{a.desc}</p>
-                    {selected && !isOther && (
-                      <motion.div
-                        layoutId="tile-check"
-                        className="absolute top-2 right-2 w-5 h-5 rounded-full bg-primary flex items-center justify-center"
-                      >
-                        <Check className="w-3 h-3 text-primary-foreground" />
-                      </motion.div>
-                    )}
+                    <p className={`font-semibold text-sm ${selected ? "text-primary-foreground" : "text-foreground"}`}>{a.label}</p>
+                    <p className={`text-[11px] mt-0.5 ${selected ? "text-primary-foreground/70" : "text-muted-foreground"}`}>{a.desc}</p>
                     {isOther && selected && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
@@ -385,7 +374,7 @@ export const CostCalculator = () => {
                           onChange={(e) => setCustomActivity(e.target.value)}
                           onClick={(e) => e.stopPropagation()}
                           placeholder="Describe your activity…"
-                          className="w-full text-xs px-3 py-1.5 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
+                          className="w-full text-xs px-3 py-1.5 rounded-lg border border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none focus:ring-1 focus:ring-primary-foreground/40"
                         />
                       </motion.div>
                     )}
