@@ -439,23 +439,23 @@ export const CostCalculator = () => {
   };
 
   return (
-    <section className="py-20 lg:py-28 bg-secondary relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-[#FDFBF7] relative overflow-hidden">
       {/* Subtle geometric dot pattern */}
       <div
-        className="absolute inset-0 opacity-[0.06]"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--primary)) 0.8px, transparent 0)`,
           backgroundSize: "48px 48px",
         }}
       />
 
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
         {/* Header — clean, no tag/badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-14"
+          className="text-center max-w-3xl mx-auto mb-12"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary mb-4 tracking-tight">
             Calculate Your Business Setup Cost
@@ -465,18 +465,27 @@ export const CostCalculator = () => {
           </p>
         </motion.div>
 
-        {/* Main Card */}
+        {/* Main Card — wider */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="max-w-3xl mx-auto"
+          className="max-w-5xl mx-auto"
         >
-          <div className="rounded-3xl bg-card/80 backdrop-blur-xl border border-primary/[0.08] shadow-[0_20px_60px_-15px_hsl(142,20%,26%,0.1)] overflow-hidden">
+          <div className="rounded-3xl bg-card backdrop-blur-xl border border-primary/[0.08] shadow-[0_24px_80px_-16px_hsl(142,20%,26%,0.12)] overflow-hidden">
+            {/* Top progress bar */}
+            <div className="h-1.5 bg-primary/[0.06] relative">
+              <motion.div
+                className="h-full bg-primary rounded-r-full"
+                animate={{ width: `${((step + 1) / progressSteps.length) * 100}%` }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              />
+            </div>
+
             {/* Progress Timeline */}
-            <div className="border-b border-primary/[0.06] px-6 py-6">
-              <div className="flex items-center justify-between max-w-lg mx-auto relative">
+            <div className="border-b border-primary/[0.06] px-6 lg:px-10 py-6">
+              <div className="flex items-center justify-between max-w-2xl mx-auto relative">
                 {/* Connecting line */}
                 <div className="absolute top-5 left-[10%] right-[10%] h-[1px] bg-primary/10" />
                 <motion.div
@@ -506,27 +515,27 @@ export const CostCalculator = () => {
                             className="absolute inset-0 rounded-full border-2 border-primary/40"
                             animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
                             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                            style={{ margin: "-4px" }}
+                            style={{ margin: "-5px" }}
                           />
                         )}
                         <div
-                          className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-400 ${
+                          className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-400 ${
                             isActive
-                              ? "bg-primary text-secondary shadow-[0_0_20px_-2px_hsl(142,20%,26%,0.35)]"
+                              ? "bg-primary text-secondary shadow-[0_0_24px_-2px_hsl(142,20%,26%,0.4)]"
                               : isDone
                               ? "bg-primary text-secondary"
                               : "bg-primary/[0.08] text-primary/50 group-hover:bg-primary/[0.14]"
                           }`}
                         >
                           {isDone ? (
-                            <Check className="w-4 h-4" />
+                            <Check className="w-4.5 h-4.5" />
                           ) : (
-                            <s.icon className="w-4 h-4" />
+                            <s.icon className="w-4.5 h-4.5" />
                           )}
                         </div>
                       </div>
                       <span
-                        className={`text-[10px] font-semibold tracking-wider uppercase transition-colors ${
+                        className={`text-[11px] font-semibold tracking-wider uppercase transition-colors ${
                           isActive
                             ? "text-primary"
                             : isDone
@@ -543,7 +552,7 @@ export const CostCalculator = () => {
             </div>
 
             {/* Step Content */}
-            <div className="p-6 sm:p-10 min-h-[420px] relative overflow-hidden">
+            <div className="px-8 sm:px-12 lg:px-16 py-10 min-h-[440px] relative overflow-hidden">
               <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
                   key={step}
@@ -561,11 +570,11 @@ export const CostCalculator = () => {
 
             {/* Footer Navigation */}
             {step < 5 && (
-              <div className="border-t border-primary/[0.06] px-6 sm:px-10 py-5 flex items-center justify-between">
+              <div className="border-t border-primary/[0.06] px-8 sm:px-12 lg:px-16 py-6 flex items-center justify-between">
                 <button
                   onClick={goBack}
                   disabled={step === 0}
-                  className="inline-flex items-center gap-1 text-sm text-primary/50 hover:text-primary transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="inline-flex items-center gap-1.5 text-sm text-primary/50 hover:text-primary transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   Back
@@ -575,7 +584,7 @@ export const CostCalculator = () => {
                 <div className="hidden sm:flex items-center gap-2">
                   <span className="text-xs text-muted-foreground">Est.</span>
                   <span
-                    className={`text-lg font-bold text-primary transition-all duration-500 ${
+                    className={`text-xl font-bold text-primary transition-all duration-500 ${
                       step < 3 ? "blur-sm select-none" : ""
                     }`}
                   >
@@ -583,11 +592,11 @@ export const CostCalculator = () => {
                   </span>
                 </div>
 
-                {/* Premium pill CTA */}
+                {/* Premium pill CTA — larger */}
                 <button
                   onClick={goNext}
                   disabled={!canProceed()}
-                  className="inline-flex items-center gap-2 bg-primary text-secondary font-semibold px-8 h-11 rounded-full text-sm tracking-wide hover:shadow-[0_0_24px_-4px_hsl(142,20%,26%,0.35)] transition-all duration-300 hover:scale-[1.03] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
+                  className="inline-flex items-center gap-2 bg-primary text-secondary font-semibold px-10 h-12 rounded-full text-sm tracking-wide hover:shadow-[0_0_30px_-4px_hsl(142,20%,26%,0.4)] transition-all duration-300 hover:scale-[1.03] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
                 >
                   {step === 4 ? "See Estimate" : "Next Step"}
                   <ChevronRight className="w-4 h-4" />
@@ -596,7 +605,7 @@ export const CostCalculator = () => {
             )}
 
             {step === 5 && (
-              <div className="border-t border-primary/[0.06] px-6 sm:px-10 py-5 flex items-center justify-center">
+              <div className="border-t border-primary/[0.06] px-8 sm:px-12 lg:px-16 py-6 flex items-center justify-center">
                 <button
                   onClick={() => {
                     setStep(0);
