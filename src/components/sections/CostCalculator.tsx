@@ -449,10 +449,10 @@ export const CostCalculator = () => {
                     onClick={() => setSelectedVisas(i)}
                     className={`${cardBase} p-5 text-center ${selected ? cardSelected : cardDefault}`}
                   >
-                    <p className={`text-2xl font-bold mb-1 ${selected ? "text-primary" : "text-foreground"}`}>
+                    <p className={`text-2xl font-bold mb-1 ${selected ? "text-primary-foreground" : "text-foreground"}`}>
                       {v.label.split(" ")[0]}
                     </p>
-                    <p className="text-xs text-muted-foreground">{v.desc}</p>
+                    <p className={`text-xs ${selected ? "text-primary-foreground/70" : "text-muted-foreground"}`}>{v.desc}</p>
                   </motion.button>
                 );
               })}
