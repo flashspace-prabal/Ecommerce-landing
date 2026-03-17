@@ -130,7 +130,7 @@ export const CostCalculator = () => {
   const canProceed = () => {
     if (step === 0) {
       if (selectedActivity === null) return false;
-      if (selectedActivity === 8 && customActivity.trim() === "") return false;
+      if (selectedActivity === 5 && customActivity.trim() === "") return false;
       return true;
     }
     if (step === 1) return selectedJurisdiction !== null;
