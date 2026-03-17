@@ -7,6 +7,8 @@ import { TrustLogos } from "./TrustLogos";
 import { FeatureGrid } from "./FeatureGrid";
 import { FAQBlock } from "./FAQBlock";
 import { ReviewCarousel } from "./ReviewCarousel";
+import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
 import type { PageContent } from "@/data/pageContent";
 
 interface ServicePageTemplateProps {
@@ -24,21 +26,73 @@ export const ServicePageTemplate = ({ page }: ServicePageTemplateProps) => {
   return (
     <AppLayout>
       <main>
-        {/* Hero */}
-        <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-20 bg-foreground text-background overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-foreground via-foreground to-primary/30" />
-          <div className="container mx-auto px-4 lg:px-8 max-w-[1200px] relative z-10">
-            <div className="max-w-2xl">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.1] mb-4">
-                {page.heroTitle}
-              </h1>
-              <p className="text-background/70 text-lg leading-relaxed mb-6 max-w-xl">
-                {page.heroSubtitle}
-              </p>
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl h-12 px-7">
+        {/* Hero — Center-aligned, premium open layout */}
+        <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+          {/* Background image */}
+          {page.heroImage && (
+            <img
+              src={page.heroImage}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover"
+              loading="eager"
+            />
+          )}
+          {/* Dark overlay for contrast */}
+          <div className="absolute inset-0 bg-foreground/50" />
+
+          {/* Content */}
+          <div className="relative z-10 container mx-auto px-4 lg:px-8 max-w-[900px] text-center py-28 lg:py-36">
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1] mb-5 text-white"
+            >
+              {page.heroTitle}
+              {page.heroHighlight && (
+                <>
+                  {" "}
+                  <span className="text-secondary">{page.heroHighlight}</span>
+                </>
+              )}
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="text-white/80 text-lg lg:text-xl leading-relaxed mb-8 max-w-2xl mx-auto"
+            >
+              {page.heroSubtitle}
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <Button
+                size="lg"
+                className="bg-secondary hover:bg-secondary/90 text-secondary-foreground rounded-xl h-12 px-8 font-semibold text-base shadow-lg"
+              >
                 Get Started
               </Button>
-            </div>
+            </motion.div>
+
+            {/* Scroll indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="absolute bottom-8 left-1/2 -translate-x-1/2"
+            >
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+              >
+                <ChevronDown className="w-6 h-6 text-secondary" />
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 
