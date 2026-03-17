@@ -59,7 +59,7 @@ export const BusinessSetupOverview = () => {
                 transition={{ delay: index * 0.08 }}
                 onMouseEnter={() => setHovered(index)}
                 onMouseLeave={() => setHovered(null)}
-                className="relative flex flex-col justify-between p-8 lg:p-10 min-h-[360px] group overflow-hidden border-b-2 border-border/60"
+                className="relative flex flex-col justify-between p-8 lg:p-10 min-h-[360px] group overflow-hidden border-b-4 border-secondary"
               >
                 {/* Background image on hover */}
                 <div
