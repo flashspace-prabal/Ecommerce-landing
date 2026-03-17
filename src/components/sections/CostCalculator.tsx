@@ -108,9 +108,9 @@ const AnimatedTotal = ({ value }: { value: number }) => {
 const cardBase =
   "relative rounded-2xl border-2 transition-all duration-300 cursor-pointer";
 const cardDefault =
-  "border-transparent bg-card hover:shadow-md";
+  "border-transparent bg-muted/50 hover:shadow-md hover:bg-muted/70";
 const cardSelected =
-  "border-primary bg-[hsl(54_96%_88%/0.18)] shadow-[0_0_24px_-4px_hsl(var(--primary)/0.12)]";
+  "border-primary bg-secondary/30 shadow-[0_4px_24px_-4px_hsl(var(--primary)/0.18)]";
 
 /* ── Component ─────────────────────────────────────── */
 
