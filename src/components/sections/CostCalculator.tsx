@@ -436,7 +436,7 @@ export const CostCalculator = () => {
                   <div className="flex justify-between text-sm border-b border-foreground/10 pb-2">
                     <span className="text-muted-foreground">Activity</span>
                     <span className="font-medium text-foreground">
-                      {selectedActivity === 8 ? customActivity || "Other" : activities[selectedActivity].label}
+                      {selectedActivity === 5 ? customActivity || "Other" : activities[selectedActivity].label}
                     </span>
                   </div>
                 )}
