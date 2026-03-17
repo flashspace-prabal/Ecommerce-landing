@@ -150,8 +150,8 @@ export const CostCalculator = () => {
 
   /* ── Tile styles — borderless with gold-tinted bg ── */
   const tileBase = "rounded-2xl transition-all duration-300 cursor-pointer border-2";
-  const tileDefault = "bg-secondary/[0.04] border-transparent hover:border-secondary/40 hover:scale-[1.03] hover:shadow-[0_8px_30px_-8px_hsl(43,96%,50%,0.15)]";
-  const tileSelected = "border-secondary bg-secondary/[0.08] shadow-[0_8px_30px_-8px_hsl(43,96%,50%,0.2)] scale-[1.02]";
+  const tileDefault = "bg-secondary/[0.04] border-transparent hover:border-secondary/40 hover:scale-[1.03] hover:shadow-[0_8px_30px_-8px_hsl(var(--secondary),0.15)]";
+  const tileSelected = "border-secondary bg-secondary/[0.08] shadow-[0_8px_30px_-8px_hsl(var(--secondary),0.2)] scale-[1.02]";
 
   /* ── Render steps ── */
   const renderStep = () => {
@@ -411,7 +411,7 @@ export const CostCalculator = () => {
                 )}
               </div>
 
-              <button className="inline-flex items-center gap-2 bg-secondary text-foreground font-semibold px-10 h-12 rounded-full text-sm uppercase tracking-wider hover:shadow-[0_0_30px_-4px_hsl(43,96%,50%,0.4)] transition-all duration-300 hover:scale-[1.02]">
+              <button className="inline-flex items-center gap-2 bg-secondary text-foreground font-semibold px-10 h-12 rounded-full text-sm uppercase tracking-wider hover:shadow-[0_0_30px_-4px_hsl(var(--secondary),0.4)] transition-all duration-300 hover:scale-[1.02]">
                 Get a Detailed Quote
                 <ArrowRight className="w-4 h-4" />
               </button>
@@ -494,7 +494,7 @@ export const CostCalculator = () => {
                       <div
                         className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-400 ${
                           isActive
-                            ? "bg-secondary text-foreground shadow-[0_0_24px_-4px_hsl(43,96%,50%,0.5)]"
+                            ? "bg-secondary text-foreground shadow-[0_0_24px_-4px_hsl(var(--secondary),0.5)]"
                             : isDone
                             ? "bg-secondary text-foreground"
                             : "bg-foreground/[0.06] text-muted-foreground group-hover:bg-foreground/[0.1]"
