@@ -6,7 +6,6 @@ import {
   Briefcase,
   Utensils,
   ShoppingCart,
-  Stethoscope,
   Building2,
   MapPin,
   Users,
@@ -16,8 +15,6 @@ import {
   ChevronLeft,
   Check,
   ArrowRight,
-  GraduationCap,
-  Plane,
   PenLine,
 } from "lucide-react";
 
