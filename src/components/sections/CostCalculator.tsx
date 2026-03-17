@@ -447,7 +447,7 @@ export const CostCalculator = () => {
   };
 
   return (
-    <section className="py-20 lg:py-28 relative overflow-hidden bg-gradient-to-b from-background to-muted/40">
+    <section className="py-20 lg:py-28 relative overflow-hidden" style={{ backgroundColor: '#F9F9F9' }}>
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12 relative z-10">
         {/* ── Header ── */}
         <motion.div
