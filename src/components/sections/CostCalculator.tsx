@@ -485,22 +485,12 @@ export const CostCalculator = () => {
                     className={`${cardBase} p-4 text-left flex items-center justify-between ${selected ? cardSelected : cardDefault}`}
                   >
                     <div>
-                      <p className="font-bold text-sm text-foreground">{o.label}</p>
-                      <p className="text-xs text-muted-foreground mt-0.5">{o.desc}</p>
+                      <p className={`font-bold text-sm ${selected ? "text-primary-foreground" : "text-foreground"}`}>{o.label}</p>
+                      <p className={`text-xs mt-0.5 ${selected ? "text-primary-foreground/70" : "text-muted-foreground"}`}>{o.desc}</p>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <span className={`text-xs font-bold ${selected ? "text-primary" : "text-muted-foreground"}`}>
-                        {o.price}
-                      </span>
-                      {selected && (
-                        <motion.div
-                          layoutId="tile-check-o"
-                          className="w-5 h-5 rounded-full bg-primary flex items-center justify-center"
-                        >
-                          <Check className="w-3 h-3 text-primary-foreground" />
-                        </motion.div>
-                      )}
-                    </div>
+                    <span className={`text-xs font-bold ${selected ? "text-primary-foreground" : "text-muted-foreground"}`}>
+                      {o.price}
+                    </span>
                   </motion.button>
                 );
               })}
