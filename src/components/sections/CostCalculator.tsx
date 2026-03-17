@@ -516,7 +516,7 @@ export const CostCalculator = () => {
                       </div>
                     </div>
                     <span
-                      className={`text-[10px] font-semibold tracking-wider uppercase transition-colors whitespace-nowrap ${
+                      className={`text-[11px] font-bold tracking-wider uppercase transition-colors whitespace-nowrap ${
                         isActive ? "text-foreground" : isDone ? "text-foreground/70" : "text-muted-foreground"
                       }`}
                     >
