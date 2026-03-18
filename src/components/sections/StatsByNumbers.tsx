@@ -66,7 +66,7 @@ export const StatsByNumbers = () => {
         }}
       />
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60" style={{ zIndex: 0 }} />
+      <div className="absolute inset-0 bg-black/40" style={{ zIndex: 0 }} />
 
       <div className="relative z-10 container mx-auto px-4 lg:px-8 py-24 lg:py-32">
         {/* Headline */}
