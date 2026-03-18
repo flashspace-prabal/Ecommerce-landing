@@ -352,9 +352,9 @@ export const CostCalculator = () => {
                     className={`${cardBase} p-4 text-center ${selected ? cardSelected : cardDefault}`}
                   >
                     <div
-                      className={`w-10 h-10 rounded-xl mx-auto mb-2 flex items-center justify-center transition-colors duration-300 ${
+                      className={`w-10 h-10 rounded-xl mx-auto mb-2 flex items-center justify-center transition-all duration-300 ${
                         selected
-                          ? "bg-primary-foreground/20 text-primary-foreground"
+                          ? "bg-secondary/30 text-secondary shadow-[0_0_16px_hsla(54,96%,88%,0.4)]"
                           : "bg-foreground/[0.06] text-foreground"
                       }`}
                     >
