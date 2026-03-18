@@ -161,7 +161,7 @@ const CostSummary = ({
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
-          <p className="text-4xl font-bold text-foreground tracking-tight">
+          <p className="text-4xl font-bold text-foreground tracking-tight font-sans">
             AED <AnimatedTotal value={estimateTotal} />
           </p>
         </motion.div>
