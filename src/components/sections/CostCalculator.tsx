@@ -105,11 +105,11 @@ const AnimatedTotal = ({ value }: { value: number }) => {
 
 /* ── Shared card styles ── */
 const cardBase =
-  "relative rounded-2xl transition-all duration-300 cursor-pointer";
+  "relative rounded-2xl transition-all duration-300 cursor-pointer font-sans";
 const cardDefault =
   "bg-transparent hover:bg-primary/[0.04]";
 const cardSelected =
-  "bg-primary text-primary-foreground shadow-[0_4px_24px_-4px_hsl(var(--primary)/0.18)]";
+  "bg-primary text-primary-foreground shadow-[0_8px_32px_-4px_hsl(var(--primary)/0.25)]";
 
 /* ── Prices ── */
 const basePrices = [8500, 12000, 9500, 15000, 7500, 18000];
