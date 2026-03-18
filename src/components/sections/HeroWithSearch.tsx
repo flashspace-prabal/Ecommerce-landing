@@ -214,7 +214,8 @@ export const HeroWithSearch = () => {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-[28px] sm:text-[38px] lg:text-[48px] font-medium tracking-[-0.03em] text-white leading-[1.15] mb-6"
+              className="text-[28px] sm:text-[38px] lg:text-[48px] font-semibold tracking-[-0.03em] text-white leading-[1.15] mb-6"
+              style={{ textShadow: "0 2px 20px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.3)", fontFamily: "'Inter', sans-serif" }}
             >
               Launch & Scale Your<br />
               <span className="italic">Business in the UAE</span>
