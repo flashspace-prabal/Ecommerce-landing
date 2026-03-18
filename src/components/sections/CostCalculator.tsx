@@ -740,7 +740,7 @@ export const CostCalculator = () => {
                 <button
                   onClick={goNext}
                   disabled={!canProceed()}
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-medium px-6 h-11 rounded-xl text-sm tracking-wide hover:bg-primary/90 shadow-md transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-medium px-6 h-11 rounded-xl text-sm tracking-wide shadow-md hover:shadow-[0_0_24px_hsla(54,96%,88%,0.3)] hover:text-secondary transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed font-sans"
                 >
                   {step === 4 ? "See Estimate" : "Next Step"}
                   <ArrowRight className="w-4 h-4" />
