@@ -62,7 +62,7 @@ export const StatsByNumbers = () => {
         style={{
           zIndex: -1,
           backgroundImage: `url(${statsBackground})`,
-          animation: "breathe 5s ease-in-out infinite",
+          animation: "cityBreathe 6s ease-in-out infinite",
         }}
       />
       {/* Dark overlay */}
