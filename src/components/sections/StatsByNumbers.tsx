@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef } from "react";
-import heroVideo from "@/assets/hero-skyline-loop.mp4";
+import statsBackground from "@/assets/stats-green-office.jpg";
 
 const topRow = [
   { value: 20, suffix: "", label: "Years in Business" },
