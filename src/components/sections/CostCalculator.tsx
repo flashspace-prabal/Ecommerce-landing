@@ -618,7 +618,7 @@ export const CostCalculator = () => {
   };
 
   return (
-    <section className="py-20 lg:py-28 relative overflow-hidden bg-secondary">
+    <section className="py-20 lg:py-28 relative overflow-hidden" style={{ backgroundColor: '#f7f9f7' }}>
       <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
 
         {/* Section Header */}
