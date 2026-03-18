@@ -297,6 +297,11 @@
   animation: marquee 25s linear infinite;
 }
 
+@keyframes breathe {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
 /* Leaflet popup overrides */
 .leaflet-pane {
   z-index: auto !important;
