@@ -135,7 +135,7 @@ export const StatsByNumbers = () => {
                   transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
                   className={`${cardClass} flex-1 flex flex-col items-center justify-center`}
                 >
-                  <div className="text-[44px] sm:text-[48px] lg:text-[56px] font-bold tracking-tight leading-none mb-2" style={{ color: "#d4a853" }}>
+                  <div className="text-[44px] sm:text-[48px] lg:text-[56px] font-bold tracking-tight leading-none mb-2" style={{ color: (stat as any).accent ? "#e8a020" : "#d4a853" }}>
                     <AnimatedNumber value={stat.value} suffix={stat.suffix} isDecimal={stat.isDecimal} />
                   </div>
                   <div className="text-white/50 text-sm font-medium tracking-wide">{stat.label}</div>
