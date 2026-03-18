@@ -105,11 +105,11 @@ const AnimatedTotal = ({ value }: { value: number }) => {
 
 /* ── Shared card styles ── */
 const cardBase =
-  "relative rounded-2xl transition-all duration-300 cursor-pointer";
+  "relative rounded-2xl transition-all duration-300 cursor-pointer font-sans";
 const cardDefault =
   "bg-transparent hover:bg-primary/[0.04]";
 const cardSelected =
-  "bg-primary text-primary-foreground shadow-[0_4px_24px_-4px_hsl(var(--primary)/0.18)]";
+  "bg-primary text-primary-foreground shadow-[0_8px_32px_-4px_hsl(var(--primary)/0.25)]";
 
 /* ── Prices ── */
 const basePrices = [8500, 12000, 9500, 15000, 7500, 18000];
@@ -149,7 +149,7 @@ const CostSummary = ({
   const addonsCost = selectedAddons.reduce((sum, i) => sum + (addonPrices[i] || 0), 0);
 
   return (
-    <div className="rounded-2xl bg-secondary/50 p-6 flex flex-col">
+    <div className="rounded-2xl bg-card/80 backdrop-blur-sm p-6 flex flex-col border border-card/40 shadow-soft font-sans">
       {/* Header */}
       <div className="mb-5">
         <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1">
@@ -161,7 +161,7 @@ const CostSummary = ({
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
-          <p className="text-4xl font-bold text-foreground tracking-tight">
+          <p className="text-4xl font-bold text-foreground tracking-tight font-sans">
             AED <AnimatedTotal value={estimateTotal} />
           </p>
         </motion.div>
@@ -260,7 +260,7 @@ const CostSummary = ({
         <button
           onClick={goNext}
           disabled={!canProceed}
-          className="w-full inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-medium h-12 rounded-xl text-sm tracking-wide hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.01] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="w-full inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-medium h-12 rounded-xl text-sm tracking-wide shadow-md hover:shadow-[0_0_24px_hsla(54,96%,88%,0.3)] hover:text-secondary transition-all duration-300 hover:scale-[1.01] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 font-sans"
         >
           {step >= 5 ? "Get a Detailed Quote" : step === 4 ? "See Estimate" : "Next Step"}
           <ArrowRight className="w-4 h-4" />
@@ -352,9 +352,9 @@ export const CostCalculator = () => {
                     className={`${cardBase} p-4 text-center ${selected ? cardSelected : cardDefault}`}
                   >
                     <div
-                      className={`w-10 h-10 rounded-xl mx-auto mb-2 flex items-center justify-center transition-colors duration-300 ${
+                      className={`w-10 h-10 rounded-xl mx-auto mb-2 flex items-center justify-center transition-all duration-300 ${
                         selected
-                          ? "bg-primary-foreground/20 text-primary-foreground"
+                          ? "bg-secondary/30 text-secondary shadow-[0_0_16px_hsla(54,96%,88%,0.4)]"
                           : "bg-foreground/[0.06] text-foreground"
                       }`}
                     >
@@ -603,7 +603,7 @@ export const CostCalculator = () => {
                   )}
                 </div>
 
-                <button className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 h-12 rounded-xl text-sm tracking-wide hover:bg-primary/90 shadow-md transition-all duration-300">
+                <button className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 h-12 rounded-xl text-sm tracking-wide shadow-md hover:shadow-[0_0_24px_hsla(54,96%,88%,0.3)] hover:text-secondary transition-all duration-300 font-sans">
                   Get a Detailed Quote
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -618,7 +618,7 @@ export const CostCalculator = () => {
   };
 
   return (
-    <section className="py-20 lg:py-28 relative overflow-hidden bg-secondary">
+    <section className="py-20 lg:py-28 relative overflow-hidden" style={{ backgroundColor: '#f7f9f7' }}>
       <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
 
         {/* Section Header */}
@@ -629,7 +629,7 @@ export const CostCalculator = () => {
           transition={{ delay: 0.1 }}
           className="mb-12 text-center"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-foreground tracking-tight leading-[1.15]">
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-medium text-foreground tracking-tight leading-[1.15] font-sans">
             Calculate Your Business{" "}
             <span className="text-primary">Setup Cost</span>
           </h2>
@@ -641,7 +641,12 @@ export const CostCalculator = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="flex flex-col lg:flex-row gap-8 lg:gap-10"
+          className="flex flex-col lg:flex-row gap-8 lg:gap-10 rounded-3xl p-6 sm:p-8 lg:p-10"
+          style={{
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%)',
+            border: '1px solid rgba(255,255,255,0.6)',
+            boxShadow: '0 8px 40px -8px hsla(142, 20%, 26%, 0.08)',
+          }}
         >
           {/* LEFT PANEL — Steps + Content */}
           <div className="flex-1 min-w-0 lg:basis-1/2">
@@ -735,7 +740,7 @@ export const CostCalculator = () => {
                 <button
                   onClick={goNext}
                   disabled={!canProceed()}
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-medium px-6 h-11 rounded-xl text-sm tracking-wide hover:bg-primary/90 shadow-md transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-medium px-6 h-11 rounded-xl text-sm tracking-wide shadow-md hover:shadow-[0_0_24px_hsla(54,96%,88%,0.3)] hover:text-secondary transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed font-sans"
                 >
                   {step === 4 ? "See Estimate" : "Next Step"}
                   <ArrowRight className="w-4 h-4" />
