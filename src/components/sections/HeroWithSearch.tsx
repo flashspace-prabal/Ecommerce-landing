@@ -174,6 +174,7 @@ export const HeroWithSearch = () => {
       {/* Background video with duotone blend */}
       <div className="absolute inset-0" style={{ backgroundColor: "hsl(var(--primary))" }}>
         <video
+          ref={(el) => { if (el) el.playbackRate = 0.5; }}
           autoPlay
           loop
           muted
@@ -188,6 +189,14 @@ export const HeroWithSearch = () => {
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
+        {/* Sun Glow - yellow sky accent */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "radial-gradient(circle at 80% 20%, hsla(54, 96%, 88%, 0.3) 0%, transparent 50%)",
+            mixBlendMode: "screen",
+          }}
+        />
         {/* Duotone highlight tint */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -201,6 +210,13 @@ export const HeroWithSearch = () => {
           className="absolute inset-0 pointer-events-none"
           style={{
             background: "radial-gradient(circle at 50% 50%, transparent 40%, hsl(var(--primary)) 100%)",
+          }}
+        />
+        {/* Bottom fade to carousel */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+          style={{
+            background: "linear-gradient(to bottom, transparent 0%, hsl(var(--primary)) 100%)",
           }}
         />
       </div>
