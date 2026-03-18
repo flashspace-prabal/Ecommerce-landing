@@ -71,10 +71,10 @@ export const ClientVoices = () => {
             {/* Footer */}
             <div className="flex items-end justify-between mt-12">
               <div>
-                <p className="text-base font-medium text-foreground">
+                <p className="text-base font-medium text-primary">
                   {testimonials[index].name}
                 </p>
-                <p className="text-sm mt-0.5 text-muted-foreground">
+                <p className="text-sm mt-0.5 text-primary/70">
                   {testimonials[index].title}
                 </p>
               </div>
