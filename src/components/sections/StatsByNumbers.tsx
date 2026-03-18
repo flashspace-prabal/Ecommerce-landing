@@ -12,7 +12,7 @@ const featured = { value: 100, suffix: ",000+", label: "Creative Clients" };
 
 const bottomRight = [
   { value: 10, suffix: "+", label: "Languages Spoken" },
-  { value: 4.9, suffix: "/5", label: "Client Rating", isDecimal: true },
+  { value: 4.9, suffix: "/5", label: "Client Rating", isDecimal: true, accent: true },
 ];
 
 const partners = [
