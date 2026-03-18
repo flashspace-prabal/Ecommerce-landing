@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef } from "react";
-import statsBg from "@/assets/stats-green-office.jpg";
+import statsBg from "@/assets/stats-modern-office.jpg";
 
 const topRow = [
   { value: 20, suffix: "", label: "Years in Business" },
@@ -12,7 +12,7 @@ const featured = { value: 100, suffix: ",000+", label: "Creative Clients" };
 
 const bottomRight = [
   { value: 10, suffix: "+", label: "Languages Spoken" },
-  { value: 4.9, suffix: "/5", label: "Client Rating", isDecimal: true },
+  { value: 4.9, suffix: "/5", label: "Client Rating", isDecimal: true, accent: true },
 ];
 
 const partners = [
@@ -76,7 +76,7 @@ export const StatsByNumbers = () => {
           className="text-center mb-20"
         >
           <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-medium text-secondary leading-[1.1] tracking-tight"
-              style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
             Flash Space By The Numbers
           </h2>
           <p className="text-white/40 text-sm mt-4 tracking-[0.2em] uppercase">
@@ -135,7 +135,7 @@ export const StatsByNumbers = () => {
                   transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
                   className={`${cardClass} flex-1 flex flex-col items-center justify-center`}
                 >
-                  <div className="text-[44px] sm:text-[48px] lg:text-[56px] font-bold tracking-tight leading-none mb-2" style={{ color: "#d4a853" }}>
+                  <div className="text-[44px] sm:text-[48px] lg:text-[56px] font-bold tracking-tight leading-none mb-2" style={{ color: (stat as any).accent ? "#e8a020" : "#d4a853" }}>
                     <AnimatedNumber value={stat.value} suffix={stat.suffix} isDecimal={stat.isDecimal} />
                   </div>
                   <div className="text-white/50 text-sm font-medium tracking-wide">{stat.label}</div>
