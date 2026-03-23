@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
+import {
   AlertTriangle,
   TrendingDown,
   Ban,
@@ -10,7 +11,6 @@ import { useRef, useEffect, useCallback } from "react";
   XCircle,
   CheckCircle2,
 } from "lucide-react";
-import { useState } from "react";
 
 const scenarios = [
   {
