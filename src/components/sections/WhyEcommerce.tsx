@@ -1,16 +1,6 @@
 import { motion } from "framer-motion";
 import {
-  AlertTriangle,
-  ShieldOff,
-  CheckCircle2,
-  XCircle,
   ArrowRight,
-  Zap,
-  ShieldCheck,
-  PackageCheck,
-  FileCheck2,
-  BadgeCheck,
-  TrendingUp,
   MoveRight,
 } from "lucide-react";
 import logisticsImg from "@/assets/india-ecommerce-logistics.png";
