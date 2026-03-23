@@ -31,31 +31,29 @@ const services = [
 
 export const EcommerceServices = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const autoScrollRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const scroll = (dir: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const amount = 320;
-    scrollRef.current.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
-  };
+  const animationRef = useRef<number | null>(null);
+  const speedRef = useRef(0.5); // px per frame
 
   const startAutoScroll = useCallback(() => {
-    if (autoScrollRef.current) return;
-    autoScrollRef.current = setInterval(() => {
+    if (animationRef.current) return;
+    const step = () => {
       if (!scrollRef.current) return;
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      if (scrollLeft + clientWidth >= scrollWidth - 10) {
-        scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        scrollRef.current.scrollBy({ left: 320, behavior: "smooth" });
+      const el = scrollRef.current;
+      el.scrollLeft += speedRef.current;
+      // When first set of cards scrolls out, reset seamlessly
+      const halfWidth = el.scrollWidth / 2;
+      if (el.scrollLeft >= halfWidth) {
+        el.scrollLeft -= halfWidth;
       }
-    }, 3000);
+      animationRef.current = requestAnimationFrame(step);
+    };
+    animationRef.current = requestAnimationFrame(step);
   }, []);
 
   const stopAutoScroll = useCallback(() => {
-    if (autoScrollRef.current) {
-      clearInterval(autoScrollRef.current);
-      autoScrollRef.current = null;
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
     }
   }, []);
 
