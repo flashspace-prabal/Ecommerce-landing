@@ -117,6 +117,33 @@ const cardVariant = {
 
 export const VPOBCostSection = () => {
   const [activeCard, setActiveCard] = useState<number | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const autoScrollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startAutoScroll = useCallback(() => {
+    if (autoScrollRef.current) return;
+    autoScrollRef.current = setInterval(() => {
+      if (!scrollRef.current) return;
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      if (scrollLeft + clientWidth >= scrollWidth - 10) {
+        scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scrollRef.current.scrollBy({ left: 330, behavior: "smooth" });
+      }
+    }, 3000);
+  }, []);
+
+  const stopAutoScroll = useCallback(() => {
+    if (autoScrollRef.current) {
+      clearInterval(autoScrollRef.current);
+      autoScrollRef.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    startAutoScroll();
+    return stopAutoScroll;
+  }, [startAutoScroll, stopAutoScroll]);
 
   return (
     <section className="py-20 lg:py-28 bg-background">
