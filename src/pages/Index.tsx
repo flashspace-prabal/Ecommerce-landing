@@ -6,7 +6,7 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { TrustBanner } from "@/components/sections/TrustBanner";
 import { ClientVoices } from "@/components/sections/ClientVoices";
 import { FAQSection } from "@/components/sections/FAQSection";
-
+import { VPOBCostSection } from "@/components/sections/VPOBCostSection";
 
 import { Footer } from "@/components/layout/Footer";
 
@@ -17,12 +17,11 @@ const Index = () => {
         <HeroWithSearch />
         <EcommerceServices />
         <WhyEcommerce />
+        <VPOBCostSection />
         <HowItWorks />
         <TrustBanner />
         <ClientVoices />
         <FAQSection />
-        
-        
       </main>
       <Footer />
     </AppLayout>
