@@ -47,9 +47,9 @@ export const HeroWithSearch = () => {
               className="text-[26px] sm:text-[36px] lg:text-[48px] font-semibold tracking-[-0.03em] text-white leading-[1.15] mb-6"
               style={{ textShadow: "0 2px 20px rgba(0,0,0,0.4)" }}
             >
-              Start Your E-commerce Business<br />
-              in the UAE —{" "}
-              <span className="italic text-secondary">Fast & Hassle-Free</span>
+              Start & Scale Your E-commerce<br />
+              Business Across India —{" "}
+              <span className="italic text-secondary">Without GST Headaches</span>
             </motion.h1>
 
             <motion.p
@@ -59,7 +59,7 @@ export const HeroWithSearch = () => {
               animate="visible"
               className="text-white/80 text-base sm:text-lg lg:text-xl leading-relaxed mb-10 max-w-[600px]"
             >
-              From company setup to payment gateways, we handle everything so you can start selling online.
+              From GST registration to multi-state compliance, we help you sell across India without legal or tax risks.
             </motion.p>
 
             <motion.div

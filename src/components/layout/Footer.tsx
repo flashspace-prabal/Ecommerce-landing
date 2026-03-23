@@ -3,11 +3,11 @@ import flashspaceLogo from "@/assets/flashspace-logo.png";
 
 const footerLinks = {
   services: [
-    { label: "Company Setup", href: "#what-we-do" },
-    { label: "Payment Gateway", href: "#what-we-do" },
-    { label: "Bank Account", href: "#what-we-do" },
-    { label: "VAT Registration", href: "#what-we-do" },
-    { label: "Logistics", href: "#what-we-do" },
+    { label: "GST Registration", href: "#what-we-do" },
+    { label: "VPOB Setup", href: "#what-we-do" },
+    { label: "Multi-State GST", href: "#what-we-do" },
+    { label: "TDS/TCS Handling", href: "#what-we-do" },
+    { label: "Accounting & Filing", href: "#what-we-do" },
   ],
   company: [
     { label: "Why Us", href: "#why-us" },
@@ -31,7 +31,7 @@ export const Footer = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium text-background tracking-tight leading-[1.12] max-w-md">
             Start selling online
             <br />
-            in the UAE today
+            across India today
           </h2>
           <div className="flex flex-wrap gap-3">
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-normal rounded-xl h-12 px-7">

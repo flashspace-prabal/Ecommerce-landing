@@ -9,20 +9,20 @@ import {
 } from "lucide-react";
 
 const painPoints = [
-  "Confusing UAE regulations for online businesses",
-  "Payment gateway approval takes weeks or gets rejected",
-  "Bank account delays stall your launch",
-  "VAT compliance is complex and risky",
-  "Logistics & fulfilment are hard to figure out alone",
+  "Confusing multi-state GST regulations for online sellers",
+  "VPOB rejections delay your marketplace onboarding",
+  "TCS/TDS credits lost without proper state registration",
+  "Marketplace listings suspended for compliance gaps",
+  "Managing GST filings across multiple states is overwhelming",
 ];
 
 const advantages = [
-  { icon: Zap, title: "Launch in Under 3 Weeks", description: "Our streamlined process gets your e-commerce business licensed and selling fast." },
-  { icon: Clock, title: "One Team, Every Service", description: "Licence, bank, payments, VAT, logistics — all handled under one roof." },
-  { icon: Users, title: "E-commerce Specialists", description: "We understand activity codes, payment flows, and platform integrations." },
-  { icon: Award, title: "2,000+ Businesses Launched", description: "Your success is backed by proven expertise across the UAE." },
-  { icon: HeadphonesIcon, title: "Ongoing Support Post-Launch", description: "Renewals, compliance, scaling — we're here for the long run." },
-  { icon: ShieldCheck, title: "Full Compliance Guaranteed", description: "We keep you on the right side of UAE regulations from day one." },
+  { icon: Zap, title: "Go Live in Under 2 Weeks", description: "Our streamlined process gets your GST, VPOB, and marketplace compliance sorted fast." },
+  { icon: Clock, title: "One Team, Every Service", description: "GST, VPOB, TDS/TCS, accounting, filings — all handled under one roof." },
+  { icon: Users, title: "E-commerce Specialists", description: "We understand marketplace rules, state-wise GST, and seller compliance inside out." },
+  { icon: Award, title: "2,000+ Sellers Onboarded", description: "Your success is backed by proven expertise across India's top marketplaces." },
+  { icon: HeadphonesIcon, title: "Ongoing Support Post-Launch", description: "Renewals, filings, scaling to new states — we're here for the long run." },
+  { icon: ShieldCheck, title: "Full Compliance Guaranteed", description: "We keep you on the right side of Indian tax regulations from day one." },
 ];
 
 export const WhyEcommerce = () => {
@@ -38,10 +38,10 @@ export const WhyEcommerce = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-4 tracking-tight">
-              Launching e-commerce in the UAE is harder than it looks
+              Selling across India is harder than it looks
             </h2>
             <p className="text-muted-foreground text-base leading-relaxed mb-8">
-              Most founders hit the same walls. We've already solved them.
+              Most sellers hit the same walls. We've already solved them.
             </p>
             <ul className="space-y-4">
               {painPoints.map((point, i) => (
@@ -68,7 +68,7 @@ export const WhyEcommerce = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <h2 className="text-3xl sm:text-4xl font-medium text-foreground mb-4 tracking-tight">
-              Why e-commerce founders choose Flash Space
+              Why e-commerce sellers choose Flash Space
             </h2>
             <p className="text-muted-foreground text-base leading-relaxed mb-8">
               We bring speed, expertise, and end-to-end support.

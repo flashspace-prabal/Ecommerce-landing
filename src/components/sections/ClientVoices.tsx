@@ -4,22 +4,22 @@ import { ChevronsLeft, ChevronsRight } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "We were stuck for weeks trying to get our payment gateway approved.",
-    quoteHighlight: " Flash Space stepped in, sorted the paperwork, and we were processing orders within 10 days. Incredible.",
+    quote: "We were losing TCS credits every month without even knowing it.",
+    quoteHighlight: " Flash Space set up our multi-state VPOB in under 10 days. Now we sell in 12 states with zero compliance issues.",
     name: "Priya Sharma",
     title: "Founder, LuxeCart",
   },
   {
-    quote: "Setting up e-commerce in the UAE seemed impossibly complicated.",
-    quoteHighlight: " Flash Space made it feel effortless — licence, bank account, payment gateway, all handled. We launched in under three weeks.",
-    name: "Marcus Henriksen",
-    title: "CEO, Nordic Goods MENA",
+    quote: "Managing GST across multiple states felt impossible as a solo founder.",
+    quoteHighlight: " Flash Space handled everything — VPOB, filings, TDS recovery. We scaled from 3 states to 18 in two months.",
+    name: "Rahul Mehta",
+    title: "CEO, UrbanBazaar",
   },
   {
-    quote: "As a first-time founder, I didn't know where to start.",
-    quoteHighlight: " Their team walked me through every step — from choosing the right free zone to connecting with a logistics partner. I couldn't have done it alone.",
-    name: "Fatima Al-Rashidi",
-    title: "Founder, Souq Studio",
+    quote: "Our Amazon listings got suspended for compliance gaps.",
+    quoteHighlight: " Flash Space not only fixed our GST registration but set us up properly so it never happened again. Revenue recovered within weeks.",
+    name: "Anita Desai",
+    title: "Founder, CraftNest India",
   },
 ];
 
