@@ -172,7 +172,7 @@ export const VPOBCostSection = () => {
           <div>
             <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-medium text-foreground tracking-tight leading-tight text-balance max-w-3xl">
               The Hidden Cost of{" "}
-              <span className="text-destructive">NOT</span> Having a VPOB
+              <span className="text-destructive underline underline-offset-4 decoration-2">NOT</span> Having a VPOB
             </h2>
             <p className="mt-4 text-muted-foreground text-base lg:text-lg max-w-xl leading-relaxed">
               Most sellers try to save ₹1,500/month — and end up losing{" "}
@@ -203,8 +203,6 @@ export const VPOBCostSection = () => {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div className="absolute -top-3 -left-3 text-muted-foreground/30 text-xl select-none">+</div>
-          <div className="absolute -top-3 -right-3 text-muted-foreground/30 text-xl select-none">+</div>
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -213,37 +211,39 @@ export const VPOBCostSection = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-2 lg:grid-cols-4"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
             >
               {visibleCards.map((s, i) => {
                 const Icon = s.icon;
                 return (
                   <div
                     key={`${s.title}-${currentPage}-${i}`}
-                    className="group flex flex-col justify-between border-r border-border/40 last:border-r-0 px-7 py-14 hover:bg-secondary transition-colors duration-300"
+                    className="group h-full flex flex-col justify-between bg-card rounded-xl border border-border/40 shadow-sm px-6 py-7 hover:shadow-md hover:border-border/60 transition-all duration-300"
                   >
                     <div>
                       {/* Icon */}
-                      <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center mb-5 group-hover:bg-primary/90 transition-colors">
-                        <Icon className="w-5 h-5 text-secondary" />
+                      <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center mb-4">
+                        <Icon className="w-4 h-4 text-foreground/70" />
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-base font-semibold text-foreground mb-2 leading-snug">
+                      <h3 className="text-lg font-bold text-foreground mb-2 leading-snug">
                         {s.title}
                       </h3>
-                      <p className="text-xs text-muted-foreground leading-relaxed mb-6">
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-5">
                         {s.explanation}
                       </p>
 
                       {/* Data rows */}
-                      <div className="space-y-2 mb-6">
+                      <div className="space-y-2 mb-5">
                         {s.rows.map((r) => (
                           <div
                             key={r.label}
                             className="flex items-center justify-between text-sm"
                           >
-                            <span className="text-muted-foreground">{r.label}</span>
+                            <span className="text-xs uppercase tracking-wider text-muted-foreground/70 font-semibold">
+                              {r.label}
+                            </span>
                             <span className="font-medium text-foreground tabular-nums">
                               {r.value}
                             </span>
@@ -254,17 +254,17 @@ export const VPOBCostSection = () => {
 
                     {/* Total */}
                     <div>
-                      <div className="border-t border-border/50 pt-4 mb-4">
+                      <div className="border-t border-border/30 pt-4 mb-3">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-muted-foreground">
+                          <span className="text-xs uppercase tracking-wider text-muted-foreground/70 font-semibold">
                             {s.totalLabel}
                           </span>
-                          <span className="text-xl font-bold text-destructive tabular-nums">
+                          <span className="text-2xl font-bold text-destructive tabular-nums">
                             {s.totalValue}
                           </span>
                         </div>
                       </div>
-                      <p className="text-xs text-destructive/80 font-medium leading-snug italic">
+                      <p className="text-xs text-muted-foreground/60 italic leading-snug">
                         "{s.highlight}"
                       </p>
                     </div>
@@ -274,8 +274,6 @@ export const VPOBCostSection = () => {
             </motion.div>
           </AnimatePresence>
 
-          <div className="absolute -bottom-3 -left-3 text-muted-foreground/30 text-xl select-none">+</div>
-          <div className="absolute -bottom-3 -right-3 text-muted-foreground/30 text-xl select-none">+</div>
         </div>
 
       </div>
