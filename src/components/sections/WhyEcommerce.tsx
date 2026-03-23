@@ -232,8 +232,7 @@ export const WhyEcommerce = () => {
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 className="relative"
               >
-                <div className="absolute inset-0 blur-xl bg-primary/30 rounded-full scale-150" />
-                <ArrowRight className="w-10 h-10 text-primary relative z-10" />
+                <ArrowRight className="w-10 h-10 text-primary" />
               </motion.div>
             </div>
 
@@ -242,9 +241,7 @@ export const WhyEcommerce = () => {
               <span className="text-xs font-semibold uppercase tracking-widest text-secondary mb-3">
                 The Scale
               </span>
-              <span className="text-5xl lg:text-7xl font-bold text-secondary tabular-nums tracking-tight"
-                style={{ textShadow: "0 0 40px hsl(var(--secondary) / 0.4)" }}
-              >
+              <span className="text-5xl lg:text-7xl font-bold text-secondary tabular-nums tracking-tight">
                 ₹15L+
               </span>
               <span className="text-sm text-secondary/60 mt-1">/month</span>
@@ -258,7 +255,7 @@ export const WhyEcommerce = () => {
           <div className="border-t border-background/10 px-8 py-8 flex justify-center">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2.5 bg-primary text-primary-foreground px-10 py-4 rounded-2xl text-base font-semibold hover:bg-primary/90 transition-all duration-200 active:scale-[0.97] shadow-glow"
+              className="inline-flex items-center gap-2.5 bg-primary text-primary-foreground px-10 py-4 rounded-2xl text-base font-semibold hover:bg-primary/90 transition-all duration-200 active:scale-[0.97]"
             >
               Get Your VPOB Now
               <ArrowRight className="w-5 h-5" />
