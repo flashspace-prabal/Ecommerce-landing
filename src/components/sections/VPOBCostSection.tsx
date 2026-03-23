@@ -281,19 +281,7 @@ export const VPOBCostSection = () => {
           <div className="absolute -bottom-3 -right-3 text-muted-foreground/30 text-xl select-none">+</div>
         </div>
 
-        {/* Page indicators */}
-        <div className="flex justify-center gap-2 mb-16">
-          {Array.from({ length: TOTAL_PAGES }).map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goToPage(i)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                i === currentPage ? "bg-foreground w-6" : "bg-border"
-              }`}
-              aria-label={`Go to page ${i + 1}`}
-            />
-          ))}
-        </div>
+        <div className="mb-16" />
 
         {/* Revenue Comparison — Hero Block */}
         <motion.div
