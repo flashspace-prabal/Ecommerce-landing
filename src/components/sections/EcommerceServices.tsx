@@ -31,31 +31,27 @@ const services = [
 
 export const EcommerceServices = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const autoScrollRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const scroll = (dir: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const amount = 320;
-    scrollRef.current.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
-  };
+  const animationRef = useRef<number | null>(null);
 
   const startAutoScroll = useCallback(() => {
-    if (autoScrollRef.current) return;
-    autoScrollRef.current = setInterval(() => {
+    if (animationRef.current) return;
+    const step = () => {
       if (!scrollRef.current) return;
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      if (scrollLeft + clientWidth >= scrollWidth - 10) {
-        scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        scrollRef.current.scrollBy({ left: 320, behavior: "smooth" });
+      const el = scrollRef.current;
+      el.scrollLeft += 0.5;
+      const halfWidth = el.scrollWidth / 2;
+      if (el.scrollLeft >= halfWidth) {
+        el.scrollLeft -= halfWidth;
       }
-    }, 3000);
+      animationRef.current = requestAnimationFrame(step);
+    };
+    animationRef.current = requestAnimationFrame(step);
   }, []);
 
   const stopAutoScroll = useCallback(() => {
-    if (autoScrollRef.current) {
-      clearInterval(autoScrollRef.current);
-      autoScrollRef.current = null;
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
     }
   }, []);
 
@@ -83,14 +79,14 @@ export const EcommerceServices = () => {
           </div>
           <div className="hidden sm:flex items-center gap-2">
             <button
-              onClick={() => scroll("left")}
+              onClick={() => scrollRef.current?.scrollBy({ left: -320, behavior: "smooth" })}
               className="w-10 h-10 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
               aria-label="Scroll left"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
-              onClick={() => scroll("right")}
+              onClick={() => scrollRef.current?.scrollBy({ left: 320, behavior: "smooth" })}
               className="w-10 h-10 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
               aria-label="Scroll right"
             >
@@ -99,51 +95,44 @@ export const EcommerceServices = () => {
           </div>
         </motion.div>
 
-        {/* Corner crosses + cards row */}
         <div className="relative">
-          {/* Corner decorative crosses */}
           <div className="absolute -top-3 -left-3 text-muted-foreground/30 text-xl select-none">+</div>
           <div className="absolute -top-3 -right-3 text-muted-foreground/30 text-xl select-none">+</div>
 
           <div
             ref={scrollRef}
-            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+            className="flex overflow-x-auto scrollbar-hide"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             onMouseEnter={stopAutoScroll}
             onMouseLeave={startAutoScroll}
             onTouchStart={stopAutoScroll}
             onTouchEnd={startAutoScroll}
           >
-            {services.map((service, i) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ delay: i * 0.07, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="group shrink-0 w-[280px] sm:w-[300px] snap-start flex flex-col justify-between border-r border-border/40 last:border-r-0 px-7 py-8 hover:bg-muted/30 transition-colors duration-300"
+            {[...services, ...services].map((service, i) => (
+              <div
+                key={`${service.title}-${i}`}
+                className="group shrink-0 w-[280px] sm:w-[300px] flex flex-col justify-between border-r border-border/40 last:border-r-0 px-7 py-8 hover:bg-secondary transition-colors duration-300"
               >
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-3 leading-snug">
+                  <h3 className="text-lg font-semibold text-foreground mb-3 leading-snug group-hover:text-secondary-foreground transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-secondary-foreground/70 transition-colors">
                     {service.description}
                   </p>
                 </div>
                 <div className="mt-8">
                   <button
-                    className="w-11 h-11 rounded-lg border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-all duration-200 active:scale-95"
+                    className="w-11 h-11 rounded-lg border border-border/50 flex items-center justify-center text-muted-foreground group-hover:border-secondary-foreground/30 group-hover:text-secondary-foreground transition-all duration-200 active:scale-95"
                     aria-label={`Learn more about ${service.title}`}
                   >
                     <Plus className="w-5 h-5" />
                   </button>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
-          {/* Bottom crosses */}
           <div className="absolute -bottom-3 -left-3 text-muted-foreground/30 text-xl select-none">+</div>
           <div className="absolute -bottom-3 -right-3 text-muted-foreground/30 text-xl select-none">+</div>
         </div>
