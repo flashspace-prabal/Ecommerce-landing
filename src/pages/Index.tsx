@@ -4,10 +4,10 @@ import { EcommerceServices } from "@/components/sections/EcommerceServices";
 import { WhyEcommerce } from "@/components/sections/WhyEcommerce";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { TrustBanner } from "@/components/sections/TrustBanner";
-import { CostCalculator } from "@/components/sections/CostCalculator";
 import { ClientVoices } from "@/components/sections/ClientVoices";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { StatsByNumbers } from "@/components/sections/StatsByNumbers";
+import { ContactForm } from "@/components/sections/ContactForm";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { Footer } from "@/components/layout/Footer";
 
@@ -20,9 +20,9 @@ const Index = () => {
         <WhyEcommerce />
         <HowItWorks />
         <TrustBanner />
-        <CostCalculator />
         <ClientVoices />
         <FAQSection />
+        <ContactForm />
         <StatsByNumbers />
         <ContactCTA />
       </main>
