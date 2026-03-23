@@ -1,13 +1,14 @@
 import { AppLayout } from "@/components/layout/AppLayout";
 import { HeroWithSearch } from "@/components/sections/HeroWithSearch";
-import { BusinessSetupOverview } from "@/components/sections/BusinessSetupOverview";
-import { SetupProcess } from "@/components/sections/SetupProcess";
+import { EcommerceServices } from "@/components/sections/EcommerceServices";
+import { WhyEcommerce } from "@/components/sections/WhyEcommerce";
+import { HowItWorks } from "@/components/sections/HowItWorks";
 import { TrustBanner } from "@/components/sections/TrustBanner";
 import { CostCalculator } from "@/components/sections/CostCalculator";
 import { ClientVoices } from "@/components/sections/ClientVoices";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { StatsByNumbers } from "@/components/sections/StatsByNumbers";
-
+import { ContactCTA } from "@/components/sections/ContactCTA";
 import { Footer } from "@/components/layout/Footer";
 
 const Index = () => {
@@ -15,13 +16,15 @@ const Index = () => {
     <AppLayout>
       <main>
         <HeroWithSearch />
-        <BusinessSetupOverview />
-        <SetupProcess />
+        <EcommerceServices />
+        <WhyEcommerce />
+        <HowItWorks />
         <TrustBanner />
         <CostCalculator />
         <ClientVoices />
         <FAQSection />
         <StatsByNumbers />
+        <ContactCTA />
       </main>
       <Footer />
     </AppLayout>
