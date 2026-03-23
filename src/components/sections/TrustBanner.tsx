@@ -1,8 +1,8 @@
 import { Building2, Globe, ShieldCheck, Users } from "lucide-react";
 
 const stats = [
-  { icon: Globe, value: "50+", label: "Free Zones" },
-  { icon: Building2, value: "2,000+", label: "Businesses Launched" },
+  { icon: Globe, value: "28+", label: "States Covered" },
+  { icon: Building2, value: "2,000+", label: "Sellers Onboarded" },
   { icon: Users, value: "98%", label: "Client Satisfaction" },
   { icon: ShieldCheck, value: "100%", label: "Compliance Rate" },
 ];

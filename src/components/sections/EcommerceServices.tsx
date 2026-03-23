@@ -1,45 +1,52 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import {
-  Building2,
-  CreditCard,
-  Landmark,
   FileText,
-  Truck,
+  MapPin,
+  Map,
+  ShoppingCart,
+  Receipt,
+  Calculator,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
 
 const services = [
   {
-    icon: Building2,
-    title: "Company Setup",
-    subtitle: "Mainland / Free Zone",
-    description: "Full company registration — choose between mainland for local market access or free zones for 100% ownership and zero tax.",
-  },
-  {
-    icon: CreditCard,
-    title: "Payment Gateway Setup",
-    subtitle: "Stripe, Telr, PayTabs & more",
-    description: "We handle the entire payment gateway application process so you can accept online payments from day one.",
-  },
-  {
-    icon: Landmark,
-    title: "Bank Account Opening",
-    subtitle: "UAE corporate accounts",
-    description: "Guided corporate bank account opening with leading UAE banks — documentation, meetings, and approvals handled end to end.",
-  },
-  {
     icon: FileText,
-    title: "VAT Registration",
-    subtitle: "Tax compliance sorted",
-    description: "Mandatory VAT registration, filing setup, and ongoing compliance so your e-commerce store stays on the right side of the law.",
+    title: "GST Registration & Compliance",
+    subtitle: "End-to-end GST support",
+    description: "Complete GST registration, return filing, and ongoing compliance management so your e-commerce business stays fully legal.",
   },
   {
-    icon: Truck,
-    title: "Logistics & Shipping",
-    subtitle: "Fulfilment guidance",
-    description: "Connect with trusted logistics partners for warehousing, last-mile delivery, and cross-border shipping across the GCC.",
+    icon: MapPin,
+    title: "VPOB Setup",
+    subtitle: "Virtual Place of Business",
+    description: "Get a verified Virtual Place of Business address for GST registration in any state — the core requirement for multi-state selling.",
+  },
+  {
+    icon: Map,
+    title: "Multi-State GST Registration",
+    subtitle: "Sell across all 28 states",
+    description: "Register for GST in multiple states to unlock pan-India selling on Amazon, Flipkart, and other marketplaces without compliance gaps.",
+  },
+  {
+    icon: ShoppingCart,
+    title: "E-commerce Compliance",
+    subtitle: "Amazon, Flipkart & more",
+    description: "Stay compliant with marketplace-specific requirements — from TCS handling to listing documentation and seller verification.",
+  },
+  {
+    icon: Receipt,
+    title: "TDS / TCS Handling",
+    subtitle: "Tax deduction management",
+    description: "Proper handling of TDS and TCS deducted by marketplaces so you can claim credits and avoid permanent tax losses.",
+  },
+  {
+    icon: Calculator,
+    title: "Accounting & Filing",
+    subtitle: "Books, returns & ITR",
+    description: "Professional bookkeeping, GST return filing, and income tax filing tailored for e-commerce sellers across India.",
   },
 ];
 
@@ -63,10 +70,10 @@ export const EcommerceServices = () => {
         >
           <div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-foreground mb-3 tracking-tight">
-              Everything your e-commerce<br className="hidden sm:block" />business needs to launch
+              Everything your e-commerce<br className="hidden sm:block" />business needs to scale
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              One partner. Every service. From licence to logistics.
+              One partner. Every service. From GST to marketplace compliance.
             </p>
           </div>
           <div className="hidden sm:flex items-center gap-2">

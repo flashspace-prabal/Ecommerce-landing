@@ -20,7 +20,7 @@ const formSchema = z.object({
   email: z.string().trim().email("Please enter a valid email"),
   phone: z.string().trim().min(1, "Phone number is required"),
   businessType: z.string().min(1, "Please select a business type"),
-  jurisdiction: z.string().min(1, "Please select a jurisdiction"),
+  serviceNeeded: z.string().min(1, "Please select a service"),
   message: z.string().trim().max(1000).optional(),
 });
 
@@ -37,9 +37,12 @@ const businessTypes = [
   "Other",
 ];
 
-const jurisdictions = [
-  "Mainland",
-  "Free Zone",
+const servicesNeeded = [
+  "VPOB Setup",
+  "Multi-State GST Registration",
+  "GST Compliance & Filing",
+  "TDS/TCS Handling",
+  "Full E-commerce Compliance Package",
   "Not sure yet",
 ];
 
@@ -80,7 +83,7 @@ export const HowItWorks = () => {
             <CheckCircle className="w-16 h-16 text-secondary mx-auto mb-6" />
             <h2 className="text-3xl font-medium text-secondary mb-4 tracking-tight">Thank you!</h2>
             <p className="text-secondary/70 text-lg leading-relaxed">
-              We've received your details. Our e-commerce setup team will reach out within 24 hours.
+              We've received your details. Our compliance team will reach out within 24 hours.
             </p>
           </motion.div>
         </div>
@@ -103,7 +106,7 @@ export const HowItWorks = () => {
               From idea to live store
             </h2>
             <p className="text-secondary/60 text-base leading-relaxed mb-8 max-w-sm">
-              Share your details and our specialists will create a tailored setup plan for your e-commerce business.
+              Share your details and our specialists will create a tailored compliance plan for your e-commerce business across India.
             </p>
             <div className="space-y-4 text-sm text-secondary/50">
               <p className="flex items-center gap-2">
@@ -112,7 +115,7 @@ export const HowItWorks = () => {
               </p>
               <p className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary/40 shrink-0" />
-                Personalised setup roadmap
+                Personalised compliance roadmap
               </p>
               <p className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary/40 shrink-0" />
@@ -172,7 +175,7 @@ export const HowItWorks = () => {
                   <Input
                     id="hw-phone"
                     type="tel"
-                    placeholder="+971 50 123 4567"
+                    placeholder="+91 98765 43210"
                     value={form.phone || ""}
                     onChange={(e) => handleChange("phone", e.target.value)}
                     className={`bg-white/10 border-secondary/15 text-secondary placeholder:text-secondary/30 ${errors.phone ? "border-destructive" : ""}`}
@@ -197,18 +200,18 @@ export const HowItWorks = () => {
                   {errors.businessType && <p className="text-xs text-destructive mt-1">{errors.businessType}</p>}
                 </div>
                 <div>
-                  <Label className="text-sm font-medium text-secondary/80 mb-1.5 block">Jurisdiction *</Label>
-                  <Select onValueChange={(v) => handleChange("jurisdiction", v)}>
-                    <SelectTrigger className={`bg-white/10 border-secondary/15 text-secondary ${errors.jurisdiction ? "border-destructive" : ""}`}>
-                      <SelectValue placeholder="Select jurisdiction" />
+                  <Label className="text-sm font-medium text-secondary/80 mb-1.5 block">Service Needed *</Label>
+                  <Select onValueChange={(v) => handleChange("serviceNeeded", v)}>
+                    <SelectTrigger className={`bg-white/10 border-secondary/15 text-secondary ${errors.serviceNeeded ? "border-destructive" : ""}`}>
+                      <SelectValue placeholder="Select service" />
                     </SelectTrigger>
                     <SelectContent>
-                      {jurisdictions.map((j) => (
-                        <SelectItem key={j} value={j}>{j}</SelectItem>
+                      {servicesNeeded.map((s) => (
+                        <SelectItem key={s} value={s}>{s}</SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
-                  {errors.jurisdiction && <p className="text-xs text-destructive mt-1">{errors.jurisdiction}</p>}
+                  {errors.serviceNeeded && <p className="text-xs text-destructive mt-1">{errors.serviceNeeded}</p>}
                 </div>
               </div>
 
@@ -216,7 +219,7 @@ export const HowItWorks = () => {
                 <Label htmlFor="hw-message" className="text-sm font-medium text-secondary/80 mb-1.5 block">Message (optional)</Label>
                 <Textarea
                   id="hw-message"
-                  placeholder="Tell us about your e-commerce idea..."
+                  placeholder="Tell us about your e-commerce business and which states you sell in..."
                   rows={3}
                   value={form.message || ""}
                   onChange={(e) => handleChange("message", e.target.value)}
