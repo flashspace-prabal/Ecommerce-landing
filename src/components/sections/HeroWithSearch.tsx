@@ -49,7 +49,7 @@ export const HeroWithSearch = () => {
     <section className="relative w-full overflow-hidden bg-background pt-20 lg:pt-24">
       <div className="relative z-10 w-full px-4 lg:px-8 py-6 lg:py-8">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left — Text */}
             <motion.div
               custom={0.1}
