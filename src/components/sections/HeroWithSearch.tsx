@@ -1,7 +1,17 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageSquare } from "lucide-react";
-
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { ArrowRight, Phone } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -12,64 +22,168 @@ const fadeUp = {
   }),
 };
 
+const services = [
+  "GST Registration",
+  "VPOB Setup",
+  "Multi-State GST",
+  "E-commerce Compliance",
+  "TDS/TCS Handling",
+  "Not sure yet",
+];
+
 export const HeroWithSearch = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", business: "", phone: "", service: "" });
+
   const scrollTo = (id: string) => {
     const el = document.querySelector(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  return (
-    <section className="relative w-full overflow-hidden min-h-[85vh] flex items-center bg-background">
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
 
-      <div className="relative z-10 w-full px-6 lg:px-12 py-32 lg:py-40">
-        <div className="container mx-auto text-center">
-          <div className="max-w-[720px] mx-auto">
-            <motion.h1
+  return (
+    <section className="relative w-full overflow-hidden min-h-[90vh] flex items-center bg-background pt-20 lg:pt-24">
+      <div className="relative z-10 w-full px-6 lg:px-12 py-16 lg:py-20">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left — Text */}
+            <motion.div
               custom={0.1}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-[26px] sm:text-[36px] lg:text-[48px] font-medium tracking-[-0.03em] text-foreground leading-[1.15] mb-6"
+              className="flex flex-col justify-center text-center lg:text-left"
             >
-              Start & Scale Your E-commerce<br />
-              Business Across India —{" "}
-              <span className="italic text-primary">Without GST Headaches</span>
-            </motion.h1>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-5">
+                Start & Scale Your<br />
+                E-commerce Business{" "}
+                <span className="text-primary">Across India</span>
+              </h1>
+              <motion.p
+                custom={0.25}
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-8 max-w-md mx-auto lg:mx-0"
+              >
+                From GST registration to multi-state compliance — sell across India without legal or tax risks.
+              </motion.p>
+              <motion.div
+                custom={0.4}
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                className="flex flex-wrap gap-3 justify-center lg:justify-start"
+              >
+                <Button
+                  size="lg"
+                  className="font-medium px-7 h-12"
+                  onClick={() => scrollTo("#contact")}
+                >
+                  <ArrowRight className="w-4 h-4 mr-2" />
+                  Get Started
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="font-medium px-7 h-12"
+                  onClick={() => scrollTo("#contact")}
+                >
+                  <Phone className="w-4 h-4 mr-2" />
+                  Book a Call
+                </Button>
+              </motion.div>
+            </motion.div>
 
-            <motion.p
-              custom={0.25}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="text-muted-foreground text-base sm:text-lg lg:text-xl leading-relaxed mb-10 max-w-[600px] mx-auto"
-            >
-              From GST registration to multi-state compliance, we help you sell across India without legal or tax risks.
-            </motion.p>
-
+            {/* Right — Form Card */}
             <motion.div
-              custom={0.4}
+              custom={0.3}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap gap-4 justify-center"
             >
-              <Button
-                size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium px-8 h-12 rounded-lg uppercase tracking-wider text-sm transition-all duration-300"
-                onClick={() => scrollTo("#contact")}
-              >
-                <ArrowRight className="w-4 h-4 mr-2" />
-                Start Your Business
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="font-medium px-8 h-12 rounded-lg uppercase tracking-wider text-sm border-border text-foreground hover:bg-muted transition-all duration-300"
-                onClick={() => scrollTo("#contact")}
-              >
-                <MessageSquare className="w-4 h-4 mr-2" />
-                Book a Call
-              </Button>
+              {submitted ? (
+                <div className="bg-card rounded-2xl border border-border/50 p-8 text-center shadow-sm">
+                  <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-foreground mb-2">Thank you!</h3>
+                  <p className="text-muted-foreground text-sm">We'll get back to you within 24 hours.</p>
+                </div>
+              ) : (
+                <form
+                  onSubmit={handleSubmit}
+                  className="bg-card rounded-2xl border border-border/50 p-7 lg:p-8 space-y-4 shadow-sm"
+                >
+                  <h3 className="text-lg font-semibold text-foreground mb-1">Request a Free Callback</h3>
+                  <p className="text-sm text-muted-foreground mb-4">Our experts respond within 2 hours.</p>
+
+                  <div>
+                    <Label htmlFor="hero-name" className="text-xs font-medium text-foreground mb-1 block">Full Name</Label>
+                    <Input
+                      id="hero-name"
+                      placeholder="Your name"
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="hero-email" className="text-xs font-medium text-foreground mb-1 block">Email</Label>
+                    <Input
+                      id="hero-email"
+                      type="email"
+                      placeholder="you@company.com"
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="hero-business" className="text-xs font-medium text-foreground mb-1 block">Business Name</Label>
+                    <Input
+                      id="hero-business"
+                      placeholder="Your business"
+                      value={form.business}
+                      onChange={(e) => setForm({ ...form, business: e.target.value })}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="hero-phone" className="text-xs font-medium text-foreground mb-1 block">Phone</Label>
+                    <Input
+                      id="hero-phone"
+                      type="tel"
+                      placeholder="+91 98765 43210"
+                      value={form.phone}
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label className="text-xs font-medium text-foreground mb-1 block">Service Needed</Label>
+                    <Select onValueChange={(v) => setForm({ ...form, service: v })}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a service" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {services.map((s) => (
+                          <SelectItem key={s} value={s}>{s}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <Button type="submit" className="w-full h-11 font-medium" size="lg">
+                    Request Callback
+                  </Button>
+                  <p className="text-[11px] text-muted-foreground text-center">
+                    By submitting, you agree to our Privacy Policy.
+                  </p>
+                </form>
+              )}
             </motion.div>
           </div>
         </div>
