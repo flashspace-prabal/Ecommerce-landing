@@ -19,18 +19,7 @@ export const HeroWithSearch = () => {
   };
 
   return (
-    <section className="relative w-full overflow-hidden min-h-[85vh] flex items-center" style={{ backgroundColor: "hsl(var(--primary))" }}>
-      <div className="absolute inset-0" style={{ backgroundColor: "hsl(var(--primary))" }}>
-        <img
-          src={heroFallback}
-          alt="Indian city skyline"
-          className="w-full h-full object-cover"
-          style={{ mixBlendMode: "luminosity", opacity: 0.55, filter: "contrast(1.3) brightness(1.1)" }}
-        />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 80% 20%, hsla(54, 96%, 88%, 0.3) 0%, transparent 50%)", mixBlendMode: "screen" }} />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, transparent 40%, hsl(var(--primary)) 100%)" }} />
-        <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent 0%, hsl(var(--primary)) 100%)" }} />
-      </div>
+    <section className="relative w-full overflow-hidden min-h-[85vh] flex items-center bg-primary">
 
       <div className="relative z-10 w-full px-6 lg:px-12 py-32 lg:py-40">
         <div className="container mx-auto">
