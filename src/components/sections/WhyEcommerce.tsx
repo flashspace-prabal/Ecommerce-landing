@@ -34,10 +34,6 @@ export const WhyEcommerce = () => {
             transition={{ duration: 0.8, ease }}
             className="space-y-6"
           >
-            <span className="inline-flex items-center gap-1.5 bg-primary/8 text-primary border border-primary/15 px-3.5 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.12em]">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-              The Compliance Gap
-            </span>
 
             <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-foreground tracking-tight leading-[1.05]">
               Stop Losing Lakhs to{" "}
