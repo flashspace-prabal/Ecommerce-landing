@@ -41,21 +41,6 @@ export const Navbar = () => {
             <img src={flashspaceLogo} alt="FlashSpace" className="h-10 lg:h-12 w-auto" />
           </a>
 
-          <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <button
-                key={link.label}
-                onClick={() => scrollTo(link.href)}
-                className={`px-4 py-2 text-[15px] font-medium transition-colors rounded-lg ${
-                  scrolled
-                    ? "text-foreground/80 hover:text-foreground hover:bg-primary/5"
-                    : "text-white/80 hover:text-white hover:bg-white/10"
-                }`}
-              >
-                {link.label}
-              </button>
-            ))}
-          </div>
 
           <div className="flex items-center gap-2 lg:gap-3">
             <Button
