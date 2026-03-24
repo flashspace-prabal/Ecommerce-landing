@@ -63,38 +63,20 @@ export const PricingSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-card rounded-xl overflow-hidden"
-          style={{ border: "1px solid #e5e7eb" }}
+          className="bg-card rounded-xl overflow-hidden border border-border/60"
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {plans.map((plan, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-border/60">
+            {/* On sm: 2-col with horizontal dividers between rows */}
+            {/* On lg: 4-col with only vertical dividers */}
+            {plans.map((plan) => (
               <div
                 key={plan.name}
-                className={`flex flex-col justify-between relative ${
-                  i < plans.length - 1 ? "lg:border-r" : ""
-                } ${i < 2 ? "sm:border-r lg:border-r-0" : ""} ${
-                  i === 0 || i === 1 ? "sm:border-b lg:border-b-0" : ""
-                } ${i === 2 ? "sm:border-b lg:border-b-0" : ""}`}
+                className="flex flex-col justify-between"
                 style={{
-                  borderColor: "#e5e7eb",
-                  backgroundColor: plan.highlighted ? "hsla(142, 20%, 26%, 0.05)" : "transparent",
+                  backgroundColor: plan.highlighted ? "hsl(142 20% 26% / 0.05)" : "transparent",
                 }}
               >
-                {/* Fix border-right for lg */}
-                <style>{`
-                  @media (min-width: 1024px) {
-                    .pricing-col:not(:last-child) { border-right: 1px solid #e5e7eb; }
-                    .pricing-col { border-bottom: none !important; }
-                  }
-                  @media (min-width: 640px) and (max-width: 1023px) {
-                    .pricing-col:nth-child(odd) { border-right: 1px solid #e5e7eb; }
-                    .pricing-col:nth-child(-n+2) { border-bottom: 1px solid #e5e7eb; }
-                  }
-                  @media (max-width: 639px) {
-                    .pricing-col:not(:last-child) { border-bottom: 1px solid #e5e7eb; }
-                  }
-                `}</style>
-                {/* Top: Header */}
+                {/* Top: Header + States */}
                 <div className="p-6 pb-0">
                   {plan.highlighted && (
                     <span className="inline-block text-[10px] font-bold uppercase tracking-wider bg-primary text-primary-foreground px-3 py-1 rounded-full mb-3">
@@ -108,7 +90,6 @@ export const PricingSection = () => {
                     {plan.coverage}
                   </p>
 
-                  {/* States in 2-col sub-grid */}
                   <div className="grid grid-cols-2 gap-x-3 gap-y-1">
                     {plan.states.map((s) => (
                       <span key={s} className="text-[11px] text-muted-foreground leading-tight">
@@ -126,8 +107,7 @@ export const PricingSection = () => {
                   </div>
                   <button
                     onClick={() => scrollTo("#contact")}
-                    className="w-10 h-10 mx-auto flex items-center justify-center rounded-lg border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
-                    style={{ borderColor: "#e5e7eb", backgroundColor: "hsla(0,0%,0%,0.02)" }}
+                    className="w-10 h-10 mx-auto flex items-center justify-center rounded-lg border border-border/60 bg-muted/30 text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
                   >
                     <Plus className="w-5 h-5" />
                   </button>
