@@ -10,7 +10,6 @@ const plans = [
     coverage: "8 States",
     states: ["Delhi", "UP", "Haryana", "Tamil Nadu", "West Bengal", "Maharashtra", "Karnataka", "Telangana"],
     highlighted: false,
-    tint: "bg-blue-50/60",
   },
   {
     name: "North Cluster",
@@ -19,7 +18,6 @@ const plans = [
     coverage: "8 States",
     states: ["Delhi", "UP", "Haryana", "Punjab", "Himachal Pradesh", "J&K", "Gujarat", "Rajasthan"],
     highlighted: false,
-    tint: "bg-amber-50/60",
   },
   {
     name: "South Cluster",
@@ -28,7 +26,6 @@ const plans = [
     coverage: "6 States",
     states: ["Kerala", "Tamil Nadu", "Telangana", "Karnataka", "Maharashtra", "Andhra Pradesh"],
     highlighted: false,
-    tint: "bg-emerald-50/60",
   },
   {
     name: "All India Cluster",
@@ -37,7 +34,6 @@ const plans = [
     coverage: "20 States",
     states: ["North + South + West Bengal", "Assam + Central India"],
     highlighted: true,
-    tint: "bg-primary/5",
   },
 ];
 
@@ -64,8 +60,7 @@ export const PricingSection = () => {
           </p>
         </motion.div>
 
-        {/* Horizontal scroll on mobile, grid on desktop */}
-        <div className="flex lg:grid lg:grid-cols-4 gap-5 overflow-x-auto lg:overflow-visible snap-x snap-mandatory pb-4 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -73,9 +68,9 @@ export const PricingSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className={`relative rounded-3xl border p-6 flex flex-col h-full snap-center min-w-[280px] lg:min-w-0 transition-all duration-300 ${plan.tint} ${
+              className={`relative bg-card rounded-3xl border p-6 flex flex-col h-full transition-all duration-300 ${
                 plan.highlighted
-                  ? "border-primary border-2 shadow-xl shadow-primary/10 scale-[1.02] z-10"
+                  ? "border-primary/40 shadow-lg scale-[1.02]"
                   : "border-border/40 shadow-sm"
               }`}
             >
@@ -85,34 +80,25 @@ export const PricingSection = () => {
                 </span>
               )}
               <h3 className="text-base font-bold text-foreground mb-3">{plan.name}</h3>
-              <div className="mb-4">
-                <span className="text-3xl lg:text-4xl font-extrabold text-foreground tracking-tight">{plan.price}</span>
-                <span className="text-xs text-muted-foreground ml-1">{plan.priceSuffix}</span>
+              <div className="mb-1">
+                <span className="text-2xl lg:text-3xl font-bold text-foreground">{plan.price}</span>
+                <span className="text-xs text-muted-foreground">{plan.priceSuffix}</span>
               </div>
-
-              {/* Coverage pill */}
-              <span className="inline-flex items-center self-start rounded-full bg-secondary text-secondary-foreground text-xs font-semibold px-3 py-1 mb-3">
-                {plan.coverage}
-              </span>
-
-              {/* States in 2-col grid */}
-              <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 mb-6 flex-1">
+              <p className="text-sm font-semibold text-foreground mt-4 mb-2">
+                Coverage: {plan.coverage}
+              </p>
+              <ul className="space-y-1.5 mb-6 flex-1">
                 {plan.states.map((s) => (
-                  <div key={s} className="flex items-start gap-1.5 text-xs text-muted-foreground">
+                  <li key={s} className="flex items-start gap-2 text-xs text-muted-foreground">
                     <Check className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
-                    <span>{s}</span>
-                  </div>
+                    {s}
+                  </li>
                 ))}
-              </div>
-
+              </ul>
               <Button
                 size="lg"
-                className={`w-full h-11 ${
-                  plan.highlighted
-                    ? ""
-                    : "bg-foreground/5 backdrop-blur-sm border border-border/60 text-foreground hover:bg-foreground/10"
-                }`}
-                variant={plan.highlighted ? "default" : "ghost"}
+                className="w-full h-11"
+                variant={plan.highlighted ? "default" : "outline"}
                 onClick={() => scrollTo("#contact")}
               >
                 Get Started
