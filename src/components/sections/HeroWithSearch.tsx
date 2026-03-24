@@ -63,15 +63,6 @@ export const HeroWithSearch = () => {
                 E-commerce Business{" "}
                 <span className="text-primary">Across India</span>
               </h1>
-              <motion.p
-                custom={0.25}
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-                className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-8 max-w-md mx-auto lg:mx-0"
-              >
-                From GST registration to multi-state compliance — sell across India without legal or tax risks.
-              </motion.p>
               <motion.div
                 custom={0.4}
                 variants={fadeUp}
