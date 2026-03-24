@@ -67,9 +67,9 @@ export const HeroWithSearch = () => {
               className="flex flex-col justify-center text-center lg:text-left"
             >
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-5">
-                Start & Scale Your<br />
-                E-commerce Business{" "}
-                <span className="text-primary">Across India</span>
+                Launch in Mumbai.<br />
+                Live in Delhi.{" "}
+                <span className="text-primary">Sell Everywhere.</span>
               </h1>
               <motion.p
                 custom={0.25}
@@ -78,7 +78,7 @@ export const HeroWithSearch = () => {
                 animate="visible"
                 className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-8 max-w-md mx-auto lg:mx-0"
               >
-                From GST registration to multi-state compliance — sell across India without legal or tax risks.
+                The borderless operating system for India's next generation of e-commerce giants.
               </motion.p>
               <motion.div
                 custom={0.4}
