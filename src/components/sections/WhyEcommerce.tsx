@@ -9,7 +9,7 @@ export const WhyEcommerce = () => {
   return (
     <section
       id="why-us"
-      className="relative py-32 lg:py-40 overflow-hidden"
+      className="relative py-16 lg:py-20 overflow-hidden"
       style={{
         background:
           "linear-gradient(165deg, hsl(0 0% 97%) 0%, hsl(142 15% 95%) 100%)",
