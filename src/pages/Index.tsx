@@ -22,7 +22,7 @@ const Index = () => {
         <EcommerceServices />
         <PricingSection />
         <BenefitsSection />
-        <WhyFlashSpace />
+        
         <ClientVoices />
         <ReviewsSection />
         <ContactSection />
