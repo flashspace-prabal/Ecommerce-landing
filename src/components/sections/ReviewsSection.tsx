@@ -26,7 +26,7 @@ export const ReviewsSection = () => {
           <p className="text-muted-foreground text-sm">Real reviews from real businesses.</p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {reviews.map((r, i) => (
             <motion.div
               key={r.name}
