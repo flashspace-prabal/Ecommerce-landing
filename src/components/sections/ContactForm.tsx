@@ -16,40 +16,31 @@ import { z } from "zod";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
+  company: z.string().trim().min(1, "Company name is required").max(100),
   email: z.string().trim().email("Please enter a valid email").max(255),
   phone: z.string().trim().min(1, "Phone number is required").max(20),
-  businessType: z.string().min(1, "Please select a business type"),
-  budget: z.string().min(1, "Please select a budget range"),
+  service: z.string().min(1, "Please select a service"),
   message: z.string().trim().max(1000).optional(),
 });
 
-type ContactForm = z.infer<typeof contactSchema>;
+type ContactFormData = z.infer<typeof contactSchema>;
 
-const businessTypes = [
-  "Fashion & Apparel",
-  "Electronics & Gadgets",
-  "Health & Beauty",
-  "Food & Beverages",
-  "Home & Living",
-  "Digital Products",
-  "General E-commerce",
+const services = [
+  "VPOB Registration",
+  "GST Registration",
+  "Multi-State Compliance",
+  "Amazon/Flipkart Onboarding",
+  "TDS Recovery",
+  "Full Compliance Package",
   "Other",
 ];
 
-const budgetRanges = [
-  "Under AED 10,000",
-  "AED 10,000 – 25,000",
-  "AED 25,000 – 50,000",
-  "AED 50,000+",
-  "Not sure yet",
-];
-
 export const ContactForm = () => {
-  const [form, setForm] = useState<Partial<ContactForm>>({});
-  const [errors, setErrors] = useState<Partial<Record<keyof ContactForm, string>>>({});
+  const [form, setForm] = useState<Partial<ContactFormData>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (field: keyof ContactForm, value: string) => {
+  const handleChange = (field: keyof ContactFormData, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
   };
@@ -58,9 +49,9 @@ export const ContactForm = () => {
     e.preventDefault();
     const result = contactSchema.safeParse(form);
     if (!result.success) {
-      const fieldErrors: Partial<Record<keyof ContactForm, string>> = {};
+      const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
       result.error.issues.forEach((issue) => {
-        const field = issue.path[0] as keyof ContactForm;
+        const field = issue.path[0] as keyof ContactFormData;
         if (!fieldErrors[field]) fieldErrors[field] = issue.message;
       });
       setErrors(fieldErrors);
@@ -71,7 +62,7 @@ export const ContactForm = () => {
 
   if (submitted) {
     return (
-      <section id="contact" className="py-20 lg:py-28 bg-card/30">
+      <section id="contact" className="py-20 lg:py-28 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -81,7 +72,7 @@ export const ContactForm = () => {
             <CheckCircle className="w-16 h-16 text-primary mx-auto mb-6" />
             <h2 className="text-3xl font-medium text-foreground mb-4 tracking-tight">Thank you!</h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              We've received your enquiry. One of our e-commerce setup specialists will be in touch within 24 hours.
+              We've received your enquiry. Our compliance team will be in touch within 24 hours.
             </p>
           </motion.div>
         </div>
@@ -90,49 +81,30 @@ export const ContactForm = () => {
   }
 
   return (
-    <section id="contact" className="py-20 lg:py-28 bg-card/30">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 max-w-5xl mx-auto">
-          {/* Left — copy */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            className="lg:sticky lg:top-24 lg:self-start"
-          >
-            <span className="inline-flex items-center gap-2 text-sm text-muted-foreground mb-4">
-              <span className="text-primary">+</span> Get In Touch
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium text-foreground leading-[1.15] tracking-tight mb-5">
-              Ready to launch<br />your online store?
-            </h2>
-            <p className="text-muted-foreground text-base leading-relaxed mb-8 max-w-sm">
-              Fill in the form and our e-commerce setup team will reach out within 24 hours with a tailored plan.
-            </p>
-            <div className="space-y-4 text-sm text-muted-foreground">
-              <p className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                Free consultation — no obligation
-              </p>
-              <p className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                Personalised setup roadmap
-              </p>
-              <p className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                Transparent pricing — no hidden fees
-              </p>
-            </div>
-          </motion.div>
+    <section id="contact" className="py-20 lg:py-28 bg-white">
+      <div className="container mx-auto px-4 lg:px-8 max-w-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-10"
+        >
+          <h2 className="text-3xl sm:text-4xl font-bold text-primary tracking-tight mb-3">
+            Get In Touch
+          </h2>
+          <p className="text-muted-foreground text-base max-w-md mx-auto">
+            Share your details and we'll create a tailored compliance plan for your business.
+          </p>
+        </motion.div>
 
-          {/* Right — form */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ delay: 0.1 }}
-          >
-            <form onSubmit={handleSubmit} className="bg-card rounded-2xl border border-border/50 p-8 lg:p-10 space-y-5 shadow-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+        >
+          <form onSubmit={handleSubmit} className="bg-secondary rounded-2xl p-8 lg:p-10 space-y-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <Label htmlFor="name" className="text-sm font-medium text-foreground mb-1.5 block">Full Name *</Label>
                 <Input
@@ -140,11 +112,24 @@ export const ContactForm = () => {
                   placeholder="Your name"
                   value={form.name || ""}
                   onChange={(e) => handleChange("name", e.target.value)}
-                  className={errors.name ? "border-destructive" : ""}
+                  className={`bg-white border-border/40 ${errors.name ? "border-destructive" : ""}`}
                 />
                 {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
               </div>
+              <div>
+                <Label htmlFor="company" className="text-sm font-medium text-foreground mb-1.5 block">Company Name *</Label>
+                <Input
+                  id="company"
+                  placeholder="Your company"
+                  value={form.company || ""}
+                  onChange={(e) => handleChange("company", e.target.value)}
+                  className={`bg-white border-border/40 ${errors.company ? "border-destructive" : ""}`}
+                />
+                {errors.company && <p className="text-xs text-destructive mt-1">{errors.company}</p>}
+              </div>
+            </div>
 
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <Label htmlFor="email" className="text-sm font-medium text-foreground mb-1.5 block">Email Address *</Label>
                 <Input
@@ -153,73 +138,57 @@ export const ContactForm = () => {
                   placeholder="you@company.com"
                   value={form.email || ""}
                   onChange={(e) => handleChange("email", e.target.value)}
-                  className={errors.email ? "border-destructive" : ""}
+                  className={`bg-white border-border/40 ${errors.email ? "border-destructive" : ""}`}
                 />
                 {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
               </div>
-
               <div>
                 <Label htmlFor="phone" className="text-sm font-medium text-foreground mb-1.5 block">Phone Number *</Label>
                 <Input
                   id="phone"
                   type="tel"
-                  placeholder="+971 50 123 4567"
+                  placeholder="+91 98765 43210"
                   value={form.phone || ""}
                   onChange={(e) => handleChange("phone", e.target.value)}
-                  className={errors.phone ? "border-destructive" : ""}
+                  className={`bg-white border-border/40 ${errors.phone ? "border-destructive" : ""}`}
                 />
                 {errors.phone && <p className="text-xs text-destructive mt-1">{errors.phone}</p>}
               </div>
+            </div>
 
-              <div>
-                <Label className="text-sm font-medium text-foreground mb-1.5 block">Business Type *</Label>
-                <Select onValueChange={(v) => handleChange("businessType", v)}>
-                  <SelectTrigger className={errors.businessType ? "border-destructive" : ""}>
-                    <SelectValue placeholder="Select your business type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {businessTypes.map((t) => (
-                      <SelectItem key={t} value={t}>{t}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                {errors.businessType && <p className="text-xs text-destructive mt-1">{errors.businessType}</p>}
-              </div>
+            <div>
+              <Label className="text-sm font-medium text-foreground mb-1.5 block">Service Needed *</Label>
+              <Select onValueChange={(v) => handleChange("service", v)}>
+                <SelectTrigger className={`bg-white border-border/40 ${errors.service ? "border-destructive" : ""}`}>
+                  <SelectValue placeholder="Select service" />
+                </SelectTrigger>
+                <SelectContent>
+                  {services.map((s) => (
+                    <SelectItem key={s} value={s}>{s}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {errors.service && <p className="text-xs text-destructive mt-1">{errors.service}</p>}
+            </div>
 
-              <div>
-                <Label className="text-sm font-medium text-foreground mb-1.5 block">Budget Range *</Label>
-                <Select onValueChange={(v) => handleChange("budget", v)}>
-                  <SelectTrigger className={errors.budget ? "border-destructive" : ""}>
-                    <SelectValue placeholder="Select your budget range" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {budgetRanges.map((b) => (
-                      <SelectItem key={b} value={b}>{b}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                {errors.budget && <p className="text-xs text-destructive mt-1">{errors.budget}</p>}
-              </div>
+            <div>
+              <Label htmlFor="message" className="text-sm font-medium text-foreground mb-1.5 block">Message (optional)</Label>
+              <Textarea
+                id="message"
+                placeholder="Tell us about your e-commerce business..."
+                rows={4}
+                value={form.message || ""}
+                onChange={(e) => handleChange("message", e.target.value)}
+                className="resize-none bg-white border-border/40"
+              />
+            </div>
 
-              <div>
-                <Label htmlFor="message" className="text-sm font-medium text-foreground mb-1.5 block">Message (optional)</Label>
-                <Textarea
-                  id="message"
-                  placeholder="Tell us more about your e-commerce idea..."
-                  rows={4}
-                  value={form.message || ""}
-                  onChange={(e) => handleChange("message", e.target.value)}
-                  className="resize-none"
-                />
-              </div>
-
-              <Button type="submit" size="lg" className="w-full h-12 text-base font-medium rounded-xl">
-                <Send className="w-4 h-4 mr-2" />
-                Submit Enquiry
-              </Button>
-            </form>
-          </motion.div>
-        </div>
+            <Button type="submit" size="lg" className="w-full h-12 text-base font-medium rounded-xl">
+              <Send className="w-4 h-4 mr-2" />
+              Submit Enquiry
+            </Button>
+          </form>
+        </motion.div>
       </div>
     </section>
   );
