@@ -19,7 +19,7 @@ export const HeroWithSearch = () => {
   };
 
   return (
-    <section className="relative w-full overflow-hidden min-h-[85vh] flex items-center bg-primary">
+    <section className="relative w-full overflow-hidden min-h-[85vh] flex items-center bg-background">
 
       <div className="relative z-10 w-full px-6 lg:px-12 py-32 lg:py-40">
         <div className="container mx-auto">
@@ -29,12 +29,11 @@ export const HeroWithSearch = () => {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-[26px] sm:text-[36px] lg:text-[48px] font-medium tracking-[-0.03em] text-white leading-[1.15] mb-6"
-              style={{ textShadow: "0 2px 20px rgba(0,0,0,0.4)" }}
+              className="text-[26px] sm:text-[36px] lg:text-[48px] font-medium tracking-[-0.03em] text-foreground leading-[1.15] mb-6"
             >
               Start & Scale Your E-commerce<br />
               Business Across India —{" "}
-              <span className="italic text-secondary">Without GST Headaches</span>
+              <span className="italic text-primary">Without GST Headaches</span>
             </motion.h1>
 
             <motion.p
@@ -42,7 +41,7 @@ export const HeroWithSearch = () => {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-white/80 text-base sm:text-lg lg:text-xl leading-relaxed mb-10 max-w-[600px]"
+              className="text-muted-foreground text-base sm:text-lg lg:text-xl leading-relaxed mb-10 max-w-[600px]"
             >
               From GST registration to multi-state compliance, we help you sell across India without legal or tax risks.
             </motion.p>
@@ -56,8 +55,7 @@ export const HeroWithSearch = () => {
             >
               <Button
                 size="lg"
-                variant="white"
-                className="font-medium px-8 h-12 rounded-lg uppercase tracking-wider text-sm transition-all duration-300 hover:bg-secondary hover:text-secondary-foreground hover:shadow-[0_0_30px_hsla(54,96%,88%,0.3)]"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium px-8 h-12 rounded-lg uppercase tracking-wider text-sm transition-all duration-300"
                 onClick={() => scrollTo("#contact")}
               >
                 <ArrowRight className="w-4 h-4 mr-2" />
@@ -66,7 +64,7 @@ export const HeroWithSearch = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="font-medium px-8 h-12 rounded-lg uppercase tracking-wider text-sm border-white text-white bg-white/10 hover:bg-white/20 transition-all duration-300"
+                className="font-medium px-8 h-12 rounded-lg uppercase tracking-wider text-sm border-border text-foreground hover:bg-muted transition-all duration-300"
                 onClick={() => scrollTo("#contact")}
               >
                 <MessageSquare className="w-4 h-4 mr-2" />
