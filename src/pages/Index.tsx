@@ -18,7 +18,7 @@ const Index = () => {
       <main>
         <HeroWithSearch />
         <TrustBanner />
-        <TestimonialPreview />
+        
         <EcommerceServices />
         <PricingSection />
         <BenefitsSection />
