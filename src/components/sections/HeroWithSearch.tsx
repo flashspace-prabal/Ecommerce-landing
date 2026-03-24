@@ -22,8 +22,8 @@ export const HeroWithSearch = () => {
     <section className="relative w-full overflow-hidden min-h-[85vh] flex items-center bg-background">
 
       <div className="relative z-10 w-full px-6 lg:px-12 py-32 lg:py-40">
-        <div className="container mx-auto">
-          <div className="max-w-[720px]">
+        <div className="container mx-auto text-center">
+          <div className="max-w-[720px] mx-auto">
             <motion.h1
               custom={0.1}
               variants={fadeUp}
@@ -41,7 +41,7 @@ export const HeroWithSearch = () => {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-muted-foreground text-base sm:text-lg lg:text-xl leading-relaxed mb-10 max-w-[600px]"
+              className="text-muted-foreground text-base sm:text-lg lg:text-xl leading-relaxed mb-10 max-w-[600px] mx-auto"
             >
               From GST registration to multi-state compliance, we help you sell across India without legal or tax risks.
             </motion.p>
@@ -51,7 +51,7 @@ export const HeroWithSearch = () => {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-4 justify-center"
             >
               <Button
                 size="lg"
