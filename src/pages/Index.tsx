@@ -5,7 +5,7 @@ import { TrustBanner } from "@/components/sections/TrustBanner";
 import { EcommerceServices } from "@/components/sections/EcommerceServices";
 import { PricingSection } from "@/components/sections/PricingSection";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
-import { WhyFlashSpace } from "@/components/sections/WhyFlashSpace";
+
 import { ClientVoices } from "@/components/sections/ClientVoices";
 import { ReviewsSection } from "@/components/sections/ReviewsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -22,7 +22,7 @@ const Index = () => {
         <EcommerceServices />
         <PricingSection />
         <BenefitsSection />
-        <WhyFlashSpace />
+        
         <ClientVoices />
         <ReviewsSection />
         <ContactSection />
