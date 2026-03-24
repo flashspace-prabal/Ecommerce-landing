@@ -46,7 +46,7 @@ export const WhyEcommerce = () => {
             </p>
 
             <div className="pt-2">
-              <Button size="lg" className="rounded-full px-8">
+              <Button size="lg" className="px-8">
                 Get Started
               </Button>
             </div>
