@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageSquare } from "lucide-react";
-import heroFallback from "@/assets/hero-india-skyline.jpg";
+
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
