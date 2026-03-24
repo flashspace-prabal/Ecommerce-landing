@@ -41,7 +41,7 @@ export const HeroWithSearch = () => {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-muted-foreground text-base sm:text-lg lg:text-xl leading-relaxed mb-10 max-w-[600px]"
+              className="text-muted-foreground text-base sm:text-lg lg:text-xl leading-relaxed mb-10 max-w-[600px] mx-auto"
             >
               From GST registration to multi-state compliance, we help you sell across India without legal or tax risks.
             </motion.p>
