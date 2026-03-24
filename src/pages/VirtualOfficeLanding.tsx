@@ -194,45 +194,97 @@ const ValueProposition = () => (
 );
 
 /* ─── 4. WHY FLASHSPACE ─── */
-const benefits = [
-  { icon: IndianRupee, text: "5–10x cheaper than renting commercial space" },
-  { icon: BadgeCheck, text: "Plans starting at just ₹699/month" },
-  { icon: Clock, text: "24-hour documentation processing" },
-  { icon: Shield, text: "GST & MCA compliant addresses" },
-  { icon: Headphones, text: "Dedicated after-sales support" },
-  { icon: FileText, text: "Complete paperwork handled for you" },
-];
-
 const WhyFlashSpace = () => (
   <section className="py-20 lg:py-28 bg-muted/30">
     <div className="container mx-auto px-4 lg:px-8">
-      <div className="grid lg:grid-cols-2 gap-14 items-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <span className="inline-flex items-center gap-2 text-sm text-primary font-semibold mb-4 uppercase tracking-wider">Why FlashSpace</span>
-          <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-bold text-foreground tracking-tight leading-[1.15] mb-6">
-            The Fastest & Most Affordable Way to{" "}
-            <span className="text-primary">Register Your Business</span>
-          </h2>
-          <p className="text-muted-foreground text-base leading-relaxed max-w-md mb-8">
-            Stop wasting money on expensive office leases. Get everything you need to operate legally — at a fraction of the cost.
-          </p>
-          <Button size="lg" className="rounded-xl font-semibold px-8">
-            Get Started — ₹699/month
+      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+        <span className="inline-flex items-center gap-2 text-sm text-primary font-semibold mb-4 uppercase tracking-wider">Why FlashSpace</span>
+        <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-bold text-foreground tracking-tight leading-[1.15]">
+          The Fastest & Most Affordable Way to{" "}
+          <span className="text-primary">Register Your Business</span>
+        </h2>
+      </motion.div>
+
+      {/* Bento Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ gridAutoRows: "1fr" }}>
+        {/* Element 5: ₹699 card — spans 2 rows, col 1 */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          className="md:row-span-2 md:col-start-1 md:row-start-1 bg-primary text-primary-foreground rounded-2xl border border-primary/20 p-7 flex flex-col justify-center h-full"
+        >
+          <div className="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center mb-5">
+            <BadgeCheck className="w-5 h-5" />
+          </div>
+          <h3 className="text-3xl lg:text-4xl font-bold mb-2">₹699<span className="text-lg font-medium opacity-75">/month</span></h3>
+          <p className="text-sm opacity-80 leading-relaxed">Plans starting at just ₹699/month — 5–10x cheaper than renting commercial space.</p>
+          <Button size="lg" className="mt-6 bg-white text-primary hover:bg-white/90 rounded-xl font-semibold w-fit">
+            Get Started
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
-          <div className="grid gap-4">
-            {benefits.map((b, i) => (
-              <div key={i} className="flex items-center gap-4 bg-card rounded-xl border border-border/40 px-5 py-4 hover:shadow-sm transition-all">
-                <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                  <b.icon className="w-4 h-4 text-primary" />
-                </div>
-                <span className="text-sm font-medium text-foreground">{b.text}</span>
-              </div>
-            ))}
+        {/* Element 1: 5-10x card — spans 2 cols, row 1 */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }}
+          className="md:col-span-2 md:col-start-2 md:row-start-1 bg-card rounded-2xl border border-border/40 p-7 flex items-center gap-5 h-full"
+        >
+          <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <IndianRupee className="w-5 h-5 text-primary" />
           </div>
+          <div>
+            <h3 className="text-lg font-semibold text-foreground mb-1">5–10x Cheaper Than Commercial Space</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">Stop wasting money on expensive office leases. Get everything you need to operate legally — at a fraction of the cost.</p>
+          </div>
+        </motion.div>
+
+        {/* Center Card: Why Businesses... — row 2, col 2 */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
+          className="md:col-start-2 md:row-start-2 bg-card rounded-2xl border border-border/40 p-7 flex flex-col justify-center h-full text-center"
+        >
+          <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-5 mx-auto">
+            <Shield className="w-5 h-5 text-primary" />
+          </div>
+          <h3 className="text-lg font-semibold text-foreground mb-2">Why Businesses Choose FlashSpace</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">GST & MCA compliant addresses trusted by 1000+ brands across India.</p>
+        </motion.div>
+
+        {/* 24hr card — row 2, col 3 */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}
+          className="md:col-start-3 md:row-start-2 bg-card rounded-2xl border border-border/40 p-7 flex flex-col justify-center h-full"
+        >
+          <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+            <Clock className="w-5 h-5 text-primary" />
+          </div>
+          <h3 className="text-lg font-semibold text-foreground mb-2">24-Hour Processing</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">Complete documentation processing within 24 hours.</p>
+        </motion.div>
+
+        {/* Element 4: Address card — spans 2 cols, row 3 */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
+          className="md:col-span-2 md:col-start-1 md:row-start-3 bg-card rounded-2xl border border-border/40 p-7 flex items-center gap-5 h-full"
+        >
+          <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <MapPin className="w-5 h-5 text-primary" />
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-foreground mb-1">Prestigious Business Address</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">Get a verified address in any major Indian city for GST, MCA, and official correspondence — with professional mail handling included.</p>
+          </div>
+        </motion.div>
+
+        {/* 100% Compliant card — row 3, col 3 */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.25 }}
+          className="md:col-start-3 md:row-start-3 bg-card rounded-2xl border border-border/40 p-7 flex flex-col justify-center h-full"
+        >
+          <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+            <FileText className="w-5 h-5 text-primary" />
+          </div>
+          <h3 className="text-lg font-semibold text-foreground mb-2">100% Compliant</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">Complete paperwork handled for you with dedicated after-sales support.</p>
         </motion.div>
       </div>
     </div>
