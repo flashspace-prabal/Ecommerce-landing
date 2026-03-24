@@ -22,8 +22,8 @@ export const HeroWithSearch = () => {
     <section className="relative w-full overflow-hidden min-h-[85vh] flex items-center bg-background">
 
       <div className="relative z-10 w-full px-6 lg:px-12 py-32 lg:py-40">
-        <div className="container mx-auto">
-          <div className="max-w-[720px]">
+        <div className="container mx-auto text-center">
+          <div className="max-w-[720px] mx-auto">
             <motion.h1
               custom={0.1}
               variants={fadeUp}
