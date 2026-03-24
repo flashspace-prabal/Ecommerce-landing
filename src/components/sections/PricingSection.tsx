@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
+import { Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const plans = [
   {
     name: "Tier 1 Cluster",
     price: "₹80,000",
-    priceSuffix: "+GST/yr",
+    priceSuffix: " + GST/yr",
     coverage: "8 States",
     states: ["Delhi", "UP", "Haryana", "Tamil Nadu", "West Bengal", "Maharashtra", "Karnataka", "Telangana"],
     highlighted: false,
@@ -13,7 +14,7 @@ const plans = [
   {
     name: "North Cluster",
     price: "₹90,000",
-    priceSuffix: "+GST/yr",
+    priceSuffix: " + GST/yr",
     coverage: "8 States",
     states: ["Delhi", "UP", "Haryana", "Punjab", "Himachal Pradesh", "J&K", "Gujarat", "Rajasthan"],
     highlighted: false,
@@ -21,7 +22,7 @@ const plans = [
   {
     name: "South Cluster",
     price: "₹75,000",
-    priceSuffix: "+GST/yr",
+    priceSuffix: " + GST/yr",
     coverage: "6 States",
     states: ["Kerala", "Tamil Nadu", "Telangana", "Karnataka", "Maharashtra", "Andhra Pradesh"],
     highlighted: false,
@@ -29,9 +30,9 @@ const plans = [
   {
     name: "All India Cluster",
     price: "₹2,40,000",
-    priceSuffix: "+GST/yr",
+    priceSuffix: " + GST/yr",
     coverage: "20 States",
-    states: ["North + South", "+ West Bengal", "Assam", "Central India"],
+    states: ["North + South + West Bengal", "Assam + Central India"],
     highlighted: true,
   },
 ];
@@ -59,63 +60,52 @@ export const PricingSection = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-card rounded-xl overflow-hidden border border-border/60"
-        >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-border/60">
-            {/* On sm: 2-col with horizontal dividers between rows */}
-            {/* On lg: 4-col with only vertical dividers */}
-            {plans.map((plan) => (
-              <div
-                key={plan.name}
-                className="flex flex-col justify-between"
-                style={{
-                  backgroundColor: plan.highlighted ? "hsl(142 20% 26% / 0.05)" : "transparent",
-                }}
-              >
-                {/* Top: Header + States */}
-                <div className="p-6 pb-0">
-                  {plan.highlighted && (
-                    <span className="inline-block text-[10px] font-bold uppercase tracking-wider bg-primary text-primary-foreground px-3 py-1 rounded-full mb-3">
-                      Best Value
-                    </span>
-                  )}
-                  <h3 className="text-xs font-bold uppercase tracking-widest text-foreground mb-1">
-                    {plan.name}
-                  </h3>
-                  <p className="text-[11px] text-muted-foreground mb-4">
-                    {plan.coverage}
-                  </p>
-
-                  <div className="grid grid-cols-2 gap-x-3 gap-y-1">
-                    {plan.states.map((s) => (
-                      <span key={s} className="text-[11px] text-muted-foreground leading-tight">
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Bottom: Price + Button */}
-                <div className="p-6 pt-8">
-                  <div className="mb-4">
-                    <span className="text-2xl lg:text-3xl font-bold text-foreground">{plan.price}</span>
-                    <span className="text-[11px] text-muted-foreground ml-1">{plan.priceSuffix}</span>
-                  </div>
-                  <button
-                    onClick={() => scrollTo("#contact")}
-                    className="w-10 h-10 mx-auto flex items-center justify-center rounded-lg border border-border/60 bg-muted/30 text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
-                  >
-                    <Plus className="w-5 h-5" />
-                  </button>
-                </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {plans.map((plan, i) => (
+            <motion.div
+              key={plan.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className={`relative bg-card rounded-3xl border p-6 flex flex-col h-full transition-all duration-300 ${
+                plan.highlighted
+                  ? "border-primary/40 shadow-lg scale-[1.02]"
+                  : "border-border/40 shadow-sm"
+              }`}
+            >
+              {plan.highlighted && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-semibold bg-primary text-primary-foreground px-4 py-1 rounded-full whitespace-nowrap">
+                  Best Value
+                </span>
+              )}
+              <h3 className="text-base font-bold text-foreground mb-3">{plan.name}</h3>
+              <div className="mb-1">
+                <span className="text-2xl lg:text-3xl font-bold text-foreground">{plan.price}</span>
+                <span className="text-xs text-muted-foreground">{plan.priceSuffix}</span>
               </div>
-            ))}
-          </div>
-        </motion.div>
+              <p className="text-sm font-semibold text-foreground mt-4 mb-2">
+                Coverage: {plan.coverage}
+              </p>
+              <ul className="space-y-1.5 mb-6 flex-1">
+                {plan.states.map((s) => (
+                  <li key={s} className="flex items-start gap-2 text-xs text-muted-foreground">
+                    <Check className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
+                    {s}
+                  </li>
+                ))}
+              </ul>
+              <Button
+                size="lg"
+                className="w-full h-11"
+                variant={plan.highlighted ? "default" : "outline"}
+                onClick={() => scrollTo("#contact")}
+              >
+                Get Started
+              </Button>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
