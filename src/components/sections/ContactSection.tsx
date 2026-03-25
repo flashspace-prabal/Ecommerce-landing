@@ -80,7 +80,7 @@ export const ContactSection = () => {
   }
 
   return (
-    <section id="contact" className="py-16 lg:py-24 text-primary-foreground bg-destructive-foreground">
+    <section id="contact" className="py-16 lg:py-24 bg-primary">
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -88,10 +88,10 @@ export const ContactSection = () => {
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-3 text-primary">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-secondary tracking-tight mb-3">
             Get In Touch
           </h2>
-          <p className="text-base max-w-md mx-auto text-primary">
+          <p className="text-secondary/60 text-base max-w-md mx-auto">
             Share your details and we'll create a tailored compliance plan for your business.
           </p>
         </motion.div>
@@ -102,7 +102,7 @@ export const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="rounded-2xl border border-secondary/10 backdrop-blur-sm p-8 lg:p-10 space-y-5 bg-primary-foreground"
+          className="rounded-2xl border border-secondary/10 bg-white/[0.06] backdrop-blur-sm p-8 lg:p-10 space-y-5"
         >
           <div className="grid sm:grid-cols-2 gap-5">
             <div>
