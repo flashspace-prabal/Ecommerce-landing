@@ -52,8 +52,8 @@ export const BenefitsSection = () => {
               transition={{ delay: i * 0.08 }}
               className="bg-card rounded-xl border border-border/40 p-6 text-center shadow-sm"
             >
-              <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <b.icon className="w-5 h-5 text-primary" />
+              <div className="w-11 h-11 rounded-lg bg-primary flex items-center justify-center mx-auto mb-4">
+                <b.icon className="w-5 h-5 text-secondary" />
               </div>
               <h3 className="text-sm font-semibold text-foreground mb-1.5">{b.title}</h3>
               <p className="text-xs text-muted-foreground leading-relaxed">{b.description}</p>
