@@ -123,71 +123,47 @@ export const HeroWithSearch = () => {
                 >
                   <img src={heroWatercolorBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-white/70" />
-                  <h3 className="text-lg font-semibold text-foreground mb-1">Request a Free Callback</h3>
-                  <p className="text-sm text-muted-foreground mb-4">Our experts respond within 2 hours.</p>
+                  <div className="relative z-10 space-y-4">
+                    <h3 className="text-lg font-semibold text-foreground mb-1">Request a Free Callback</h3>
+                    <p className="text-sm text-muted-foreground mb-4">Our experts respond within 2 hours.</p>
 
-                  <div>
-                    <Label htmlFor="hero-name" className="text-xs font-medium text-foreground mb-1 block">Full Name</Label>
-                    <Input
-                      id="hero-name"
-                      placeholder="Your name"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="hero-email" className="text-xs font-medium text-foreground mb-1 block">Email</Label>
-                    <Input
-                      id="hero-email"
-                      type="email"
-                      placeholder="you@company.com"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="hero-business" className="text-xs font-medium text-foreground mb-1 block">Business Name</Label>
-                    <Input
-                      id="hero-business"
-                      placeholder="Your business"
-                      value={form.business}
-                      onChange={(e) => setForm({ ...form, business: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="hero-phone" className="text-xs font-medium text-foreground mb-1 block">Phone</Label>
-                    <Input
-                      id="hero-phone"
-                      type="tel"
-                      placeholder="+91 98765 43210"
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label className="text-xs font-medium text-foreground mb-1 block">Service Needed</Label>
-                    <Select onValueChange={(v) => setForm({ ...form, service: v })}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a service" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {services.map((s) => (
-                          <SelectItem key={s} value={s}>{s}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
+                    <div>
+                      <Label htmlFor="hero-name" className="text-xs font-medium text-foreground mb-1 block">Full Name</Label>
+                      <Input id="hero-name" placeholder="Your name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required className="bg-white/90" />
+                    </div>
+                    <div>
+                      <Label htmlFor="hero-email" className="text-xs font-medium text-foreground mb-1 block">Email</Label>
+                      <Input id="hero-email" type="email" placeholder="you@company.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required className="bg-white/90" />
+                    </div>
+                    <div>
+                      <Label htmlFor="hero-business" className="text-xs font-medium text-foreground mb-1 block">Business Name</Label>
+                      <Input id="hero-business" placeholder="Your business" value={form.business} onChange={(e) => setForm({ ...form, business: e.target.value })} required className="bg-white/90" />
+                    </div>
+                    <div>
+                      <Label htmlFor="hero-phone" className="text-xs font-medium text-foreground mb-1 block">Phone</Label>
+                      <Input id="hero-phone" type="tel" placeholder="+91 98765 43210" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} required className="bg-white/90" />
+                    </div>
+                    <div>
+                      <Label className="text-xs font-medium text-foreground mb-1 block">Service Needed</Label>
+                      <Select onValueChange={(v) => setForm({ ...form, service: v })}>
+                        <SelectTrigger className="bg-white/90">
+                          <SelectValue placeholder="Select a service" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {services.map((s) => (
+                            <SelectItem key={s} value={s}>{s}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-                  <Button type="submit" className="w-full h-11 font-medium" size="lg">
-                    Request Callback
-                  </Button>
-                  <p className="text-[11px] text-muted-foreground text-center">
-                    By submitting, you agree to our Privacy Policy.
-                  </p>
+                    <Button type="submit" className="w-full h-11 font-medium" size="lg">
+                      Request Callback
+                    </Button>
+                    <p className="text-[11px] text-muted-foreground text-center">
+                      By submitting, you agree to our Privacy Policy.
+                    </p>
+                  </div>
                 </form>
               )}
             </motion.div>
