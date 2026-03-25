@@ -86,7 +86,7 @@ export const BenefitsSection = () => {
   };
 
   return (
-    <section className="relative py-16 lg:py-28 overflow-hidden bg-[hsl(210,20%,22%)]">
+    <section className="relative py-16 lg:py-28 overflow-hidden bg-background">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl relative z-10">
         {/* Header */}
         <motion.div
