@@ -88,12 +88,9 @@ export const PricingSection = () => {
                     : "border-border/60 bg-card hover:border-border hover:shadow-sm"
                 }`}
               >
-                {/* Top accent line — only on active card */}
-                {isActive && <div className="h-1 w-full bg-secondary" />}
-
-                {/* Gradient overlay on active card — reaches to mid-card */}
+                {/* Gradient overlay on active card — top half */}
                 {isActive && (
-                  <div className="absolute inset-0 bg-gradient-to-b from-secondary/20 via-secondary/5 to-transparent pointer-events-none" />
+                  <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-secondary/25 to-transparent pointer-events-none rounded-t-2xl" />
                 )}
 
                 <div className="relative p-6 lg:p-7 flex flex-col flex-1">
