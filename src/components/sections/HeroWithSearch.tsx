@@ -119,10 +119,10 @@ export const HeroWithSearch = () => {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="relative rounded-2xl overflow-hidden border border-border/30 shadow-lg p-7 lg:p-8 space-y-4"
+                  className="relative rounded-3xl overflow-hidden border border-gray-200 shadow-2xl p-7 lg:p-8 space-y-4"
                 >
-                  <img src={heroWatercolorBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-white/70" />
+                  <img src={heroWatercolorBg} alt="" className="absolute inset-0 w-full h-full object-cover object-center" />
+                  <div className="absolute inset-0 bg-white/60 backdrop-blur-sm" />
                   <div className="relative z-10 space-y-4">
                     <h3 className="text-lg font-semibold text-foreground mb-1">Request a Free Callback</h3>
                     <p className="text-sm text-muted-foreground mb-4">Our experts respond within 2 hours.</p>
