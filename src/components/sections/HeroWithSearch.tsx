@@ -109,7 +109,7 @@ export const HeroWithSearch = () => {
             >
               {submitted ? (
                 <div className="relative rounded-3xl overflow-hidden border border-gray-200 shadow-2xl p-8 text-center">
-                  <img src={heroWatercolorBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
+                  <img src={heroWatercolorBg} alt="" className="absolute inset-0 w-full h-full object-cover object-center" />
                   <div className="relative z-10">
                     <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
                     <h3 className="text-xl font-semibold text-foreground mb-2">Thank you!</h3>
