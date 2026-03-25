@@ -86,7 +86,7 @@ export const BenefitsSection = () => {
   };
 
   return (
-    <section className="relative py-16 lg:py-28 overflow-hidden bg-[hsl(210,20%,22%)]">
+    <section className="relative py-16 lg:py-28 overflow-hidden bg-background">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl relative z-10">
         {/* Header */}
         <motion.div
@@ -95,10 +95,10 @@ export const BenefitsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight mb-3">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-3">
             Why Sellers Choose FlashSpace
           </h2>
-          <p className="text-white/60 text-base max-w-md mx-auto">
+          <p className="text-muted-foreground text-base max-w-md mx-auto">
             Everything you need to sell compliantly across India.
           </p>
         </motion.div>
@@ -124,7 +124,7 @@ export const BenefitsSection = () => {
                     scale: isActive ? 1 : 0.82,
                     y: isActive ? 0 : 20,
                     zIndex: isActive ? 10 : 1,
-                    rotate: isActive ? 0 : position === 0 ? -4 : 4,
+                    rotate: 0,
                   }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ type: "spring", stiffness: 260, damping: 28 }}
@@ -138,18 +138,6 @@ export const BenefitsSection = () => {
                     }
                   `}
                 >
-                  {/* Background tilted white panel (the "second card" behind) */}
-                  <div
-                    className="absolute inset-0 rounded-2xl bg-white/90 shadow-lg"
-                    style={{
-                      transform: "rotate(3deg)",
-                      top: "4px",
-                      left: "4px",
-                      right: "-4px",
-                      bottom: isActive ? "-4px" : "-4px",
-                    }}
-                  />
-
                   {/* Main white frame card */}
                   <div className="relative rounded-2xl bg-white shadow-xl overflow-hidden">
                     {/* White border padding around image (polaroid style) */}
@@ -209,8 +197,8 @@ export const BenefitsSection = () => {
               className={`
                 rounded-full transition-all duration-300
                 ${effectiveActive === i
-                  ? "w-8 h-2.5 bg-white"
-                  : "w-2.5 h-2.5 bg-white/30 hover:bg-white/50"
+                  ? "w-8 h-2.5 bg-primary"
+                  : "w-2.5 h-2.5 bg-primary/25 hover:bg-primary/40"
                 }
               `}
             />
