@@ -95,10 +95,10 @@ export const BenefitsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight mb-3">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-3">
             Why Sellers Choose FlashSpace
           </h2>
-          <p className="text-white/60 text-base max-w-md mx-auto">
+          <p className="text-muted-foreground text-base max-w-md mx-auto">
             Everything you need to sell compliantly across India.
           </p>
         </motion.div>
