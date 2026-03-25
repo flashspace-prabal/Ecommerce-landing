@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Facebook, Linkedin, Twitter, Instagram } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Send, CheckCircle, Mail, Phone, MapPin, Plus } from "lucide-react";
 import { z } from "zod";
@@ -26,10 +27,10 @@ const serviceOptions = [
 ];
 
 const socialLinks = [
-  { label: "Facebook", href: "#", icon: "f" },
-  { label: "LinkedIn", href: "#", icon: "in" },
-  { label: "Twitter", href: "#", icon: "𝕏" },
-  { label: "Instagram", href: "#", icon: "ig" },
+  { label: "Facebook", href: "#", icon: Facebook },
+  { label: "LinkedIn", href: "#", icon: Linkedin },
+  { label: "Twitter", href: "#", icon: Twitter },
+  { label: "Instagram", href: "#", icon: Instagram },
 ];
 
 export const ContactSection = () => {
@@ -89,7 +90,7 @@ export const ContactSection = () => {
   }
 
   return (
-    <section id="contact" className="py-16 lg:py-28 bg-card">
+    <section id="contact" className="py-20 lg:py-32 bg-card">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left Column – Text & Contacts */}
@@ -99,7 +100,7 @@ export const ContactSection = () => {
             viewport={{ once: true }}
             className="flex flex-col justify-center"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary tracking-tight leading-tight mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-primary tracking-tight leading-tight mb-4">
               Let's talk on something{" "}
               <span className="text-primary/70">great</span> together
             </h2>
@@ -131,16 +132,19 @@ export const ContactSection = () => {
 
             {/* Social Icons */}
             <div className="flex items-center gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-bold hover:bg-primary/80 transition-colors"
-                >
-                  {social.icon}
-                </a>
-              ))}
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:bg-primary/80 transition-colors"
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                );
+              })}
             </div>
           </motion.div>
 
@@ -245,8 +249,9 @@ export const ContactSection = () => {
               {/* Submit Button */}
               <Button
                 type="submit"
+                variant="default"
                 size="lg"
-                className="w-full h-12 text-sm font-bold tracking-widest uppercase rounded-xl bg-foreground text-background hover:bg-foreground/85 transition-colors"
+                className="w-full h-12 text-base font-normal rounded-xl"
               >
                 <Send className="w-4 h-4 mr-2" />
                 Send Message
