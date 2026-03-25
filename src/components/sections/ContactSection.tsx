@@ -102,60 +102,61 @@ export const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="rounded-2xl border border-border bg-secondary p-8 lg:p-10 space-y-5"
+          className="border-none shadow-2xl p-10 lg:p-14 space-y-6"
+          style={{ borderRadius: '32px', backgroundColor: 'hsl(48, 40%, 95%)' }}
         >
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div className="grid sm:grid-cols-2 gap-6">
             <div>
-              <Label className="text-sm font-medium text-foreground mb-1.5 block">Full Name *</Label>
+              <Label className="text-xs font-bold text-primary mb-1.5 block tracking-wide uppercase">Full Name *</Label>
               <Input
                 placeholder="Your name"
                 value={form.name || ""}
                 onChange={(e) => handleChange("name", e.target.value)}
-                className={`bg-background border-border text-foreground placeholder:text-muted-foreground ${errors.name ? "border-destructive" : ""}`}
+                className={`bg-background border border-border/60 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary ${errors.name ? "border-destructive" : ""}`}
               />
               {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
             </div>
             <div>
-              <Label className="text-sm font-medium text-foreground mb-1.5 block">Company Name *</Label>
+              <Label className="text-xs font-bold text-primary mb-1.5 block tracking-wide uppercase">Company Name *</Label>
               <Input
                 placeholder="Your company"
                 value={form.company || ""}
                 onChange={(e) => handleChange("company", e.target.value)}
-                className={`bg-background border-border text-foreground placeholder:text-muted-foreground ${errors.company ? "border-destructive" : ""}`}
+                className={`bg-background border border-border/60 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary ${errors.company ? "border-destructive" : ""}`}
               />
               {errors.company && <p className="text-xs text-destructive mt-1">{errors.company}</p>}
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div className="grid sm:grid-cols-2 gap-6">
             <div>
-              <Label className="text-sm font-medium text-foreground mb-1.5 block">Email Address *</Label>
+              <Label className="text-xs font-bold text-primary mb-1.5 block tracking-wide uppercase">Email Address *</Label>
               <Input
                 type="email"
                 placeholder="you@company.com"
                 value={form.email || ""}
                 onChange={(e) => handleChange("email", e.target.value)}
-                className={`bg-background border-border text-foreground placeholder:text-muted-foreground ${errors.email ? "border-destructive" : ""}`}
+                className={`bg-background border border-border/60 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary ${errors.email ? "border-destructive" : ""}`}
               />
               {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
             </div>
             <div>
-              <Label className="text-sm font-medium text-foreground mb-1.5 block">Phone Number *</Label>
+              <Label className="text-xs font-bold text-primary mb-1.5 block tracking-wide uppercase">Phone Number *</Label>
               <Input
                 type="tel"
                 placeholder="+91 98765 43210"
                 value={form.phone || ""}
                 onChange={(e) => handleChange("phone", e.target.value)}
-                className={`bg-background border-border text-foreground placeholder:text-muted-foreground ${errors.phone ? "border-destructive" : ""}`}
+                className={`bg-background border border-border/60 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary ${errors.phone ? "border-destructive" : ""}`}
               />
               {errors.phone && <p className="text-xs text-destructive mt-1">{errors.phone}</p>}
             </div>
           </div>
 
           <div>
-            <Label className="text-sm font-medium text-foreground mb-1.5 block">Service Needed *</Label>
+            <Label className="text-xs font-bold text-primary mb-1.5 block tracking-wide uppercase">Service Needed *</Label>
             <Select onValueChange={(v) => handleChange("serviceNeeded", v)}>
-              <SelectTrigger className={`bg-background border-border text-foreground ${errors.serviceNeeded ? "border-destructive" : ""}`}>
+              <SelectTrigger className={`bg-background border border-border/60 text-foreground focus:border-primary focus:ring-primary ${errors.serviceNeeded ? "border-destructive" : ""}`}>
                 <SelectValue placeholder="Select service" />
               </SelectTrigger>
               <SelectContent>
@@ -168,17 +169,17 @@ export const ContactSection = () => {
           </div>
 
           <div>
-            <Label className="text-sm font-medium text-foreground mb-1.5 block">Message (optional)</Label>
+            <Label className="text-xs font-bold text-primary mb-1.5 block tracking-wide uppercase">Message (optional)</Label>
             <Textarea
               placeholder="Tell us about your e-commerce business..."
-              rows={3}
+              rows={4}
               value={form.message || ""}
               onChange={(e) => handleChange("message", e.target.value)}
-              className="bg-background border-border text-foreground placeholder:text-muted-foreground resize-none"
+              className="bg-background border border-border/60 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary resize-none"
             />
           </div>
 
-          <Button type="submit" size="lg" className="w-full h-12 text-base font-medium rounded-xl bg-primary text-primary-foreground hover:bg-primary/90">
+          <Button type="submit" size="lg" className="w-full h-12 text-base font-medium rounded-xl bg-primary text-primary-foreground hover:bg-primary/80 transition-colors">
             <Send className="w-4 h-4 mr-2" />
             Submit Enquiry
           </Button>
