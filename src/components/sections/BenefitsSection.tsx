@@ -1,32 +1,35 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Zap, Shield, Clock, TrendingUp } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+
+import fastSetupImg from "@/assets/benefit-fast-setup.jpg";
+import compliantImg from "@/assets/benefit-compliant.jpg";
+import supportImg from "@/assets/benefit-support.jpg";
+import scaleImg from "@/assets/benefit-scale.jpg";
 
 const benefits = [
   {
-    icon: Zap,
+    image: fastSetupImg,
     title: "Fast Setup",
     description: "VPOB & GST registration done in 7–14 business days per state.",
   },
   {
-    icon: Shield,
+    image: compliantImg,
     title: "100% Compliant",
     description: "Stay fully legal across all states — no penalties, no surprises.",
   },
   {
-    icon: Clock,
+    image: supportImg,
     title: "24hr Support",
     description: "Dedicated compliance manager available when you need help.",
   },
   {
-    icon: TrendingUp,
+    image: scaleImg,
     title: "Scale Faster",
     description: "Unlock pan-India selling and recover lost TCS/TDS credits.",
   },
 ];
 
-// We cycle through 4 items but always show 3 visible cards
 function getVisibleIndices(active: number) {
   const total = benefits.length;
   const left = (active - 1 + total) % total;
@@ -69,7 +72,6 @@ export const BenefitsSection = () => {
     startTimer();
   };
 
-  // Mobile touch/swipe
   const touchStartX = useRef(0);
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -85,37 +87,7 @@ export const BenefitsSection = () => {
   };
 
   return (
-    <section className="relative py-16 lg:py-28 overflow-hidden" style={{ background: "hsl(48, 40%, 96%)" }}>
-      {/* Watermark background pattern */}
-      <div
-        className="absolute inset-0 pointer-events-none select-none opacity-[0.03]"
-        style={{
-          backgroundImage: `repeating-linear-gradient(
-            -30deg,
-            transparent,
-            transparent 80px,
-            transparent 80px
-          )`,
-        }}
-      >
-        <div className="absolute inset-0 flex flex-wrap items-center justify-center gap-x-16 gap-y-10 overflow-hidden"
-          style={{
-            fontSize: "3.5rem",
-            fontWeight: 900,
-            letterSpacing: "0.15em",
-            lineHeight: 1.2,
-            color: "hsl(var(--primary))",
-            transform: "rotate(-15deg) scale(1.5)",
-            transformOrigin: "center",
-            whiteSpace: "nowrap",
-          }}
-        >
-          {Array.from({ length: 30 }).map((_, i) => (
-            <span key={i}>FLASHSPACE</span>
-          ))}
-        </div>
-      </div>
-
+    <section className="relative py-16 lg:py-28 overflow-hidden bg-[hsl(210,20%,22%)]">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl relative z-10">
         {/* Header */}
         <motion.div
@@ -124,24 +96,24 @@ export const BenefitsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-3">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight mb-3">
             Why Sellers Choose FlashSpace
           </h2>
-          <p className="text-muted-foreground text-base max-w-md mx-auto">
+          <p className="text-white/60 text-base max-w-md mx-auto">
             Everything you need to sell compliantly across India.
           </p>
         </motion.div>
 
         {/* Cards */}
         <div
-          className="relative flex items-center justify-center gap-4 lg:gap-6 min-h-[340px] lg:min-h-[380px]"
+          className="relative flex items-start justify-center gap-5 lg:gap-8 min-h-[380px] lg:min-h-[440px]"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
           <AnimatePresence mode="popLayout">
             {visible.map((benefitIndex, position) => {
               const b = benefits[benefitIndex];
-              const isActive = position === 1; // middle card is active
+              const isActive = position === 1;
 
               return (
                 <motion.div
@@ -150,12 +122,13 @@ export const BenefitsSection = () => {
                   initial={{ opacity: 0, scale: 0.85 }}
                   animate={{
                     opacity: 1,
-                    scale: isActive ? 1 : 0.88,
-                    y: isActive ? 0 : 24,
+                    scale: isActive ? 1 : 0.85,
+                    y: isActive ? 0 : 30,
                     zIndex: isActive ? 10 : 1,
+                    rotate: isActive ? 0 : position === 0 ? -3 : 3,
                   }}
                   exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ type: "spring", stiffness: 260, damping: 28, duration: 0.5 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 28 }}
                   onMouseEnter={() => handleHover(benefitIndex)}
                   onMouseLeave={handleLeave}
                   className={`
@@ -166,49 +139,44 @@ export const BenefitsSection = () => {
                     }
                   `}
                 >
-                  {/* White base panel */}
-                  <div
-                    className={`
-                      rounded-2xl bg-card shadow-lg border border-border/30
-                      transition-shadow duration-300
-                      ${isActive ? "shadow-xl" : "shadow-md"}
-                    `}
-                    style={{ minHeight: isActive ? 280 : 180 }}
-                  >
-                    {/* Stacked panel effect behind */}
-                    <div className="absolute -bottom-2 left-3 right-3 h-4 rounded-b-2xl bg-card/60 border border-border/20 -z-10" />
-                    <div className="absolute -bottom-4 left-6 right-6 h-4 rounded-b-2xl bg-card/30 border border-border/10 -z-20" />
+                  {/* Stacked white panels behind */}
+                  <div className="absolute -bottom-2 left-3 right-3 h-full rounded-2xl bg-white/20 -z-10 rotate-2" />
+                  <div className="absolute -bottom-1 left-2 right-2 h-full rounded-2xl bg-white/10 -z-20 -rotate-1" />
 
-                    <div className="p-6 lg:p-8 flex flex-col items-center text-center">
-                      {/* Dark icon holder */}
-                      <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center mb-5 shadow-md">
-                        <b.icon className="w-6 h-6 text-secondary" />
-                      </div>
-
-                      {/* Title */}
-                      <h3
-                        className={`font-bold text-foreground tracking-tight mb-2 transition-all duration-300 ${
-                          isActive ? "text-xl lg:text-2xl" : "text-sm lg:text-base"
-                        }`}
-                      >
-                        {b.title}
-                      </h3>
-
-                      {/* Description — only on active */}
-                      <AnimatePresence>
-                        {isActive && (
-                          <motion.p
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="text-sm text-muted-foreground leading-relaxed max-w-[250px]"
-                          >
-                            {b.description}
-                          </motion.p>
-                        )}
-                      </AnimatePresence>
+                  {/* Main card */}
+                  <div className="rounded-2xl bg-card overflow-hidden shadow-xl">
+                    {/* Image */}
+                    <div className={`overflow-hidden ${isActive ? "h-[220px] lg:h-[260px]" : "h-[180px] lg:h-[220px]"}`}>
+                      <img
+                        src={b.image}
+                        alt={b.title}
+                        loading="lazy"
+                        width={512}
+                        height={512}
+                        className="w-full h-full object-cover transition-transform duration-500"
+                        style={{ transform: isActive ? "scale(1.05)" : "scale(1)" }}
+                      />
                     </div>
+
+                    {/* Text content — only on active card */}
+                    <AnimatePresence>
+                      {isActive && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="px-6 py-5"
+                        >
+                          <h3 className="font-bold text-foreground text-lg lg:text-xl mb-2">
+                            {b.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {b.description}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </motion.div>
               );
@@ -230,8 +198,8 @@ export const BenefitsSection = () => {
               className={`
                 rounded-full transition-all duration-300
                 ${effectiveActive === i
-                  ? "w-8 h-2.5 bg-primary"
-                  : "w-2.5 h-2.5 bg-primary/25 hover:bg-primary/40"
+                  ? "w-8 h-2.5 bg-white"
+                  : "w-2.5 h-2.5 bg-white/30 hover:bg-white/50"
                 }
               `}
             />
