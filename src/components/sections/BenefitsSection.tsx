@@ -41,7 +41,6 @@ export const BenefitsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const isMobile = useIsMobile();
 
   const effectiveActive = hoveredIndex !== null ? hoveredIndex : activeIndex;
   const visible = getVisibleIndices(effectiveActive);
@@ -106,7 +105,7 @@ export const BenefitsSection = () => {
 
         {/* Cards */}
         <div
-          className="relative flex items-start justify-center gap-5 lg:gap-8 min-h-[380px] lg:min-h-[440px]"
+          className="relative flex items-center justify-center gap-6 lg:gap-10 min-h-[380px] lg:min-h-[460px]"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
@@ -122,10 +121,10 @@ export const BenefitsSection = () => {
                   initial={{ opacity: 0, scale: 0.85 }}
                   animate={{
                     opacity: 1,
-                    scale: isActive ? 1 : 0.85,
-                    y: isActive ? 0 : 30,
+                    scale: isActive ? 1 : 0.82,
+                    y: isActive ? 0 : 20,
                     zIndex: isActive ? 10 : 1,
-                    rotate: isActive ? 0 : position === 0 ? -3 : 3,
+                    rotate: isActive ? 0 : position === 0 ? -4 : 4,
                   }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ type: "spring", stiffness: 260, damping: 28 }}
@@ -134,47 +133,59 @@ export const BenefitsSection = () => {
                   className={`
                     relative cursor-pointer flex-shrink-0
                     ${isActive
-                      ? "w-[280px] sm:w-[300px] lg:w-[320px]"
-                      : "w-[200px] sm:w-[220px] lg:w-[240px] hidden sm:block"
+                      ? "w-[260px] sm:w-[280px] lg:w-[300px]"
+                      : "w-[200px] sm:w-[210px] lg:w-[230px] hidden sm:block"
                     }
                   `}
                 >
-                  {/* Stacked white panels behind */}
-                  <div className="absolute -bottom-2 left-3 right-3 h-full rounded-2xl bg-white/20 -z-10 rotate-2" />
-                  <div className="absolute -bottom-1 left-2 right-2 h-full rounded-2xl bg-white/10 -z-20 -rotate-1" />
+                  {/* Background tilted white panel (the "second card" behind) */}
+                  <div
+                    className="absolute inset-0 rounded-2xl bg-white/90 shadow-lg"
+                    style={{
+                      transform: "rotate(3deg)",
+                      top: "4px",
+                      left: "4px",
+                      right: "-4px",
+                      bottom: isActive ? "-4px" : "-4px",
+                    }}
+                  />
 
-                  {/* Main card */}
-                  <div className="rounded-2xl bg-card overflow-hidden shadow-xl">
-                    {/* Image */}
-                    <div className={`overflow-hidden ${isActive ? "h-[220px] lg:h-[260px]" : "h-[180px] lg:h-[220px]"}`}>
-                      <img
-                        src={b.image}
-                        alt={b.title}
-                        loading="lazy"
-                        width={512}
-                        height={512}
-                        className="w-full h-full object-cover transition-transform duration-500"
-                        style={{ transform: isActive ? "scale(1.05)" : "scale(1)" }}
-                      />
+                  {/* Main white frame card */}
+                  <div className="relative rounded-2xl bg-white shadow-xl overflow-hidden">
+                    {/* White border padding around image (polaroid style) */}
+                    <div className="p-3 pb-0">
+                      <div className="rounded-xl overflow-hidden">
+                        <img
+                          src={b.image}
+                          alt={b.title}
+                          loading="lazy"
+                          width={512}
+                          height={512}
+                          className="w-full aspect-square object-cover transition-transform duration-500"
+                          style={{ transform: isActive ? "scale(1.05)" : "scale(1)" }}
+                        />
+                      </div>
                     </div>
 
-                    {/* Text content — only on active card */}
+                    {/* Text — only on active card, expanding below */}
                     <AnimatePresence>
-                      {isActive && (
+                      {isActive ? (
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="px-6 py-5"
+                          className="px-5 pt-4 pb-5"
                         >
-                          <h3 className="font-bold text-foreground text-lg lg:text-xl mb-2">
+                          <h3 className="font-bold text-foreground text-lg lg:text-xl mb-1.5">
                             {b.title}
                           </h3>
                           <p className="text-sm text-muted-foreground leading-relaxed">
                             {b.description}
                           </p>
                         </motion.div>
+                      ) : (
+                        <div className="h-3" /> 
                       )}
                     </AnimatePresence>
                   </div>
