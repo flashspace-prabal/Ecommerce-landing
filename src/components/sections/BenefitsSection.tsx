@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 import fastSetupImg from "@/assets/benefit-fast-setup.jpg";
 import compliantImg from "@/assets/benefit-compliant.jpg";
@@ -11,22 +10,26 @@ const benefits = [
   {
     image: fastSetupImg,
     title: "Fast Setup",
-    description: "VPOB & GST registration done in 7–14 business days per state.",
+    description:
+      "VPOB & GST registration done in 7–14 business days per state. We handle all paperwork, government filings, and documentation so you can focus on growing your business.",
   },
   {
     image: compliantImg,
     title: "100% Compliant",
-    description: "Stay fully legal across all states — no penalties, no surprises.",
+    description:
+      "Stay fully legal across all states — no penalties, no surprises. Our compliance experts ensure every registration meets the latest regulatory requirements.",
   },
   {
     image: supportImg,
     title: "24hr Support",
-    description: "Dedicated compliance manager available when you need help.",
+    description:
+      "Dedicated compliance manager available whenever you need help. Get instant answers on GST queries, filing deadlines, and state-specific requirements round the clock.",
   },
   {
     image: scaleImg,
     title: "Scale Faster",
-    description: "Unlock pan-India selling and recover lost TCS/TDS credits.",
+    description:
+      "Unlock pan-India selling and recover lost TCS/TDS credits. Expand to every major marketplace across all 28 states without operational bottlenecks.",
   },
 ];
 
@@ -87,7 +90,7 @@ export const BenefitsSection = () => {
 
   return (
     <section className="relative py-16 lg:py-28 overflow-hidden bg-background">
-      <div className="container mx-auto px-4 lg:px-8 max-w-6xl relative z-10">
+      <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -105,7 +108,7 @@ export const BenefitsSection = () => {
 
         {/* Cards */}
         <div
-          className="relative flex items-center justify-center gap-6 lg:gap-10 min-h-[380px] lg:min-h-[460px]"
+          className="relative flex items-center justify-center gap-8 lg:gap-14 min-h-[400px] lg:min-h-[500px]"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
@@ -118,51 +121,52 @@ export const BenefitsSection = () => {
                 <motion.div
                   key={b.title}
                   layout
-                  initial={{ opacity: 0, scale: 0.85 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   animate={{
-                    opacity: 1,
-                    scale: isActive ? 1 : 0.82,
-                    y: isActive ? 0 : 20,
+                    opacity: isActive ? 1 : 0.7,
+                    scale: isActive ? 1 : 0.85,
+                    y: isActive ? 0 : 16,
                     zIndex: isActive ? 10 : 1,
-                    rotate: 0,
                   }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ type: "spring", stiffness: 260, damping: 28 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: [0.25, 0.1, 0.25, 1],
+                  }}
                   onMouseEnter={() => handleHover(benefitIndex)}
                   onMouseLeave={handleLeave}
                   className={`
                     relative cursor-pointer flex-shrink-0
                     ${isActive
-                      ? "w-[260px] sm:w-[280px] lg:w-[300px]"
-                      : "w-[200px] sm:w-[210px] lg:w-[230px] hidden sm:block"
+                      ? "w-[300px] sm:w-[340px] lg:w-[380px]"
+                      : "w-[220px] sm:w-[250px] lg:w-[280px] hidden sm:block"
                     }
                   `}
                 >
-                  {/* Main white frame card */}
-                  <div className="relative rounded-2xl bg-white shadow-xl overflow-hidden">
-                    {/* White border padding around image (polaroid style) */}
+                  {/* Card — no border radius */}
+                  <div className="relative bg-white shadow-xl overflow-hidden">
                     <div className="p-3 pb-0">
-                      <div className="rounded-xl overflow-hidden">
+                      <div className="overflow-hidden">
                         <img
                           src={b.image}
                           alt={b.title}
                           loading="lazy"
-                          width={512}
-                          height={512}
-                          className="w-full aspect-square object-cover transition-transform duration-500"
-                          style={{ transform: isActive ? "scale(1.05)" : "scale(1)" }}
+                          width={640}
+                          height={640}
+                          className="w-full aspect-square object-cover transition-transform duration-700 ease-out"
+                          style={{ transform: isActive ? "scale(1.04)" : "scale(1)" }}
                         />
                       </div>
                     </div>
 
-                    {/* Text — only on active card, expanding below */}
+                    {/* Text — only on active card */}
                     <AnimatePresence>
                       {isActive ? (
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
+                          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                           className="px-5 pt-4 pb-5"
                         >
                           <h3 className="font-bold text-foreground text-lg lg:text-xl mb-1.5">
@@ -173,7 +177,7 @@ export const BenefitsSection = () => {
                           </p>
                         </motion.div>
                       ) : (
-                        <div className="h-3" /> 
+                        <div className="h-3" />
                       )}
                     </AnimatePresence>
                   </div>
@@ -182,7 +186,6 @@ export const BenefitsSection = () => {
             })}
           </AnimatePresence>
         </div>
-
       </div>
     </section>
   );
