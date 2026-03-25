@@ -60,9 +60,6 @@ export const PricingSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-xs font-medium tracking-wide border border-border rounded-full px-4 py-1.5 text-muted-foreground mb-5">
-            Transparent &amp; Flexible
-          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight mb-4 leading-tight">
             Simple pricing,
             <br />
