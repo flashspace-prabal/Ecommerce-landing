@@ -47,14 +47,7 @@ export const HeroWithSearch = () => {
   };
 
   return (
-    <section className="relative w-full overflow-hidden pt-20 lg:pt-24">
-      <img
-        src={heroWatercolorBg}
-        alt=""
-        width={1920}
-        height={1080}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+    <section className="relative w-full overflow-hidden pt-20 lg:pt-24 bg-white">
       <div className="relative z-10 w-full px-4 lg:px-8 py-6 lg:py-8">
         <div className="mx-auto w-full max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
