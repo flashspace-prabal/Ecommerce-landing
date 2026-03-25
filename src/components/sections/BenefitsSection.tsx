@@ -197,8 +197,8 @@ export const BenefitsSection = () => {
               className={`
                 rounded-full transition-all duration-300
                 ${effectiveActive === i
-                  ? "w-8 h-2.5 bg-white"
-                  : "w-2.5 h-2.5 bg-white/30 hover:bg-white/50"
+                  ? "w-8 h-2.5 bg-primary"
+                  : "w-2.5 h-2.5 bg-primary/25 hover:bg-primary/40"
                 }
               `}
             />
