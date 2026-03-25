@@ -27,10 +27,10 @@ const serviceOptions = [
 ];
 
 const socialLinks = [
-  { label: "Facebook", href: "#", icon: "f" },
-  { label: "LinkedIn", href: "#", icon: "in" },
-  { label: "Twitter", href: "#", icon: "𝕏" },
-  { label: "Instagram", href: "#", icon: "ig" },
+  { label: "Facebook", href: "#", icon: Facebook },
+  { label: "LinkedIn", href: "#", icon: Linkedin },
+  { label: "Twitter", href: "#", icon: Twitter },
+  { label: "Instagram", href: "#", icon: Instagram },
 ];
 
 export const ContactSection = () => {
