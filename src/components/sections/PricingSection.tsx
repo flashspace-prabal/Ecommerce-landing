@@ -90,7 +90,7 @@ export const PricingSection = () => {
               >
                 {/* Gradient overlay on active card — top half */}
                 {isActive && (
-                  <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-secondary/25 to-transparent pointer-events-none rounded-t-2xl" />
+                  <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-secondary/35 to-transparent pointer-events-none rounded-t-2xl" />
                 )}
 
                 <div className="relative p-6 lg:p-7 flex flex-col flex-1">
