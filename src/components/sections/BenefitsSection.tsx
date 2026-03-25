@@ -138,18 +138,6 @@ export const BenefitsSection = () => {
                     }
                   `}
                 >
-                  {/* Background tilted white panel (the "second card" behind) */}
-                  <div
-                    className="absolute inset-0 rounded-2xl bg-white/90 shadow-lg"
-                    style={{
-                      transform: "rotate(3deg)",
-                      top: "4px",
-                      left: "4px",
-                      right: "-4px",
-                      bottom: isActive ? "-4px" : "-4px",
-                    }}
-                  />
-
                   {/* Main white frame card */}
                   <div className="relative rounded-2xl bg-white shadow-xl overflow-hidden">
                     {/* White border padding around image (polaroid style) */}
