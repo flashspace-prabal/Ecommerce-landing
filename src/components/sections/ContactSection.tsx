@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Facebook, Linkedin, Twitter, Instagram } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Send, CheckCircle, Mail, Phone, MapPin, Plus } from "lucide-react";
 import { z } from "zod";
