@@ -183,27 +183,6 @@ export const BenefitsSection = () => {
           </AnimatePresence>
         </div>
 
-        {/* Dot indicators */}
-        <div className="flex items-center justify-center gap-2 mt-10">
-          {benefits.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                stopTimer();
-                setActiveIndex(i);
-                setHoveredIndex(null);
-                startTimer();
-              }}
-              className={`
-                rounded-full transition-all duration-300
-                ${effectiveActive === i
-                  ? "w-8 h-2.5 bg-primary"
-                  : "w-2.5 h-2.5 bg-primary/25 hover:bg-primary/40"
-                }
-              `}
-            />
-          ))}
-        </div>
       </div>
     </section>
   );
