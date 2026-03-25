@@ -43,7 +43,6 @@ const formatPrice = (price: number) => {
 };
 
 export const PricingSection = () => {
-  const [annual, setAnnual] = useState(false);
 
   const scrollTo = (id: string) => {
     const el = document.querySelector(id);
