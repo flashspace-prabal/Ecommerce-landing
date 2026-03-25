@@ -132,16 +132,19 @@ export const ContactSection = () => {
 
             {/* Social Icons */}
             <div className="flex items-center gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-bold hover:bg-primary/80 transition-colors"
-                >
-                  {social.icon}
-                </a>
-              ))}
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:bg-primary/80 transition-colors"
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                );
+              })}
             </div>
           </motion.div>
 
