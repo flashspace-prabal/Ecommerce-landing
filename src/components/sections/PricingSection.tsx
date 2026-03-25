@@ -88,25 +88,21 @@ export const PricingSection = () => {
                     : "border-border/60 bg-card hover:border-border hover:shadow-sm"
                 }`}
               >
-                {/* Top accent line — secondary (gold) for active, border color for inactive */}
-                <div
-                  className={`h-1 w-full ${
-                    isActive ? "bg-secondary" : "bg-border"
-                  }`}
-                />
+                {/* Top accent line — only on active card */}
+                {isActive && <div className="h-1 w-full bg-secondary" />}
 
-                {/* Subtle gradient overlay on active card */}
+                {/* Gradient overlay on active card — reaches to mid-card */}
                 {isActive && (
-                  <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.06] via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-secondary/20 via-secondary/5 to-transparent pointer-events-none" />
                 )}
 
                 <div className="relative p-6 lg:p-7 flex flex-col flex-1">
                   {/* Chip */}
                   <span
-                    className={`inline-block text-[11px] font-semibold uppercase tracking-widest rounded-md px-3 py-1 w-fit mb-5 ${
+                    className={`inline-block text-[11px] font-medium uppercase tracking-widest rounded-md px-3 py-1 w-fit mb-5 ${
                       isActive
                         ? "bg-primary text-primary-foreground"
-                        : "border border-border/60 text-muted-foreground"
+                        : "bg-secondary text-primary"
                     }`}
                   >
                     {plan.name}
