@@ -96,7 +96,7 @@ export const PricingSection = () => {
               {/* Price */}
               <div className="mb-2">
                 <span className="text-4xl lg:text-5xl font-bold text-foreground leading-none">
-                  {formatPrice(plan.price, annual)}
+                  {formatPrice(plan.price)}
                 </span>
               </div>
               <span className="text-sm text-muted-foreground mb-6">{plan.priceSuffix}</span>
