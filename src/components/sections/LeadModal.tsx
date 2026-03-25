@@ -15,7 +15,7 @@ export const LeadModal = () => {
     const timer = setTimeout(() => {
       setOpen(true);
       sessionStorage.setItem(STORAGE_KEY, "1");
-    }, 7000);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
