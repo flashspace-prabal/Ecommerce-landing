@@ -86,7 +86,7 @@ export const BenefitsSection = () => {
   };
 
   return (
-    <section className="relative py-16 lg:py-28 overflow-hidden bg-background">
+    <section className="relative py-16 lg:py-28 overflow-hidden bg-[hsl(210,25%,25%)]">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl relative z-10">
         {/* Header */}
         <motion.div
@@ -95,17 +95,17 @@ export const BenefitsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-3">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight mb-3">
             Why Sellers Choose FlashSpace
           </h2>
-          <p className="text-muted-foreground text-base max-w-md mx-auto">
+          <p className="text-white/50 text-base max-w-md mx-auto">
             Everything you need to sell compliantly across India.
           </p>
         </motion.div>
 
         {/* Cards */}
         <div
-          className="relative flex items-center justify-center gap-6 lg:gap-10 min-h-[380px] lg:min-h-[460px]"
+          className="relative flex items-start justify-center gap-6 lg:gap-10 min-h-[380px] lg:min-h-[480px] pt-4"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
@@ -121,10 +121,10 @@ export const BenefitsSection = () => {
                   initial={{ opacity: 0, scale: 0.85 }}
                   animate={{
                     opacity: 1,
-                    scale: isActive ? 1 : 0.82,
-                    y: isActive ? 0 : 20,
+                    scale: isActive ? 1 : 0.85,
+                    y: isActive ? 0 : 30,
                     zIndex: isActive ? 10 : 1,
-                    rotate: 0,
+                    rotate: isActive ? 0 : position === 0 ? -5 : 5,
                   }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ type: "spring", stiffness: 260, damping: 28 }}
@@ -134,28 +134,37 @@ export const BenefitsSection = () => {
                     relative cursor-pointer flex-shrink-0
                     ${isActive
                       ? "w-[260px] sm:w-[280px] lg:w-[300px]"
-                      : "w-[200px] sm:w-[210px] lg:w-[230px] hidden sm:block"
+                      : "w-[200px] sm:w-[220px] lg:w-[240px] hidden sm:block"
                     }
                   `}
                 >
-                  {/* Main white frame card */}
-                  <div className="relative rounded-2xl bg-white shadow-xl overflow-hidden">
-                    {/* White border padding around image (polaroid style) */}
-                    <div className="p-3 pb-0">
-                      <div className="rounded-xl overflow-hidden">
+                  {/* Tilted white panel behind (visible on all cards) */}
+                  <div
+                    className="absolute rounded-xl bg-white/80 shadow-md"
+                    style={{
+                      inset: "-6px",
+                      transform: isActive ? "rotate(3deg)" : "rotate(4deg)",
+                      zIndex: -1,
+                    }}
+                  />
+
+                  {/* Main white card */}
+                  <div className="relative rounded-xl bg-white shadow-2xl overflow-hidden">
+                    {/* Padded image area (polaroid frame) */}
+                    <div className="p-2.5">
+                      <div className="rounded-lg overflow-hidden">
                         <img
                           src={b.image}
                           alt={b.title}
                           loading="lazy"
                           width={512}
                           height={512}
-                          className="w-full aspect-square object-cover transition-transform duration-500"
-                          style={{ transform: isActive ? "scale(1.05)" : "scale(1)" }}
+                          className="w-full aspect-square object-cover"
                         />
                       </div>
                     </div>
 
-                    {/* Text — only on active card, expanding below */}
+                    {/* Text — only on active card */}
                     <AnimatePresence>
                       {isActive ? (
                         <motion.div
@@ -163,7 +172,7 @@ export const BenefitsSection = () => {
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="px-5 pt-4 pb-5"
+                          className="px-5 pt-2 pb-5"
                         >
                           <h3 className="font-bold text-foreground text-lg lg:text-xl mb-1.5">
                             {b.title}
@@ -173,7 +182,7 @@ export const BenefitsSection = () => {
                           </p>
                         </motion.div>
                       ) : (
-                        <div className="h-3" /> 
+                        <div className="h-2.5" />
                       )}
                     </AnimatePresence>
                   </div>
@@ -197,8 +206,8 @@ export const BenefitsSection = () => {
               className={`
                 rounded-full transition-all duration-300
                 ${effectiveActive === i
-                  ? "w-8 h-2.5 bg-primary"
-                  : "w-2.5 h-2.5 bg-primary/25 hover:bg-primary/40"
+                  ? "w-8 h-2.5 bg-white"
+                  : "w-2.5 h-2.5 bg-white/30 hover:bg-white/50"
                 }
               `}
             />
