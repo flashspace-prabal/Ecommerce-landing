@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+
 
 const plans = [
   {
@@ -38,13 +38,11 @@ const plans = [
   },
 ];
 
-const formatPrice = (price: number, annual: boolean) => {
-  const val = annual ? Math.round(price * 0.6) : price;
-  return `₹${val.toLocaleString("en-IN")}`;
+const formatPrice = (price: number) => {
+  return `₹${price.toLocaleString("en-IN")}`;
 };
 
 export const PricingSection = () => {
-  const [annual, setAnnual] = useState(false);
 
   const scrollTo = (id: string) => {
     const el = document.querySelector(id);
@@ -73,27 +71,6 @@ export const PricingSection = () => {
             No hidden fees. Choose what works for your business.
           </p>
 
-          {/* Toggle */}
-          <div className="inline-flex items-center gap-3 border border-border rounded-full px-5 py-2.5">
-            <button
-              onClick={() => setAnnual(!annual)}
-              className={`relative w-11 h-6 rounded-full transition-colors duration-200 ${
-                annual ? "bg-primary" : "bg-border"
-              }`}
-            >
-              <span
-                className={`absolute top-1 left-1 w-4 h-4 rounded-full bg-card shadow transition-transform duration-200 ${
-                  annual ? "translate-x-5" : "translate-x-0"
-                }`}
-              />
-            </button>
-            <span className="text-sm font-medium text-foreground">Annual Discount</span>
-            {annual && (
-              <span className="text-xs font-semibold text-primary bg-primary/10 rounded-md px-2 py-0.5">
-                %40
-              </span>
-            )}
-          </div>
         </motion.div>
 
         {/* Grid with border system */}
@@ -119,7 +96,7 @@ export const PricingSection = () => {
               {/* Price */}
               <div className="mb-2">
                 <span className="text-4xl lg:text-5xl font-bold text-foreground leading-none">
-                  {formatPrice(plan.price, annual)}
+                  {formatPrice(plan.price)}
                 </span>
               </div>
               <span className="text-sm text-muted-foreground mb-6">{plan.priceSuffix}</span>
