@@ -51,7 +51,7 @@ export const BenefitsSection = () => {
   const startTimer = useCallback(() => {
     timerRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % benefits.length);
-    }, 3500);
+    }, 5000);
   }, []);
 
   const stopTimer = useCallback(() => {
