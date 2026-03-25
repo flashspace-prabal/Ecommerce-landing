@@ -46,11 +46,7 @@ export const Navbar = () => {
             <Button
               variant="ghost"
               size="sm"
-              className={`hidden sm:inline-flex text-sm px-4 ${
-                scrolled
-                  ? "text-foreground/80 hover:text-foreground"
-                  : "text-white/80 hover:text-white hover:bg-white/10"
-              }`}
+              className="hidden sm:inline-flex text-sm px-4 text-foreground/80 hover:text-foreground"
             >
               <LogIn className="w-4 h-4 mr-1.5" />
               Log In
