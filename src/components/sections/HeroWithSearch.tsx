@@ -108,7 +108,7 @@ export const HeroWithSearch = () => {
               animate="visible"
             >
               {submitted ? (
-                <div className="relative rounded-2xl overflow-hidden border border-border/30 shadow-lg p-8 text-center">
+                <div className="relative rounded-3xl overflow-hidden border border-gray-200 shadow-2xl p-8 text-center">
                   <img src={heroWatercolorBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
                   <div className="relative z-10">
                     <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
