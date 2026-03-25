@@ -71,27 +71,6 @@ export const PricingSection = () => {
             No hidden fees. Choose what works for your business.
           </p>
 
-          {/* Toggle */}
-          <div className="inline-flex items-center gap-3 border border-border rounded-full px-5 py-2.5">
-            <button
-              onClick={() => setAnnual(!annual)}
-              className={`relative w-11 h-6 rounded-full transition-colors duration-200 ${
-                annual ? "bg-primary" : "bg-border"
-              }`}
-            >
-              <span
-                className={`absolute top-1 left-1 w-4 h-4 rounded-full bg-card shadow transition-transform duration-200 ${
-                  annual ? "translate-x-5" : "translate-x-0"
-                }`}
-              />
-            </button>
-            <span className="text-sm font-medium text-foreground">Annual Discount</span>
-            {annual && (
-              <span className="text-xs font-semibold text-primary bg-primary/10 rounded-md px-2 py-0.5">
-                %40
-              </span>
-            )}
-          </div>
         </motion.div>
 
         {/* Grid with border system */}
