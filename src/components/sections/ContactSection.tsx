@@ -249,8 +249,9 @@ export const ContactSection = () => {
               {/* Submit Button */}
               <Button
                 type="submit"
+                variant="default"
                 size="lg"
-                className="w-full h-12 text-sm font-bold tracking-widest uppercase rounded-xl bg-foreground text-background hover:bg-foreground/85 transition-colors"
+                className="w-full h-12 text-base font-normal rounded-xl"
               >
                 <Send className="w-4 h-4 mr-2" />
                 Send Message
