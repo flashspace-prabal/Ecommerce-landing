@@ -2,46 +2,55 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Send, CheckCircle } from "lucide-react";
+import { Send, CheckCircle, Mail, Phone, MapPin, Plus } from "lucide-react";
 import { z } from "zod";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, "Name is required"),
-  company: z.string().trim().min(1, "Company name is required"),
+  mobile: z.string().trim().min(1, "Mobile number is required"),
   email: z.string().trim().email("Please enter a valid email"),
-  phone: z.string().trim().min(1, "Phone number is required"),
-  serviceNeeded: z.string().min(1, "Please select a service"),
-  message: z.string().trim().max(1000).optional(),
+  services: z.array(z.string()).min(1, "Please select at least one service"),
+  location: z.string().optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
 
-const servicesNeeded = [
+const serviceOptions = [
+  "GST Compliance",
+  "Business Compliance",
+  "Mailing Address",
+  "E-commerce Registration",
   "VPOB Setup",
-  "Multi-State GST Registration",
-  "GST Compliance & Filing",
   "TDS/TCS Handling",
-  "Full E-commerce Compliance Package",
-  "Not sure yet",
+];
+
+const socialLinks = [
+  { label: "Facebook", href: "#", icon: "f" },
+  { label: "LinkedIn", href: "#", icon: "in" },
+  { label: "Twitter", href: "#", icon: "𝕏" },
+  { label: "Instagram", href: "#", icon: "ig" },
 ];
 
 export const ContactSection = () => {
-  const [form, setForm] = useState<Partial<FormData>>({});
+  const [form, setForm] = useState<Partial<FormData>>({ services: [] });
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (field: keyof FormData, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
+  };
+
+  const toggleService = (service: string) => {
+    setForm((prev) => {
+      const current = prev.services || [];
+      const updated = current.includes(service)
+        ? current.filter((s) => s !== service)
+        : [...current, service];
+      return { ...prev, services: updated };
+    });
+    if (errors.services) setErrors((prev) => ({ ...prev, services: undefined }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -80,110 +89,171 @@ export const ContactSection = () => {
   }
 
   return (
-    <section id="contact" className="py-16 lg:py-24 bg-background">
-      <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-10"
-        >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary tracking-tight mb-3">
-            Get in Touch
-          </h2>
-          <p className="text-muted-foreground text-base max-w-md mx-auto">
-            Share your details and we'll create a tailored compliance plan for your business.
-          </p>
-        </motion.div>
+    <section id="contact" className="py-16 lg:py-28 bg-card">
+      <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Left Column – Text & Contacts */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col justify-center"
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary tracking-tight leading-tight mb-4">
+              Let's talk on something{" "}
+              <span className="text-primary/70">great</span> together
+            </h2>
+            <p className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-10 max-w-md">
+              Share your details and we'll create a tailored compliance plan for your business.
+            </p>
 
-        <motion.form
-          onSubmit={handleSubmit}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="border-none shadow-2xl p-10 lg:p-14 space-y-6"
-          style={{ borderRadius: '32px', backgroundColor: 'hsl(48, 40%, 95%)' }}
-        >
-          <div className="grid sm:grid-cols-2 gap-6">
-            <div>
-              <Label className="text-xs font-bold text-primary mb-1.5 block tracking-wide uppercase">Full Name *</Label>
-              <Input
-                placeholder="Your name"
-                value={form.name || ""}
-                onChange={(e) => handleChange("name", e.target.value)}
-                className={`bg-background border border-border/60 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary ${errors.name ? "border-destructive" : ""}`}
-              />
-              {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
+            {/* Contact Info */}
+            <div className="space-y-4 mb-10">
+              <a
+                href="mailto:hello@flashspace.in"
+                className="flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
+              >
+                <span className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <Mail className="w-4 h-4 text-primary" />
+                </span>
+                <span className="text-sm lg:text-base">hello@flashspace.in</span>
+              </a>
+              <a
+                href="tel:+919876543210"
+                className="flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
+              >
+                <span className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <Phone className="w-4 h-4 text-primary" />
+                </span>
+                <span className="text-sm lg:text-base">+91 98765 43210</span>
+              </a>
             </div>
-            <div>
-              <Label className="text-xs font-bold text-primary mb-1.5 block tracking-wide uppercase">Company Name *</Label>
-              <Input
-                placeholder="Your company"
-                value={form.company || ""}
-                onChange={(e) => handleChange("company", e.target.value)}
-                className={`bg-background border border-border/60 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary ${errors.company ? "border-destructive" : ""}`}
-              />
-              {errors.company && <p className="text-xs text-destructive mt-1">{errors.company}</p>}
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-bold hover:bg-primary/80 transition-colors"
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="grid sm:grid-cols-2 gap-6">
-            <div>
-              <Label className="text-xs font-bold text-primary mb-1.5 block tracking-wide uppercase">Email Address *</Label>
-              <Input
-                type="email"
-                placeholder="you@company.com"
-                value={form.email || ""}
-                onChange={(e) => handleChange("email", e.target.value)}
-                className={`bg-background border border-border/60 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary ${errors.email ? "border-destructive" : ""}`}
-              />
-              {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
-            </div>
-            <div>
-              <Label className="text-xs font-bold text-primary mb-1.5 block tracking-wide uppercase">Phone Number *</Label>
-              <Input
-                type="tel"
-                placeholder="+91 98765 43210"
-                value={form.phone || ""}
-                onChange={(e) => handleChange("phone", e.target.value)}
-                className={`bg-background border border-border/60 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary ${errors.phone ? "border-destructive" : ""}`}
-              />
-              {errors.phone && <p className="text-xs text-destructive mt-1">{errors.phone}</p>}
-            </div>
-          </div>
+          {/* Right Column – Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Service Tags */}
+              <div>
+                <p className="text-sm font-semibold text-foreground mb-3">I'm interested in:</p>
+                <div className="flex flex-wrap gap-2">
+                  {serviceOptions.map((service) => {
+                    const isSelected = form.services?.includes(service);
+                    return (
+                      <button
+                        key={service}
+                        type="button"
+                        onClick={() => toggleService(service)}
+                        className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 ${
+                          isSelected
+                            ? "bg-primary text-primary-foreground border-primary"
+                            : "bg-transparent text-foreground border-border hover:border-primary/50 hover:bg-primary/5"
+                        }`}
+                      >
+                        {service}
+                      </button>
+                    );
+                  })}
+                </div>
+                {errors.services && (
+                  <p className="text-xs text-destructive mt-1.5">{errors.services}</p>
+                )}
+              </div>
 
-          <div>
-            <Label className="text-xs font-bold text-primary mb-1.5 block tracking-wide uppercase">Service Needed *</Label>
-            <Select onValueChange={(v) => handleChange("serviceNeeded", v)}>
-              <SelectTrigger className={`bg-background border border-border/60 text-foreground focus:border-primary focus:ring-primary ${errors.serviceNeeded ? "border-destructive" : ""}`}>
-                <SelectValue placeholder="Select service" />
-              </SelectTrigger>
-              <SelectContent>
-                {servicesNeeded.map((s) => (
-                  <SelectItem key={s} value={s}>{s}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            {errors.serviceNeeded && <p className="text-xs text-destructive mt-1">{errors.serviceNeeded}</p>}
-          </div>
+              {/* Input Fields – Two Column */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs font-bold text-muted-foreground mb-1.5 block tracking-wide uppercase">
+                    Your Name
+                  </Label>
+                  <Input
+                    placeholder="John Doe"
+                    value={form.name || ""}
+                    onChange={(e) => handleChange("name", e.target.value)}
+                    className={`bg-card border-border/60 focus:border-primary ${errors.name ? "border-destructive" : ""}`}
+                  />
+                  {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
+                </div>
+                <div>
+                  <Label className="text-xs font-bold text-muted-foreground mb-1.5 block tracking-wide uppercase">
+                    Mobile
+                  </Label>
+                  <Input
+                    type="tel"
+                    placeholder="+91 98765 43210"
+                    value={form.mobile || ""}
+                    onChange={(e) => handleChange("mobile", e.target.value)}
+                    className={`bg-card border-border/60 focus:border-primary ${errors.mobile ? "border-destructive" : ""}`}
+                  />
+                  {errors.mobile && <p className="text-xs text-destructive mt-1">{errors.mobile}</p>}
+                </div>
+              </div>
 
-          <div>
-            <Label className="text-xs font-bold text-primary mb-1.5 block tracking-wide uppercase">Message (optional)</Label>
-            <Textarea
-              placeholder="Tell us about your e-commerce business..."
-              rows={4}
-              value={form.message || ""}
-              onChange={(e) => handleChange("message", e.target.value)}
-              className="bg-background border border-border/60 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary resize-none"
-            />
-          </div>
+              <div>
+                <Label className="text-xs font-bold text-muted-foreground mb-1.5 block tracking-wide uppercase">
+                  Your Email
+                </Label>
+                <Input
+                  type="email"
+                  placeholder="you@company.com"
+                  value={form.email || ""}
+                  onChange={(e) => handleChange("email", e.target.value)}
+                  className={`bg-card border-border/60 focus:border-primary ${errors.email ? "border-destructive" : ""}`}
+                />
+                {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
+              </div>
 
-          <Button type="submit" size="lg" className="w-full h-12 text-base font-medium rounded-xl bg-primary text-primary-foreground hover:bg-primary/80 transition-colors">
-            <Send className="w-4 h-4 mr-2" />
-            Submit Enquiry
-          </Button>
-        </motion.form>
+              {/* Location Field */}
+              <div>
+                <Label className="text-xs font-bold text-muted-foreground mb-1.5 block tracking-wide uppercase">
+                  Location
+                </Label>
+                <div className="flex items-center gap-2 border border-border/60 rounded-md px-3 py-2 bg-card">
+                  <span className="inline-flex items-center gap-1.5 bg-primary text-primary-foreground text-xs font-medium px-3 py-1 rounded-full">
+                    <MapPin className="w-3 h-3" />
+                    Delhi
+                  </span>
+                  <button
+                    type="button"
+                    className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Plus className="w-3 h-3" />
+                    Add another location
+                  </button>
+                </div>
+              </div>
+
+              {/* Submit Button */}
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full h-12 text-sm font-bold tracking-widest uppercase rounded-xl bg-foreground text-background hover:bg-foreground/85 transition-colors"
+              >
+                <Send className="w-4 h-4 mr-2" />
+                Send Message
+              </Button>
+            </form>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
