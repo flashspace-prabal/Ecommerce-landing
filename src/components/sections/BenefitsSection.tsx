@@ -124,7 +124,7 @@ export const BenefitsSection = () => {
                     scale: isActive ? 1 : 0.82,
                     y: isActive ? 0 : 20,
                     zIndex: isActive ? 10 : 1,
-                    rotate: isActive ? 0 : position === 0 ? -4 : 4,
+                    rotate: 0,
                   }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ type: "spring", stiffness: 260, damping: 28 }}
