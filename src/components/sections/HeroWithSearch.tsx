@@ -108,16 +108,21 @@ export const HeroWithSearch = () => {
               animate="visible"
             >
               {submitted ? (
-                <div className="bg-card rounded-2xl border border-border/50 p-8 text-center shadow-sm">
-                  <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Thank you!</h3>
-                  <p className="text-muted-foreground text-sm">We'll get back to you within 24 hours.</p>
+                <div className="relative rounded-2xl overflow-hidden border border-border/30 shadow-lg p-8 text-center">
+                  <img src={heroWatercolorBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="relative z-10">
+                    <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Thank you!</h3>
+                    <p className="text-muted-foreground text-sm">We'll get back to you within 24 hours.</p>
+                  </div>
                 </div>
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="bg-card rounded-2xl border border-border/50 p-7 lg:p-8 space-y-4 shadow-sm"
+                  className="relative rounded-2xl overflow-hidden border border-border/30 shadow-lg p-7 lg:p-8 space-y-4"
                 >
+                  <img src={heroWatercolorBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-white/70" />
                   <h3 className="text-lg font-semibold text-foreground mb-1">Request a Free Callback</h3>
                   <p className="text-sm text-muted-foreground mb-4">Our experts respond within 2 hours.</p>
 
