@@ -38,9 +38,8 @@ const plans = [
   },
 ];
 
-const formatPrice = (price: number, annual: boolean) => {
-  const val = annual ? Math.round(price * 0.6) : price;
-  return `₹${val.toLocaleString("en-IN")}`;
+const formatPrice = (price: number) => {
+  return `₹${price.toLocaleString("en-IN")}`;
 };
 
 export const PricingSection = () => {
