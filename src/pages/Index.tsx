@@ -11,7 +11,7 @@ import { ReviewsSection } from "@/components/sections/ReviewsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { Footer } from "@/components/layout/Footer";
-import { LeadModal } from "@/components/sections/LeadModal";
+
 
 const Index = () => {
   return (
@@ -30,7 +30,7 @@ const Index = () => {
         <FAQSection />
       </main>
       <Footer />
-      <LeadModal />
+      
     </AppLayout>
   );
 };
