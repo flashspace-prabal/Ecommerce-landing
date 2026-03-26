@@ -1,21 +1,23 @@
 import { motion } from "framer-motion";
-import { Rocket, IndianRupee, Globe } from "lucide-react";
+import rocketImg from "@/assets/benefit-rocket.png";
+import savingsImg from "@/assets/benefit-savings.png";
+import indiaImg from "@/assets/benefit-india.png";
 
 const benefits = [
   {
-    icon: Rocket,
+    image: rocketImg,
     title: "Instant Market Entry",
     description:
       "Get your virtual office and GST registration in record time.",
   },
   {
-    icon: IndianRupee,
+    image: savingsImg,
     title: "90% Cost Reduction",
     description:
       "Eliminate physical office overheads with our streamlined virtual compliance.",
   },
   {
-    icon: Globe,
+    image: indiaImg,
     title: "Pan-India Reach",
     description:
       "Store inventory in any state and sell across every pincode in India.",
@@ -50,8 +52,8 @@ export const BenefitsGrid = () => {
               transition={{ delay: i * 0.1, duration: 0.4 }}
               className="group border border-border bg-card p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
-              <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-secondary">
-                <b.icon className="h-6 w-6" strokeWidth={2} />
+              <div className="mx-auto mb-5 flex h-24 w-24 items-center justify-center">
+                <img src={b.image} alt={b.title} className="h-full w-full object-contain" loading="lazy" width={96} height={96} />
               </div>
               <h3 className="text-lg font-bold text-foreground mb-2">
                 {b.title}
