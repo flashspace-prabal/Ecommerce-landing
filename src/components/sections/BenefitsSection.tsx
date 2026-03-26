@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import fastSetupImg from "@/assets/benefit-fast-setup.jpg";
-import compliantImg from "@/assets/benefit-compliant.jpg";
+
 import supportImg from "@/assets/benefit-support.jpg";
 import scaleImg from "@/assets/benefit-scale.jpg";
 
@@ -12,12 +12,6 @@ const benefits = [
     title: "Fast Setup",
     description:
       "VPOB & GST registration done in 7–14 business days per state. We handle all paperwork, government filings, and documentation so you can focus on growing your business.",
-  },
-  {
-    image: compliantImg,
-    title: "100% Compliant",
-    description:
-      "Stay fully legal across all states — no penalties, no surprises. Our compliance experts ensure every registration meets the latest regulatory requirements.",
   },
   {
     image: supportImg,
