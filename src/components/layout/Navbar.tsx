@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn, UserPlus } from "lucide-react";
+import { Menu, X, PhoneCall } from "lucide-react";
 import flashspaceLogo from "@/assets/flashspace-logo.png";
 
 const navLinks = [
@@ -26,6 +26,12 @@ export const Navbar = () => {
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToContact = () => {
+    setMobileOpen(false);
+    const el = document.querySelector("#contact");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
@@ -41,23 +47,15 @@ export const Navbar = () => {
             <img src={flashspaceLogo} alt="FlashSpace" className="h-10 lg:h-12 w-auto" />
           </a>
 
-
           <div className="flex items-center gap-2 lg:gap-3">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="hidden sm:inline-flex text-sm px-4 text-foreground/80 hover:text-foreground"
-            >
-              <LogIn className="w-4 h-4 mr-1.5" />
-              Log In
-            </Button>
             <Button
               variant="default"
               size="sm"
               className="hidden sm:inline-flex text-sm px-5"
+              onClick={scrollToContact}
             >
-              <UserPlus className="w-4 h-4 mr-1.5" />
-              Sign Up
+              <PhoneCall className="w-4 h-4 mr-1.5" />
+              Request a Callback
             </Button>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -90,14 +88,10 @@ export const Navbar = () => {
                   {link.label}
                 </button>
               ))}
-              <div className="flex gap-2 mt-3 pt-3 border-t border-border/30">
-                <Button variant="outline" className="flex-1">
-                  <LogIn className="w-4 h-4 mr-1.5" />
-                  Log In
-                </Button>
-                <Button className="flex-1">
-                  <UserPlus className="w-4 h-4 mr-1.5" />
-                  Sign Up
+              <div className="mt-3 pt-3 border-t border-border/30">
+                <Button className="w-full" onClick={scrollToContact}>
+                  <PhoneCall className="w-4 h-4 mr-1.5" />
+                  Request a Callback
                 </Button>
               </div>
             </div>
