@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const reviews = [
@@ -9,30 +10,62 @@ const reviews = [
   { name: "Rahul M.", role: "COO, UrbanBazaar", text: "Managing GST across multiple states felt impossible as a solo founder. Flash Space handled everything — VPOB, filings, TDS recovery. We scaled from 3 states to 18 in two months.", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&auto=format" },
 ];
 
-const getIdx = (i: number) => ((i % reviews.length) + reviews.length) % reviews.length;
+function getVisibleIndices(active: number) {
+  const total = reviews.length;
+  const left = (active - 1 + total) % total;
+  const right = (active + 1) % total;
+  return [left, active, right];
+}
 
 export const ReviewsSection = () => {
-  const [index, setIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const next = useCallback(() => {
-    setIndex((i) => (i === reviews.length - 1 ? 0 : i + 1));
+  const startTimer = useCallback(() => {
+    timerRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % reviews.length);
+    }, 5000);
   }, []);
 
-  const prev = () => {
-    setIndex((i) => (i === 0 ? reviews.length - 1 : i - 1));
-  };
+  const stopTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+  }, []);
 
   useEffect(() => {
-    const interval = setInterval(next, 5000);
-    return () => clearInterval(interval);
-  }, [next]);
+    startTimer();
+    return stopTimer;
+  }, [startTimer, stopTimer]);
 
-  const prevReview = reviews[getIdx(index - 1)];
-  const currentReview = reviews[index];
-  const nextReview = reviews[getIdx(index + 1)];
+  const next = () => {
+    stopTimer();
+    setActiveIndex((i) => (i + 1) % reviews.length);
+    startTimer();
+  };
+
+  const prev = () => {
+    stopTimer();
+    setActiveIndex((i) => (i - 1 + reviews.length) % reviews.length);
+    startTimer();
+  };
+
+  const visible = getVisibleIndices(activeIndex);
+
+  const touchStartX = useRef(0);
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const diff = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(diff) > 50) {
+      stopTimer();
+      if (diff < 0) setActiveIndex((p) => (p + 1) % reviews.length);
+      else setActiveIndex((p) => (p - 1 + reviews.length) % reviews.length);
+      startTimer();
+    }
+  };
 
   return (
-    <section className="py-16 lg:py-24 bg-muted/30">
+    <section className="py-16 lg:py-24 bg-muted/30 overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-3">
@@ -43,52 +76,64 @@ export const ReviewsSection = () => {
           </p>
         </div>
 
-        <div className="relative flex items-center justify-center gap-4 lg:gap-6 max-w-5xl mx-auto">
-          {/* Previous card - peeking */}
-          <div className="hidden sm:block w-1/4 shrink-0 opacity-40 scale-90 blur-[1px] transition-all duration-500">
-            <div className="bg-card rounded-2xl border border-border/30 p-5 text-center">
-              <img
-                src={prevReview.image}
-                alt={prevReview.name}
-                className="w-10 h-10 rounded-full object-cover mx-auto mb-3"
-              />
-              <p className="text-xs text-muted-foreground leading-relaxed mb-3 line-clamp-3">
-                "{prevReview.text}"
-              </p>
-              <p className="text-xs font-semibold text-foreground">{prevReview.name}</p>
-            </div>
-          </div>
+        <div
+          className="relative flex items-center justify-center gap-6 lg:gap-10 min-h-[300px] lg:min-h-[340px]"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <AnimatePresence mode="popLayout">
+            {visible.map((reviewIndex, position) => {
+              const r = reviews[reviewIndex];
+              const isActive = position === 1;
 
-          {/* Current card */}
-          <div className="w-full sm:w-1/2 shrink-0 transition-all duration-500">
-            <div className="bg-card rounded-2xl border border-border/40 p-8 shadow-sm text-center">
-              <img
-                src={currentReview.image}
-                alt={currentReview.name}
-                className="w-14 h-14 rounded-full object-cover mx-auto mb-4"
-              />
-              <p className="text-base text-muted-foreground leading-relaxed mb-6">
-                "{currentReview.text}"
-              </p>
-              <p className="text-sm font-semibold text-foreground">{currentReview.name}</p>
-              <p className="text-xs text-muted-foreground">{currentReview.role}</p>
-            </div>
-          </div>
-
-          {/* Next card - peeking */}
-          <div className="hidden sm:block w-1/4 shrink-0 opacity-40 scale-90 blur-[1px] transition-all duration-500">
-            <div className="bg-card rounded-2xl border border-border/30 p-5 text-center">
-              <img
-                src={nextReview.image}
-                alt={nextReview.name}
-                className="w-10 h-10 rounded-full object-cover mx-auto mb-3"
-              />
-              <p className="text-xs text-muted-foreground leading-relaxed mb-3 line-clamp-3">
-                "{nextReview.text}"
-              </p>
-              <p className="text-xs font-semibold text-foreground">{nextReview.name}</p>
-            </div>
-          </div>
+              return (
+                <motion.div
+                  key={r.name}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{
+                    opacity: isActive ? 1 : 0.5,
+                    scale: isActive ? 1 : 0.85,
+                    y: isActive ? 0 : 12,
+                    zIndex: isActive ? 10 : 1,
+                  }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: [0.25, 0.1, 0.25, 1],
+                  }}
+                  className={`
+                    flex-shrink-0
+                    ${isActive
+                      ? "w-[320px] sm:w-[400px] lg:w-[480px]"
+                      : "w-[200px] sm:w-[240px] lg:w-[280px] hidden sm:block"
+                    }
+                  `}
+                >
+                  <div className="bg-card rounded-2xl border border-border/40 p-6 lg:p-8 shadow-sm text-center">
+                    <img
+                      src={r.image}
+                      alt={r.name}
+                      className={`rounded-full object-cover mx-auto mb-3 ${
+                        isActive ? "w-14 h-14" : "w-10 h-10"
+                      }`}
+                    />
+                    <p className={`text-muted-foreground leading-relaxed mb-4 ${
+                      isActive ? "text-base" : "text-xs line-clamp-3"
+                    }`}>
+                      "{r.text}"
+                    </p>
+                    <p className={`font-semibold text-foreground ${isActive ? "text-sm" : "text-xs"}`}>
+                      {r.name}
+                    </p>
+                    {isActive && (
+                      <p className="text-xs text-muted-foreground">{r.role}</p>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
 
         {/* Controls */}
@@ -105,8 +150,8 @@ export const ReviewsSection = () => {
             {reviews.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setIndex(i)}
-                className={`w-2 h-2 rounded-full transition-colors ${i === index ? "bg-primary" : "bg-border"}`}
+                onClick={() => { stopTimer(); setActiveIndex(i); startTimer(); }}
+                className={`w-2 h-2 rounded-full transition-colors ${i === activeIndex ? "bg-primary" : "bg-border"}`}
                 aria-label={`Go to review ${i + 1}`}
               />
             ))}
