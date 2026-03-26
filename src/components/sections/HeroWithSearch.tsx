@@ -10,8 +10,8 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  SelectValue } from
+"@/components/ui/select";
 import { ArrowRight, Phone } from "lucide-react";
 import { CheckCircle } from "lucide-react";
 
@@ -20,18 +20,18 @@ const fadeUp = {
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay, ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number] },
-  }),
+    transition: { duration: 0.7, delay, ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number] }
+  })
 };
 
 const services = [
-  "GST Registration",
-  "VPOB Setup",
-  "Multi-State GST",
-  "E-commerce Compliance",
-  "TDS/TCS Handling",
-  "Not sure yet",
-];
+"GST Registration",
+"VPOB Setup",
+"Multi-State GST",
+"E-commerce Compliance",
+"TDS/TCS Handling",
+"Not sure yet"];
+
 
 export const HeroWithSearch = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -56,41 +56,41 @@ export const HeroWithSearch = () => {
       </div>
       <div className="relative z-10 w-full px-4 lg:px-8 py-6 lg:py-8">
         <div className="mx-auto w-full max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left — Text */}
             <motion.div
               custom={0.1}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="flex flex-col justify-start text-center lg:text-left lg:pt-4"
-            >
+              className="flex flex-col justify-center text-center lg:text-left">
+              
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-5">
-                Start in One City.{" "}
-                <span className="text-primary">Sell Across India.</span><br />
-                Scale Without Limits.
+                Launch in Mumbai.<br />
+                Live in Delhi.{" "}
+                <span className="text-primary">Sell Everywhere.</span>
               </h1>
               <motion.p
                 custom={0.25}
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
-                className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0"
-              >
-                Get GST compliant virtual office addresses in 68+ cities with complete documentation and quick setup so you can expand your e-commerce business across India without physical offices.
+                className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">Get GST compliant virtual office addresses in 68+ cities with complete documentation and quick setup so you can expand your e-commerce business across India without physical offices.
+
+
               </motion.p>
               <motion.div
                 custom={0.4}
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
-                className="flex flex-wrap gap-3 justify-center lg:justify-start"
-              >
+                className="flex flex-wrap gap-3 justify-center lg:justify-start">
+                
                 <Button
                   size="lg"
                   className="font-medium px-7 h-12"
-                  onClick={() => scrollTo("#contact")}
-                >
+                  onClick={() => scrollTo("#contact")}>
+                  
                   <ArrowRight className="w-4 h-4 mr-2" />
                   Get Started
                 </Button>
@@ -98,8 +98,8 @@ export const HeroWithSearch = () => {
                   size="lg"
                   variant="outline"
                   className="font-medium px-7 h-12"
-                  onClick={() => scrollTo("#contact")}
-                >
+                  onClick={() => scrollTo("#contact")}>
+                  
                   <Phone className="w-4 h-4 mr-2" />
                   Book a Call
                 </Button>
@@ -111,22 +111,22 @@ export const HeroWithSearch = () => {
               custom={0.3}
               variants={fadeUp}
               initial="hidden"
-              animate="visible"
-            >
-              {submitted ? (
-                <div className="relative rounded-3xl overflow-hidden border border-gray-200 shadow-2xl p-8 text-center">
+              animate="visible">
+              
+              {submitted ?
+              <div className="relative rounded-3xl overflow-hidden border border-gray-200 shadow-2xl p-8 text-center">
                   <img src={heroWatercolorBg} alt="" className="absolute inset-0 w-full h-full object-cover object-center" />
                   <div className="relative z-10">
                     <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
                     <h3 className="text-xl font-semibold text-foreground mb-2">Thank you!</h3>
                     <p className="text-muted-foreground text-sm">We'll get back to you within 24 hours.</p>
                   </div>
-                </div>
-              ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  className="relative rounded-3xl overflow-hidden border border-gray-200 shadow-2xl p-7 lg:p-8 space-y-4"
-                >
+                </div> :
+
+              <form
+                onSubmit={handleSubmit}
+                className="relative rounded-3xl overflow-hidden border border-gray-200 shadow-2xl p-7 lg:p-8 space-y-4">
+                
                   <img src={heroWatercolorBg} alt="" className="absolute inset-0 w-full h-full object-cover object-center" />
                   <div className="absolute inset-0 bg-white/20" />
                   <div className="relative z-10 space-y-4">
@@ -156,9 +156,9 @@ export const HeroWithSearch = () => {
                           <SelectValue placeholder="Select a service" />
                         </SelectTrigger>
                         <SelectContent>
-                          {services.map((s) => (
-                            <SelectItem key={s} value={s}>{s}</SelectItem>
-                          ))}
+                          {services.map((s) =>
+                        <SelectItem key={s} value={s}>{s}</SelectItem>
+                        )}
                         </SelectContent>
                       </Select>
                     </div>
@@ -171,11 +171,11 @@ export const HeroWithSearch = () => {
                     </p>
                   </div>
                 </form>
-              )}
+              }
             </motion.div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
