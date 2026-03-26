@@ -42,7 +42,7 @@ export const EcommerceServices = () => {
           <div className="absolute -top-3 -left-3 text-muted-foreground/30 text-xl select-none">+</div>
           <div className="absolute -top-3 -right-3 text-muted-foreground/30 text-xl select-none">+</div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {services.map((service, i) => (
               <motion.div
                 key={service.title}
@@ -50,7 +50,7 @@ export const EcommerceServices = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group flex flex-col justify-between border-r border-border/40 last:border-r-0 px-7 py-14 bg-secondary hover:bg-background transition-colors duration-300"
+                className="group flex flex-col justify-between rounded-lg px-7 py-14 bg-secondary hover:bg-background transition-colors duration-300"
               >
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-4 leading-snug group-hover:text-secondary-foreground transition-colors">
