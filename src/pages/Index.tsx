@@ -7,6 +7,7 @@ import { EcommerceServices } from "@/components/sections/EcommerceServices";
 import { PricingSection } from "@/components/sections/PricingSection";
 import { BenefitsGrid } from "@/components/sections/BenefitsGrid";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
+import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 
 import { ReviewsSection } from "@/components/sections/ReviewsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -26,6 +27,7 @@ const Index = () => {
         <PricingSection />
         <BenefitsGrid />
         <BenefitsSection />
+        <WhyChooseUs />
         
         <ReviewsSection />
         <ContactSection />
