@@ -75,7 +75,7 @@ export const HeroWithSearch = () => {
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
-                className="text-foreground font-medium text-base lg:text-lg leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0 className="text-foreground font-medium text-base lg:text-lg leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0 backdrop-blur-[2px] bg-white/20 rounded-xl px-4 py-3 inline-block">Get GST compliant virtual office addresses in 68+ cities with complete documentation and quick setup so you can expand your e-commerce business across India without physical offices.">Get GST compliant virtual office addresses in 68+ cities with complete documentation and quick setup so you can expand your e-commerce business across India without physical offices.
+                className="text-foreground font-medium text-base lg:text-lg leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0 backdrop-blur-[2px] bg-white/20 rounded-xl px-4 py-3 inline-block">Get GST compliant virtual office addresses in 68+ cities with complete documentation and quick setup so you can expand your e-commerce business across India without physical offices.
               </motion.p>
               <motion.div
                 custom={0.4}
