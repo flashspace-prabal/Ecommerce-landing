@@ -15,19 +15,39 @@ export const WhyChooseUs = () => {
         {/* Bento Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 auto-rows-auto">
 
-          {/* Card 1 — Pan-India VPOB (tall left) */}
+          {/* Card 1 — All India Coverage */}
           <motion.div
             {...fadeUp}
-            className="lg:col-span-5 sm:row-span-2 rounded-2xl border border-border/50 bg-card p-8 lg:p-10 flex flex-col justify-end min-h-[320px] lg:min-h-[420px]"
+            className="lg:col-span-5 rounded-2xl border border-border/50 bg-card p-8 lg:p-10 flex flex-col justify-center min-h-[200px]"
           >
-            <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground mb-4">
-              <MapPin className="w-4 h-4" /> Pan-India Coverage
+            <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground mb-3">
+              <MapPin className="w-4 h-4" /> All India Coverage
             </span>
-            <h3 className="text-4xl lg:text-5xl font-bold text-foreground tracking-tight mb-3">
-              28+ States.
+            <h3 className="text-4xl lg:text-5xl font-bold text-foreground tracking-tight mb-2">
+              20+ States.
             </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-5">
-              VPOB addresses available in every major Indian state and UT — unlock pan-India selling on Amazon, Flipkart, and all major marketplaces.
+            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+              VPOB addresses available across major Indian states and UTs — unlock pan-India selling on Amazon, Flipkart, and all major marketplaces.
+            </p>
+            <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground cursor-pointer hover:gap-2.5 transition-all">
+              Learn More <ArrowRight className="w-4 h-4" />
+            </span>
+          </motion.div>
+
+          {/* Card 1b — Dedicated Support */}
+          <motion.div
+            {...fadeUp}
+            transition={{ delay: 0.04 }}
+            className="lg:col-span-5 rounded-2xl border border-border/50 bg-card p-8 lg:p-10 flex flex-col justify-center min-h-[200px]"
+          >
+            <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground mb-3">
+              <ShieldCheck className="w-4 h-4" /> Dedicated Manager
+            </span>
+            <h3 className="text-4xl lg:text-5xl font-bold text-foreground tracking-tight mb-2">
+              1:1 Support.
+            </h3>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+              A dedicated compliance manager assigned to your account — handling all communication with government authorities on your behalf.
             </p>
             <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground cursor-pointer hover:gap-2.5 transition-all">
               Learn More <ArrowRight className="w-4 h-4" />
@@ -85,10 +105,10 @@ export const WhyChooseUs = () => {
               <IndianRupee className="w-4 h-4" /> Pricing
             </span>
             <h3 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-2">
-              ₹699/mo.
+              Affordable Prices.
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Transparent, no-hidden-fee pricing. VPOB addresses starting at just ₹699 per month per state.
+              Transparent, no-hidden-fee pricing. VPOB addresses at the most competitive rates in the market.
             </p>
           </motion.div>
 
@@ -102,10 +122,10 @@ export const WhyChooseUs = () => {
               <HeartHandshake className="w-4 h-4" /> Full Support
             </span>
             <h3 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-2">
-              End‑to‑End Compliance.
+              End‑to‑End Support.
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-              From GST registration to return filing and TCS/TDS recovery — a dedicated compliance manager handles your entire lifecycle.
+              From VPOB address setup to GST registration — we handle the entire process so you can start selling faster.
             </p>
             <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground cursor-pointer hover:gap-2.5 transition-all">
               Learn More <ArrowRight className="w-4 h-4" />
