@@ -1,21 +1,20 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Building2, Users, Globe } from "lucide-react";
-import heroIllustrated from "@/assets/hero-illustrated.jpg";
+import heroBgWatercolor from "@/assets/hero-bg-watercolor.png";
 
 export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pb-0">
-      {/* Illustrated background - extends to next section */}
+      {/* Watercolor background */}
       <div className="absolute inset-0">
         <img 
-          src={heroIllustrated}
-          alt="Modern coworking space illustration"
-          className="w-full h-full object-cover"
+          src={heroBgWatercolor}
+          alt=""
+          className="w-full h-full object-cover opacity-30"
         />
-        {/* Soft overlay to blend with cream background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-background/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-background/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/50 to-background/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-background/60" />
       </div>
 
       {/* Content */}
