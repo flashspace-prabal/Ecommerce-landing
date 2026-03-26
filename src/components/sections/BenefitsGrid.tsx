@@ -1,21 +1,23 @@
 import { motion } from "framer-motion";
-import { Rocket, IndianRupee, Globe } from "lucide-react";
+import rocketImg from "@/assets/benefit-rocket.png";
+import savingsImg from "@/assets/benefit-savings.png";
+import indiaImg from "@/assets/benefit-india.png";
 
 const benefits = [
   {
-    icon: Rocket,
+    image: rocketImg,
     title: "Instant Market Entry",
     description:
       "Get your virtual office and GST registration in record time.",
   },
   {
-    icon: IndianRupee,
+    image: savingsImg,
     title: "90% Cost Reduction",
     description:
       "Eliminate physical office overheads with our streamlined virtual compliance.",
   },
   {
-    icon: Globe,
+    image: indiaImg,
     title: "Pan-India Reach",
     description:
       "Store inventory in any state and sell across every pincode in India.",
