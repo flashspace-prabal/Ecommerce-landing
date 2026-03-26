@@ -56,28 +56,28 @@ export const HeroWithSearch = () => {
       </div>
       <div className="relative z-10 w-full px-4 lg:px-8 py-6 lg:py-8">
         <div className="mx-auto w-full max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Left — Text */}
             <motion.div
               custom={0.1}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="flex flex-col justify-center text-center lg:text-left"
+              className="flex flex-col justify-start text-center lg:text-left lg:pt-4"
             >
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-5">
-                Launch in Mumbai.<br />
-                Live in Delhi.{" "}
-                <span className="text-primary">Sell Everywhere.</span>
+                Start in One City.{" "}
+                <span className="text-primary">Sell Across India.</span><br />
+                Scale Without Limits.
               </h1>
               <motion.p
                 custom={0.25}
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
-                className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-8 max-w-md mx-auto lg:mx-0"
+                className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0"
               >
-                The borderless operating system for India's next generation of e-commerce giants.
+                Get GST compliant virtual office addresses in 68+ cities with complete documentation and quick setup so you can expand your e-commerce business across India without physical offices.
               </motion.p>
               <motion.div
                 custom={0.4}
