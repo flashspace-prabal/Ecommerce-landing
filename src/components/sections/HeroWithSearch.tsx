@@ -63,7 +63,7 @@ export const HeroWithSearch = () => {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="flex flex-col justify-center text-center lg:text-left">
+              className="flex flex-col justify-center text-center lg:text-left backdrop-blur-md bg-white/30 rounded-2xl p-6 lg:p-8">
               
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-5">
                 Start in One City.<br />
