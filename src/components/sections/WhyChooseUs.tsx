@@ -18,12 +18,12 @@ export const WhyChooseUs = () => {
           {/* Card 1 — All India Coverage */}
           <motion.div
             {...fadeUp}
-            className="lg:col-span-5 rounded-2xl border border-border/50 bg-card p-8 lg:p-10 flex flex-col justify-center min-h-[200px]"
+            className="lg:col-span-5 rounded-2xl border border-border/50 bg-card p-6 lg:p-8 flex flex-col justify-center min-h-[170px]"
           >
             <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground mb-3">
               <MapPin className="w-4 h-4" /> All India Coverage
             </span>
-            <h3 className="text-4xl lg:text-5xl font-bold text-foreground tracking-tight mb-2">
+            <h3 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-2">
               20+ States.
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
@@ -38,12 +38,12 @@ export const WhyChooseUs = () => {
           <motion.div
             {...fadeUp}
             transition={{ delay: 0.04 }}
-            className="lg:col-span-7 rounded-2xl border border-border/50 bg-card p-8 lg:p-10 flex flex-col justify-center min-h-[200px]"
+            className="lg:col-span-7 rounded-2xl border border-border/50 bg-card p-6 lg:p-8 flex flex-col justify-center min-h-[170px]"
           >
             <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground mb-3">
               <ShieldCheck className="w-4 h-4" /> Dedicated Manager
             </span>
-            <h3 className="text-4xl lg:text-5xl font-bold text-foreground tracking-tight mb-2">
+            <h3 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-2">
               1:1 Support.
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
@@ -58,12 +58,12 @@ export const WhyChooseUs = () => {
           <motion.div
             {...fadeUp}
             transition={{ delay: 0.08 }}
-            className="lg:col-span-5 rounded-2xl border border-border/50 bg-card p-8 lg:p-10 flex flex-col justify-center min-h-[200px]"
+            className="lg:col-span-5 rounded-2xl border border-border/50 bg-card p-6 lg:p-8 flex flex-col justify-center min-h-[170px]"
           >
             <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground mb-3">
               <Zap className="w-4 h-4" /> Quick Approval
             </span>
-            <h3 className="text-4xl lg:text-5xl font-bold text-foreground tracking-tight mb-2">
+            <h3 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-2">
               &lt;3 Day GST.
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
@@ -78,7 +78,7 @@ export const WhyChooseUs = () => {
           <motion.div
             {...fadeUp}
             transition={{ delay: 0.16 }}
-            className="lg:col-span-4 rounded-2xl bg-secondary p-8 lg:p-10 flex flex-col items-center justify-center text-center min-h-[200px]"
+            className="lg:col-span-4 rounded-2xl bg-secondary p-6 lg:p-8 flex flex-col items-center justify-center text-center min-h-[170px]"
           >
             <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-6 leading-snug">
               Built for E-commerce Sellers in India
@@ -99,7 +99,7 @@ export const WhyChooseUs = () => {
           <motion.div
             {...fadeUp}
             transition={{ delay: 0.24 }}
-            className="lg:col-span-3 rounded-2xl border border-border/50 bg-card p-8 flex flex-col justify-center min-h-[200px]"
+            className="lg:col-span-3 rounded-2xl border border-border/50 bg-card p-6 flex flex-col justify-center min-h-[170px]"
           >
             <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground mb-3">
               <IndianRupee className="w-4 h-4" /> Pricing
@@ -116,7 +116,7 @@ export const WhyChooseUs = () => {
           <motion.div
             {...fadeUp}
             transition={{ delay: 0.12 }}
-            className="lg:col-span-7 rounded-2xl border border-border/50 bg-card p-8 lg:p-10 flex flex-col justify-center min-h-[180px]"
+            className="lg:col-span-7 rounded-2xl border border-border/50 bg-card p-6 lg:p-8 flex flex-col justify-center min-h-[160px]"
           >
             <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground mb-3">
               <HeartHandshake className="w-4 h-4" /> Full Support
@@ -136,7 +136,7 @@ export const WhyChooseUs = () => {
           <motion.div
             {...fadeUp}
             transition={{ delay: 0.2 }}
-            className="lg:col-span-5 rounded-2xl border border-border/50 bg-card p-8 lg:p-10 flex flex-col justify-center min-h-[180px]"
+            className="lg:col-span-5 rounded-2xl border border-border/50 bg-card p-6 lg:p-8 flex flex-col justify-center min-h-[160px]"
           >
             <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground mb-3">
               <ShieldCheck className="w-4 h-4" /> Compliance
