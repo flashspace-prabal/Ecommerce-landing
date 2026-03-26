@@ -66,9 +66,9 @@ export const HeroWithSearch = () => {
               className="flex flex-col justify-center text-center lg:text-left">
               
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-5">
-                Launch in Mumbai.<br />
-                Live in Delhi.{" "}
-                <span className="text-primary">Sell Everywhere.</span>
+                Start in One City.<br />
+                Sell Across India.{" "}
+                <span className="text-primary">Scale Without Limits.</span>
               </h1>
               <motion.p
                 custom={0.25}
