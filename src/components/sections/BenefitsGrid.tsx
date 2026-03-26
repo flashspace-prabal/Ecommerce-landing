@@ -50,10 +50,10 @@ export const BenefitsGrid = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
-              className="group border border-border bg-card p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="group border border-border bg-card p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg aspect-square flex flex-col items-center justify-center"
             >
-              <div className="mx-auto mb-5 flex h-24 w-24 items-center justify-center">
-                <img src={b.image} alt={b.title} className="h-full w-full object-contain" loading="lazy" width={96} height={96} />
+              <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center">
+                <img src={b.image} alt={b.title} className="h-full w-full object-contain" loading="lazy" width={80} height={80} />
               </div>
               <h3 className="text-lg font-bold text-foreground mb-2">
                 {b.title}

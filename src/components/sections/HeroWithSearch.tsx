@@ -52,7 +52,7 @@ export const HeroWithSearch = () => {
       {/* Full background illustration */}
       <div className="absolute inset-0">
         <img src={heroIllustrated} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-white/60" />
+        <div className="absolute inset-0 bg-white/40" />
       </div>
       <div className="relative z-10 w-full px-4 lg:px-8 py-6 lg:py-14">
         <div className="mx-auto w-full max-w-7xl">
@@ -75,7 +75,7 @@ export const HeroWithSearch = () => {
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
-                className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">Get GST compliant virtual office addresses in 68+ cities with complete documentation and quick setup so you can expand your e-commerce business across India without physical offices.
+                className="text-foreground/70 text-base lg:text-lg leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">Get GST compliant virtual office addresses in 68+ cities with complete documentation and quick setup so you can expand your e-commerce business across India without physical offices.
 
 
               </motion.p>
@@ -125,13 +125,13 @@ export const HeroWithSearch = () => {
 
               <form
                 onSubmit={handleSubmit}
-                className="relative rounded-3xl overflow-hidden border border-gray-200 shadow-2xl p-7 lg:p-8 space-y-4">
+                className="relative rounded-2xl overflow-hidden border border-gray-200 shadow-2xl p-5 lg:p-6 space-y-3">
                 
                   <img src={heroWatercolorBg} alt="" className="absolute inset-0 w-full h-full object-cover object-center" />
                   <div className="absolute inset-0 bg-white/20" />
-                  <div className="relative z-10 space-y-4">
-                    <h3 className="text-lg font-semibold text-foreground mb-1">Request a Free Callback</h3>
-                    <p className="text-sm text-muted-foreground mb-4">Our experts respond within 2 hours.</p>
+                  <div className="relative z-10 space-y-3">
+                    <h3 className="text-base font-semibold text-foreground mb-0.5">Request a Free Callback</h3>
+                    <p className="text-xs text-muted-foreground mb-2">Our experts respond within 2 hours.</p>
 
                     <div>
                       <Label htmlFor="hero-name" className="text-xs font-medium text-foreground mb-1 block">Full Name</Label>
@@ -163,7 +163,7 @@ export const HeroWithSearch = () => {
                       </Select>
                     </div>
 
-                    <Button type="submit" className="w-full h-11 font-medium" size="lg">
+                    <Button type="submit" className="w-full h-10 font-medium" size="default">
                       Request Callback
                     </Button>
                     <p className="text-[11px] text-muted-foreground text-center">
