@@ -67,7 +67,7 @@ export const HeroWithSearch = () => {
               
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-5">
                 Start in One City.<br />
-                Sell Across India.{" "}
+                Sell Across India.<br />
                 <span className="text-primary">Scale Without Limits.</span>
               </h1>
               <motion.p
