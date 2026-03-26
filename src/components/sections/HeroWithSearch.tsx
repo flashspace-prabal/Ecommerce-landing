@@ -63,12 +63,12 @@ export const HeroWithSearch = () => {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="flex flex-col justify-start text-center lg:text-left lg:pt-0 lg:-mt-8"
+              className="flex flex-col justify-center text-center lg:text-left"
             >
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-5">
-                Start in One City.<br />
-                Sell Across India.{" "}
-                <span className="text-primary">Scale Without Limits.</span>
+                Launch in Mumbai.<br />
+                Live in Delhi.{" "}
+                <span className="text-primary">Sell Everywhere.</span>
               </h1>
               <motion.p
                 custom={0.25}
@@ -127,8 +127,8 @@ export const HeroWithSearch = () => {
                   onSubmit={handleSubmit}
                   className="relative rounded-3xl overflow-hidden border border-gray-200 shadow-2xl p-7 lg:p-8 space-y-4"
                 >
-                  <div className="absolute inset-0 bg-[#e7d480]/40" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#e7d480]/30 to-[#e7d480]/60" />
+                  <img src={heroWatercolorBg} alt="" className="absolute inset-0 w-full h-full object-cover object-center" />
+                  <div className="absolute inset-0 bg-white/20" />
                   <div className="relative z-10 space-y-4">
                     <h3 className="text-lg font-semibold text-foreground mb-1">Request a Free Callback</h3>
                     <p className="text-sm text-muted-foreground mb-4">Our experts respond within 2 hours.</p>
