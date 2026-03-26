@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import rocketImg from "@/assets/benefit-rocket.png";
-import savingsImg from "@/assets/benefit-savings.png";
-import indiaImg from "@/assets/benefit-india.png";
+import rocketImg from "@/assets/benefit-rocket.svg";
+import savingsImg from "@/assets/benefit-savings.svg";
+import indiaImg from "@/assets/benefit-india.svg";
 
 const benefits = [
   {
@@ -18,7 +18,7 @@ const benefits = [
   },
   {
     image: indiaImg,
-    title: "Pan-India Reach",
+    title: "All India Reach",
     description:
       "Store inventory in any state and sell across every pincode in India.",
   },
