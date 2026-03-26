@@ -65,7 +65,7 @@ export const HeroWithSearch = () => {
               animate="visible"
               className="flex flex-col justify-center text-center lg:text-left">
               
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] mb-5" style={{ textShadow: '0 0 12px rgba(255,255,255,0.7), 0 0 4px rgba(255,255,255,0.5)' }}>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] mb-5 backdrop-blur-[2px] bg-white/20 rounded-xl px-4 py-3 inline-block" style={{ textShadow: '0 0 12px rgba(255,255,255,0.7), 0 0 4px rgba(255,255,255,0.5)' }}>
                 <span className="text-foreground">Start in One City.</span><br />
                 <span className="text-foreground">Sell Across India.</span><br />
                 <span className="text-primary" style={{ textShadow: '0 0 12px rgba(255,255,255,0.7)' }}>Scale Without Limits.</span>
@@ -75,7 +75,7 @@ export const HeroWithSearch = () => {
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
-                className="text-foreground font-medium text-base lg:text-lg leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0 backdrop-blur-sm bg-white/40 rounded-xl px-4 py-3 inline-block">Get GST compliant virtual office addresses in 68+ cities with complete documentation and quick setup so you can expand your e-commerce business across India without physical offices.
+                className="text-foreground font-medium text-base lg:text-lg leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0 className="text-foreground font-medium text-base lg:text-lg leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0 backdrop-blur-[2px] bg-white/20 rounded-xl px-4 py-3 inline-block">Get GST compliant virtual office addresses in 68+ cities with complete documentation and quick setup so you can expand your e-commerce business across India without physical offices.">Get GST compliant virtual office addresses in 68+ cities with complete documentation and quick setup so you can expand your e-commerce business across India without physical offices.
               </motion.p>
               <motion.div
                 custom={0.4}
