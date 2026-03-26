@@ -54,7 +54,7 @@ export const HeroWithSearch = () => {
         <img src={heroIllustrated} alt="" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-white/60" />
       </div>
-      <div className="relative z-10 w-full px-4 lg:px-8 py-6 lg:py-8">
+      <div className="relative z-10 w-full px-4 lg:px-8 py-6 lg:py-14">
         <div className="mx-auto w-full max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left — Text */}
