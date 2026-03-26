@@ -14,12 +14,6 @@ const benefits = [
       "VPOB & GST registration done in 7–14 business days per state. We handle all paperwork, government filings, and documentation so you can focus on growing your business.",
   },
   {
-    image: compliantImg,
-    title: "100% Compliant",
-    description:
-      "Stay fully legal across all states — no penalties, no surprises. Our compliance experts ensure every registration meets the latest regulatory requirements.",
-  },
-  {
     image: supportImg,
     title: "24hr Support",
     description:
