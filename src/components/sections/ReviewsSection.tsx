@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const reviews = [
@@ -9,6 +8,8 @@ const reviews = [
   { name: "Priya D.", role: "Founder, LuxeCart", text: "Flash Space set up our multi-state VPOB in under 10 days. Now we sell in 12 states with zero compliance issues. The team is incredibly responsive and professional.", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&auto=format" },
   { name: "Rahul M.", role: "COO, UrbanBazaar", text: "Managing GST across multiple states felt impossible as a solo founder. Flash Space handled everything — VPOB, filings, TDS recovery. We scaled from 3 states to 18 in two months.", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&auto=format" },
 ];
+
+const getIdx = (i: number) => ((i % reviews.length) + reviews.length) % reviews.length;
 
 export const ReviewsSection = () => {
   const [index, setIndex] = useState(0);
@@ -26,9 +27,13 @@ export const ReviewsSection = () => {
     return () => clearInterval(interval);
   }, [next]);
 
+  const prevReview = reviews[getIdx(index - 1)];
+  const currentReview = reviews[index];
+  const nextReview = reviews[getIdx(index + 1)];
+
   return (
     <section className="py-16 lg:py-24 bg-muted/30">
-      <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
+      <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-3">
             What Our Clients Are Saying
@@ -38,28 +43,52 @@ export const ReviewsSection = () => {
           </p>
         </div>
 
-        <div className="relative min-h-[280px] flex flex-col items-center justify-center">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -40 }}
-              transition={{ duration: 0.35 }}
-              className="bg-card rounded-2xl border border-border/40 p-8 shadow-sm text-center"
-            >
+        <div className="relative flex items-center justify-center gap-4 lg:gap-6 max-w-5xl mx-auto">
+          {/* Previous card - peeking */}
+          <div className="hidden sm:block w-1/4 shrink-0 opacity-40 scale-90 blur-[1px] transition-all duration-500">
+            <div className="bg-card rounded-2xl border border-border/30 p-5 text-center">
               <img
-                src={reviews[index].image}
-                alt={reviews[index].name}
+                src={prevReview.image}
+                alt={prevReview.name}
+                className="w-10 h-10 rounded-full object-cover mx-auto mb-3"
+              />
+              <p className="text-xs text-muted-foreground leading-relaxed mb-3 line-clamp-3">
+                "{prevReview.text}"
+              </p>
+              <p className="text-xs font-semibold text-foreground">{prevReview.name}</p>
+            </div>
+          </div>
+
+          {/* Current card */}
+          <div className="w-full sm:w-1/2 shrink-0 transition-all duration-500">
+            <div className="bg-card rounded-2xl border border-border/40 p-8 shadow-sm text-center">
+              <img
+                src={currentReview.image}
+                alt={currentReview.name}
                 className="w-14 h-14 rounded-full object-cover mx-auto mb-4"
               />
               <p className="text-base text-muted-foreground leading-relaxed mb-6">
-                "{reviews[index].text}"
+                "{currentReview.text}"
               </p>
-              <p className="text-sm font-semibold text-foreground">{reviews[index].name}</p>
-              <p className="text-xs text-muted-foreground">{reviews[index].role}</p>
-            </motion.div>
-          </AnimatePresence>
+              <p className="text-sm font-semibold text-foreground">{currentReview.name}</p>
+              <p className="text-xs text-muted-foreground">{currentReview.role}</p>
+            </div>
+          </div>
+
+          {/* Next card - peeking */}
+          <div className="hidden sm:block w-1/4 shrink-0 opacity-40 scale-90 blur-[1px] transition-all duration-500">
+            <div className="bg-card rounded-2xl border border-border/30 p-5 text-center">
+              <img
+                src={nextReview.image}
+                alt={nextReview.name}
+                className="w-10 h-10 rounded-full object-cover mx-auto mb-3"
+              />
+              <p className="text-xs text-muted-foreground leading-relaxed mb-3 line-clamp-3">
+                "{nextReview.text}"
+              </p>
+              <p className="text-xs font-semibold text-foreground">{nextReview.name}</p>
+            </div>
+          </div>
         </div>
 
         {/* Controls */}
