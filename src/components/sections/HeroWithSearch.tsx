@@ -63,12 +63,12 @@ export const HeroWithSearch = () => {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="flex flex-col justify-center text-center lg:text-left backdrop-blur-md bg-white/30 rounded-2xl p-6 lg:p-8">
+              className="flex flex-col justify-center text-center lg:text-left">
               
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-5">
-                Start in One City.<br />
-                Sell Across India.<br />
-                <span className="text-primary">Scale Without Limits.</span>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] mb-5" style={{ textShadow: '0 0 12px rgba(255,255,255,0.7), 0 0 4px rgba(255,255,255,0.5)' }}>
+                <span className="text-foreground">Start in One City.</span><br />
+                <span className="text-foreground">Sell Across India.</span><br />
+                <span className="text-primary" style={{ textShadow: '0 0 12px rgba(255,255,255,0.7)' }}>Scale Without Limits.</span>
               </h1>
               <motion.p
                 custom={0.25}
