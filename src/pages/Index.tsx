@@ -21,7 +21,6 @@ const Index = () => {
       <main>
         <HeroWithSearch />
         <TrustBanner />
-        <TrustedPartners />
         
         <EcommerceServices />
         <PricingSection />
@@ -29,6 +28,7 @@ const Index = () => {
         
         <WhyChooseUs />
         
+        <TrustedPartners />
         <ReviewsSection />
         <ContactSection />
         <FAQSection />
