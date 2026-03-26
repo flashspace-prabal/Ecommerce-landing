@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import heroWatercolorBg from "@/assets/hero-watercolor-bg.jpg";
+import heroIllustrated from "@/assets/hero-illustrated.jpg";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -47,7 +48,12 @@ export const HeroWithSearch = () => {
   };
 
   return (
-    <section className="relative w-full overflow-hidden pt-20 lg:pt-24 bg-white">
+    <section className="relative w-full overflow-hidden pt-20 lg:pt-24">
+      {/* Full background illustration */}
+      <div className="absolute inset-0">
+        <img src={heroIllustrated} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-white/60" />
+      </div>
       <div className="relative z-10 w-full px-4 lg:px-8 py-6 lg:py-8">
         <div className="mx-auto w-full max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
