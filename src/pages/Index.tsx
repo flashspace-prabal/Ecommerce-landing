@@ -27,6 +27,7 @@ const Index = () => {
         <PricingSection />
         <BenefitsGrid />
         <BenefitsSection />
+        <WhyChooseUs />
         
         <ReviewsSection />
         <ContactSection />
