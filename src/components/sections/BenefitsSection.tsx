@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import fastSetupImg from "@/assets/benefit-fast-setup.jpg";
-import compliantImg from "@/assets/benefit-compliant.jpg";
+
 import supportImg from "@/assets/benefit-support.jpg";
 import scaleImg from "@/assets/benefit-scale.jpg";
 
