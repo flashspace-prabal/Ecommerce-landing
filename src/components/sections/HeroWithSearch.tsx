@@ -105,7 +105,13 @@ export const HeroWithSearch = () => {
             </motion.div>
 
             {/* Right — Form Card */}
-            <motion.div custom={0.3} variants={fadeUp} initial="hidden" animate="visible" className="max-w-xs ml-auto">
+            <motion.div
+              custom={0.3}
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              className="max-w-[400px] ml-auto"
+            >
               {submitted ? (
                 <div className="relative rounded-3xl overflow-hidden border border-gray-200 shadow-2xl p-8 text-center">
                   <img
