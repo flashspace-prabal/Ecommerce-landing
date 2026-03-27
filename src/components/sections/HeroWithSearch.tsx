@@ -122,7 +122,7 @@ export const HeroWithSearch = () => {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="relative rounded-2xl overflow-hidden border border-gray-200 shadow-2xl p-5 lg:p-6 space-y-3"
+                  className="relative rounded-2xl overflow-hidden border border-white/30 shadow-2xl p-5 lg:p-6 space-y-3 backdrop-blur-[2px] bg-white/20"
                 >
                   <img
                     src={heroWatercolorBg}
