@@ -112,7 +112,7 @@ export const HeroWithSearch = () => {
               animate="visible">
               
               {submitted ?
-               <div className="relative rounded-3xl overflow-hidden border border-white/30 shadow-2xl p-8 text-center backdrop-blur-[2px] bg-white/20">
+               <div className="relative rounded-3xl overflow-hidden border border-white/40 shadow-2xl p-8 text-center backdrop-blur-md bg-white/50">
                   <div className="relative z-10">
                     <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
                     <h3 className="text-xl font-semibold text-foreground mb-2">Thank you!</h3>
@@ -122,29 +122,29 @@ export const HeroWithSearch = () => {
 
               <form
                 onSubmit={handleSubmit}
-                className="relative rounded-2xl overflow-hidden border border-white/30 shadow-2xl p-5 lg:p-6 space-y-3 max-w-sm ml-auto backdrop-blur-[2px] bg-white/20">
+                className="relative rounded-2xl overflow-hidden border border-white/40 shadow-2xl p-5 lg:p-6 space-y-3 max-w-sm ml-auto backdrop-blur-md bg-white/50">
                   <div className="relative z-10 space-y-3">
-                    <h3 className="text-base font-semibold text-foreground mb-0.5">Request a Free Callback</h3>
-                    <p className="text-xs text-muted-foreground mb-2">Our experts respond within 2 hours.</p>
+                    <h3 className="text-base font-bold text-foreground mb-0.5">Request a Free Callback</h3>
+                    <p className="text-xs font-medium text-foreground/80 mb-2">Our experts respond within 2 hours.</p>
 
                     <div>
-                      <Label htmlFor="hero-name" className="text-xs font-medium text-foreground mb-1 block">Full Name</Label>
+                      <Label htmlFor="hero-name" className="text-xs font-semibold text-foreground mb-1 block">Full Name</Label>
                       <Input id="hero-name" placeholder="Your name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required className="bg-white/90" />
                     </div>
                     <div>
-                      <Label htmlFor="hero-email" className="text-xs font-medium text-foreground mb-1 block">Email</Label>
+                      <Label htmlFor="hero-email" className="text-xs font-semibold text-foreground mb-1 block">Email</Label>
                       <Input id="hero-email" type="email" placeholder="you@company.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required className="bg-white/90" />
                     </div>
                     <div>
-                      <Label htmlFor="hero-business" className="text-xs font-medium text-foreground mb-1 block">Business Name</Label>
+                      <Label htmlFor="hero-business" className="text-xs font-semibold text-foreground mb-1 block">Business Name</Label>
                       <Input id="hero-business" placeholder="Your business" value={form.business} onChange={(e) => setForm({ ...form, business: e.target.value })} required className="bg-white/90" />
                     </div>
                     <div>
-                      <Label htmlFor="hero-phone" className="text-xs font-medium text-foreground mb-1 block">Phone</Label>
+                      <Label htmlFor="hero-phone" className="text-xs font-semibold text-foreground mb-1 block">Phone</Label>
                       <Input id="hero-phone" type="tel" placeholder="+91 98765 43210" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} required className="bg-white/90" />
                     </div>
                     <div>
-                      <Label className="text-xs font-medium text-foreground mb-1 block">Service Needed</Label>
+                      <Label className="text-xs font-semibold text-foreground mb-1 block">Service Needed</Label>
                       <Select onValueChange={(v) => setForm({ ...form, service: v })}>
                         <SelectTrigger className="bg-white/90">
                           <SelectValue placeholder="Select a service" />
