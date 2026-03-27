@@ -128,7 +128,7 @@ export const HeroWithSearch = () => {
                     <p className="text-xs font-medium text-foreground/80 mb-2">Our experts respond within 2 hours.</p>
 
                     <div>
-                      <Label htmlFor="hero-name" className="text-xs font-medium text-foreground mb-1 block">Full Name</Label>
+                      <Label htmlFor="hero-name" className="text-xs font-semibold text-foreground mb-1 block">Full Name</Label>
                       <Input id="hero-name" placeholder="Your name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required className="bg-white/90" />
                     </div>
                     <div>
