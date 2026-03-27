@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
 
 const services = [
   {
@@ -50,24 +49,14 @@ export const EcommerceServices = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group flex flex-col justify-between rounded-lg px-7 py-14 bg-secondary hover:bg-background transition-colors duration-300"
+                className="group aspect-square flex flex-col justify-center rounded-lg px-7 bg-secondary hover:bg-background transition-colors duration-300"
               >
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-4 leading-snug group-hover:text-secondary-foreground transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-secondary-foreground/70 transition-colors">
-                    {service.description}
-                  </p>
-                </div>
-                <div className="mt-10">
-                  <button
-                    className="w-11 h-11 rounded-lg border border-border/50 flex items-center justify-center text-muted-foreground group-hover:border-secondary-foreground/30 group-hover:text-secondary-foreground transition-all duration-200 active:scale-95"
-                    aria-label={`Learn more about ${service.title}`}
-                  >
-                    <Plus className="w-5 h-5" />
-                  </button>
-                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-4 leading-snug group-hover:text-secondary-foreground transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-secondary-foreground/70 transition-colors">
+                  {service.description}
+                </p>
               </motion.div>
             ))}
           </div>
