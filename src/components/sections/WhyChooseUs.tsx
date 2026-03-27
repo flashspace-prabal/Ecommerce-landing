@@ -41,13 +41,13 @@ export const WhyChooseUs = () => {
             className="lg:col-span-7 rounded-2xl border border-border/50 bg-card p-6 lg:p-8 flex flex-col justify-center min-h-[170px]"
           >
             <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground mb-3">
-              <ShieldCheck className="w-4 h-4" /> Dedicated Manager
+              <ShieldCheck className="w-4 h-4" /> VPOB & APOB
             </span>
             <h3 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-2">
-              1:1 Support.
+              VPOB + APOB.
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-              A dedicated compliance manager assigned to your account — handling all communication with government authorities on your behalf.
+              Get fully compliant Virtual Place of Business (VPOB) and Additional Place of Business (APOB) addresses — accepted by Amazon, Flipkart, Meesho & all major marketplaces.
             </p>
             <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground cursor-pointer hover:gap-2.5 transition-all">
               Learn More <ArrowRight className="w-4 h-4" />

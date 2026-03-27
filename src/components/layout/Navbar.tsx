@@ -48,6 +48,15 @@ export const Navbar = () => {
           </a>
 
           <div className="flex items-center gap-2 lg:gap-3">
+            <a
+              href="tel:+918100888777"
+              className={`hidden md:inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ${
+                scrolled ? "text-foreground" : "text-white"
+              } hover:text-primary`}
+            >
+              <PhoneCall className="w-4 h-4" />
+              +91 81008 88777
+            </a>
             <Button
               variant="default"
               size="sm"
