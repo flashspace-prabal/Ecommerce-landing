@@ -7,40 +7,40 @@ const plans = [
   {
     id: "tier1",
     name: "Tier 1 Cluster",
-    price: 80000,
-    priceSuffix: " + GST/yr",
+    // price: 80000,
+    // priceSuffix: " + GST/yr",
     coverage: "8 States",
     states: ["Delhi", "UP", "Haryana", "Tamil Nadu", "West Bengal", "Maharashtra", "Karnataka", "Telangana"],
   },
   {
     id: "north",
     name: "North Cluster",
-    price: 90000,
-    priceSuffix: " + GST/yr",
+    // price: 90000,
+    // priceSuffix: " + GST/yr",
     coverage: "8 States",
     states: ["Delhi", "UP", "Haryana", "Punjab", "Himachal Pradesh", "J&K", "Gujarat", "Rajasthan"],
   },
   {
     id: "south",
     name: "South Cluster",
-    price: 75000,
-    priceSuffix: " + GST/yr",
+    // price: 75000,
+    // priceSuffix: " + GST/yr",
     coverage: "6 States",
     states: ["Kerala", "Tamil Nadu", "Telangana", "Karnataka", "Maharashtra", "Andhra Pradesh"],
   },
   {
     id: "allindia",
     name: "All India Cluster",
-    price: 240000,
-    priceSuffix: " + GST/yr",
+    // price: 240000,
+    // priceSuffix: " + GST/yr",
     coverage: "20 States",
     states: ["North + South + West Bengal", "Assam + Central India"],
   },
 ];
 
-const formatPrice = (price: number) => {
-  return `₹${price.toLocaleString("en-IN")}`;
-};
+// const formatPrice = (price: number) => {
+//   return `₹${price.toLocaleString("en-IN")}`;
+// };
 
 export const PricingSection = () => {
   const [selectedId, setSelectedId] = useState("allindia");
@@ -97,36 +97,29 @@ export const PricingSection = () => {
                   {/* Chip */}
                   <span
                     className={`inline-block text-[11px] font-medium uppercase tracking-widest rounded-md px-3 py-1 w-fit mb-5 ${
-                      isActive
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-secondary text-primary"
+                      isActive ? "bg-primary text-primary-foreground" : "bg-secondary text-primary"
                     }`}
                   >
                     {plan.name}
                   </span>
 
                   {/* Price */}
-                  <div className="mb-1">
+                  {/* <div className="mb-1">
                     <span className="text-3xl lg:text-4xl font-bold text-foreground leading-none">
                       {formatPrice(plan.price)}
                     </span>
                   </div>
                   <span className="text-sm text-muted-foreground mb-5">
                     {plan.priceSuffix}
-                  </span>
+                  </span> */}
 
                   {/* Coverage */}
-                  <p className="text-sm font-semibold text-foreground mb-3">
-                    Coverage: {plan.coverage}
-                  </p>
+                  <p className="text-sm font-semibold text-foreground mb-3">Coverage: {plan.coverage}</p>
 
                   {/* States list */}
                   <ul className="space-y-2.5 flex-1 mb-6">
                     {plan.states.map((s) => (
-                      <li
-                        key={s}
-                        className="flex items-start gap-2.5 text-sm text-muted-foreground"
-                      >
+                      <li key={s} className="flex items-start gap-2.5 text-sm text-muted-foreground">
                         <Check className="w-4 h-4 text-primary shrink-0 mt-0.5 stroke-[1.5]" />
                         {s}
                       </li>
