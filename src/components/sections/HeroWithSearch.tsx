@@ -54,7 +54,7 @@ export const HeroWithSearch = () => {
               transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
               className={`flex flex-col ${formOpen ? "text-left lg:text-left" : "text-center lg:text-center lg:col-span-2"}`}
             >
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] mb-5">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.1] mb-5">
                 <span
                   className="backdrop-blur-[1px] bg-white/15 rounded-lg px-3 py-1 inline"
                   style={{ color: "#35503F", textShadow: "0 0 12px rgba(255,255,255,0.7)" }}
@@ -142,11 +142,11 @@ export const HeroWithSearch = () => {
                       </button>
 
                       <div className="relative z-10 space-y-3">
-                        <h3 className="text-base font-bold text-white mb-0.5">Request a Free Callback</h3>
+                        <h3 className="text-base font-semibold text-white mb-0.5">Request a Free Callback</h3>
                         <p className="text-xs text-white/70 mb-2">Our experts respond within 2 hours.</p>
 
                         <div>
-                          <Label htmlFor="hero-name" className="text-xs font-semibold text-white/90 mb-1 block">
+                          <Label htmlFor="hero-name" className="text-xs font-medium text-white/90 mb-1 block">
                             Full Name
                           </Label>
                           <Input
@@ -160,7 +160,7 @@ export const HeroWithSearch = () => {
                           />
                         </div>
                         <div>
-                          <Label htmlFor="hero-email" className="text-xs font-semibold text-white/90 mb-1 block">
+                          <Label htmlFor="hero-email" className="text-xs font-medium text-white/90 mb-1 block">
                             Email
                           </Label>
                           <Input
@@ -174,7 +174,7 @@ export const HeroWithSearch = () => {
                           />
                         </div>
                         <div>
-                          <Label htmlFor="hero-business" className="text-xs font-semibold text-white/90 mb-1 block">
+                          <Label htmlFor="hero-business" className="text-xs font-medium text-white/90 mb-1 block">
                             Business Name
                           </Label>
                           <Input
@@ -187,7 +187,7 @@ export const HeroWithSearch = () => {
                           />
                         </div>
                         <div>
-                          <Label htmlFor="hero-phone" className="text-xs font-semibold text-white/90 mb-1 block">
+                          <Label htmlFor="hero-phone" className="text-xs font-medium text-white/90 mb-1 block">
                             Phone
                           </Label>
                           <Input
@@ -201,7 +201,7 @@ export const HeroWithSearch = () => {
                           />
                         </div>
                         <div>
-                          <Label className="text-xs font-semibold text-white/90 mb-1 block">Service Needed</Label>
+                          <Label className="text-xs font-medium text-white/90 mb-1 block">Service Needed</Label>
                           <Select onValueChange={(v) => setForm({ ...form, service: v })}>
                             <SelectTrigger className="bg-white/90">
                               <SelectValue placeholder="Select a service" />
