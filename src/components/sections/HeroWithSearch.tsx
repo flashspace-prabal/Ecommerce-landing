@@ -56,22 +56,22 @@ export const HeroWithSearch = () => {
             >
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] mb-5">
                 <span
-                  className="text-foreground backdrop-blur-[1px] bg-white/15 rounded-lg px-3 py-1 inline"
-                  style={{ textShadow: "0 0 12px rgba(255,255,255,0.7)" }}
+                  className="backdrop-blur-[1px] bg-white/15 rounded-lg px-3 py-1 inline"
+                  style={{ color: "#35503F", textShadow: "0 0 12px rgba(255,255,255,0.7)" }}
                 >
                   Start in One City.
                 </span>
                 <br />
                 <span
-                  className="text-foreground backdrop-blur-[1px] bg-white/15 rounded-lg px-3 py-1 inline"
-                  style={{ textShadow: "0 0 12px rgba(255,255,255,0.7)" }}
+                  className="backdrop-blur-[1px] bg-white/15 rounded-lg px-3 py-1 inline"
+                  style={{ color: "#35503F", textShadow: "0 0 12px rgba(255,255,255,0.7)" }}
                 >
                   Sell Across India.
                 </span>
                 <br />
                 <span
-                  className="text-green-600 backdrop-blur-[1px] bg-white/15 rounded-lg px-3 py-1 inline"
-                  style={{ textShadow: "0 0 12px rgba(255,255,255,0.7)" }}
+                  className="backdrop-blur-[1px] bg-white/15 rounded-lg px-3 py-1 inline"
+                  style={{ color: "#35503F", textShadow: "0 0 12px rgba(255,255,255,0.7)" }}
                 >
                   Scale Without Limits.
                 </span>
@@ -84,7 +84,7 @@ export const HeroWithSearch = () => {
                   marginRight: formOpen ? "auto" : "auto",
                 }}
               >
-                FlashSpace provides fully compliant VPOB (Virtual Place of Business) and APOB (Additional Place of Business) addresses accepted by Amazon, Flipkart, Meesho, and Myntra. Get your GST registration documents — NOC, Rent Agreement, and Utility Bill — delivered in 3–7 working days. No physical office. No CA runs. No compliance risk.
+                FlashSpace provides VPOB and APOB addresses accepted by Amazon, Flipkart, Meesho and Myntra. GST documents delivered in 3 to 7 working days. No physical office needed.
               </motion.p>
 
               {/* CTA — only visible in default state */}
