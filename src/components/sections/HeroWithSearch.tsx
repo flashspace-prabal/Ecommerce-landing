@@ -110,7 +110,7 @@ export const HeroWithSearch = () => {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="max-w-[400px] ml-auto"
+              className="max-w-[600px] ml-auto"
             >
               {submitted ? (
                 <div className="relative rounded-3xl overflow-hidden border border-gray-200 shadow-2xl p-8 text-center">
