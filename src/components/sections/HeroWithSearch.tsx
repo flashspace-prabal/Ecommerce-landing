@@ -30,10 +30,10 @@ export const HeroWithSearch = () => {
   };
 
   return (
-    <section id="hero" className="relative w-full overflow-hidden pt-20 lg:pt-24">
+    <section id="hero" className="relative w-full overflow-hidden pt-20 lg:pt-24 min-h-[600px] lg:min-h-[700px]">
       {/* Background */}
       <div className="absolute inset-0">
-        <img src={heroIllustrated} alt="" className="w-full h-full object-cover" />
+        <img src={heroIllustrated} alt="" className="w-full h-full object-cover object-center" />
         <div className="absolute inset-0 bg-white/40" />
       </div>
 
@@ -42,10 +42,7 @@ export const HeroWithSearch = () => {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left / Center content */}
             <motion.div
-              animate={{
-                x: 0,
-                justifyContent: formOpen ? "flex-start" : "center",
-              }}
+              layout
               transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
               className={`flex flex-col ${formOpen ? "text-left lg:text-left" : "text-center lg:text-center lg:col-span-2"}`}
             >
@@ -134,11 +131,11 @@ export const HeroWithSearch = () => {
                       </button>
 
                       <div className="relative z-10 space-y-3">
-                        <h3 className="text-base font-semibold text-white mb-0.5">Request a Free Callback</h3>
+                        <h3 className="text-base font-normal text-white mb-0.5">Request a Free Callback</h3>
                         <p className="text-xs text-white/70 mb-2">Our experts respond within 2 hours.</p>
 
                         <div>
-                          <Label htmlFor="hero-name" className="text-xs font-semibold text-white/90 mb-1 block">
+                          <Label htmlFor="hero-name" className="text-xs font-normal text-white/90 mb-1 block">
                             Full Name
                           </Label>
                           <Input
@@ -152,7 +149,7 @@ export const HeroWithSearch = () => {
                           />
                         </div>
                         <div>
-                          <Label htmlFor="hero-email" className="text-xs font-semibold text-white/90 mb-1 block">
+                          <Label htmlFor="hero-email" className="text-xs font-normal text-white/90 mb-1 block">
                             Email
                           </Label>
                           <Input
@@ -166,7 +163,7 @@ export const HeroWithSearch = () => {
                           />
                         </div>
                         <div>
-                          <Label htmlFor="hero-business" className="text-xs font-semibold text-white/90 mb-1 block">
+                          <Label htmlFor="hero-business" className="text-xs font-normal text-white/90 mb-1 block">
                             Business Name
                           </Label>
                           <Input
@@ -179,7 +176,7 @@ export const HeroWithSearch = () => {
                           />
                         </div>
                         <div>
-                          <Label htmlFor="hero-phone" className="text-xs font-semibold text-white/90 mb-1 block">
+                          <Label htmlFor="hero-phone" className="text-xs font-normal text-white/90 mb-1 block">
                             Phone
                           </Label>
                           <Input
@@ -193,7 +190,7 @@ export const HeroWithSearch = () => {
                           />
                         </div>
                         <div>
-                          <Label className="text-xs font-semibold text-white/90 mb-1 block">Service Needed</Label>
+                          <Label className="text-xs font-normal text-white/90 mb-1 block">Service Needed</Label>
                           <Select onValueChange={(v) => setForm({ ...form, service: v })}>
                             <SelectTrigger className="bg-white/90">
                               <SelectValue placeholder="Select a service" />
