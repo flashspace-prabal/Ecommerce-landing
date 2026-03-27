@@ -8,12 +8,7 @@ import { ArrowRight, X, CheckCircle } from "lucide-react";
 import { useHeroFormTrigger } from "@/hooks/useHeroFormTrigger";
 import heroIllustrated from "@/assets/hero-illustrated.jpg";
 
-const services = [
-  "GST Registration",
-  "VPOB Setup",
-  "Multi-State GST",
-  "Not sure yet",
-];
+const services = ["GST Registration", "VPOB Setup", "Multi-State GST", "Not sure yet"];
 
 export const HeroWithSearch = () => {
   const { formOpen, openForm, closeForm } = useHeroFormTrigger();
@@ -54,7 +49,7 @@ export const HeroWithSearch = () => {
               transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
               className={`flex flex-col ${formOpen ? "text-left lg:text-left" : "text-center lg:text-center lg:col-span-2"}`}
             >
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.1] mb-5">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] mb-5">
                 <span
                   className="backdrop-blur-[1px] bg-white/15 rounded-lg px-3 py-1 inline"
                   style={{ color: "#35503F", textShadow: "0 0 12px rgba(255,255,255,0.7)" }}
@@ -84,7 +79,8 @@ export const HeroWithSearch = () => {
                   marginRight: formOpen ? "auto" : "auto",
                 }}
               >
-                FlashSpace provides VPOB and APOB addresses accepted by Amazon, Flipkart, Meesho and Myntra. GST documents delivered in 3 to 7 working days. No physical office needed.
+                FlashSpace provides VPOB and APOB addresses accepted by Amazon, Flipkart, Meesho and Myntra. GST
+                documents delivered in 3 to 7 working days. No physical office needed.
               </motion.p>
 
               {/* CTA — only visible in default state */}
@@ -97,11 +93,7 @@ export const HeroWithSearch = () => {
                     transition={{ duration: 0.3 }}
                     className="flex justify-center lg:justify-center"
                   >
-                    <Button
-                      size="lg"
-                      className="font-medium px-7 h-12"
-                      onClick={openForm}
-                    >
+                    <Button size="lg" className="font-medium px-7 h-12" onClick={openForm}>
                       Get Your VPOB / APOB Address
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
@@ -146,7 +138,7 @@ export const HeroWithSearch = () => {
                         <p className="text-xs text-white/70 mb-2">Our experts respond within 2 hours.</p>
 
                         <div>
-                          <Label htmlFor="hero-name" className="text-xs font-medium text-white/90 mb-1 block">
+                          <Label htmlFor="hero-name" className="text-xs font-semibold text-white/90 mb-1 block">
                             Full Name
                           </Label>
                           <Input
@@ -160,7 +152,7 @@ export const HeroWithSearch = () => {
                           />
                         </div>
                         <div>
-                          <Label htmlFor="hero-email" className="text-xs font-medium text-white/90 mb-1 block">
+                          <Label htmlFor="hero-email" className="text-xs font-semibold text-white/90 mb-1 block">
                             Email
                           </Label>
                           <Input
@@ -174,7 +166,7 @@ export const HeroWithSearch = () => {
                           />
                         </div>
                         <div>
-                          <Label htmlFor="hero-business" className="text-xs font-medium text-white/90 mb-1 block">
+                          <Label htmlFor="hero-business" className="text-xs font-semibold text-white/90 mb-1 block">
                             Business Name
                           </Label>
                           <Input
@@ -187,7 +179,7 @@ export const HeroWithSearch = () => {
                           />
                         </div>
                         <div>
-                          <Label htmlFor="hero-phone" className="text-xs font-medium text-white/90 mb-1 block">
+                          <Label htmlFor="hero-phone" className="text-xs font-semibold text-white/90 mb-1 block">
                             Phone
                           </Label>
                           <Input
@@ -201,7 +193,7 @@ export const HeroWithSearch = () => {
                           />
                         </div>
                         <div>
-                          <Label className="text-xs font-medium text-white/90 mb-1 block">Service Needed</Label>
+                          <Label className="text-xs font-semibold text-white/90 mb-1 block">Service Needed</Label>
                           <Select onValueChange={(v) => setForm({ ...form, service: v })}>
                             <SelectTrigger className="bg-white/90">
                               <SelectValue placeholder="Select a service" />
