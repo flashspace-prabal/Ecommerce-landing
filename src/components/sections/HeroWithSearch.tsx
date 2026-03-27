@@ -112,7 +112,7 @@ export const HeroWithSearch = () => {
               animate="visible">
               
               {submitted ?
-               <div className="relative rounded-3xl overflow-hidden border border-white/30 shadow-2xl p-8 text-center backdrop-blur-[2px] bg-white/20">
+               <div className="relative rounded-3xl overflow-hidden border border-white/40 shadow-2xl p-8 text-center backdrop-blur-md bg-white/50">
                   <div className="relative z-10">
                     <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
                     <h3 className="text-xl font-semibold text-foreground mb-2">Thank you!</h3>
