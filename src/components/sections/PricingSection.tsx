@@ -34,7 +34,15 @@ const plans = [
     // price: 240000,
     // priceSuffix: " + GST/yr",
     coverage: "20 States",
-    states: ["North + South + West Bengal", "Assam + Central India"],
+    states: [
+      "North Cluster + South Cluster",
+      "Assam",
+      "West Bengal",
+      "Jharkhand",
+      "Chhattisgarh",
+      "Bihar",
+      "Madhya Pradesh",
+    ],
   },
 ];
 
