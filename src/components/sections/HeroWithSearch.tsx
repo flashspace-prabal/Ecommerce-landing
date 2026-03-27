@@ -41,10 +41,8 @@ export const HeroWithSearch = () => {
         <div className="mx-auto w-full max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left / Center content */}
-            <motion.div
-              layout
-              transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-              className={`flex flex-col ${formOpen ? "text-left lg:text-left" : "text-center lg:text-center lg:col-span-2"}`}
+            <div
+              className={`flex flex-col transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${formOpen ? "text-left lg:text-left" : "text-center lg:text-center lg:col-span-2"}`}
             >
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] mb-5">
                 <span
