@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X, PhoneCall } from "lucide-react";
 import flashspaceLogo from "@/assets/flashspace-logo.png";
+import { triggerHeroForm } from "@/hooks/useHeroFormTrigger";
 
 const navLinks = [
   { label: "How It Works", href: "#how-it-works" },
@@ -26,10 +27,9 @@ export const Navbar = () => {
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  const scrollToContact = () => {
+  const handleCallback = () => {
     setMobileOpen(false);
-    const el = document.querySelector("#contact");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    triggerHeroForm();
   };
 
   return (
@@ -58,7 +58,7 @@ export const Navbar = () => {
               variant="default"
               size="sm"
               className="hidden sm:inline-flex text-sm px-5"
-              onClick={scrollToContact}
+              onClick={handleCallback}
             >
               <PhoneCall className="w-4 h-4 mr-1.5" />
               Request a Callback
@@ -95,7 +95,7 @@ export const Navbar = () => {
                 </button>
               ))}
               <div className="mt-3 pt-3 border-t border-border/30">
-                <Button className="w-full" onClick={scrollToContact}>
+                <Button className="w-full" onClick={handleCallback}>
                   <PhoneCall className="w-4 h-4 mr-1.5" />
                   Request a Callback
                 </Button>
