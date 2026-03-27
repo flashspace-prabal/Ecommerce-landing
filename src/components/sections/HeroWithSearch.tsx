@@ -41,10 +41,8 @@ export const HeroWithSearch = () => {
         <div className="mx-auto w-full max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left / Center content */}
-            <motion.div
-              layout
-              transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-              className={`flex flex-col ${formOpen ? "text-left lg:text-left" : "text-center lg:text-center lg:col-span-2"}`}
+            <div
+              className={`flex flex-col transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${formOpen ? "text-left lg:text-left" : "text-center lg:text-center lg:col-span-2"}`}
             >
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] mb-5">
                 <span
@@ -69,16 +67,12 @@ export const HeroWithSearch = () => {
                 </span>
               </h1>
 
-              <motion.p
-                className="text-foreground font-medium text-base lg:text-lg leading-relaxed mb-8 max-w-xl backdrop-blur-[1px] bg-white/15 rounded-xl px-4 py-3 inline-block"
-                style={{
-                  marginLeft: formOpen ? "0" : "auto",
-                  marginRight: formOpen ? "auto" : "auto",
-                }}
+              <p
+                className={`text-foreground font-medium text-base lg:text-lg leading-relaxed mb-8 max-w-xl backdrop-blur-[1px] bg-white/15 rounded-xl px-4 py-3 inline-block transition-all duration-500 ${formOpen ? "mx-0" : "mx-auto"}`}
               >
                 FlashSpace provides VPOB and APOB addresses accepted by Amazon, Flipkart, Meesho and Myntra. GST
                 documents delivered in 3 to 7 working days. No physical office needed.
-              </motion.p>
+              </p>
 
               {/* CTA — only visible in default state */}
               <AnimatePresence>
@@ -97,7 +91,7 @@ export const HeroWithSearch = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
 
             {/* Right — Form (slides in) */}
             <AnimatePresence>
