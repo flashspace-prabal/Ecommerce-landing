@@ -122,10 +122,10 @@ export const HeroWithSearch = () => {
 
               <form
                 onSubmit={handleSubmit}
-                className="relative rounded-2xl overflow-hidden border border-white/30 shadow-2xl p-5 lg:p-6 space-y-3 max-w-sm ml-auto backdrop-blur-[2px] bg-white/20">
+                className="relative rounded-2xl overflow-hidden border border-white/40 shadow-2xl p-5 lg:p-6 space-y-3 max-w-sm ml-auto backdrop-blur-md bg-white/50">
                   <div className="relative z-10 space-y-3">
-                    <h3 className="text-base font-semibold text-foreground mb-0.5">Request a Free Callback</h3>
-                    <p className="text-xs text-muted-foreground mb-2">Our experts respond within 2 hours.</p>
+                    <h3 className="text-base font-bold text-foreground mb-0.5">Request a Free Callback</h3>
+                    <p className="text-xs font-medium text-foreground/80 mb-2">Our experts respond within 2 hours.</p>
 
                     <div>
                       <Label htmlFor="hero-name" className="text-xs font-medium text-foreground mb-1 block">Full Name</Label>
