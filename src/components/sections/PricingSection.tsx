@@ -59,7 +59,7 @@ export const PricingSection = () => {
   };
 
   return (
-    <section id="pricing" className="py-20 lg:py-32 bg-background">
+    <section id="pricing" className="py-10 pb-20 bg-background">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         {/* Header */}
         <motion.div
@@ -69,12 +69,10 @@ export const PricingSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight mb-4 leading-tight">
-            Simple pricing,
-            <br />
-            maximum value
+            Plans Curated For You
           </h2>
           <p className="text-muted-foreground text-base max-w-lg mx-auto">
-            No hidden fees. Choose what works for your business.
+            Choose what works for your business.
           </p>
         </motion.div>
 

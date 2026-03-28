@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Plus } from "lucide-react";
 
 const services = [
   {
@@ -20,8 +21,15 @@ const services = [
 ];
 
 export const EcommerceServices = () => {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section id="what-we-do" className="py-16 lg:py-24 bg-background">
+    <section id="what-we-do" className="py-10 bg-[#f5f5f0]">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -41,7 +49,7 @@ export const EcommerceServices = () => {
           <div className="absolute -top-3 -left-3 text-muted-foreground/30 text-xl select-none">+</div>
           <div className="absolute -top-3 -right-3 text-muted-foreground/30 text-xl select-none">+</div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 border border-muted rounded-lg overflow-hidden">
             {services.map((service, i) => (
               <motion.div
                 key={service.title}
@@ -49,14 +57,29 @@ export const EcommerceServices = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group aspect-square flex flex-col justify-center rounded-lg px-7 bg-secondary hover:bg-background transition-colors duration-300"
+                className="group relative flex flex-col justify-between p-7 bg-white hover:bg-[#fef8c3] transition-colors duration-300 border-r border-b border-muted last:border-r-0"
+                style={{ minHeight: "280px" }}
               >
-                <h3 className="text-lg font-semibold text-foreground mb-4 leading-snug group-hover:text-secondary-foreground transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-secondary-foreground/70 transition-colors">
-                  {service.description}
-                </p>
+                {/* Top content */}
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground mb-4 leading-snug">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
+
+                {/* Plus button at bottom */}
+                <div className="mt-8">
+                  <button
+                    onClick={scrollToContact}
+                    className="w-9 h-9 rounded-full border border-muted flex items-center justify-center text-muted-foreground hover:border-foreground hover:text-foreground transition-colors duration-200"
+                    aria-label="Contact us"
+                  >
+                    <Plus size={16} />
+                  </button>
+                </div>
               </motion.div>
             ))}
           </div>

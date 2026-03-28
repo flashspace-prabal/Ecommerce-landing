@@ -1,32 +1,32 @@
 import { motion } from "framer-motion";
-import rocketImg from "@/assets/benefit-rocket.svg";
-import savingsImg from "@/assets/benefit-savings.svg";
-import indiaImg from "@/assets/benefit-india.svg";
+import rocketImg from "@/assets/benefit-rocket.png";
+import savingsImg from "@/assets/benefit-savings.png";
+import indiaImg from "@/assets/benefit-india.png";
 
 const benefits = [
   {
     image: rocketImg,
     title: "Instant Market Entry",
-    description:
-      "Get your virtual office and GST registration in record time.",
+    description: "Get your virtual office and GST registration in record time.",
+    bg: "from-[#fef8c3] to-[#35503f]/20",
   },
   {
     image: savingsImg,
     title: "90% Cost Reduction",
-    description:
-      "Eliminate physical office overheads with our streamlined virtual compliance.",
+    description: "Eliminate physical office overheads with our streamlined virtual compliance.",
+    bg: "from-[#35503f]/10 to-[#fef8c3]",
   },
   {
     image: indiaImg,
     title: "All India Reach",
-    description:
-      "Store inventory in any state and sell across every pincode in India.",
+    description: "Store inventory in any state and sell across every pincode in India.",
+    bg: "from-[#fef8c3] via-[#35503f]/10 to-[#fef8c3]",
   },
 ];
 
 export const BenefitsGrid = () => {
   return (
-    <section className="bg-card py-16 lg:py-24 border-b border-border">
+    <section className="bg-card py-10 border-b border-border">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -50,17 +50,43 @@ export const BenefitsGrid = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
-              className="group border border-border bg-card p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg aspect-square flex flex-col items-center justify-center"
+              className="group relative aspect-square overflow-hidden rounded-2xl border border-border"
             >
-              <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center">
-                <img src={b.image} alt={b.title} className="h-full w-full object-contain" loading="lazy" width={80} height={80} />
+              {/* Full card gradient background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${b.bg}`} />
+
+              {/* Illustration fills the full card */}
+              <motion.div
+                whileHover={{ scale: 1.06 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="absolute inset-0 flex items-center justify-center p-8"
+              >
+                <img
+                  src={b.image}
+                  alt={b.title}
+                  className="w-full h-full object-contain drop-shadow-lg"
+                  loading="lazy"
+                />
+              </motion.div>
+
+              {/* Glass content — pinned to bottom */}
+              <div
+                className="absolute bottom-0 left-0 right-0 m-3 rounded-xl p-4"
+                style={{
+                  background: "rgba(255, 255, 255, 0.25)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
+                  border: "1px solid rgba(255, 255, 255, 0.45)",
+                  boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
+                }}
+              >
+                <h3 className="text-base font-bold text-foreground mb-1 leading-snug">
+                  {b.title}
+                </h3>
+                <p className="text-xs text-foreground/70 leading-relaxed">
+                  {b.description}
+                </p>
               </div>
-              <h3 className="text-lg font-bold text-foreground mb-2">
-                {b.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {b.description}
-              </p>
             </motion.div>
           ))}
         </div>

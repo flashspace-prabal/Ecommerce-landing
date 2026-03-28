@@ -2,16 +2,51 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Facebook, Linkedin, Twitter, Instagram } from "lucide-react";
 import { Label } from "@/components/ui/label";
-import { Send, CheckCircle, Mail, Phone, MapPin, Plus } from "lucide-react";
+import { Send, CheckCircle, MapPin, Plus, ChevronDown, Icon } from "lucide-react";
 import { z } from "zod";
+import contactImage from "@/assets/contact.png";
+
+
+import { Facebook, Linkedin, Twitter, Instagram, Mail, Phone } from "lucide-react";
+
+const socialLinks = [
+  { label: "Facebook",  href: "#", icon: Facebook  },
+  { label: "LinkedIn",  href: "#", icon: Linkedin  },
+  { label: "Twitter",   href: "#", icon: Twitter   },
+  { label: "Instagram", href: "#", icon: Instagram },
+];
+
+/* ── COMMENTED OUT FOR FUTURE USE ──────────────────────────────────────────
+// Left column content (heading + description + contacts + socials):
+//
+// <h2>Let's talk on something <span>great</span> together</h2>
+// <p>Share your details and we'll create a tailored compliance plan for your business.</p>
+//
+// <a href="mailto:hello@flashspace.in">
+//   <Mail /> hello@flashspace.in
+// </a>
+// <a href="tel:+918100888777">
+//   <Phone /> +91 81008 88777
+// </a>
+//
+// {socialLinks.map((social) => {
+//   const Icon = social.icon;
+//   return (
+//     <a key={social.label} href={social.href} aria-label={social.label}
+//        className="w-10 h-10 rounded-full bg-primary flex items-center justify-center
+//                   text-primary-foreground hover:bg-primary/80 transition-colors">
+//       <Icon className="w-4 h-4" />
+//     </a>
+//   );
+// })}
+─────────────────────────────────────────────────────────────────────────── */
 
 const formSchema = z.object({
-  name: z.string().trim().min(1, "Name is required"),
-  mobile: z.string().trim().min(1, "Mobile number is required"),
-  email: z.string().trim().email("Please enter a valid email"),
-  services: z.array(z.string()).min(1, "Please select at least one service"),
+  name:     z.string().trim().min(1, "Name is required"),
+  mobile:   z.string().trim().min(1, "Mobile number is required"),
+  email:    z.string().trim().email("Please enter a valid email"),
+  service:  z.string().min(1, "Please select a service"),
   location: z.string().optional(),
 });
 
@@ -23,35 +58,17 @@ const serviceOptions = [
   "Mailing Address",
   "E-commerce Registration",
   "VPOB Setup",
-  "TDS/TCS Handling",
-];
-
-const socialLinks = [
-  { label: "Facebook", href: "#", icon: Facebook },
-  { label: "LinkedIn", href: "#", icon: Linkedin },
-  { label: "Twitter", href: "#", icon: Twitter },
-  { label: "Instagram", href: "#", icon: Instagram },
 ];
 
 export const ContactSection = () => {
-  const [form, setForm] = useState<Partial<FormData>>({ services: [] });
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+  const [form, setForm]           = useState<Partial<FormData>>({});
+  const [errors, setErrors]       = useState<Partial<Record<keyof FormData, string>>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleChange = (field: keyof FormData, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
-  };
-
-  const toggleService = (service: string) => {
-    setForm((prev) => {
-      const current = prev.services || [];
-      const updated = current.includes(service)
-        ? current.filter((s) => s !== service)
-        : [...current, service];
-      return { ...prev, services: updated };
-    });
-    if (errors.services) setErrors((prev) => ({ ...prev, services: undefined }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -71,7 +88,7 @@ export const ContactSection = () => {
 
   if (submitted) {
     return (
-      <section id="contact" className="py-16 lg:py-24 bg-background">
+      <section id="contact" className="py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -79,7 +96,9 @@ export const ContactSection = () => {
             className="max-w-lg mx-auto text-center py-12"
           >
             <CheckCircle className="w-14 h-14 text-primary mx-auto mb-5" />
-            <h2 className="text-2xl font-bold text-primary mb-3 tracking-tight">Thank you!</h2>
+            <h2 className="text-2xl font-bold text-primary mb-3 tracking-tight">
+              Thank you!
+            </h2>
             <p className="text-muted-foreground text-base leading-relaxed">
               We've received your details. Our compliance team will reach out within 24 hours.
             </p>
@@ -90,174 +109,130 @@ export const ContactSection = () => {
   }
 
   return (
-    <section id="contact" className="py-20 lg:py-32 bg-card">
-      <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left Column – Text & Contacts */}
+    <section id="contact" className="bg-white">
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[680px]">
+
+        {/* ── LEFT — Full bleed image ── */}
+        <div className="relative hidden lg:block">
+          <img
+            src={contactImage}
+            alt="FlashSpace virtual office"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/10" />
+        </div>
+
+        {/* ── RIGHT — Heading + Form ── */}
+        <div className="flex flex-col justify-center px-8 lg:px-12 py-16">
+
+          {/* Heading above form */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col justify-center"
+            transition={{ duration: 0.5 }}
+            className="mb-8"
           >
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-primary tracking-tight leading-tight mb-4">
+            <h2
+              className="text-3xl font-semibold text-foreground leading-snug"
+            >
               Let's talk on something{" "}
-              <span className="text-primary/70">great</span> together
+              <span style={{ color: "#35503f" }}>great</span>{" "}
+              together
             </h2>
-            <p className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-10 max-w-md">
-              Share your details and we'll create a tailored compliance plan for your business.
-            </p>
-
-            {/* Contact Info */}
-            <div className="space-y-4 mb-10">
-              <a
-                href="mailto:hello@flashspace.in"
-                className="flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
-              >
-                <span className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                  <Mail className="w-4 h-4 text-primary" />
-                </span>
-                <span className="text-sm lg:text-base">hello@flashspace.in</span>
-              </a>
-              <a
-                href="tel:+919876543210"
-                className="flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
-              >
-                <span className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                  <Phone className="w-4 h-4 text-primary" />
-                </span>
-                <span className="text-sm lg:text-base">+91 98765 43210</span>
-              </a>
-            </div>
-
-            {/* Social Icons */}
-            <div className="flex items-center gap-3">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:bg-primary/80 transition-colors"
-                  >
-                    <Icon className="w-4 h-4" />
-                  </a>
-                );
-              })}
-            </div>
           </motion.div>
 
-          {/* Right Column – Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+          {/* Form */}
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex flex-col gap-5"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Service Tags */}
-              <div>
-                <p className="text-sm font-semibold text-foreground mb-3">I'm interested in:</p>
-                <div className="flex flex-wrap gap-2">
-                  {serviceOptions.map((service) => {
-                    const isSelected = form.services?.includes(service);
-                    return (
-                      <button
-                        key={service}
-                        type="button"
-                        onClick={() => toggleService(service)}
-                        className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 ${
-                          isSelected
-                            ? "bg-primary text-primary-foreground border-primary"
-                            : "bg-transparent text-foreground border-border hover:border-primary/50 hover:bg-primary/5"
-                        }`}
-                      >
-                        {service}
-                      </button>
-                    );
-                  })}
-                </div>
-                {errors.services && (
-                  <p className="text-xs text-destructive mt-1.5">{errors.services}</p>
-                )}
-              </div>
 
-              {/* Input Fields – Two Column */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <Label className="text-xs font-bold text-muted-foreground mb-1.5 block tracking-wide uppercase">
-                    Your Name
-                  </Label>
-                  <Input
-                    placeholder="John Doe"
-                    value={form.name || ""}
-                    onChange={(e) => handleChange("name", e.target.value)}
-                    className={`bg-card border-border/60 focus:border-primary ${errors.name ? "border-destructive" : ""}`}
-                  />
-                  {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
-                </div>
-                <div>
-                  <Label className="text-xs font-bold text-muted-foreground mb-1.5 block tracking-wide uppercase">
-                    Mobile
-                  </Label>
-                  <Input
-                    type="tel"
-                    placeholder="+91 98765 43210"
-                    value={form.mobile || ""}
-                    onChange={(e) => handleChange("mobile", e.target.value)}
-                    className={`bg-card border-border/60 focus:border-primary ${errors.mobile ? "border-destructive" : ""}`}
-                  />
-                  {errors.mobile && <p className="text-xs text-destructive mt-1">{errors.mobile}</p>}
-                </div>
-              </div>
 
-              <div>
-                <Label className="text-xs font-bold text-muted-foreground mb-1.5 block tracking-wide uppercase">
-                  Your Email
+              <div className="flex flex-col gap-1.5">
+                <Label className="text-xs font-bold text-muted-foreground tracking-widest uppercase">
+                  Your Name
                 </Label>
                 <Input
-                  type="email"
-                  placeholder="you@company.com"
-                  value={form.email || ""}
-                  onChange={(e) => handleChange("email", e.target.value)}
-                  className={`bg-card border-border/60 focus:border-primary ${errors.email ? "border-destructive" : ""}`}
+                  placeholder="John Doe"
+                  value={form.name || ""}
+                  onChange={(e) => handleChange("name", e.target.value)}
+                  className={errors.name ? "border-destructive" : ""}
                 />
-                {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
+                {errors.name && (
+                  <p className="text-xs text-destructive">{errors.name}</p>
+                )}
               </div>
-
-              {/* Location Field */}
-              <div>
-                <Label className="text-xs font-bold text-muted-foreground mb-1.5 block tracking-wide uppercase">
-                  Location
+              <div className="flex flex-col gap-1.5">
+                <Label className="text-xs font-bold text-muted-foreground tracking-widest uppercase">
+                  Mobile
                 </Label>
-                <div className="flex items-center gap-2 border border-border/60 rounded-md px-3 py-2 bg-card">
-                  <span className="inline-flex items-center gap-1.5 bg-primary text-primary-foreground text-xs font-medium px-3 py-1 rounded-full">
-                    <MapPin className="w-3 h-3" />
-                    Delhi
-                  </span>
-                  <button
-                    type="button"
-                    className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <Plus className="w-3 h-3" />
-                    Add another location
-                  </button>
-                </div>
-              </div>
+                <Input
+                  type="tel"
+                  placeholder="+91 98765 43210"
+                  value={form.mobile || ""}
+                  onChange={(e) => handleChange("mobile", e.target.value)}
+                  className={errors.mobile ? "border-destructive" : ""}
+                />
+                {errors.mobile && (
+                  <p className="text-xs text-destructive">{errors.mobile}</p>
+                )}
+            </div>
 
-              {/* Submit Button */}
-              <Button
-                type="submit"
-                variant="default"
-                size="lg"
-                className="w-full h-12 text-base font-normal rounded-xl"
-              >
-                <Send className="w-4 h-4 mr-2" />
-                Send Message
-              </Button>
-            </form>
-          </motion.div>
+            {/* Email */}
+            <div className="flex flex-col gap-1.5">
+              <Label className="text-xs font-bold text-muted-foreground tracking-widest uppercase">
+                Your Email
+              </Label>
+              <Input
+                type="email"
+                placeholder="you@company.com"
+                value={form.email || ""}
+                onChange={(e) => handleChange("email", e.target.value)}
+                className={errors.email ? "border-destructive" : ""}
+              />
+              {errors.email && (
+                <p className="text-xs text-destructive">{errors.email}</p>
+              )}
+            </div>
+
+
+            {/* Submit */}
+            <Button
+              type="submit"
+              size="lg"
+              className="w-full h-12 text-base font-normal rounded-xl mt-1"
+              style={{ backgroundColor: "#35503f" }}
+            >
+              <Send className="w-4 h-4 mr-2" />
+              Send Message
+            </Button>
+              
+              
+{/* Social Icons */}
+<div className="flex justify-center items-center gap-3 mt-2">
+  {socialLinks.map((social) => {
+    const Icon = social.icon;
+    return (
+      <a
+        key={social.label}
+        href={social.href}
+        aria-label={social.label}
+        className="w-9 h-9 rounded-full flex items-center justify-center text-white transition-opacity hover:opacity-80"
+        style={{ backgroundColor: "#35503f" }}
+      >
+        <Icon className="w-4 h-4" />
+      </a>
+    );
+  })}
+</div>
+          </motion.form>
+
+          
         </div>
       </div>
     </section>

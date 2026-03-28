@@ -12,6 +12,7 @@ import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { ReviewsSection } from "@/components/sections/ReviewsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { FAQSection } from "@/components/sections/FAQSection";
+import { WhatWeDo } from "@/components/sections/whatwedo";
 import { Footer } from "@/components/layout/Footer";
 
 
@@ -21,7 +22,7 @@ const Index = () => {
       <main>
         <HeroWithSearch />
         <TrustBanner />
-        
+        <WhatWeDo />
         <EcommerceServices />
         <PricingSection />
         <BenefitsGrid />

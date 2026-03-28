@@ -8,33 +8,41 @@ const fadeUp = {
   viewport: { once: true },
 };
 
+const scrollToContact = () => {
+  const el = document.querySelector("#contact");
+  if (el) el.scrollIntoView({ behavior: "smooth" });
+};
+
 export const WhyChooseUs = () => {
   return (
-    <section className="py-20 lg:py-28 bg-background">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-        {/* Bento Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 auto-rows-auto">
 
-          {/* Card 1 — All India Coverage */}
+          {/* Card 1 — All India Coverage — GREEN */}
           <motion.div
             {...fadeUp}
-            className="lg:col-span-5 rounded-2xl border border-border/50 bg-card p-6 lg:p-8 flex flex-col justify-center min-h-[170px]"
+            className="lg:col-span-5 rounded-2xl p-6 lg:p-8 flex flex-col justify-center min-h-[170px]"
+            style={{ backgroundColor: "#35503f" }}
           >
-            <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground mb-3">
+            <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-white/70 mb-3">
               <MapPin className="w-4 h-4" /> All India Coverage
             </span>
-            <h3 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-2">
+            <h3 className="text-3xl lg:text-4xl font-bold text-white tracking-tight mb-2">
               20+ States.
             </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+            <p className="text-white/75 text-sm leading-relaxed mb-4">
               VPOB addresses available across major Indian states and UTs — unlock pan-India selling on Amazon, Flipkart, and all major marketplaces.
             </p>
-            <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground cursor-pointer hover:gap-2.5 transition-all">
+            <button
+              onClick={scrollToContact}
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-white cursor-pointer hover:gap-2.5 transition-all w-fit"
+            >
               Learn More <ArrowRight className="w-4 h-4" />
-            </span>
+            </button>
           </motion.div>
 
-          {/* Card 1b — Dedicated Support */}
+          {/* Card 1b — VPOB & APOB — as is */}
           <motion.div
             {...fadeUp}
             transition={{ delay: 0.04 }}
@@ -49,12 +57,15 @@ export const WhyChooseUs = () => {
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
               Get fully compliant Virtual Place of Business (VPOB) and Additional Place of Business (APOB) addresses — accepted by Amazon, Flipkart, Meesho & all major marketplaces.
             </p>
-            <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground cursor-pointer hover:gap-2.5 transition-all">
+            <button
+              onClick={scrollToContact}
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground cursor-pointer hover:gap-2.5 transition-all w-fit"
+            >
               Learn More <ArrowRight className="w-4 h-4" />
-            </span>
+            </button>
           </motion.div>
 
-          {/* Card 2 — Fast GST Approval (top right) */}
+          {/* Card 2 — Fast GST Approval — as is */}
           <motion.div
             {...fadeUp}
             transition={{ delay: 0.08 }}
@@ -69,12 +80,15 @@ export const WhyChooseUs = () => {
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
               Get your GST registration approved in under 3 days. We handle all paperwork, filings, and government coordination.
             </p>
-            <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground cursor-pointer hover:gap-2.5 transition-all">
+            <button
+              onClick={scrollToContact}
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground cursor-pointer hover:gap-2.5 transition-all w-fit"
+            >
               Start Now <ArrowRight className="w-4 h-4" />
-            </span>
+            </button>
           </motion.div>
 
-          {/* Card 3 — CTA center (yellow) */}
+          {/* Card 3 — CTA center — as is (secondary/yellow) */}
           <motion.div
             {...fadeUp}
             transition={{ delay: 0.16 }}
@@ -86,53 +100,55 @@ export const WhyChooseUs = () => {
             <Button
               size="lg"
               className="rounded-full px-8 gap-2"
-              onClick={() => {
-                const el = document.querySelector("#contact");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={scrollToContact}
             >
               Get Started <ArrowRight className="w-4 h-4" />
             </Button>
           </motion.div>
 
-          {/* Card 4 — Affordable Pricing (bottom right small) */}
+          {/* Card 4 — Affordable Pricing — GREEN */}
           <motion.div
             {...fadeUp}
             transition={{ delay: 0.24 }}
-            className="lg:col-span-3 rounded-2xl border border-border/50 bg-card p-6 flex flex-col justify-center min-h-[170px]"
+            className="lg:col-span-3 rounded-2xl p-6 flex flex-col justify-center min-h-[170px]"
+            style={{ backgroundColor: "#35503f" }}
           >
-            <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground mb-3">
+            <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-white/70 mb-3">
               <IndianRupee className="w-4 h-4" /> Pricing
             </span>
-            <h3 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-2">
+            <h3 className="text-3xl lg:text-4xl font-bold text-white tracking-tight mb-2">
               Affordable Prices.
             </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-white/75 text-sm leading-relaxed">
               Transparent, no-hidden-fee pricing. VPOB addresses at the most competitive rates in the market.
             </p>
           </motion.div>
 
-          {/* Card 5 — End-to-End Compliance (bottom wide) */}
+          {/* Card 5 — Full Support — GREEN */}
           <motion.div
             {...fadeUp}
             transition={{ delay: 0.12 }}
-            className="lg:col-span-7 rounded-2xl border border-border/50 bg-card p-6 lg:p-8 flex flex-col justify-center min-h-[160px]"
+            className="lg:col-span-7 rounded-2xl p-6 lg:p-8 flex flex-col justify-center min-h-[160px]"
+            style={{ backgroundColor: "#35503f" }}
           >
-            <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground mb-3">
+            <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-white/70 mb-3">
               <HeartHandshake className="w-4 h-4" /> Full Support
             </span>
-            <h3 className="text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-2">
+            <h3 className="text-3xl lg:text-4xl font-bold text-white tracking-tight mb-2">
               End‑to‑End Support.
             </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+            <p className="text-white/75 text-sm leading-relaxed mb-4">
               From VPOB address setup to GST registration — we handle the entire process so you can start selling faster.
             </p>
-            <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground cursor-pointer hover:gap-2.5 transition-all">
+            <button
+              onClick={scrollToContact}
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-white cursor-pointer hover:gap-2.5 transition-all w-fit"
+            >
               Learn More <ArrowRight className="w-4 h-4" />
-            </span>
+            </button>
           </motion.div>
 
-          {/* Card 6 — 98% Approval Rate (bottom right) */}
+          {/* Card 6 — 98% Approval Rate — as is */}
           <motion.div
             {...fadeUp}
             transition={{ delay: 0.2 }}
