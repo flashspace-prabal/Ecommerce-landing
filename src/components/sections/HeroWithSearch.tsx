@@ -61,7 +61,7 @@ export const HeroWithSearch = () => {
                 className="backdrop-blur-[1px] bg-white/15 rounded-lg px-3 py-1 inline"
                 style={{ color: "#35503F", textShadow: "0 0 12px rgba(255,255,255,0.7)" }}
               >
-                Set Up in One City. <br />Sell Across India with VPOB.
+                Start in One City. <br />Sell Across India with VPOB.
               </span>
             </h1>
 
