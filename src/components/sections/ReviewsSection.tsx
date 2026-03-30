@@ -1,19 +1,19 @@
 import { Star } from "lucide-react";
 
 const reviews = [
-  { name: "Vikram P.", role: "Freelance Web Developer", text: "Flash Space simplified every aspect of my business life. From tracking expenses to managing compliance — it's been years and I can't imagine working without it.", image: "/src/assets/client1.webp" },
-  { name: "Sneha R.", role: "Manager at GlobeSync", text: "A game-changer for our business. Comprehensive workspace management tools helped us streamline processes and make better decisions.", image: "/src/assets/client3.webp" },
-  { name: "Amit K.", role: "CEO, Beta Technologies", text: "As someone new to scaling e-commerce, Flash Space has been invaluable. Its compliance tools helped me understand requirements and optimize operations.", image: "/src/assets/client2.webp" },
-  { name: "Priya D.", role: "Founder, LuxeCart", text: "Multi-state VPOB set up in under 10 days. Now we sell in 12 states with zero compliance issues. The team is incredibly responsive.", image: "/src/assets/client4.webp" },
-  { name: "Rahul M.", role: "COO, UrbanBazaar", text: "Managing GST across multiple states felt impossible. Flash Space handled everything — VPOB, filings, TDS recovery. We scaled from 3 to 18 states in two months.", image: "/src/assets/client5.webp" },
-  { name: "Meera S.", role: "Founder, StyleKart", text: "We were stuck with single-state selling. Flash Space opened up 15 new states for us in just 3 weeks. Revenue jumped 4x within a quarter.", image: "/src/assets/client6.webp" },
-  { name: "Arjun T.", role: "Director, FreshBasket", text: "The dedicated compliance manager is a lifesaver. They handle all government correspondence so we can focus on growing our organic food business.", image: "/src/assets/client7.webp" },
-  { name: "Kavita N.", role: "CEO, TechGear India", text: "Best investment we made. GST registration in 2 days, VPOB addresses across 20 states, and pricing that actually makes sense for a bootstrapped startup.", image: "/src/assets/client8.webp" },
-  { name: "Deepak R.", role: "Ops Head, QuickShip", text: "Compliance used to be our biggest bottleneck. Flash Space eliminated it entirely. We now onboard new states in under a week.", image: "/src/assets/client9.webp" },
-  { name: "Anita J.", role: "Co-founder, PetWorld", text: "From a small Bangalore store to selling across India on Amazon and Flipkart. Flash Space made it possible with their hassle-free VPOB setup.", image: "/src/assets/client10.webp" },
-  { name: "Suresh K.", role: "Founder, OrganicLife", text: "Setting up our physical presence in multiple cities was daunting until we found Flash Space. Their managed office solutions are top-notch.", image: "/src/assets/client11.jpg" },
-  { name: "Riya M.", role: "Director, EduTech Plus", text: "The team's expertise in multi-state GST compliance is unmatched. They handled our expansion seamlessly.", image: "/src/assets/client12.jpg" },
-  { name: "Karan S.", role: "CEO, LogiTrans", text: "Flash Space has been a strategic partner in our growth. Their VPOB services are efficient and cost-effective.", image: "/src/assets/client13.jpg" },
+  { name: "Vikram P.", role: "Freelance Web Developer", text: "Flash Space simplified every aspect of my business life. From tracking expenses to managing compliance — it's been years and I can't imagine working without it.", image: "/clients/client1.webp" },
+  { name: "Sneha R.", role: "Manager at GlobeSync", text: "A game-changer for our business. Comprehensive workspace management tools helped us streamline processes and make better decisions.", image: "clients/client3.webp" },
+  { name: "Amit K.", role: "CEO, Beta Technologies", text: "As someone new to scaling e-commerce, Flash Space has been invaluable. Its compliance tools helped me understand requirements and optimize operations.", image: "/clients/client2.webp" },
+  { name: "Priya D.", role: "Founder, LuxeCart", text: "Multi-state VPOB set up in under 10 days. Now we sell in 12 states with zero compliance issues. The team is incredibly responsive.", image: "/clients/client4.webp" },
+  { name: "Rahul M.", role: "COO, UrbanBazaar", text: "Managing GST across multiple states felt impossible. Flash Space handled everything — VPOB, filings, TDS recovery. We scaled from 3 to 18 states in two months.", image: "/clients/client5.webp" },
+  { name: "Meera S.", role: "Founder, StyleKart", text: "We were stuck with single-state selling. Flash Space opened up 15 new states for us in just 3 weeks. Revenue jumped 4x within a quarter.", image: "/clients/client6.webp" },
+  { name: "Arjun T.", role: "Director, FreshBasket", text: "The dedicated compliance manager is a lifesaver. They handle all government correspondence so we can focus on growing our organic food business.", image: "/clients/client7.webp" },
+  { name: "Kavita N.", role: "CEO, TechGear India", text: "Best investment we made. GST registration in 2 days, VPOB addresses across 20 states, and pricing that actually makes sense for a bootstrapped startup.", image: "/clients/client8.webp" },
+  { name: "Deepak R.", role: "Ops Head, QuickShip", text: "Compliance used to be our biggest bottleneck. Flash Space eliminated it entirely. We now onboard new states in under a week.", image: "/clients/client9.webp" },
+  { name: "Anita J.", role: "Co-founder, PetWorld", text: "From a small Bangalore store to selling across India on Amazon and Flipkart. Flash Space made it possible with their hassle-free VPOB setup.", image: "/clients/client10.webp" },
+  { name: "Suresh K.", role: "Founder, OrganicLife", text: "Setting up our physical presence in multiple cities was daunting until we found Flash Space. Their managed office solutions are top-notch.", image: "/clients/client11.jpg" },
+  { name: "Riya M.", role: "Director, EduTech Plus", text: "The team's expertise in multi-state GST compliance is unmatched. They handled our expansion seamlessly.", image: "/clients/client12.jpg" },
+  { name: "Karan S.", role: "CEO, LogiTrans", text: "Flash Space has been a strategic partner in our growth. Their VPOB services are efficient and cost-effective.", image: "/clients/client13.jpg" },
 ];
 
 const row1 = reviews.slice(0, 7);
