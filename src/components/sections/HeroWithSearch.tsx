@@ -41,7 +41,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
   try {
-    const res = await fetch("https://ecommerce-server-f99z.onrender.com", {
+    const res = await fetch("https://ecommerce-server-f99z.onrender.com/api/leads", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
