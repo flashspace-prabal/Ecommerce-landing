@@ -11,9 +11,9 @@ const reviews = [
   { name: "Kavita N.", role: "CEO, TechGear India", text: "Best investment we made. GST registration in 2 days, VPOB addresses across 20 states, and pricing that actually makes sense for a bootstrapped startup.", image: "/clients/client8.webp" },
   { name: "Deepak R.", role: "Ops Head, QuickShip", text: "Compliance used to be our biggest bottleneck. Flash Space eliminated it entirely. We now onboard new states in under a week.", image: "/clients/client9.webp" },
   { name: "Anita J.", role: "Co-founder, PetWorld", text: "From a small Bangalore store to selling across India on Amazon and Flipkart. Flash Space made it possible with their hassle-free VPOB setup.", image: "/clients/client10.webp" },
-  { name: "Suresh K.", role: "Founder, OrganicLife", text: "Setting up our physical presence in multiple cities was daunting until we found Flash Space. Their managed office solutions are top-notch.", image: "/clients/client11.jpg" },
-  { name: "Riya M.", role: "Director, EduTech Plus", text: "The team's expertise in multi-state GST compliance is unmatched. They handled our expansion seamlessly.", image: "/clients/client12.jpg" },
-  { name: "Karan S.", role: "CEO, LogiTrans", text: "Flash Space has been a strategic partner in our growth. Their VPOB services are efficient and cost-effective.", image: "/clients/client13.jpg" },
+  { name: "Suresh K.", role: "Founder, OrganicLife", text: "Setting up our physical presence in multiple cities was daunting until we found Flash Space. Their managed office solutions are top-notch.", image: "/clients/client11.webp" },
+  { name: "Riya M.", role: "Director, EduTech Plus", text: "The team's expertise in multi-state GST compliance is unmatched. They handled our expansion seamlessly.", image: "/clients/client12.webp" },
+  { name: "Karan S.", role: "CEO, LogiTrans", text: "Flash Space has been a strategic partner in our growth. Their VPOB services are efficient and cost-effective.", image: "/clients/client13.webp" },
 ];
 
 const row1 = reviews.slice(0, 7);
