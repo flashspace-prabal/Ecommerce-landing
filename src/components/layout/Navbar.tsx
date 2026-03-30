@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X, PhoneCall } from "lucide-react";
@@ -14,6 +15,8 @@ const navLinks = [
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -29,7 +32,11 @@ export const Navbar = () => {
 
   const handleCallback = () => {
     setMobileOpen(false);
-    triggerHeroForm();
+    if (location.pathname !== '/' && location.pathname !== '/lead-form') {
+      navigate('/lead-form', { state: { from: location.pathname } }); 
+    } else {
+      triggerHeroForm();
+    }
   };
 
   return (

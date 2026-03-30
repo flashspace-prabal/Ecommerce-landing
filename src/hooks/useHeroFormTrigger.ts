@@ -1,4 +1,5 @@
 import { useEffect, useCallback, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const HERO_FORM_EVENT = "hero-form-trigger";
 
@@ -8,19 +9,38 @@ export const triggerHeroForm = () => {
 
 export const useHeroFormTrigger = () => {
   const [formOpen, setFormOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/lead-form") {
+      setTimeout(() => setFormOpen(true), 150);
+    } else {
+      setFormOpen(false);
+    }
+  }, [location.pathname]);
 
   const openForm = useCallback(() => {
     const hero = document.getElementById("hero");
     if (hero) {
       hero.scrollIntoView({ behavior: "smooth" });
     }
-    // Small delay to let scroll start, then open
-    setTimeout(() => setFormOpen(true), 150);
-  }, []);
+    if (location.pathname !== "/lead-form") {
+      navigate("/lead-form", { state: { from: location.pathname } });
+    }
+  }, [navigate, location.pathname]);
 
   const closeForm = useCallback(() => {
-    setFormOpen(false);
-  }, []);
+    if (location.pathname === "/lead-form") {
+      if (location.state?.from) {
+        navigate(-1);
+      } else {
+        navigate("/");
+      }
+    } else {
+      setFormOpen(false);
+    }
+  }, [navigate, location]);
 
   useEffect(() => {
     const handler = () => openForm();
